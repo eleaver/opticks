@@ -200,7 +200,7 @@ bool ColorMap::deserialize(QIODevice &io)
       return false;
    }
 
-   if (version != 1 && version != 2 && version != 3 && version != 4) 
+   if (version != 1 && version != 2 && version != 3 && version != 4 && version != 5) 
    {
       return false;
    }
@@ -214,7 +214,7 @@ bool ColorMap::deserialize(QIODevice &io)
    std::string name = buffer;
    name = stripTrailingWhiteSpace(name);
 
-   if (version == 4)
+   if (version >= 4)
    {
       if (deserializeGradient(io, version) == false)
       {
@@ -340,7 +340,24 @@ bool ColorMap::deserializeGradient(QIODevice &io, int version)
       return false;
    }
 
-   if (sscanf (buffer, "%s%d", buffer1, &pGradient->mStartPosition) != 2 && strcmp(buffer1, "Start") != 0)
+   if (version == 4)
+   {
+      if (sscanf (buffer, "%s%d", buffer1, &pGradient->mStartPosition) != 2 && strcmp(buffer1, "Start") != 0)
+      {
+         return false;
+      }
+      pGradient->mLowerTransparent = false;
+   }
+   else if (version >= 5)
+   {
+      int tmp;
+      if (sscanf (buffer, "%s%d%d", buffer1, &pGradient->mStartPosition, &tmp) != 3 && strcmp(buffer1, "Start") != 0)
+      {
+         return false;
+      }
+      pGradient->mLowerTransparent = (tmp != 0);
+   }
+   else
    {
       return false;
    }
@@ -350,7 +367,24 @@ bool ColorMap::deserializeGradient(QIODevice &io, int version)
       return false;
    }
 
-   if (sscanf (buffer, "%s%d", buffer1, &pGradient->mStopPosition) != 2 && strcmp(buffer1, "Stop") != 0)
+   if (version == 4)
+   {
+      if (sscanf (buffer, "%s%d", buffer1, &pGradient->mStopPosition) != 2 && strcmp(buffer1, "Stop") != 0)
+      {
+         return false;
+      }
+      pGradient->mUpperTransparent = false;
+   }
+   else if (version >= 5)
+   {
+      int tmp=0;
+      if (sscanf (buffer, "%s%d%d", buffer1, &pGradient->mStopPosition, &tmp) != 3 && strcmp(buffer1, "Stop") != 0)
+      {
+         return false;
+      }
+      pGradient->mUpperTransparent = (tmp != 0);
+   }
+   else
    {
       return false;
    }
@@ -545,6 +579,14 @@ std::vector<ColorType> ColorMap::tableFromGradient(const Gradient &gradient)
    {
       colormap[i] = gradient.mControls.back().mColor;
    }
+   if (gradient.mLowerTransparent)
+   {
+      colormap[0].mAlpha = 0;
+   }
+   if (gradient.mUpperTransparent)
+   {
+      colormap[size-1].mAlpha = 0;
+   }
 
    return colormap;
 }
@@ -649,10 +691,10 @@ bool ColorMap::serializeGradient(QIODevice &io) const
    QTextStream out(&io);
 
    out << "Opticks Color Gradient" << endl;
-   out << "Version\t4" << endl;
+   out << "Version\t5" << endl;
    out << QString::fromStdString(mName) << endl;
-   out << "Start\t" << mpGradient->mStartPosition << endl;
-   out << "Stop\t" << mpGradient->mStopPosition << endl;
+   out << "Start\t" << mpGradient->mStartPosition << (mpGradient->mLowerTransparent ? "\t1" : "\t0") << endl;
+   out << "Stop\t" << mpGradient->mStopPosition << (mpGradient->mUpperTransparent ? "\t1" : "\t0") << endl;
    out << "Indices\t" << mpGradient->mNumIndices << endl;
    out << "Pos\tRed\tGreen\tBlue\tAlpha" << endl;
    unsigned int i;

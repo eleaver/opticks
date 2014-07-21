@@ -68,7 +68,15 @@ public:
                             filled with the color of the last control. If no grayscale is desired, this 
                             should be set to mNumIndices-1. This value must be less than mNumIndices 
                             and greater than or equal to the position of the last Control. */
+      bool mLowerTransparent; /**< The first color in the lookup table should be transparent which will
+                                 cause all data below the lowest stretch to be transparent. This is similar
+                                 to the "Hot Iron Alpha" and related colormaps. */
+      bool mUpperTransparent;  /**< The last color in the lookup table should be transparent which will
+                                cause all data above the highest stretch to be transparent. This is similar
+                                to the "Hot Iron Alpha" and related colormaps except above instead of below. */
       int mNumIndices;   /**< The number of colors in the color lookup table defined by the Gradient. */
+      
+      Gradient() : mStartPosition(0),mStopPosition(0),mLowerTransparent(false),mUpperTransparent(false),mNumIndices(0) {}
    };
 
    /**

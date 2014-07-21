@@ -1,4 +1,4 @@
-/*
+﻿/*
  * The information in this file is
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
@@ -12,9 +12,15 @@
 #include "HistogramPlotImp.h"
 #include "RasterLayer.h"
 
+#include <QtGui/QButtonGroup>
 #include <QtGui/QColorDialog>
 #include <QtGui/QFileDialog>
+#include <QtGui/QFormLayout>
+#include <QtGui/QGridLayout>
+#include <QtGui/QHBoxLayout>
 #include <QtGui/QMessageBox>
+#include <QtGui/QRadioButton>
+#include <QtGui/QVBoxLayout>
 
 using namespace std;
 
@@ -31,43 +37,25 @@ ColormapEditor::ColormapEditor(HistogramPlotImp& parent) :
 
    mHistogram.attach(SIGNAL_NAME(Subject, Deleted), Slot(this, &ColormapEditor::histogramDeleted));
 
-   mpVboxLayout = new QVBoxLayout(this);
-   mpVboxLayout->setSpacing(6);
-   mpVboxLayout->setMargin(9);
-   mpVboxLayout->setObjectName("mpVboxLayout");
-   mpHboxLayout = new QHBoxLayout();
-   mpHboxLayout->setSpacing(6);
-   mpHboxLayout->setMargin(0);
-   mpHboxLayout->setObjectName("mpHboxLayout");
+   QVBoxLayout* pVboxLayout = new QVBoxLayout(this);
+   pVboxLayout->setSpacing(6);
+   pVboxLayout->setMargin(9);
+   pVboxLayout->setObjectName("pVboxLayout");
+   QHBoxLayout* pHboxLayout = new QHBoxLayout();
+   pHboxLayout->setSpacing(6);
+   pHboxLayout->setMargin(0);
+   pHboxLayout->setObjectName("pHboxLayout");
    mpPrimariesLabel = new QLabel(this);
    mpPrimariesLabel->setObjectName("mpPrimariesLabel");
    mpPrimariesLabel->setText("Control-Colors:");
 
-   mpHboxLayout->addWidget(mpPrimariesLabel);
-
-   mpPrimariesSpinBox = new QSpinBox(this);
-   mpPrimariesSpinBox->setObjectName("mpPrimariesSpinBox");
-   mpPrimariesSpinBox->setMaximum(20);
-   mpPrimariesSpinBox->setMinimum(2);
-   mpPrimariesSpinBox->setValue(2);
-
-   mpHboxLayout->addWidget(mpPrimariesSpinBox);
-
-   mpUniformButton = new QPushButton(this);
-   mpUniformButton->setObjectName("mpUniformButton");
-   mpUniformButton->setText("Distribute");
-
-   mpHboxLayout->addWidget(mpUniformButton);
-
-   mpSpacerItem = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-   mpHboxLayout->addItem(mpSpacerItem);
+   pHboxLayout->addWidget(mpPrimariesLabel);
 
    mpIndicesLabel = new QLabel(this);
    mpIndicesLabel->setObjectName("mpIndicesLabel");
    mpIndicesLabel->setText("Gradient Steps:");
 
-   mpHboxLayout->addWidget(mpIndicesLabel);
+   pHboxLayout->addWidget(mpIndicesLabel);
 
    mpIndicesSpinBox = new QSpinBox(this);
    mpIndicesSpinBox->setObjectName("mpIndicesSpinBox");
@@ -75,27 +63,88 @@ ColormapEditor::ColormapEditor(HistogramPlotImp& parent) :
    mpIndicesSpinBox->setMinimum(2);
    mpIndicesSpinBox->setValue(mInitialIndices);
 
-   mpHboxLayout->addWidget(mpIndicesSpinBox);
+   pHboxLayout->addWidget(mpIndicesSpinBox);
 
-   mpVboxLayout->addLayout(mpHboxLayout);
+   pVboxLayout->addLayout(pHboxLayout);
 
-   mpPrimaryView = new QFrame(this);
-   mpPrimaryView->setFrameShape(QFrame::StyledPanel);
-   mpPrimaryView->setFrameShadow(QFrame::Sunken);
+   mpTypeTab = new QTabWidget(this);
+   
+   // standard tab
+   mpPrimaryView = new QWidget(mpTypeTab);
+   mpTypeTab->addTab(mpPrimaryView, "Standard");
 
    mpPrimaryLayout = new QGridLayout(mpPrimaryView);
    mpPrimaryLayout->setColumnStretch(0, 1);
 
-   mpVboxLayout->addWidget(mpPrimaryView);
+   mpPrimariesSpinBox = new QSpinBox(mpPrimaryView);
+   mpPrimariesSpinBox->setMaximum(20);
+   mpPrimariesSpinBox->setMinimum(2);
+   mpPrimariesSpinBox->setValue(2);
 
+   mpPrimaryLayout->addWidget(mpPrimariesSpinBox, 0, 0);
+
+   mpUniformButton = new QPushButton(mpPrimaryView);
+   mpUniformButton->setText("Distribute");
+
+   mpPrimaryLayout->addWidget(mpUniformButton, 0, 1);
+
+   // cubehelix tab
+   mpCubehelixView = new QFrame(mpTypeTab);
+   mpTypeTab->addTab(mpCubehelixView, "Cubehelix");
+
+   QFormLayout* pCubehelixLayout = new QFormLayout(mpCubehelixView);
+
+   mpCHStartColor = new QSlider(Qt::Horizontal, mpCubehelixView);
+   mpCHStartColor->setRange(0,200);
+   mpCHStartColor->setSingleStep(1);
+   mpCHStartColor->setValue(50);
+   mpCHStartColor->setStyleSheet("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 255, 255), stop:0.5 rgba(255, 0, 0, 255), stop:1 rgba(0, 255, 0, 255));");
+   pCubehelixLayout->addRow("Start Color", mpCHStartColor);
+   mpCHNumberOfRotations = new QDoubleSpinBox(mpCubehelixView);
+   mpCHNumberOfRotations->setSingleStep(0.1);
+   mpCHNumberOfRotations->setRange(-10.,10.);
+   mpCHNumberOfRotations->setValue(-1.5);
+   mpCHNumberOfRotations->setToolTip("Positive=red to blue");
+   pCubehelixLayout->addRow("Number of Rotations", mpCHNumberOfRotations);
+   mpCHGamma = new QDoubleSpinBox(mpCubehelixView);
+   mpCHGamma->setMinimum(0.1);
+   mpCHGamma->setSingleStep(0.1);
+   mpCHGamma->setValue(1.0);
+   pCubehelixLayout->addRow("\\gamma", mpCHGamma);
+   QWidget* pCHDirectionWidget = new QWidget(mpCubehelixView);
+   mpCHDirection = new QButtonGroup(mpCubehelixView);
+   QRadioButton* pBlack = new QRadioButton("Black->White", pCHDirectionWidget);
+   QRadioButton* pWhite = new QRadioButton("White->Black", pCHDirectionWidget);
+   mpCHDirection->addButton(pBlack, 0);
+   mpCHDirection->addButton(pWhite, 1);
+   pBlack->setChecked(true);
+   QHBoxLayout* pCHDirectionLayout = new QHBoxLayout(pCHDirectionWidget);
+   pCHDirectionLayout->addWidget(pBlack);
+   pCHDirectionLayout->addWidget(pWhite);
+   pCubehelixLayout->addRow(pCHDirectionWidget);
+   mpCHSaturation = new QDoubleSpinBox(mpCubehelixView);
+   mpCHSaturation->setMinimum(0.0);
+   mpCHSaturation->setSingleStep(0.1);
+   mpCHSaturation->setValue(1.2);
+   pCubehelixLayout->addRow("Saturation", mpCHSaturation);
+
+   ////
+   pVboxLayout->addWidget(mpTypeTab);
+
+   QHBoxLayout* pRangeMinLayout = new QHBoxLayout;
+   pVboxLayout->addLayout(pRangeMinLayout);
+   mpLowerTransparent = new QPushButton(this);
+   mpLowerTransparent->setIcon(QIcon(":/icons/Transparency"));
+   mpLowerTransparent->setCheckable(true);
+   mpLowerTransparent->setToolTip("Force lowest value to be transparent");
+   pRangeMinLayout->addWidget(mpLowerTransparent, 0);
    mpRangeMinSlider = new QSlider(this);
    mpRangeMinSlider->setObjectName("mpRangeMinSlider");
    mpRangeMinSlider->setMaximum(mSliderRange-1);
    mpRangeMinSlider->setSingleStep(mSliderRange/100);
    mpRangeMinSlider->setPageStep(mSliderRange/10);
    mpRangeMinSlider->setOrientation(Qt::Horizontal);
-
-   mpVboxLayout->addWidget(mpRangeMinSlider);
+   pRangeMinLayout->addWidget(mpRangeMinSlider, 10);
 
    mpDisplay = new QLabel(this);
    mpDisplay->setObjectName("mpDisplay");
@@ -107,8 +156,10 @@ ColormapEditor::ColormapEditor(HistogramPlotImp& parent) :
    sizePolicy.setHeightForWidth(mpDisplay->sizePolicy().hasHeightForWidth());
    mpDisplay->setSizePolicy(sizePolicy);
 
-   mpVboxLayout->addWidget(mpDisplay);
+   pVboxLayout->addWidget(mpDisplay);
 
+   QHBoxLayout* pRangeMaxLayout = new QHBoxLayout;
+   pVboxLayout->addLayout(pRangeMaxLayout);
    mpRangeMaxSlider = new QSlider(this);
    mpRangeMaxSlider->setObjectName("mpRangeMaxSlider");
    mpRangeMaxSlider->setMaximum(mSliderRange-1);
@@ -116,59 +167,71 @@ ColormapEditor::ColormapEditor(HistogramPlotImp& parent) :
    mpRangeMaxSlider->setPageStep(mSliderRange/10);
    mpRangeMaxSlider->setValue(mSliderRange-1);
    mpRangeMaxSlider->setOrientation(Qt::Horizontal);
+   pRangeMaxLayout->addWidget(mpRangeMaxSlider, 10);
+   mpUpperTransparent = new QPushButton(this);
+   mpUpperTransparent->setIcon(QIcon(":/icons/Transparency"));
+   mpUpperTransparent->setCheckable(true);
+   mpUpperTransparent->setToolTip("Force highest value to be transparent");
+   pRangeMaxLayout->addWidget(mpUpperTransparent, 0);
 
-   mpVboxLayout->addWidget(mpRangeMaxSlider);
-
-   mpHboxLayout1 = new QHBoxLayout();
-   mpHboxLayout1->setSpacing(6);
-   mpHboxLayout1->setMargin(0);
-   mpHboxLayout1->setObjectName("mpHboxLayout1");
+   QHBoxLayout* pHboxLayout1 = new QHBoxLayout();
+   pHboxLayout1->setSpacing(6);
+   pHboxLayout1->setMargin(0);
+   pHboxLayout1->setObjectName("pHboxLayout1");
    mpSaveButton = new QPushButton(this);
    mpSaveButton->setObjectName("mpSaveButton");
    mpSaveButton->setText("Save");
 
-   mpHboxLayout1->addWidget(mpSaveButton);
+   pHboxLayout1->addWidget(mpSaveButton);
 
    mpLoadButton = new QPushButton(this);
    mpLoadButton->setObjectName("mpLoadButton");
    mpLoadButton->setText("Load");
 
-   mpHboxLayout1->addWidget(mpLoadButton);
+   pHboxLayout1->addWidget(mpLoadButton);
 
    mpApplyButton = new QPushButton(this);
    mpApplyButton->setObjectName("mpApplyButton");
    mpApplyButton->setText("Apply");
 
-   mpHboxLayout1->addWidget(mpApplyButton);
+   pHboxLayout1->addWidget(mpApplyButton);
 
    mpSpacerItem1 = new QSpacerItem(16, 31, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-   mpHboxLayout1->addItem(mpSpacerItem1);
+   pHboxLayout1->addItem(mpSpacerItem1);
 
    mpOkButton = new QPushButton(this);
    mpOkButton->setObjectName("mpOkButton");
    mpOkButton->setText("OK");
 
-   mpHboxLayout1->addWidget(mpOkButton);
+   pHboxLayout1->addWidget(mpOkButton);
 
    mpCloseButton = new QPushButton(this);
    mpCloseButton->setObjectName("mpCloseButton");
    mpCloseButton->setText("Close");
 
-   mpHboxLayout1->addWidget(mpCloseButton);
+   pHboxLayout1->addWidget(mpCloseButton);
 
-   mpVboxLayout->addLayout(mpHboxLayout1);
+   pVboxLayout->addLayout(pHboxLayout1);
 
-   connect(mpOkButton, SIGNAL(clicked()), this, SLOT(accept()));
-   connect(mpCloseButton, SIGNAL(clicked()), this, SLOT(reject()));
-   connect(mpPrimariesSpinBox, SIGNAL(valueChanged(int)), this, SLOT(numPrimariesChanged(int)));
-   connect(mpIndicesSpinBox, SIGNAL(valueChanged(int)), this, SLOT(updateColormap()));
-   connect(mpRangeMinSlider, SIGNAL(valueChanged(int)), this, SLOT(rangePositionChanged(int)));
-   connect(mpRangeMaxSlider, SIGNAL(valueChanged(int)), this, SLOT(rangePositionChanged(int)));
-   connect(mpApplyButton, SIGNAL(clicked()), this, SLOT(applyColormap()));
-   connect(mpSaveButton, SIGNAL(clicked()), this, SLOT(saveColormap()));
-   connect(mpLoadButton, SIGNAL(clicked()), this, SLOT(loadColormap()));
-   connect(mpUniformButton, SIGNAL(clicked()), this, SLOT(distributeUniformly()));
+   VERIFYNR(connect(mpOkButton, SIGNAL(clicked()), this, SLOT(accept())));
+   VERIFYNR(connect(mpCloseButton, SIGNAL(clicked()), this, SLOT(reject())));
+   VERIFYNR(connect(mpPrimariesSpinBox, SIGNAL(valueChanged(int)), this, SLOT(numPrimariesChanged(int))));
+   VERIFYNR(connect(mpIndicesSpinBox, SIGNAL(valueChanged(int)), this, SLOT(updateColormap())));
+   VERIFYNR(connect(mpRangeMinSlider, SIGNAL(valueChanged(int)), this, SLOT(rangePositionChanged(int))));
+   VERIFYNR(connect(mpRangeMaxSlider, SIGNAL(valueChanged(int)), this, SLOT(rangePositionChanged(int))));
+   VERIFYNR(connect(mpCHStartColor, SIGNAL(valueChanged(int)), this, SLOT(updateColormap())));
+   VERIFYNR(connect(mpCHNumberOfRotations, SIGNAL(valueChanged(double)), this, SLOT(updateColormap())));
+   VERIFYNR(connect(mpCHGamma, SIGNAL(valueChanged(double)), this, SLOT(updateColormap())));
+   VERIFYNR(connect(mpCHDirection, SIGNAL(buttonClicked(int)), this, SLOT(updateColormap())));
+   VERIFYNR(connect(mpCHSaturation, SIGNAL(valueChanged(double)), this, SLOT(updateColormap())));
+   VERIFYNR(connect(mpTypeTab, SIGNAL(currentChanged(int)), this, SLOT(updateColormap())));
+   VERIFYNR(connect(mpApplyButton, SIGNAL(clicked()), this, SLOT(applyColormap())));
+   VERIFYNR(connect(mpSaveButton, SIGNAL(clicked()), this, SLOT(saveColormap())));
+   VERIFYNR(connect(mpLoadButton, SIGNAL(clicked()), this, SLOT(loadColormap())));
+   VERIFYNR(connect(mpUniformButton, SIGNAL(clicked()), this, SLOT(distributeUniformly())));
+   VERIFYNR(connect(mpLowerTransparent, SIGNAL(toggled(bool)), this, SLOT(updateColormap())));
+   VERIFYNR(connect(mpUpperTransparent, SIGNAL(toggled(bool)), this, SLOT(updateColormap())));
 
    numPrimariesChanged(2);
 }
@@ -209,8 +272,8 @@ void ColormapEditor::numPrimariesChanged(int newCount)
             newColor = Qt::black;
          }
          pColorChip->setColor(newColor);
-         mpPrimaryLayout->addWidget(pSlider, mPrimaries.size(), 0);
-         mpPrimaryLayout->addWidget(pColorChip, mPrimaries.size(), 1);
+         mpPrimaryLayout->addWidget(pSlider, mPrimaries.size()+1, 0);
+         mpPrimaryLayout->addWidget(pColorChip, mPrimaries.size()+1, 1);
          Primary primary = { pColorChip, pSlider, pSlider->value(), newColor };
          mPrimaries.push_back(primary);
          connect(pSlider, SIGNAL(valueChanged(int)), this, SLOT(primaryPositionChanged(int)));
@@ -277,7 +340,19 @@ void ColormapEditor::saveColormap()
       filename.append(".cgr");
    }
    mName = mapName.mid(mapName.lastIndexOf('/') + 1, mapName.length()).toStdString();
-   ColorMap cmap(mName, makeGradient());
+   ColorMap cmap;
+   if (mpTypeTab->currentWidget() == mpPrimaryView)
+   {
+      cmap = ColorMap(mName, makeGradient());
+   }
+   else if (mpTypeTab->currentWidget() == mpCubehelixView)
+   {
+      cmap = makeCubehelix(mName);
+   }
+   else
+   {
+      VERIFYNR_MSG(false, "Invalid color map creator tab");
+   }
    cmap.saveToFile(filename.toStdString());
 }
 
@@ -311,8 +386,10 @@ void ColormapEditor::loadColormap()
    }
 
 
-   this->mpIndicesSpinBox->setValue(gradient.mNumIndices);
-   this->mpPrimariesSpinBox->setValue(gradient.mControls.size());
+   mpIndicesSpinBox->setValue(gradient.mNumIndices);
+   mpPrimariesSpinBox->setValue(gradient.mControls.size());
+   mpLowerTransparent->setChecked(gradient.mLowerTransparent);
+   mpUpperTransparent->setChecked(gradient.mUpperTransparent);
 
    vector<Primary>::iterator pPrimary;
    for (pPrimary = mPrimaries.begin(); pPrimary != mPrimaries.end(); ++pPrimary)
@@ -468,7 +545,18 @@ void ColormapEditor::updateColormap()
 {
    try
    {
-      mColormap = ColorMap("Custom", makeGradient());
+      if (mpTypeTab->currentWidget() == mpPrimaryView)
+      {
+         mColormap = ColorMap("Custom", makeGradient());
+      }
+      else if (mpTypeTab->currentWidget() == mpCubehelixView)
+      {
+         mColormap = makeCubehelix("Custom");
+      }
+      else
+      {
+         VERIFYNR_MSG(false, "Invalid color map creator tab");
+      }
    }
    catch (const std::runtime_error&)
    {
@@ -524,6 +612,72 @@ ColorMap::Gradient ColormapEditor::makeGradient() const
       control.mPosition = index;
       gradient.mControls.push_back(control);
    }
+   gradient.mLowerTransparent = mpLowerTransparent->isChecked();
+   gradient.mUpperTransparent = mpUpperTransparent->isChecked();
 
    return gradient;
+}
+
+ColorMap ColormapEditor::makeCubehelix(const std::string& name) const
+{
+   std::vector<ColorType> colors;
+   double startColor = mpCHStartColor->value() / 100.;
+   double rotations = mpCHNumberOfRotations->value();
+   double gamma = mpCHGamma->value();
+   int direction = mpCHDirection->checkedId();
+   double saturation = mpCHSaturation->value();
+   int count = std::max(256, mpIndicesSpinBox->value());
+
+   int rangeMin = mpRangeMinSlider->value();
+   int rangeMax = mpRangeMaxSlider->value();
+   int sliderRange = rangeMax-rangeMin;
+   int cmap_start = (rangeMin * (count - 1) + mSliderRange / 2) / mSliderRange;
+   int cmap_stop = (rangeMax * (count - 1) + mSliderRange / 2) / mSliderRange;
+
+   colors.resize(count);
+   
+   // Fill with gray
+   for (int i = 0; i < count; ++i)
+   {
+      int shade = (i*255 + (count-1)/2)/(count-1);
+      colors[i] = ColorType(shade, shade, shade);
+   }
+
+   count = cmap_stop-cmap_start+1;
+
+   for (int i = 0; i < count; i++)
+   {
+      double fract = i / (double)count;
+      double angle = 2. * 3.1415926 * (startColor / 3. + rotations * fract + 1.);
+      fract = std::pow(fract, gamma);
+      double amp = saturation * fract * (1. - fract) / 2.;
+
+      double red = fract + amp * (-0.14861 * std::cos(angle) + 1.78277 * std::sin(angle));
+      double green = fract + amp * (-0.29227 * std::cos(angle) - 0.90649 * std::sin(angle));
+      double blue = fract + amp * (1.97294 * std::cos(angle));
+
+      red = std::max(0., std::min(red, 1.));
+      green = std::max(0., std::min(green, 1.));
+      blue = std::max(0., std::min(blue, 1.));
+
+      ColorType color(red*255, green*255,  blue*255);
+      if (direction == 0) // black->white
+      {
+         colors[i+cmap_start] = color;
+      }
+      else // white->black
+      {
+         colors[cmap_stop-i] = color;
+      }
+   }
+   if (mpLowerTransparent->isChecked())
+   {
+      colors.front().mAlpha = 0;
+   }
+   if (mpUpperTransparent->isChecked())
+   {
+      colors.back().mAlpha = 0;
+   }
+
+   return ColorMap("Custom", colors);
 }

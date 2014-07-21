@@ -13,21 +13,19 @@
 #include "ColorMap.h"
 
 #include <QtGui/QDialog>
-#include <QtGui/QFrame>
-#include <QtGui/QHBoxLayout>
 #include <QtGui/QLabel>
 #include <QtGui/QPushButton>
 #include <QtGui/QSlider>
 #include <QtGui/QSpacerItem>
 #include <QtGui/QSpinBox>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QGridLayout>
 #include <string>
 #include <vector>
 
 class CustomColorButton;
 class HistogramPlotImp;
 class Subject;
+class QGridLayout;
+class QTabWidget;
 
 namespace boost
 {
@@ -61,27 +59,35 @@ private:
    ColormapEditor& operator=(const ColormapEditor& rhs);
    void histogramDeleted(Subject &subject, const std::string &signal, const boost::any& v);
    ColorMap::Gradient makeGradient() const;
+   ColorMap makeCubehelix(const std::string& name) const;
 
-   QVBoxLayout* mpVboxLayout;
-   QHBoxLayout* mpHboxLayout;
+   QTabWidget* mpTypeTab;
+
    QLabel* mpPrimariesLabel;
    QSpinBox* mpPrimariesSpinBox;
-   QSpacerItem* mpSpacerItem;
    QLabel* mpIndicesLabel;
    QSpinBox* mpIndicesSpinBox;
-   QFrame* mpPrimaryView;
+   QGridLayout* mpPrimaryLayout;
+   QWidget* mpPrimaryView;
+   QWidget* mpCubehelixView;
    QSlider* mpRangeMinSlider;
    QLabel* mpDisplay;
    QSlider* mpRangeMaxSlider;
-   QHBoxLayout* mpHboxLayout1;
    QPushButton* mpSaveButton;
    QPushButton* mpApplyButton;
    QPushButton* mpLoadButton;
    QSpacerItem* mpSpacerItem1;
    QPushButton* mpOkButton;
    QPushButton* mpCloseButton;
-   QGridLayout* mpPrimaryLayout;
    QPushButton* mpUniformButton;
+   QPushButton* mpLowerTransparent;
+   QPushButton* mpUpperTransparent;
+
+   QSlider* mpCHStartColor;
+   QDoubleSpinBox* mpCHNumberOfRotations;
+   QDoubleSpinBox* mpCHGamma;
+   QButtonGroup* mpCHDirection;
+   QDoubleSpinBox* mpCHSaturation;
 
    struct Primary
    {

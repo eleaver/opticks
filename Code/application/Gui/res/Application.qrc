@@ -237,6 +237,7 @@
    <file alias="TogglePixel">icons/TogglePixelIcon.png</file>
    <file alias="TogglePolygon">icons/TogglePolygonIcon.png</file>
    <file alias="ToggleRect">icons/ToggleRectIcon.png</file>
+   <file alias="Transparency">icons/transparencyIcon.jpg</file>
    <file alias="Triangle">icons/TriangleIcon.png</file>
    <file alias="Unchecked">icons/UncheckedIcon.png</file>
    <file alias="Underline">icons/UnderlineIcon.png</file>
