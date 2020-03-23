@@ -16,12 +16,12 @@ add_executable(OpticksBatch ${SOURCE_FILES} ${HEADER_FILES})
 target_link_libraries(OpticksBatch
     ${OPTICKS_EXECUTABLE_LIBS}
     ${Opticks_LIBRARIES}
-    ${QT_LIBRARIES}    
+    ${QT_LIBRARIES}
     ${Qwt5ForQt4_LIBRARY}
-    ${OPENGL_LIBRARIES}    
-    ${ZLIB_LIBRARIES}    
-    ${YamlCpp_LIBRARIES}    
-    ${Minizip_LIBRARIES}    
+    ${OPENGL_LIBRARIES}
+    ${ZLIB_LIBRARIES}
+    ${YamlCpp_LIBRARIES}
+    ${Minizip_LIBRARIES}
     ${Xerces_LIBRARIES}
     ${XQilla_LIBRARIES}
     ${Raptor_LIBRARIES}
@@ -35,6 +35,6 @@ endif()
 set_target_properties(OpticksBatch PROPERTIES DEBUG_POSTFIX "d")
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
     set_target_properties(OpticksBatch PROPERTIES OUTPUT_NAME "linuxBatch")
-    target_link_libraries(OpticksBatch ${EXPAT_LIBRARIES})
+    target_link_libraries(OpticksBatch ${EXPAT_LIBRARIES} -ldl)
 endif()
 install(TARGETS OpticksBatch RUNTIME DESTINATION bin)

@@ -24,6 +24,7 @@ set (HEADER_FILES
     Interfaces/IntValidator.h
     Interfaces/MatrixFunctions.h
     Interfaces/MessageLogResource.h
+    Interfaces/ModifierWidget.h
     Interfaces/MultiThreadedAlgorithm.h
     Interfaces/ObjectResource.h
     Interfaces/OptionQWidgetWrapper.h
@@ -200,6 +201,7 @@ set (MOC_HEADERS
     Interfaces/LabeledSectionGroup.h
     Interfaces/LatLonLineEdit.h
     Interfaces/Modifier.h
+    Interfaces/ModifierWidget.h
     Interfaces/MutuallyExclusiveListWidget.h
     Interfaces/SignaturePropertiesDlg.h
     Interfaces/SignatureSelector.h

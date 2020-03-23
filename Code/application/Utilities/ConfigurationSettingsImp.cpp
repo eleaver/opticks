@@ -37,7 +37,7 @@
 #include "xmlreader.h"
 #include "xmlwriter.h"
 
-#include "yaml.h"
+#include "yaml-cpp/yaml.h"
 
 #include <fstream>
 #include <iostream>
@@ -350,12 +350,16 @@ bool ConfigurationSettingsImp::parseDeploymentFile(string& errorMessage, string&
          YAML::Node doc;
          if (!parser)
          {
-            errorMessage = QString("Unknown error while parsing %1 deployment file.  "
+               errorMessage = QString("Unknown error while parsing %1 deployment file.  "
                "The application will be shut down.").arg(depFileInfo.absoluteFilePath()).toStdString();
             return false;
          }
          parser.GetNextDocument(doc);
+#if (YAMLCPP_VERSION_NUMBER / 100 == 003)
+         string tag = doc.Tag();
+#else
          string tag = doc.GetTag();
+#endif
          if (tag != "!depV1")
          {
             errorMessage = QString("Error while parsing %1 deployment file.  The initial YAML map "
@@ -363,7 +367,11 @@ bool ConfigurationSettingsImp::parseDeploymentFile(string& errorMessage, string&
                "shut down.").arg(depFileInfo.absoluteFilePath()).toStdString();
             return false;
          }
+#if (YAMLCPP_VERSION_NUMBER / 100 == 003)
+         if (doc.Type() != YAML::NodeType::Map || doc["deployment"].Type() != YAML::NodeType::Map)
+#else
          if (doc.GetType() != YAML::CT_MAP || doc["deployment"].GetType() != YAML::CT_MAP)
+#endif
          {
             errorMessage = QString("Error while parsing %1 deployment file. "
                "The deployment file must contain a YAML map with a key of 'deployment'. "
@@ -373,7 +381,11 @@ bool ConfigurationSettingsImp::parseDeploymentFile(string& errorMessage, string&
          const YAML::Node& depMap = doc["deployment"];
          for (YAML::Iterator iter = depMap.begin(); iter != depMap.end(); ++iter)
          {
+#if (YAMLCPP_VERSION_NUMBER / 100 == 003)
+            if (iter.second().Type() == YAML::NodeType::Scalar)
+#else
             if (iter.second().GetType() == YAML::CT_SCALAR)
+#endif
             {
                string key;
                string value;

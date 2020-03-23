@@ -79,9 +79,13 @@ vector<ImportDescriptor*> Nitf::NitfImporterShell::getImportDescriptors(const st
    {
       return vector<ImportDescriptor*>();
    }
-
+#if OPJ_VERSION_NUMBER < 20300
    const ossimNitfFileHeaderV2_X* pFileHeader =
       dynamic_cast<const ossimNitfFileHeaderV2_X*>(pNitfFile->getHeader().get());
+#else
+   const ossimNitfFileHeaderV2_X* pFileHeader =
+      dynamic_cast<const ossimNitfFileHeaderV2_X*>(pNitfFile->getHeader());
+#endif
    if (pFileHeader == NULL)
    {
       return vector<ImportDescriptor*>();
@@ -118,7 +122,7 @@ unsigned char Nitf::NitfImporterShell::getFileAffinity(const string& filename)
 
    // Check the file header and version (9 bytes plus a terminating NULL)
    char buffer[10];
-   memset(buffer, NULL, sizeof(buffer));
+   memset(buffer, '\0', sizeof(buffer));
    fgets(buffer, sizeof(buffer), pFile);
 
    if (buffer == Nitf::NITF_METADATA + Nitf::VERSION_02_00 ||
@@ -1268,7 +1272,11 @@ opj_image_t* Nitf::NitfImporterShell::getImageInfo(const std::string& filename, 
       fileLength = static_cast<size_t>(ftell(pFile.get()));
    }
 
-   opj_stream_t* pStream = opj_stream_create_file_stream(pFile.get(), fileLength, true);
+#if OPJ_VERSION_NUMBER < 20300
+   opj_stream_t* pStream = opj_stream_create_file_stream_v3(filename.c_str(), fileLength, true);
+#else
+   opj_stream_t* pStream = opj_stream_create_file_stream(filename.c_str(), fileLength, true);
+#endif
    if (pStream == NULL)
    {
       return NULL;

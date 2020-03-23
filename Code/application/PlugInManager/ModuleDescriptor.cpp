@@ -438,7 +438,7 @@ ModuleDescriptor* ModuleDescriptor::fromSettings(const DynamicObject& settings)
    bool hasSetting = settings.getAttribute("details").getValue(details);
    if (hasSetting == false)
    {
-      return false;
+      return NULL;
    }
    QByteArray moduleBlob = QByteArray::fromBase64(QByteArray::fromRawData(details.c_str(), details.size()));
    QDataStream reader(&moduleBlob, QIODevice::ReadOnly);

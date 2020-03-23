@@ -108,6 +108,10 @@ bool Jpeg2000Pager::openFile(const std::string& filename)
    }
 
    mpFile = fopen(filename.c_str(), "rb");
+   if(mpFile != NULL)
+   {
+       mFilename = filename;
+   }
    return (mpFile != NULL);
 }
 
@@ -378,8 +382,11 @@ opj_image_t* Jpeg2000Pager::decodeImage(unsigned int originalStartRow, unsigned 
 
       fileLength = fileSize - static_cast<size_t>(mOffset);
    }
-
-   opj_stream_t* pStream = opj_stream_create_file_stream(mpFile, fileLength, true);
+#if OPJ_VERSION_NUMBER < 20300
+   opj_stream_t* pStream = opj_stream_create_file_stream_v3(mFilename.c_str(), fileLength, true);
+#else
+   opj_stream_t* pStream = opj_stream_create_file_stream(mFilename.c_str(), fileLength, true);
+#endif
    if (pStream == NULL)
    {
       return NULL;

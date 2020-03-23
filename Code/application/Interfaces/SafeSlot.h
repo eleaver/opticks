@@ -131,6 +131,12 @@ protected:
    class SafeSlotWrapper
    {
    public:
+
+      /**
+       *  Destroys the %SafeSlotWrapper.
+       */
+       virtual ~SafeSlotWrapper() = 0;
+
       /**
        * Returns the invalidator object associated with this slot wrapper.
        *

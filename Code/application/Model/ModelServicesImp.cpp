@@ -493,7 +493,7 @@ DataElement* ModelServicesImp::getElement(const string& name, const string& type
 {
    if (name.empty() == true)
    {
-      return false;
+      return NULL;
    }
 
    Key key(name, pParent);
@@ -511,7 +511,7 @@ DataElement* ModelServicesImp::getElement(const vector<string>& designator, cons
 {
    if (designator.empty())
    {
-      return false;
+      return NULL;
    }
    DataElement* pElement = NULL;
    for (vector<string>::const_iterator part = designator.begin(); part != designator.end(); ++part)

@@ -315,7 +315,7 @@ RasterPage* MemoryMappedPager::getPage(DataRequest* pOriginalRequest, DimensionD
          dynamic_cast<const RasterFileDescriptor*>(mpDataDescriptor->getFileDescriptor());
       if (pFileDescriptor == NULL)
       {
-         return false;
+         return NULL;
       }
 
       interleave = pFileDescriptor->getInterleaveFormat();

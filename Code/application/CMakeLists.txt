@@ -13,6 +13,11 @@ else()
    set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/../install CACHE PATH "Location to install Opticks" FORCE)
 endif()
 
+if(CMAKE_MAJOR_VERSION GREATER 2)
+  cmake_policy(SET CMP0043 NEW)
+  cmake_policy(SET CMP0048 NEW)
+endif()
+
 project (Opticks)
 
 # Location of the Dependencies directory. On some platforms and configurations, it may not be necessary, but it's still searched.
@@ -91,11 +96,22 @@ set(Opticks_NitfPlugInLib_INCLUDE_DIR "${Opticks_SOURCE_DIR}/NitfPlugInLib")
 set(Opticks_SimpleApi_INCLUDE_DIR "${Opticks_SOURCE_DIR}/SimpleApiLib")
 
 # Get the working copy revision
-find_package(Subversion)
 set(Opticks_Build_Revision "Unknown")
-if(Subversion_FOUND)
-    Subversion_WC_INFO(${Opticks_SOURCE_DIR} OpticksSvn)
-    set(Opticks_Build_Revision "${OpticksSvn_WC_LAST_CHANGED_REV}")
+unset(OpticksGit)
+find_package(Git)
+if(GIT_FOUND)
+    execute_process(COMMAND ${GIT_EXECUTABLE} log -n1 COMMAND /usr/bin/grep commit OUTPUT_VARIABLE OpticksGit OUTPUT_STRIP_TRAILING_WHITESPACE)
+    string(SUBSTRING ${OpticksGit} 7 -1 OpticksGit)
+    if(OpticksGit)
+        set(Opticks_Build_Revision "${OpticksGit}")
+    endif()
+endif()
+if(NOT OpticksGit)
+    find_package(Subversion)
+    if(Subversion_FOUND)
+      Subversion_WC_INFO(${Opticks_SOURCE_DIR} OpticksSvn)
+      set(Opticks_Build_Revision "${OpticksSvn_WC_LAST_CHANGED_REV}")
+    endif()
 endif()
 Message(STATUS "Setting Build Revision To ${Opticks_Build_Revision}")
 configure_file(cmake/Templates/BuildRevision.h "${Opticks_SOURCE_DIR}/Utilities")
@@ -136,6 +152,51 @@ if(NOT PTHREAD_WORKS)
    message(FATAL_ERROR "pthreads code cannot be built on this system.")
 endif()
 
+set(OpenGL_GL_PREFERENCE GLVND)
+
+#######################################################################################
+# The subsequent find_package(Qt4...) (below) fails with Opticks' default
+# Dependencies/64/bin/qmake, because that qmake incorrectly -- for this purpose --
+# sets QT_BINARY_DIR=/tmp/<something>/install/bin, which does not yet exist. But
+# Dependencies/64/bin/qmake is required for any build that links much from Dependencies/64/lib,
+# because as our CmakeLists.txt tree is currently written, -L<Dependencies path>/64/bin/qmake
+# appears first in ld's argument list, and therefore shadows /usr/lib64.
+#
+# For now, we just work around the Dependencies/64/bin/qmake QT_BINARY_DIR quirk by setting
+# QT_BINARY_DIR explicitly to Dependencies/64/bin, then make call find_program(moc) etc. calls
+# here, that /usr/share/cmake/Modules/FindQt4.cmake would otherwise call later after querying
+# qmake for an invalid QT_BINARY_DIR path:
+
+set(QT_BINARY_DIR ${Opticks_DEPENDENCIES}/64/bin CACHE STRING "directory containing qmake, moc, uic, rcc. default ${Opticks_DEPENDENCIES}/64/bin")
+set(QT_QMAKE_EXECUTABLE ${QT_BINARY_DIR}/qmake CACHE STRING "path to qmake. default ${QT_BINARY_DIR}/qmake")
+if(EXISTS ${QT_QMAKE_EXECUTABLE})
+  # message(INFO " QT_BINARY_DIR: ${QT_BINARY_DIR}")
+  if(EXISTS ${QT_BINARY_DIR})
+    find_program(QT_MOC_EXECUTABLE
+      NAMES moc-qt4 moc moc4
+      PATHS ${QT_BINARY_DIR}
+      NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH
+      )
+    find_program(QT_UIC_EXECUTABLE
+      NAMES uic-qt4 uic uic4
+      PATHS ${QT_BINARY_DIR}
+      NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH
+      )
+    find_program(QT_RCC_EXECUTABLE
+      NAMES rcc
+      PATHS ${QT_BINARY_DIR}
+      NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH
+      )
+    #message(INFO " Moc: ${QT_MOC_EXECUTABLE}")
+    #message(INFO " Uic: ${QT_UIC_EXECUTABLE}")
+    #message(INFO " Rcc: ${QT_RCC_EXECUTABLE}")
+  else()
+    message(WARNING " QT_BINARY_DIR ${QT_BINARY_DIR} does not exists")
+  endif()
+else()
+  message(WARNING " QT_QMAKE_EXECUTABLE ${QT_QMAKE_EXECUTABLE} does not exist")
+endif()
+#######################################################################################
 find_package(Qt4 COMPONENTS QtCore QtGui QtOpenGL QtXml QtNetwork REQUIRED)
 find_package(Boost 1.45.0 REQUIRED)
 find_package(Xerces REQUIRED)
@@ -468,6 +529,16 @@ set(INTERFACE_HEADER_FILES
     Interfaces/PlugInDescriptor.h
     Interfaces/PlugInManagerServices.h
     Interfaces/PlugInRegistration.h
+    Interfaces/PointCloudAccessor.h
+    Interfaces/PointCloudAccessorImpl.h
+    Interfaces/PointCloudDataDescriptor.h
+    Interfaces/PointCloudDataRequest.h
+    Interfaces/PointCloudElement.h
+    Interfaces/PointCloudFileDescriptor.h
+    Interfaces/PointCloudPager.h
+    Interfaces/PointCloudView.h
+    Interfaces/PointCloudWindow.h
+    Interfaces/PointDataBlock.h
     Interfaces/Point.h
     Interfaces/PointSet.h
     Interfaces/PolarGridlines.h
@@ -592,7 +663,7 @@ set_target_properties(Opticks PROPERTIES DEBUG_POSTFIX "d")
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
     set_target_properties(Opticks PROPERTIES OUTPUT_NAME "linuxOpticks")
     target_link_libraries(Opticks
-        ${EXPAT_LIBRARIES}
+        ${EXPAT_LIBRARIES} -ldl
     )
 endif()
 if(WIN32)

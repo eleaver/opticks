@@ -29,7 +29,7 @@ class PointCloudViewImp : public PerspectiveViewImp, public Observer
 public:
    PointCloudViewImp(const std::string& id, const std::string& viewName, QGLContext* drawContext = 0,
       QWidget* parent = 0);
-   ~PointCloudViewImp();
+   virtual ~PointCloudViewImp();
    using SessionItemImp::setIcon;
 
    const std::string& getObjectType() const;

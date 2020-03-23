@@ -7,6 +7,7 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
+#include <gdal_priv.h>  /// gdal_priv.h defines MSVCPedanticBool, which must be applied consistently. So include it first
 #include "AppVersion.h"
 #include "CachedPager.h"
 #include "DynamicObject.h"
@@ -26,7 +27,6 @@
 #include "UtilityServices.h"
 
 #include <boost/algorithm/string/erase.hpp>
-#include <gdal_priv.h>
 
 REGISTER_PLUGIN_BASIC(OpticksGdalImporter, GdalImporter);
 

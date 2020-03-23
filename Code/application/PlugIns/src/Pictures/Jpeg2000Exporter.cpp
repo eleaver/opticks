@@ -33,6 +33,23 @@
 
 #include <openjpeg.h>
 
+// Opticks Dependencies/64/include/openjpeg/opj_config.h doesnt provide
+// version numbers. But its pkg-config.pc claims its 2.0.0
+// Otherwise, newer openjpeg versions do provide version numbers.
+// (This stuff may be removed if we add version info to our opj_config.h)
+#ifndef OPJ_VERSION_MAJOR
+#define OPJ_VERSION_MAJOR 2
+#endif
+#ifndef OPJ_VERSION_MINOR
+#define OPJ_VERSION_MINOR 0
+#endif
+#ifndef OPJ_VERSION_BUILD
+#define OPJ_VERSION_BUILD 0
+#endif
+#ifndef OPJ_VERSION_NUMBER
+#define OPJ_VERSION_NUMBER (100*100*(OPJ_VERSION_MAJOR) + 100*(OPJ_VERSION_MINOR) + (OPJ_VERSION_BUILD))
+#endif
+
 REGISTER_PLUGIN_BASIC(OpticksPictures, Jpeg2000Exporter);
 
 Jpeg2000Exporter::Jpeg2000Exporter()
@@ -345,7 +362,11 @@ bool Jpeg2000Exporter::execute(PlugInArgList* pInArgList, PlugInArgList* pOutArg
       return false;
    }
 
-   opj_stream_t* pStream = opj_stream_create_default_file_stream(pFile, false);
+#if OPJ_VERSION_NUMBER < 20300
+   opj_stream_t* pStream = opj_stream_create_default_file_stream_v3(parameters.outfile, false);
+#else
+   opj_stream_t* pStream = opj_stream_create_default_file_stream(parameters.outfile, false);
+#endif
    if (pStream == NULL)
    {
       opj_image_destroy(pImage);

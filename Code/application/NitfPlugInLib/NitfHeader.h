@@ -196,7 +196,7 @@ namespace Nitf
          }
 
          DataVariant var;
-         string value = pProp->valueToString();
+         std::string value = pProp->valueToString();
          if (var.fromXmlString(TypeConverter::toString<T>(), value) == DataVariant::SUCCESS)
          {
             return pDynObj->setAttribute(appName, var);
@@ -235,7 +235,7 @@ namespace Nitf
             return false;
          }
 
-         string stringValue = StringUtilities::toXmlString(*pT);
+         std::string stringValue = StringUtilities::toXmlString(*pT);
          if (!stringValue.empty())
          {
             ossimRefPtr<ossimProperty> pProperty = pProperties->getProperty(ossimName);
@@ -454,9 +454,9 @@ namespace Nitf
        * @return True if the metadata was successfully imported, false otherwise.
        */
       static bool importDateYYMMDD(const ossimPropertyInterface *pPropertyInterface,
-         RasterDataDescriptor *pDescriptor, 
-         DynamicObject *pDynObj, const string& appName, 
-         const string& ossimName);
+         RasterDataDescriptor *pDescriptor,
+         DynamicObject *pDynObj, const std::string& appName,
+         const std::string& ossimName);
 
       /**
        * An Element contains all information needed to import

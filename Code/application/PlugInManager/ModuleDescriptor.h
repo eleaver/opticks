@@ -134,7 +134,7 @@ private:
    ModuleDescriptor(const ModuleDescriptor& rhs);
 };
 
-#define READ_FROM_STREAM(var) reader >> var; if (reader.status() != QDataStream::Ok) { return false; }
+#define READ_FROM_STREAM(var) reader >> var; if (reader.status() != QDataStream::Ok) { return NULL; }
 #define READ_STR_FROM_STREAM(var) QString qStr##var; READ_FROM_STREAM(qStr##var) var = qStr##var.toStdString();
 
 #endif

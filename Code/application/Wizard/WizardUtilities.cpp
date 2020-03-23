@@ -128,7 +128,7 @@ BatchWizard* WizardUtilities::createBatchWizardFromWizard(WizardObject* pWizard,
                   }
 
                   DataVariant value(nodeType, pValue);
-                  if (pBatchWizard->setInputValue(itemName, nodeName, nodeType, value) == false)
+                  if (pBatchWizard->setInputValue(itemName, nodeName, nodeType, value) == NULL)
                   {
                      delete pBatchWizard;
                      return NULL;

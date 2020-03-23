@@ -46,6 +46,15 @@
 #include <ossim/support_data/ossimNitfFile.h>
 #include <ossim/support_data/ossimNitfUnknownTag.h>
 #include <ossim/support_data/ossimNitfTagFactoryRegistry.h>
+#include <ossim/ossimConfig.h>
+
+#if defined __has_include
+   #if __has_include ("ossim/ossimVersion.h")   /* not portable */
+   #include <ossim/ossimVersion.h>
+   #endif
+#endif
+
+#define OSSIM_VERSION_NUMBER (100*100*(OSSIM_MAJOR_VERSION_NUMBER) + 100*(OSSIM_MINOR_VERSION_NUMBER) + (OSSIM_PATCH_VERSION_NUMBER))
 
 using namespace Nitf;
 using namespace Nitf::TRE;
@@ -432,7 +441,11 @@ bool Nitf::addTagToMetadata(const unsigned int& ownerIndex, const ossimNitfTagIn
    map<string, TrePlugInResource>::iterator pParser = parsers.find(tagName);
    if (pParser == parsers.end())
    {
-      pParser = parsers.insert(make_pair(tagName, TrePlugInResource(tagName))).first;
+#if OSSIM_VERSION_NUMBER<10900
+       pParser = parsers.insert(make_pair(tagName, TrePlugInResource(tagName))).first;
+#else
+       pParser = parsers.insert(make_pair(tagName.string(), TrePlugInResource(tagName))).first;
+#endif
    }
 
    if (pParser->second.parseTag(*pRegTag.get(), *pTag.get(), *pDescriptor, errorMessage) == false)
@@ -449,15 +462,23 @@ bool Nitf::addTagToMetadata(const unsigned int& ownerIndex, const ossimNitfTagIn
 
       if (pParser->second.parseTag(*pRegTag.get(), *pTag.get(), *pDescriptor, errorMessage) == false)
       {
-         errorMessage += tagName + " has not been imported.\n";
-         return false;
+#if OSSIM_VERSION_NUMBER<10900
+          errorMessage += tagName + " has not been imported.\n";
+#else
+          errorMessage += tagName.string() + " has not been imported.\n";
+#endif
+          return false;
       }
    }
 
    // Parse the TRE info.
    FactoryResource<DynamicObject> pTagInfo;
    VERIFY(pTagInfo.get() != NULL);
+#if OSSIM_VERSION_NUMBER<10900
    VERIFY(pTagInfo->setAttribute("Tag Type", string(tagInfo.getTagType())));
+#else
+   VERIFY(pTagInfo->setAttribute("Tag Type", string(tagInfo.getTagType().string())));
+#endif
    VERIFY(pTagInfo->setAttribute("Owner Index", ownerIndex));
 
    // Determine how many (if any) tags of this name already exist.

@@ -12,6 +12,7 @@ set (HEADER_FILES
     PicturesPlotWidgetExporter.h
     PicturesViewExporter.h
     PngDetails.h
+    PngExportOptionsWidget.h
     PostScriptExporter.h
     QuickbirdIsd.h
     TiffDetails.h
@@ -37,6 +38,7 @@ set (SOURCE_FILES
     PicturesPlotWidgetExporter.cpp
     PicturesViewExporter.cpp
     PngDetails.cpp
+    PngExportOptionsWidget.cpp
     PostScriptExporter.cpp
     QuickbirdIsd.cpp
     TiffDetails.cpp
@@ -52,12 +54,10 @@ set (MOC_HEADERS
 if(OpenJpeg_FOUND)
     set (JPEG2000_HEADER_FILES
     Jpeg2000Importer.h
-    Jpeg2000Page.h
     Jpeg2000Pager.h
     )
     set (JPEG2000_SOURCE_FILES
     Jpeg2000Importer.cpp
-    Jpeg2000Page.cpp
     Jpeg2000Pager.cpp
     ) 
 endif()

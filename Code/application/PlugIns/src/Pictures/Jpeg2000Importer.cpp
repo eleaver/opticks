@@ -190,7 +190,11 @@ opj_image_t* Jpeg2000Importer::getImageInfo(const string& filename, bool logErro
       return NULL;
    }
 
-   opj_stream_t* pStream = opj_stream_create_default_file_stream(pFile, true);
+#if OPJ_VERSION_NUMBER < 20300
+   opj_stream_t* pStream = opj_stream_create_default_file_stream_v3(filename.c_str(), true);
+#else
+   opj_stream_t* pStream = opj_stream_create_default_file_stream(filename.c_str(), true);
+#endif
    if (pStream == NULL)
    {
       return NULL;

@@ -294,7 +294,7 @@ void TiePointPage::gcpLayerDeleted(Subject &subject, const string &signal, const
          GcpLayer* pCopy = NULL;
          if (pView != NULL)
          {
-            pCopy = static_cast<GcpLayer*>(pGcpLayer->copy(false));
+            pCopy = static_cast<GcpLayer*>(pGcpLayer->copy(0));
             if (pCopy != NULL)
             {
                pView->addLayer(pCopy);
@@ -308,7 +308,7 @@ void TiePointPage::gcpLayerDeleted(Subject &subject, const string &signal, const
          GcpLayer* pCopy = NULL;
          if (pView != NULL)
          {
-            pCopy = static_cast<GcpLayer*>(pGcpLayer->copy(false));
+            pCopy = static_cast<GcpLayer*>(pGcpLayer->copy(0));
             if (pCopy != NULL)
             {
                pView->addLayer(pCopy);

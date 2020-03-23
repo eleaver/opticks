@@ -26,8 +26,15 @@
 #include <ossim/imaging/ossimImageWriterFactoryRegistry.h>
 #include <ossim/imaging/ossimBandSelector.h>
 #include <ossim/init/ossimInit.h>
+#include <ossim/ossimConfig.h>
 
-#include <QtCore/QString>
+#if defined __has_include
+   #if __has_include ("ossim/ossimVersion.h")   /* not portable */
+   #include <ossim/ossimVersion.h>
+   #endif
+#endif
+
+#define OSSIM_VERSION_NUMBER (10000*(OSSIM_MAJOR_VERSION_NUMBER) + 100*(OSSIM_MINOR_VERSION_NUMBER) + (OSSIM_PATCH_VERSION_NUMBER))
 
 REGISTER_PLUGIN(OpticksNitf, Pager, Nitf::Pager);
 
@@ -58,7 +65,7 @@ bool Nitf::Pager::parseInputArgs(PlugInArgList* pInputArgList)
       pInputArgList != NULL && pInputArgList->getPlugInArgValue<unsigned int>("Segment Number", mSegment));
 }
 
-bool Nitf::Pager::openFile(const string& filename)
+bool Nitf::Pager::openFile(const std::string& filename)
 {
    mpImageHandler = Nitf::OssimImageHandlerResource(filename);
    return mpImageHandler.get() != NULL;
@@ -89,12 +96,14 @@ CachedPage::UnitPtr Nitf::Pager::fetchUnit(DataRequest *pOriginalRequest)
 
    ossimNitfTileSource* pTileSource = PTR_CAST(ossimNitfTileSource, mpImageHandler.get());
    VERIFYRV(pTileSource != NULL, CachedPage::UnitPtr());
+#if OSSIM_VERSION_NUMBER < 10900
    pTileSource->setExpandLut(false);
+#endif
    mpImageHandler->setCurrentEntry(mSegment);
 
    // Try to set the output band list.
    // If it cannot succeed (e.g.: for VQ), this is not an error.
-   vector<ossim_uint32> bandList(concurrentBands);
+   std::vector<ossim_uint32> bandList(concurrentBands);
    for (unsigned int band = 0; band < concurrentBands; ++band)
    {
       bandList[band] = bandNumber + band;
