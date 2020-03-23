@@ -117,7 +117,7 @@ bool Nitf::Pager::parseInputArgs(PlugInArgList* pInputArgList)
          std::string pvtype = dv_cast<std::string>(pMetadata->getAttributeByPath(pvtypeAttributePath));
 
          mFileEncoding = Nitf::nitfImageTypeToEncodingType(nbpp, pvtype);
-         const string bandsbPath[] =
+         const std::string bandsbPath[] =
          {
             Nitf::NITF_METADATA,
             Nitf::TRE_METADATA,
