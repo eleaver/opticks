@@ -138,7 +138,7 @@ def copy_windows_build(opticks_code_dir, sdk_dest_dir,
         mode = "debug"
     else:
         mode = "release"
-    binaries_dir = join("build/Binaries")
+    binaries_dir = join("Build", "Binaries-%s-%s" % (arch, mode))
 
     executables = ["Opticks.exe", "OpticksBatch.exe", "SimpleApiLib.dll"]
     for the_exec in executables:
@@ -366,14 +366,14 @@ def create_toolkit_zip(opticks_code_dir, opticks_dependencies_dir,
                 win_debug_code_dir, static_libs,plugins, True, True, verbosity)
             dp_list = commonutils.get_dependencies(opticks_dependencies_dir,
                 "Windows", True, "32")
-            bin_dir = join(out_dir, "build", "Binaries", "Bin")
+            bin_dir = join(out_dir, "Build", "Binaries-win32-debug", "Bin")
             commonutils.copy_dependencies(dp_list, bin_dir)
         if release32:
             copy_windows_build(opticks_code_dir, out_dir,
                 win_debug_code_dir, static_libs, plugins, True, False, verbosity)
             dp_list = commonutils.get_dependencies(opticks_dependencies_dir,
                 "Windows", False, "32")
-            bin_dir = join(out_dir, "build", "Binaries", "Bin")
+            bin_dir = join(out_dir, "Build", "Binaries-win32-release", "Bin")
             commonutils.copy_dependencies(dp_list, bin_dir)
 
         #Win64 Build
@@ -382,27 +382,26 @@ def create_toolkit_zip(opticks_code_dir, opticks_dependencies_dir,
                 win_debug_code_dir, static_libs, plugins, False, True, verbosity)
             dp_list = commonutils.get_dependencies(opticks_dependencies_dir,
                 "Windows", True, "64")
-            bin_dir = join(out_dir, "build", "Binaries", "Bin")
+            bin_dir = join(out_dir, "Build", "Binaries-x64-debug", "Bin")
             commonutils.copy_dependencies(dp_list, bin_dir)
         if release64:
             copy_windows_build(opticks_code_dir, out_dir,
                 win_debug_code_dir, static_libs, plugins, False, False, verbosity)
             dp_list = commonutils.get_dependencies(opticks_dependencies_dir,
                 "Windows", False, "64")
-            bin_dir = join(out_dir, "build", "Binaries", "Bin")
+            bin_dir = join(out_dir, "Build", "Binaries-x64-release", "Bin")
             commonutils.copy_dependencies(dp_list, bin_dir)
     else:
         cp_file2(s_app, d_app, join("PlugIns", "src"), "SConstruct")
         if sys.platform.startswith("linux"):
             binaries_dir = join("Build", "Binaries-linux-x86_64-release")
         else:
-            binaries_dir = join("build-release", "Binaries")
+            binaries_dir = join("Build", "Binaries-solaris-sparc-release")
         lib_dir = join(binaries_dir,"Lib")
         for the_lib in static_libs:
-            cp_file2(opticks_code_dir, out_dir, lib_dir, "libopticks-%s.a" % (the_lib.lower()))
-            os.symlink(join(out_dir, lib_dir, "libopticks-%s.a" % (the_lib.lower())), join(out_dir, lib_dir, "lib%s.a" % (the_lib)))
-        #cp_file2(opticks_code_dir, out_dir, lib_dir, "libSimpleApiLib.so")
-        #cp_file2(opticks_code_dir, out_dir, lib_dir, "ModuleShell.os")
+            cp_file2(opticks_code_dir, out_dir, lib_dir, "lib%s.a" % (the_lib))
+        cp_file2(opticks_code_dir, out_dir, lib_dir, "libSimpleApiLib.so")
+        cp_file2(opticks_code_dir, out_dir, lib_dir, "ModuleShell.os")
 
         for the_plugin in sample_plugins:
             cp_file2(opticks_code_dir, out_dir,
