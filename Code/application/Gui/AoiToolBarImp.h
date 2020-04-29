@@ -3,15 +3,20 @@
  * Copyright(c) 2011 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
 #ifndef AOITOOLBARIMP_H
 #define AOITOOLBARIMP_H
 
+#if HAVE_QT5
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMenu>
+#else
 #include <QtGui/QAction>
 #include <QtGui/QMenu>
+#endif
 
 #include "PixmapGrid.h"
 #include "PixmapGridButton.h"
@@ -254,7 +259,7 @@ public:
    void setCurrentValue(AoiAddMode value);
    AoiAddMode getCurrentValue() const;
 
-signals: 
+signals:
    void valueChanged(AoiAddMode value);
 
 private slots:

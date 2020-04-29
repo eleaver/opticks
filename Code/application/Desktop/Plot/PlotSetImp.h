@@ -3,17 +3,23 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
 #ifndef PLOTSETIMP_H
 #define PLOTSETIMP_H
 
+#if HAVE_QT5
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QTabWidget>
+#else
 #include <QtGui/QMenu>
 #include <QtGui/QTabWidget>
+#endif
 
 #include "AttachmentPtr.h"
+#include "PlotSet.h"
 #include "SessionExplorer.h"
 #include "SessionItemImp.h"
 #include "SubjectImp.h"
@@ -25,7 +31,6 @@
 #include <string>
 #include <vector>
 
-class PlotSet;
 class PlotWidget;
 class SessionItemDeserializer;
 class SessionItemSerializer;
@@ -66,7 +71,7 @@ public:
    bool deletePlot(PlotWidget* pPlot);
 
    bool serialize(SessionItemSerializer &serializer) const;
-   bool deserialize(SessionItemDeserializer &deserializer); 
+   bool deserialize(SessionItemDeserializer &deserializer);
    virtual bool toXml(XMLWriter* pXml) const;
    virtual bool fromXml(DOMNode* pDocument, unsigned int version);
 

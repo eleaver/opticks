@@ -3,16 +3,25 @@
  * Copyright(c) 2011 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
+#if HAVE_QT5
+#include <QtWidgets/QAction>
+#include <QtGui/QIcon>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QStackedWidget>
+#else
 #include <QtGui/QAction>
 #include <QtGui/QIcon>
 #include <QtGui/QLayout>
 #include <QtGui/QMessageBox>
 #include <QtGui/QMenu>
 #include <QtGui/QStackedWidget>
+#endif
 
 #include "AppVerify.h"
 #include "Axis.h"
@@ -714,7 +723,7 @@ PlotWidget* PlotSetGroupImp::plotData(const DataVariant& xRawData, const DataVar
             "Data = " << yAttribute << " vs. " << xAttribute << "\n" <<
             "Axes = " << yText << " vs. " << xText << "\n" <<
             "Do you wish to add this data to this plot anyway?";
-         int response = QMessageBox::warning(this, "Axis mismatch", message.str().c_str(), 
+         int response = QMessageBox::warning(this, "Axis mismatch", message.str().c_str(),
             QMessageBox::Yes, QMessageBox::No);
          if (response == QMessageBox::No)
          {

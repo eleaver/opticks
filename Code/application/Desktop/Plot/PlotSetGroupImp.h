@@ -3,7 +3,7 @@
  * Copyright(c) 2011 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -13,8 +13,11 @@
 #include "SerializableImp.h"
 #include "SubjectImp.h"
 #include "TypesFile.h"
-
+#if HAVE_QT5
+#include <QtWidgets/QWidget>
+#else
 #include <QtGui/QWidget>
+#endif
 
 #include <boost/any.hpp>
 #include <map>

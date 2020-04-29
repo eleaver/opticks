@@ -3,7 +3,7 @@
  * Copyright(c) 2011 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -28,9 +28,15 @@
 #include "Undo.h"
 
 #include <QtCore/QFile>
+#if HAVE_QT5
+#include <QtWidgets/QAction>
+#include <QtWidgets/QActionGroup>
+#include <QtWidgets/QMenu>
+#else
 #include <QtGui/QAction>
 #include <QtGui/QActionGroup>
 #include <QtGui/QMenu>
+#endif
 #include <QtGui/QMouseEvent>
 #include <QtOpenGL/QGLBuffer>
 #include <QtOpenGL/QGLShader>
@@ -475,7 +481,7 @@ void PointCloudViewImp::zoomExtents()
       newPitch = -90.0;
    }
    flipTo(newPitch);
-   
+
    // now zoom to extents
    PerspectiveViewImp::zoomExtents();
 }
@@ -764,7 +770,7 @@ void PointCloudViewImp::updateVertexBufferIfNeeded()
    for (unsigned int i = 0; i < pointCount; i += decimation)
    {
       curPercent = i * 100 / pointCount;
-      if (curPercent - oldPercent >= 1) 
+      if (curPercent - oldPercent >= 1)
       {
          queryReporter.reportProgress(min(curPercent, 99));
       }
@@ -840,7 +846,7 @@ void PointCloudViewImp::updateVertexBufferIfNeeded()
    for (unsigned int i = 0; i < pointCount; i += decimation)
    {
       curPercent = i * 100 / pointCount;
-      if (curPercent - oldPercent >= 1) 
+      if (curPercent - oldPercent >= 1)
       {
          barReporter.reportProgress(min(curPercent, 99));
       }
@@ -912,7 +918,7 @@ void PointCloudViewImp::updateColorMapTextureIfNeeded()
    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);   
+   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
    const vector<ColorType>& colors = mColorMap.getTable();
    unsigned char* colorMapBuffer = new unsigned char[1 * colors.size() * 4]; //RGBA texture with 1 column and colors.size() rows
    for (vector<ColorType>::size_type index = 0; index < colors.size(); ++index)
@@ -989,7 +995,7 @@ void PointCloudViewImp::updateColorizationBufferIfNeeded()
    for (unsigned int i = 0; i < pointCount; i += decimation)
    {
       curPercent = i * 100 / pointCount;
-      if (curPercent - oldPercent >= 1) 
+      if (curPercent - oldPercent >= 1)
       {
          barReporter.reportProgress(min(curPercent, 99));
       }
@@ -1084,7 +1090,7 @@ void PointCloudViewImp::drawContents()
       }
       else
       {
-         mpShaderProg->addShader(mShaders.find("VtxAttributeColored")->second);         
+         mpShaderProg->addShader(mShaders.find("VtxAttributeColored")->second);
       }
       if (mUsingColorMap)
       {
@@ -1165,7 +1171,7 @@ void PointCloudViewImp::drawContents()
    default:
       ; // pass
    }
-   mpShaderProg->setUniformValue("stretchType", stretchTypeUni); 
+   mpShaderProg->setUniformValue("stretchType", stretchTypeUni);
    if (success)
    {
       glDrawArrays(GL_POINTS, 0, mTotalPoints);

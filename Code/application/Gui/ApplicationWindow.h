@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -11,10 +11,17 @@
 #define APPLICATIONWINDOW_H
 
 #include <QtCore/QList>
+#if HAVE_QT5
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QUndoGroup>
+#else
 #include <QtGui/QAction>
 #include <QtGui/QMainWindow>
 #include <QtGui/QMenu>
 #include <QtGui/QUndoGroup>
+#endif
 
 #include "ConfigurationSettings.h"
 #include "DynamicObject.h"
@@ -118,8 +125,8 @@ public:
    QString getCurrentWorkspaceWindowName() const;
    View* getCurrentWorkspaceWindowView() const;
    void tileWorkspaceWindows(TilingType eType = TILE_GRID);
-   bool tileWorkspaceWindows(const std::vector<WorkspaceWindow*>& windowList, 
-                             bool maxFirst = true, 
+   bool tileWorkspaceWindows(const std::vector<WorkspaceWindow*>& windowList,
+                             bool maxFirst = true,
                              TilingType eType = TILE_GRID);
 
    // Modes

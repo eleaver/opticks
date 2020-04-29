@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -13,11 +13,16 @@
 #include <QtCore/QMap>
 #include <QtCore/QMetaType>
 #include <QtCore/QObject>
+#if HAVE_QT5
+#include <QtWidgets/QAction>
+#else
 #include <QtGui/QAction>
+#endif
 
 #include "AttachmentPtr.h"
 #include "ColorType.h"
 #include "DataElement.h"
+#include "Layer.h"
 #include "LocationType.h"
 #include "SessionItemImp.h"
 #include "SubjectImp.h"
@@ -29,7 +34,6 @@
 #include <vector>
 
 class DataElement;
-class Layer;
 class SessionItemDeserializer;
 class SessionItemSerializer;
 class View;

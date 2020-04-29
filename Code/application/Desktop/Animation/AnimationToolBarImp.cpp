@@ -9,6 +9,19 @@
 
 #include <QtCore/QDateTime>
 #include <QtCore/QEvent>
+#if HAVE_QT5
+#include <QtWidgets/QApplication>
+#include <QtGui/QHelpEvent>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QLineEdit>
+#include <QtGui/QPainter>
+#include <QtGui/QResizeEvent>
+#include <QtWidgets/QStyle>
+#include <QtWidgets/QStyleOptionSlider>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QToolTip>
+#include <QtWidgets/QWidgetAction>
+#else
 #include <QtGui/QApplication>
 #include <QtGui/QHelpEvent>
 #include <QtGui/QLayout>
@@ -20,6 +33,7 @@
 #include <QtGui/QToolButton>
 #include <QtGui/QToolTip>
 #include <QtGui/QWidgetAction>
+#endif
 
 #include "Animation.h"
 #include "AnimationController.h"

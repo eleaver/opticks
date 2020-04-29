@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -11,8 +11,13 @@
 #define CONTEXTMENUIMP_H
 
 #include <QtCore/QList>
+#if HAVE_QT5
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMenu>
+#else
 #include <QtGui/QAction>
 #include <QtGui/QMenu>
+#endif
 
 #include "ContextMenu.h"
 

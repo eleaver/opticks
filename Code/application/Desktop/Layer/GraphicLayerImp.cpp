@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -50,10 +50,17 @@
 #include "WidgetImageObjectImp.h"
 
 #include <QtCore/QString>
+#if HAVE_QT5
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QInputDialog>
+#include <QtWidgets/QMessageBox>
+#else
 #include <QtGui/QApplication>
 #include <QtGui/QFileDialog>
 #include <QtGui/QInputDialog>
 #include <QtGui/QMessageBox>
+#endif
 #include <QtOpenGL/QGLWidget>
 
 #include <algorithm>

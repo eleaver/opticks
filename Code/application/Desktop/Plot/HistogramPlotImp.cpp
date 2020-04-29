@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -43,6 +43,19 @@
 #include <math.h>
 #include <vector>
 
+#if HAVE_QT5
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QDialogButtonBox>
+#include <QtWidgets/QFileDialog>
+#include <QtGui/QIcon>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QMouseEvent>
+#include <QtWidgets/QRadioButton>
+#include <QtWidgets/QSpinBox>
+#include <QtWidgets/QWidgetAction>
+#else
 #include <QtGui/QApplication>
 #include <QtGui/QDialog>
 #include <QtGui/QDialogButtonBox>
@@ -54,6 +67,7 @@
 #include <QtGui/QRadioButton>
 #include <QtGui/QSpinBox>
 #include <QtGui/QWidgetAction>
+#endif
 
 using namespace std;
 using XERCES_CPP_NAMESPACE_QUALIFIER DOMElement;
@@ -3496,7 +3510,7 @@ template<>
 HistogramPlotImp::ValuesType fromXmlString<HistogramPlotImp::ValuesType>(string value, bool* pError)
 {
    HistogramPlotImp::ValuesType retValue;
-   if (value == "none") 
+   if (value == "none")
    {
       retValue = HistogramPlotImp::NO_VALUE;
    }

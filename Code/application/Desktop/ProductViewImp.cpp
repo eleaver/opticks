@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -46,10 +46,15 @@
 #include <map>
 #include <string>
 
+#if HAVE_QT5
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QMessageBox>
+#else
 #include <QtGui/QApplication>
+#include <QtGui/QMessageBox>
+#endif
 #include <QtGui/QCursor>
 #include <QtGui/QKeyEvent>
-#include <QtGui/QMessageBox>
 #include <QtGui/QMouseEvent>
 
 using namespace std;
@@ -147,7 +152,7 @@ void ProductViewImp::connectLayers()
    TextObject* pTopText = mpClassificationLayer->getTopText();
    if (pTopText != NULL)
    {
-      connect(dynamic_cast<TextObjectImp*>(pTopText), 
+      connect(dynamic_cast<TextObjectImp*>(pTopText),
          SIGNAL(propertyModified(GraphicProperty*)), this, SLOT(updateClassificationLocation()));
    }
 
@@ -547,7 +552,7 @@ bool ProductViewImp::saveTemplate(const QString& strTemplateFile) const
    }
 
    // Add a text object to the layout layer to store the classification text font
-   TextObjectImp* pClassificationObject = 
+   TextObjectImp* pClassificationObject =
       dynamic_cast<TextObjectImp*>(mpLayoutLayer->addObject(TEXT_OBJECT, LocationType()));
    if (pClassificationObject != NULL)
    {
@@ -1821,7 +1826,7 @@ bool ProductViewImp::fromXml(DOMNode* pDocument, unsigned int version)
 
    DataDescriptorAdapter layoutDescriptor("Layout", "AnnotationElement", NULL);
    delete mpLayoutLayer;
-   AnnotationElementAdapter* pAdapter = new AnnotationElementAdapter(layoutDescriptor, 
+   AnnotationElementAdapter* pAdapter = new AnnotationElementAdapter(layoutDescriptor,
       findAttribute(pElem, "LayoutElement/id"));
    mpLayoutLayer = new AnnotationLayerAdapter(findAttribute(pElem, "LayoutLayer/id"), "Layout",
       pAdapter);

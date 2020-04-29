@@ -3,14 +3,18 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
 #include <float.h>
 
 #include <QtGui/QCursor>
+#if HAVE_QT5
+#include <QtWidgets/QInputDialog>
+#else
 #include <QtGui/QInputDialog>
+#endif
 #include <QtGui/QMouseEvent>
 
 #include "AnnotationElementAdapter.h"
@@ -64,7 +68,7 @@ PlotViewImp::PlotViewImp(const string& id, const string& viewName, QGLContext* d
    mSelectionArea(this, false),
    mDisplayListInitialized(false),
    mDisplayListIndex(0),
-   mSelectionMode(NORMAL_SELECTION), 
+   mSelectionMode(NORMAL_SELECTION),
    mSelectionDisplayMode(SYMBOL_SELECTION),
    mEnableShading(false),
    mExtentsMargin(0.0)
@@ -747,7 +751,11 @@ void PlotViewImp::selectObjects(const QRegion& selectionRegion, bool bSelect)
 
                // Add the object to the selection list if the object region
                // is contained entirely within the selection region
+#if HAVE_QT5
+               if (selectionRegion.intersected(objectRegion) == objectRegion)
+#else
                if (selectionRegion.intersect(objectRegion) == objectRegion)
+#endif
                {
                   objects.push_back(pObject);
                }
@@ -784,7 +792,11 @@ void PlotViewImp::selectObjects(const QRegion& selectionRegion, const PointSet* 
             QRegion objectRegion = getObjectRegion(pPoint);
 
             // Select the object if the object region is contained entirely within the selection region
+#if HAVE_QT5
+            if (selectionRegion.intersected(objectRegion) == objectRegion)
+#else
             if (selectionRegion.intersect(objectRegion) == objectRegion)
+#endif
             {
                pPoint->setSelected(bSelect);
             }
@@ -1070,7 +1082,7 @@ void PlotViewImp::mousePressEvent(QMouseEvent* e)
             pObject = *iter;
             if (pObject != NULL)
             {
-               if ((pObject->getType() == POINT_SET) && 
+               if ((pObject->getType() == POINT_SET) &&
                   (mSelectionMode == DEEP_SELECTION))
                {
                   selectObjects(mMouseStart, static_cast<PointSet*>(pObject), true);
@@ -1371,7 +1383,7 @@ void PlotViewImp::mouseReleaseEvent(QMouseEvent* e)
 
                double dScreenX = 0;
                double dScreenY = 0;
-               translateDataToScreen(pointLocation.mX, pointLocation.mY, 
+               translateDataToScreen(pointLocation.mX, pointLocation.mY,
                   dScreenX, dScreenY);
 
                regionPoints.setPoint(i, QPoint(dScreenX, dScreenY));
@@ -2295,7 +2307,7 @@ bool PlotViewImp::toXml(XMLWriter* pXml) const
    {
       pXml->addAttr("annotationLayerId", mpAnnotationLayer->getId());
    }
-   
+
    if (mObjects.size() > 0 && !isKindOf("HistogramPlot"))
    {
       pXml->pushAddPoint(pXml->addElement("PlotObjects"));
@@ -2352,7 +2364,7 @@ bool PlotViewImp::fromXml(DOMNode* pDocument, unsigned int version)
       if (pAnnoLayer != NULL)
       {
          VERIFY(mpAnnotationLayer != NULL);
-         GraphicGroupImp* pCurGroup = dynamic_cast<GraphicGroupImp*>(mpAnnotationLayer->getGroup());  
+         GraphicGroupImp* pCurGroup = dynamic_cast<GraphicGroupImp*>(mpAnnotationLayer->getGroup());
          GraphicGroup* pRestorGroup = pAnnoLayer->getGroup();
          if (pCurGroup != NULL && pRestorGroup != NULL)
          {

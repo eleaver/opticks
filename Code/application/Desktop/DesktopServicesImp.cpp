@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -16,14 +16,21 @@
 #endif
 
 #include <QtCore/QUrl>
+#if HAVE_QT5
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QStatusBar>
+#else
 #include <QtGui/QApplication>
+#include <QtGui/QMenuBar>
+#include <QtGui/QMessageBox>
+#include <QtGui/QStatusBar>
+#endif
 #include <QtGui/QBitmap>
 #include <QtGui/QCursor>
 #include <QtGui/QDesktopServices>
-#include <QtGui/QMenuBar>
-#include <QtGui/QMessageBox>
 #include <QtGui/QPixmap>
-#include <QtGui/QStatusBar>
 
 #include "AnnotationLayerImp.h"
 #include "AoiLayerImp.h"
@@ -393,7 +400,7 @@ void DesktopServicesImp::tileWorkspaceWindows(TilingType eType)
    }
 }
 
-bool DesktopServicesImp::tileWorkspaceWindows(const vector<WorkspaceWindow*>& windows, 
+bool DesktopServicesImp::tileWorkspaceWindows(const vector<WorkspaceWindow*>& windows,
                                               bool maxFirst, TilingType eType)
 {
    bool bSuccess = false;
@@ -789,7 +796,7 @@ void DesktopServicesImp::initializeAction(QAction* pAction, const string& shortc
 
    // Ensure the context string contains forward slashes
    string context = shortcutContext;
-   std::replace(context.begin(), context.end(), '\\', '/'); 
+   std::replace(context.begin(), context.end(), '\\', '/');
 
    // Store the shortcut context in the command action
    QMap<QString, QVariant> actionData = pAction->data().toMap();
@@ -1222,7 +1229,7 @@ int DesktopServicesImp::showMessageBox(const string& caption, const string& text
          qButton2 = button2.c_str();
       }
 
-      return QMessageBox::warning(getMainWidget(), caption.c_str(), text.c_str(), qButton0, qButton1, qButton2, 
+      return QMessageBox::warning(getMainWidget(), caption.c_str(), text.c_str(), qButton0, qButton1, qButton2,
          defaultButton, escapeButton);
    }
    else
@@ -1245,7 +1252,7 @@ bool DesktopServicesImp::getSuppressibleMsgDlgState(const string& id)
    return pState != NULL ? *pState : false;
 }
 
-void DesktopServicesImp::showSuppressibleMsgDlg(const string& dialogTitle, const string& dialogMsg, MessageType type, 
+void DesktopServicesImp::showSuppressibleMsgDlg(const string& dialogTitle, const string& dialogMsg, MessageType type,
                                         const string& id, QWidget* pParent)
 {
    bool dontShow = getSuppressibleMsgDlgState(id);

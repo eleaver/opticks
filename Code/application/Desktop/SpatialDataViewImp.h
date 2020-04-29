@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -26,8 +26,9 @@
 #include <string>
 #include <vector>
 
+#include "LayerImp.h"
+
 class DataElement;
-class LayerImp;
 class LayerList;
 class LayerListAdapter;
 class MeasurementLayerAdapter;
@@ -480,8 +481,7 @@ private slots:
       \
       /* Set the image data */ \
       unsigned char* pBits = image.bits(); \
-      int iBytes = image.numBytes(); \
-      \
+      int iBytes = image.byteCount(); \
       spBuffer = new (std::nothrow) unsigned char[iBytes]; \
       if ((pBits == NULL) || (spBuffer == NULL)) \
       { \
@@ -495,7 +495,7 @@ private slots:
       iWidth = image.width(); \
       iHeight = image.height(); \
       iDepth = image.depth(); \
-      iNumColors = image.numColors(); \
+      iNumColors = image.colorCount(); \
       \
       return true; \
    } \

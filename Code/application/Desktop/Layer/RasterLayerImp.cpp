@@ -3,15 +3,23 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
+#if HAVE_QT5
+#include <QtWidgets/QAction>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QInputDialog>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QMessageBox>
+#else
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QInputDialog>
 #include <QtGui/QMenu>
 #include <QtGui/QMessageBox>
+#endif
 
 #include "Animation.h"
 #include "AppConfig.h"
@@ -399,7 +407,7 @@ void RasterLayerImp::draw()
    }
    else if (displayMode == RGB_MODE)
    {
-      if ((mRedBand.isValid() == false || getDisplayedRasterElement(RED) == NULL) && 
+      if ((mRedBand.isValid() == false || getDisplayedRasterElement(RED) == NULL) &&
          (mGreenBand.isValid() == false || getDisplayedRasterElement(GREEN) == NULL) &&
          (mBlueBand.isValid() == false || getDisplayedRasterElement(BLUE) == NULL))
       {
@@ -619,7 +627,7 @@ double RasterLayerImp::calculateThresholdForEncodingType(EncodingType type) cons
    //according to the given encoding type, assume that 3 raw pixel values will be
    //shown, ie. RGB mode.
    //this code assume's that for a given font that all digits are the same width.
-   QFont textFont = QApplication::font(); 
+   QFont textFont = QApplication::font();
    textFont.setPointSize(View::getSettingPixelValueMinimumFontSize());
    textFont.setBold(false);
    QFontMetrics metrics(textFont);
@@ -673,7 +681,7 @@ double RasterLayerImp::calculateThresholdForEncodingType(EncodingType type) cons
       RasterElement* pElement = dynamic_cast<RasterElement*>(getDataElement());
       if (pElement != NULL)
       {
-         const RasterDataDescriptor* pDescriptor = 
+         const RasterDataDescriptor* pDescriptor =
             dynamic_cast<const RasterDataDescriptor*>(pElement->getDataDescriptor());
          unsigned int largestDimension = max(pDescriptor->getRowCount(), pDescriptor->getColumnCount());
          QString pixelCoordStr = QString::number(largestDimension);
@@ -702,7 +710,7 @@ double RasterLayerImp::getNumberThreshold() const
    DisplayMode displayMode = getDisplayMode();
    if (displayMode == GRAYSCALE_MODE)
    {
-      const RasterDataDescriptor* pDescriptor = 
+      const RasterDataDescriptor* pDescriptor =
          dynamic_cast<const RasterDataDescriptor*>(mpGrayRasterElement->getDataDescriptor());
       dZoomThreshold = calculateThresholdForEncodingType(pDescriptor->getDataType());
    }
@@ -711,7 +719,7 @@ double RasterLayerImp::getNumberThreshold() const
       EncodingType redEncoding;
       if (mpRedRasterElement.get() != NULL)
       {
-         const RasterDataDescriptor* pRedDescriptor = 
+         const RasterDataDescriptor* pRedDescriptor =
             dynamic_cast<const RasterDataDescriptor*>(mpRedRasterElement->getDataDescriptor());
          redEncoding = pRedDescriptor->getDataType();
       }
@@ -719,7 +727,7 @@ double RasterLayerImp::getNumberThreshold() const
       EncodingType greenEncoding;
       if (mpGreenRasterElement.get() != NULL)
       {
-         const RasterDataDescriptor* pGreenDescriptor = 
+         const RasterDataDescriptor* pGreenDescriptor =
             dynamic_cast<const RasterDataDescriptor*>(mpGreenRasterElement->getDataDescriptor());
          greenEncoding = pGreenDescriptor->getDataType();
       }
@@ -728,7 +736,7 @@ double RasterLayerImp::getNumberThreshold() const
       EncodingType blueEncoding;
       if (mpBlueRasterElement.get() != NULL)
       {
-         const RasterDataDescriptor* pBlueDescriptor = 
+         const RasterDataDescriptor* pBlueDescriptor =
             dynamic_cast<const RasterDataDescriptor*>(mpBlueRasterElement->getDataDescriptor());
          blueEncoding = pBlueDescriptor->getDataType();
       }
@@ -3905,22 +3913,22 @@ void RasterLayerImp::applyFastContrastStretch(RasterChannelType element)
    switch (element)
    {
    case GRAY:
-      biases[0] = biases[1] = biases[2] = bias; 
+      biases[0] = biases[1] = biases[2] = bias;
       scales[0] = scales[1] = scales[2] = scale;
       fullscales[0] = fullscales[1] = fullscales[2] = 1.0;
       break;
    case RED:
-      biases[0] = bias; 
+      biases[0] = bias;
       scales[0] = scale;
       fullscales[0] = 1.0;
       break;
    case GREEN:
-      biases[1] = bias; 
+      biases[1] = bias;
       scales[1] = scale;
       fullscales[1] = 1.0;
       break;
    case BLUE:
-      biases[2] = bias; 
+      biases[2] = bias;
       scales[2] = scale;
       fullscales[2] = 1.0;
       break;
@@ -3933,13 +3941,13 @@ void RasterLayerImp::applyFastContrastStretch(RasterChannelType element)
 
    glEnable(GL_BLEND);
    glBlendFunc(GL_ONE, GL_ONE);
-   if (bias != 0) 
+   if (bias != 0)
    {
-      if (bias > 0) 
+      if (bias > 0)
       {
          glColor4f(biases[0], biases[1], biases[2], 0.0);
-      } 
-      else 
+      }
+      else
       {
          if (glBlendEquationEXT)
          {
@@ -3961,13 +3969,13 @@ void RasterLayerImp::applyFastContrastStretch(RasterChannelType element)
    }
 
    glBlendFunc(GL_DST_COLOR, GL_ONE);
-   if (remainingScale > 2.0) 
+   if (remainingScale > 2.0)
    {
       /* Clever cascading approach.  Example: if the
          scaling factor was 9.5, do 3 "doubling" blends
          (8x), then scale by the remaining 1.1875. */
       glColor4d(fullscales[0], fullscales[1], fullscales[2], 1);
-      while (remainingScale > 2.0) 
+      while (remainingScale > 2.0)
       {
          glRectd(0.0, 0.0, size.mX, size.mY);
          remainingScale /= 2.0;

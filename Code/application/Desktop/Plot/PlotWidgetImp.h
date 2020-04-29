@@ -3,16 +3,22 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
 #ifndef PLOTWIDGETIMP_H
 #define PLOTWIDGETIMP_H
 
+#if HAVE_QT5
+#include <QtWidgets/QAction>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QMainWindow>
+#else
 #include <QtGui/QAction>
 #include <QtGui/QLabel>
 #include <QtGui/QMainWindow>
+#endif
 #include <QtGui/QPixmap>
 
 #include "ColorType.h"
@@ -106,7 +112,7 @@ public:
 
    // Session
    bool serialize(SessionItemSerializer &serializer) const;
-   bool deserialize(SessionItemDeserializer &deserializer); 
+   bool deserialize(SessionItemDeserializer &deserializer);
    virtual bool toXml(XMLWriter* pXml) const;
    virtual bool fromXml(DOMNode* pDocument, unsigned int version);
 

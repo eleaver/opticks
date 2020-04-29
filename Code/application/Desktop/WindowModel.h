@@ -3,14 +3,18 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
 #ifndef WINDOWMODEL_H
 #define WINDOWMODEL_H
 
+#if HAVE_QT5
+#include <QtCore/QSortFilterProxyModel>
+#else
 #include <QtGui/QSortFilterProxyModel>
+#endif
 
 #include "SessionItemModel.h"
 
@@ -30,12 +34,22 @@ public:
    virtual bool dropMimeData(const QMimeData* pData, Qt::DropAction action, int row, int column,\
       const QModelIndex& dropIndex);
 
+#if HAVE_QT5
+   // Qt5 does not have QAbstractItemModel::setSupportedDragActions() so we implement one here.
+   // Alternatively, we could just re-implement QAbstractItemModel::supportedDragActions() to always return Qt::MoveAction
+   Qt::DropActions supportedDragActions() const; // must re-implement QAbstractItemModel::supportedDragActions().
+   void setSupportedDragActions(Qt::DropActions actions);
+#endif
+    
 protected:
    virtual bool lessThan(const QModelIndex& left, const QModelIndex& right) const;
 
 private:
    WindowModel(const WindowModel& rhs);
    WindowModel& operator=(const WindowModel& rhs);
+#if HAVE_QT5
+   Qt::DropActions mDropActions;
+#endif
 
    class WindowSourceModel : public SessionItemModel
    {

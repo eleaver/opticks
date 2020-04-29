@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -59,15 +59,27 @@
 #include "XercesIncludes.h"
 
 #include <QtCore/QTimer>
+#if HAVE_QT5
+#include <QtWidgets/QActionGroup>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QColorDialog>
+#include <QtWidgets/QInputDialog>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QToolTip>
+#else
 #include <QtGui/QActionGroup>
 #include <QtGui/QApplication>
 #include <QtGui/QColorDialog>
-#include <QtGui/QHelpEvent>
 #include <QtGui/QInputDialog>
 #include <QtGui/QMenu>
 #include <QtGui/QMessageBox>
-#include <QtGui/QMouseEvent>
 #include <QtGui/QToolTip>
+#endif
+#include <QtGui/QHelpEvent>
+#include <QtGui/QMouseEvent>
+
+
 #include <QtOpenGL/QGLFramebufferObject>
 
 #include <boost/bind.hpp>
@@ -1289,7 +1301,7 @@ void SpatialDataViewImp::clear()
    // We can't simply iterate over the list of layers and delete them one at a time because the
    // deletion of a layer could also cause the deletion of the associated data element. This
    // could cause the deletion of a child element which could cause the deletion of a layer in
-   // the list before the iterator reaches the now invalid layer pointer. The attempt to delete the 
+   // the list before the iterator reaches the now invalid layer pointer. The attempt to delete the
    // invalid pointer would cause Opticks to crash.
    vector<Layer*> layers = mpLayerList->getLayers();
    while (layers.empty() == false)
@@ -2763,7 +2775,7 @@ void SpatialDataViewImp::keyReleaseEvent(QKeyEvent* pEvent)
 }
 
 void SpatialDataViewImp::keyPan()
-{   
+{
    int distance = 0;
    if (mShiftPressed)
    {
@@ -3057,7 +3069,7 @@ bool SpatialDataViewImp::canLinkWithView(View *pView, LinkType type)
          RasterElement* pRaster = pLayerList->getPrimaryRasterElement();
          RasterElement* pOtherRaster = pOtherLayerList->getPrimaryRasterElement();
 
-         if (pRaster != NULL && pRaster->isGeoreferenced() && 
+         if (pRaster != NULL && pRaster->isGeoreferenced() &&
             pOtherRaster != NULL && pOtherRaster->isGeoreferenced())
          {
             return true;
@@ -3923,7 +3935,7 @@ bool SpatialDataViewImp::fromXml(DOMNode* pDocument, unsigned int version)
       {
          VERIFY(mpMeasurementsLayer != NULL);
          *mpMeasurementsLayer = *pMeasLayer;
-         GraphicGroupImp* pCurGroup = dynamic_cast<GraphicGroupImp*>(mpMeasurementsLayer->getGroup());  
+         GraphicGroupImp* pCurGroup = dynamic_cast<GraphicGroupImp*>(mpMeasurementsLayer->getGroup());
          GraphicGroup* pRestorGroup = pMeasLayer->getGroup();
          if (pCurGroup != NULL && pRestorGroup != NULL)
          {

@@ -3,14 +3,18 @@
  * Copyright(c) 2010 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
 #ifndef ELIDEDLABEL_H
 #define ELIDEDLABEL_H
 
+#if HAVE_QT5
+#include <QtWidgets/QLabel>
+#else
 #include <QtGui/QLabel>
+#endif
 
 /**
  *  A specialized QLabel that displays an ellipsis when its text is larger than

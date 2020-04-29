@@ -10,11 +10,19 @@
 #ifndef ANIMATIONTOOLBARIMP_H
 #define ANIMATIONTOOLBARIMP_H
 
+#if HAVE_QT5
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QProxyStyle>
+#include <QtWidgets/QSlider>
+#else
 #include <QtGui/QComboBox>
 #include <QtGui/QLabel>
 #include <QtGui/QMenu>
 #include <QtGui/QProxyStyle>
 #include <QtGui/QSlider>
+#endif
 #include <QtCore/QString>
 
 #include "PixmapGrid.h"

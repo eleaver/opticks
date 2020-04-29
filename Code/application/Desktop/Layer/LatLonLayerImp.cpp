@@ -3,12 +3,16 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
 #include <QtCore/QString>
+#if HAVE_QT5
+#include <QtWidgets/QApplication>
+#else
 #include <QtGui/QApplication>
+#endif
 
 #include "AppConfig.h"
 #include "AppVerify.h"
@@ -350,7 +354,7 @@ void LatLonLayerImp::draw()
          startYBorderType = BOTTOM_BORDER;
          endYBorderType = TOP_BORDER;
       }
-    
+
       LocationType startLabel;
       LocationType endLabel;
       LocationType clippedLabel;
@@ -516,7 +520,7 @@ void LatLonLayerImp::draw()
                // now draw the grid line
                startLabel = badVertex;
                endLabel = badVertex;
- 
+
                if (bProductView)
                {
                   // project vertices to screen coordinates
@@ -567,7 +571,7 @@ void LatLonLayerImp::draw()
                      drawLabel(startLabel, textOffset, geoCoord, lat, startBorderType, modelMatrix,
                         projectionMatrix, viewPort, bProductView);
                   }
- 
+
                   if (endLabel != badVertex)
                   {
                      if (bProductView)
@@ -807,12 +811,12 @@ void LatLonLayerImp::drawLabel(const LocationType& location, const LocationType&
          MgrsPoint mgrsPoint(geoCoord);
          if (lat)
          {
-            text = mgrsPoint.getZoneText() + mgrsPoint.getScrCodeText() + 
+            text = mgrsPoint.getZoneText() + mgrsPoint.getScrCodeText() +
                QString::number(static_cast<int>(mgrsPoint.getNorthing())).toStdString();
          }
          else
          {
-            text = mgrsPoint.getZoneText() + mgrsPoint.getScrCodeText() + 
+            text = mgrsPoint.getZoneText() + mgrsPoint.getScrCodeText() +
                QString::number(static_cast<int>(mgrsPoint.getEasting())).toStdString();
          }
       }
@@ -902,7 +906,7 @@ void LatLonLayerImp::drawLabel(const LocationType& location, const LocationType&
       }
       mComputedTickSpacingDirty = true;
    }
- 
+
    int screenY = pView->height() - static_cast<int>(screenCoord.mY + offset.mY);
 
    if (screenY - dHeight < 1)
@@ -1517,7 +1521,7 @@ static double computeSpacing(double range)
    double spacing = 0.0;
    int i;
 
-   // Treat baseValues as degrees. Break if one of them 
+   // Treat baseValues as degrees. Break if one of them
    // would result in 5+ tick marks.
    for (i = 0; i < baseValueCount; ++i)
    {
@@ -1530,7 +1534,7 @@ static double computeSpacing(double range)
 
    if (i == baseValueCount)
    {
-      // Treat baseValues as minute. Break if one of them 
+      // Treat baseValues as minute. Break if one of them
       // would result in 5+ tick marks.
       for (i = 0; i < baseValueCount; ++i)
       {
@@ -1545,7 +1549,7 @@ static double computeSpacing(double range)
       {
          for (i = 0; i < baseValueCount; ++i)
          {
-            // Treat baseValues as seconds. Break if one of them 
+            // Treat baseValues as seconds. Break if one of them
             // would result in 5+ tick marks.
             if (5.0 * (baseValues[i] / 3600.0) < range)
             {

@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -39,12 +39,18 @@
 #include "xmlreader.h"
 
 #include <QtCore/QEvent>
+#if HAVE_QT5
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QDialogButtonBox>
+#else
 #include <QtGui/QApplication>
+#include <QtGui/QDialog>
+#include <QtGui/QDialogButtonBox>
+#endif
 #include <QtGui/QClipboard>
 #include <QtGui/QContextMenuEvent>
 #include <QtGui/QCursor>
-#include <QtGui/QDialog>
-#include <QtGui/QDialogButtonBox>
 #include <QtGui/QFontMetrics>
 #include <QtOpenGL/QGLFramebufferObject>
 
@@ -621,7 +627,7 @@ void ViewImp::translateScreenToWorld(double dScreenX, double dScreenY, double& d
 
 inline double magdiff2(LocationType temp1, LocationType temp2)
 {
-   double tempX = temp1.mX-temp2.mX; 
+   double tempX = temp1.mX-temp2.mX;
    double tempY = temp1.mY-temp2.mY;
    return tempX * tempX + tempY * tempY;
 }
@@ -778,7 +784,7 @@ bool ViewImp::getCurrentImage(QImage &image)
       {
          image.convertToFormat(QImage::Format_ARGB32);
          QImage tmpImage = fbo.toImage().convertToFormat(image.format());
-         memcpy(image.bits(), tmpImage.bits(), image.numBytes());
+         memcpy(image.bits(), tmpImage.bits(), image.byteCount());
       }
 
       painter.endNativePainting();
@@ -1025,7 +1031,7 @@ bool ViewImp::linkView(View* pView, LinkType type)
 
    pView->attach(SIGNAL_NAME(Subject, Deleted), Slot(this, &ViewImp::viewDeleted));
 
-   if (type == GEOCOORD_LINK || 
+   if (type == GEOCOORD_LINK ||
       (type == AUTOMATIC_LINK && canLinkWithView(pView, GEOCOORD_LINK)))
    {
       // bring the views into geocoord alignment

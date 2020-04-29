@@ -3,14 +3,18 @@
  * Copyright(c) 2010 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
 #ifndef GETSUBSETDIALOG_H__
 #define GETSUBSETDIALOG_H__
 
+#if HAVE_QT5
+#include <QtWidgets/QDialog>
+#else
 #include <QtGui/QDialog>
+#endif
 #include <vector>
 
 class QComboBox;

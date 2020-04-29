@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -17,6 +17,8 @@
 #include "Slot.h"
 
 #include <QtCore/QMimeData>
+#include <QtCore/QIODevice>
+#include <QtCore/QDataStream>
 
 using namespace std;
 
@@ -25,6 +27,9 @@ AnimationModel::AnimationModel(QObject* pParent) :
    mpAnimationServices(Service<AnimationServices>().get()),
    mpAnimationToolBar(SIGNAL_NAME(AnimationToolBar, ControllerChanged),
       Slot(this, &AnimationModel::setCurrentController))
+ #if HAVE_QT5
+ ,mDropActions(Qt::MoveAction)
+ #endif
 {
    // Initialization
    const vector<AnimationController*>& controllers = mpAnimationServices->getAnimationControllers();
@@ -37,7 +42,9 @@ AnimationModel::AnimationModel(QObject* pParent) :
       }
    }
 
+#if ! HAVE_QT5
    setSupportedDragActions(Qt::MoveAction);
+#endif
 
    // Connections
    mpAnimationServices.addSignal(SIGNAL_NAME(AnimationServices, ControllerCreated),
@@ -308,3 +315,14 @@ void AnimationModel::removeControllerItem(AnimationController* pController)
       }
    }
 }
+
+#if HAVE_QT5
+void AnimationModel::setSupportedDragActions(Qt::DropActions actions)
+{
+   mDropActions = actions;
+}
+Qt::DropActions AnimationModel::supportedDragActions() const
+{
+   return  mDropActions;
+}
+#endif

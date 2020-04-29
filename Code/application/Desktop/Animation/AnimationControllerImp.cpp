@@ -3,13 +3,24 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
 #include <sys/timeb.h>
 
 #include <QtCore/QString>
+#if HAVE_QT5
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QDialogButtonBox>
+#include <QtWidgets/QDoubleSpinBox>
+#include <QtWidgets/QFrame>
+#include <QtWidgets/QGridLayout>
+#include <QtGui/QIcon>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QMessageBox>
+#else
 #include <QtGui/QApplication>
 #include <QtGui/QDialog>
 #include <QtGui/QDialogButtonBox>
@@ -19,6 +30,7 @@
 #include <QtGui/QIcon>
 #include <QtGui/QLabel>
 #include <QtGui/QMessageBox>
+#endif
 
 #include "AnimationAdapter.h"
 #include "AnimationControllerImp.h"
@@ -227,7 +239,7 @@ list<ContextMenuAction> AnimationControllerImp::getContextMenuActions() const
       }
       else
       {
-         menuActions.push_front(ContextMenuAction(mpChangeDirectionAction, 
+         menuActions.push_front(ContextMenuAction(mpChangeDirectionAction,
             APP_ANIMATIONCONTROLLER_CHANGE_DIRECTION_ACTION));
          menuActions.push_front(ContextMenuAction(mpStopAction, APP_ANIMATIONCONTROLLER_STOP_ACTION));
          menuActions.push_front(ContextMenuAction(mpPauseAction, APP_ANIMATIONCONTROLLER_PAUSE_ACTION));
@@ -427,7 +439,7 @@ void AnimationControllerImp::setIntervalMultiplier(double multiplier)
    double dInterval = multiplier / mFrequency;
    if (dInterval != mInterval)
    {
-      AnimationController::setSettingFrameSpeedSelection(multiplier); 
+      AnimationController::setSettingFrameSpeedSelection(multiplier);
       mInterval = dInterval;
       emit intervalMultiplierChanged(multiplier);
       notify(SIGNAL_NAME(AnimationController, IntervalMultiplierChanged), boost::any(multiplier));
@@ -568,15 +580,15 @@ void AnimationControllerImp::changeDirection()
    if (previousState == PLAY_FORWARD)
    {
       setAnimationState(PLAY_BACKWARD);
-   } 
+   }
    else if (previousState == PAUSE_FORWARD)
    {
       setAnimationState(PAUSE_BACKWARD);
-   } 
+   }
    else if (previousState == PLAY_BACKWARD)
    {
       setAnimationState(PLAY_FORWARD);
-   } 
+   }
    else if (previousState == PAUSE_BACKWARD)
    {
       setAnimationState(PAUSE_FORWARD);
@@ -940,7 +952,9 @@ bool AnimationControllerImp::event(QEvent* pEvent)
          VERIFYNR(pActiveController != NULL);
          pActiveController->advance();
          QApplication::processEvents();
+#if ! HAVE_QT5
          QApplication::processEvents(QEventLoop::DeferredDeletion);
+#endif
          if (mppActiveController != mRunningControllers.end() && pActiveController == *mppActiveController)
          {
             ++mppActiveController;

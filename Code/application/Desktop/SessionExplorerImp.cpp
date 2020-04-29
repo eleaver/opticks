@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -25,14 +25,23 @@
 
 #include <QtCore/QDataStream>
 #include <QtCore/QMimeData>
+#if HAVE_QT5
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QSortFilterProxyModel>
+#include <QtWidgets/QTabWidget>
+#include <QtWidgets/QTreeView>
+#else
 #include <QtGui/QApplication>
-#include <QtGui/QClipboard>
-#include <QtGui/QContextMenuEvent>
 #include <QtGui/QMenu>
 #include <QtGui/QMessageBox>
 #include <QtGui/QSortFilterProxyModel>
 #include <QtGui/QTabWidget>
 #include <QtGui/QTreeView>
+#endif
+#include <QtGui/QClipboard>
+#include <QtGui/QContextMenuEvent>
 
 using namespace std;
 
@@ -494,8 +503,11 @@ bool SessionExplorerImp::eventFilter(QObject* pObject, QEvent* pEvent)
 
                      // Update the drop point to be between the layer items
                      QPoint dropPos = pDropEvent->pos();
+#if HAVE_QT5
+                     QPointF& newPos = const_cast<QPointF&>(pDropEvent->posF());
+#else
                      QPoint& newPos = const_cast<QPoint&>(pDropEvent->pos());
-
+#endif
                      QRect layersRect;
                      if (index.isValid() == true)
                      {

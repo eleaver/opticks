@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -34,6 +34,13 @@ public:
    void addAnimation(Subject& subject, const std::string& signal, const boost::any& value);
    void removeAnimation(Subject& subject, const std::string& signal, const boost::any& value);
 
+#if HAVE_QT5
+   // Qt5 does not have QAbstractItemModel::setSupportedDragActions() so we implement one here.
+   // Alternatively, we could just re-implement QAbstractItemModel::supportedDragActions() to always return Qt::MoveAction
+   Qt::DropActions supportedDragActions() const; // must re-implement QAbstractItemModel::supportedDragActions().
+   void setSupportedDragActions(Qt::DropActions actions);
+#endif
+    
 protected:
    void addControllerItem(AnimationController* pController);
    void removeControllerItem(AnimationController* pController);
@@ -44,6 +51,9 @@ private:
 
    AttachmentPtr<AnimationServices> mpAnimationServices;
    AttachmentPtr<AnimationToolBar> mpAnimationToolBar;
+#if HAVE_QT5
+   Qt::DropActions mDropActions;
+#endif
 };
 
 #endif

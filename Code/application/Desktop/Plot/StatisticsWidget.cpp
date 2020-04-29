@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -14,10 +14,17 @@
 #include "StatisticsWidget.h"
 #include "StringUtilities.h"
 
+#if HAVE_QT5
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTableWidget>
+#else
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QTableWidget>
+#endif
 
 StatisticsWidget::StatisticsWidget(HistogramPlotImp* pPlot, QWidget* pParent) :
    QWidget(pParent),
@@ -33,7 +40,11 @@ StatisticsWidget::StatisticsWidget(HistogramPlotImp* pPlot, QWidget* pParent) :
    mpStats->setColumnCount(2);
    mpStats->setRowCount(5);
    mpStats->horizontalHeader()->hide();
+#if HAVE_QT5
+   mpStats->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+#else
    mpStats->verticalHeader()->setResizeMode(QHeaderView::ResizeToContents);
+#endif
    mpStats->verticalHeader()->hide();
    mpStats->setItem(0, 0, new QTableWidgetItem("Minimum Value"));
    mpStats->setItem(1, 0, new QTableWidgetItem("Maximum Value"));

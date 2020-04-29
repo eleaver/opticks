@@ -10,13 +10,21 @@
 #ifndef PROPERTIESANNOTATIONLAYER_H
 #define PROPERTIESANNOTATIONLAYER_H
 
+#if HAVE_QT5
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QListWidget>
+#include <QtWidgets/QListWidgetItem>
+#include <QtWidgets/QStackedWidget>
+#include <QtWidgets/QWidget>
+#else
 #include <QtGui/QCheckBox>
 #include <QtGui/QLabel>
 #include <QtGui/QListWidget>
 #include <QtGui/QListWidgetItem>
 #include <QtGui/QStackedWidget>
 #include <QtGui/QWidget>
-
+#endif
 #include "Modifier.h"
 
 #include <map>

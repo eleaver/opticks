@@ -12,7 +12,11 @@
 
 #include "TypesFile.h"
 
+#if HAVE_QT5
+#include <QtWidgets/QToolButton>
+#else
 #include <QtGui/QToolButton>
+#endif
 
 class PixmapGrid;
 class QMenu;

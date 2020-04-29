@@ -9,6 +9,17 @@
 
 #include <QtCore/QDateTime>
 #include <QtCore/QString>
+#if HAVE_QT5
+#include <QtWidgets/QAction>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QDialogButtonBox>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QMessageBox>
+#else
 #include <QtGui/QAction>
 #include <QtGui/QComboBox>
 #include <QtGui/QDialog>
@@ -18,7 +29,7 @@
 #include <QtGui/QLineEdit>
 #include <QtGui/QMenu>
 #include <QtGui/QMessageBox>
-
+#endif
 #include "AnimationControllerAdapter.h"
 #include "AnimationFrame.h"
 #include "AnimationServicesImp.h"

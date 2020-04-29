@@ -3,12 +3,17 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
+#if HAVE_QT5
+#include <QtWidgets/QInputDialog>
+#include <QtWidgets/QMessageBox>
+#else
 #include <QtGui/QInputDialog>
 #include <QtGui/QMessageBox>
+#endif
 
 #include "LayerListImp.h"
 #include "AnnotationElement.h"
@@ -203,7 +208,7 @@ Layer* LayerListImp::newLayer(const LayerType& layerType, DataElement* pElement,
          AnnotationElement* pAE = dynamic_cast<AnnotationElement*>(pElement);
          if (pAE != NULL)
          {
-            pLayer = new AnnotationLayerAdapter(SessionItemImp::generateUniqueId(), 
+            pLayer = new AnnotationLayerAdapter(SessionItemImp::generateUniqueId(),
                strName.toStdString(), pAE);
          }
          break;
@@ -214,7 +219,7 @@ Layer* LayerListImp::newLayer(const LayerType& layerType, DataElement* pElement,
          AoiElement* pAE = dynamic_cast<AoiElement*>(pElement);
          if (pAE != NULL)
          {
-            pLayer = new AoiLayerAdapter(SessionItemImp::generateUniqueId(), 
+            pLayer = new AoiLayerAdapter(SessionItemImp::generateUniqueId(),
                strName.toStdString(), pAE);
          }
          break;
@@ -236,7 +241,7 @@ Layer* LayerListImp::newLayer(const LayerType& layerType, DataElement* pElement,
          GcpList* pGL = dynamic_cast<GcpList*>(pElement);
          if (pGL != NULL)
          {
-            pLayer = new GcpLayerAdapter(SessionItemImp::generateUniqueId(), 
+            pLayer = new GcpLayerAdapter(SessionItemImp::generateUniqueId(),
                strName.toStdString(), pGL);
          }
          break;
@@ -247,7 +252,7 @@ Layer* LayerListImp::newLayer(const LayerType& layerType, DataElement* pElement,
          RasterElement* pRE = dynamic_cast<RasterElement*>(pElement);
          if (pRE != NULL)
          {
-            pLayer = new LatLonLayerAdapter(SessionItemImp::generateUniqueId(), 
+            pLayer = new LatLonLayerAdapter(SessionItemImp::generateUniqueId(),
                strName.toStdString(), pRE);
          }
          break;
@@ -258,7 +263,7 @@ Layer* LayerListImp::newLayer(const LayerType& layerType, DataElement* pElement,
          RasterElement* pRE = dynamic_cast<RasterElement*>(pElement);
          if (pRE != NULL)
          {
-            pLayer = new PseudocolorLayerAdapter(SessionItemImp::generateUniqueId(), 
+            pLayer = new PseudocolorLayerAdapter(SessionItemImp::generateUniqueId(),
                strName.toStdString(), pRE);
          }
          break;
@@ -269,7 +274,7 @@ Layer* LayerListImp::newLayer(const LayerType& layerType, DataElement* pElement,
          RasterElement* pRE = dynamic_cast<RasterElement*>(pElement);
          if (pRE != NULL)
          {
-            pLayer = new RasterLayerAdapter(SessionItemImp::generateUniqueId(), 
+            pLayer = new RasterLayerAdapter(SessionItemImp::generateUniqueId(),
                strName.toStdString(), pRE);
          }
          break;
@@ -280,7 +285,7 @@ Layer* LayerListImp::newLayer(const LayerType& layerType, DataElement* pElement,
          RasterElement* pRE = dynamic_cast<RasterElement*>(pElement);
          if (pRE != NULL)
          {
-            pLayer = new ThresholdLayerAdapter(SessionItemImp::generateUniqueId(), 
+            pLayer = new ThresholdLayerAdapter(SessionItemImp::generateUniqueId(),
                strName.toStdString(), pRE);
          }
          break;
@@ -291,7 +296,7 @@ Layer* LayerListImp::newLayer(const LayerType& layerType, DataElement* pElement,
          TiePointList* pTL = dynamic_cast<TiePointList*>(pElement);
          if (pTL != NULL)
          {
-            pLayer = new TiePointLayerAdapter(SessionItemImp::generateUniqueId(), 
+            pLayer = new TiePointLayerAdapter(SessionItemImp::generateUniqueId(),
                strName.toStdString(), pTL);
          }
          break;
@@ -646,7 +651,7 @@ void LayerListImp::clear()
    // We can't simply iterate over the list of layers and delete them one at a time because the
    // deletion of a layer could also cause the deletion of the associated data element. This
    // could cause the deletion of a child element which could cause the deletion of a layer in
-   // the list before the iterator reaches the now invalid layer pointer. The attempt to delete the 
+   // the list before the iterator reaches the now invalid layer pointer. The attempt to delete the
    // invalid pointer would cause Opticks to crash.
    while (mLayers.empty()== false)
    {

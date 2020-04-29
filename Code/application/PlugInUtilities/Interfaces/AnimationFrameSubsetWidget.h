@@ -10,7 +10,11 @@
 #ifndef ANIMATIONFRAMESUBSETWIDGET_H
 #define ANIMATIONFRAMESUBSETWIDGET_H
 
+#if HAVE_QT5
+#include <QtWidgets/QWidget>
+#else
 #include <QtGui/QWidget>
+#endif
 
 #include "AnimationController.h"
 #include "AnimationFrame.h"

@@ -3,17 +3,24 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
 #ifndef HISTOGRAMPLOTIMP_H
 #define HISTOGRAMPLOTIMP_H
 
+#if HAVE_QT5
+#include <QtWidgets/QAction>
+#include <QtWidgets/QListWidget>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QWidget>
+#else
 #include <QtGui/QAction>
 #include <QtGui/QListWidget>
 #include <QtGui/QMenu>
 #include <QtGui/QWidget>
+#endif
 
 #include "AttachmentPtr.h"
 #include "EnumWrapper.h"

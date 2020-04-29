@@ -3,14 +3,18 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
 #ifndef OVERVIEWWINDOW_H
 #define OVERVIEWWINDOW_H
 
+#if HAVE_QT5
+#include <QtWidgets/QDialog>
+#else
 #include <QtGui/QDialog>
+#endif
 
 #include "ColorType.h"
 #include "LocationType.h"
@@ -29,7 +33,7 @@ class ZoomPanWidget;
  *  layer is displayed, zoomed to the fullest spatial extents.  A selection box appears
  *  in the widget indicating the currently displayed area of the corresponding view.
  *
- *  Zooming and panning functions are provided by the member instance of a 
+ *  Zooming and panning functions are provided by the member instance of a
  *  ZoomPanWidget. The pan mode for the window can be set with the setPanMode() method.  The
  *  updateSelectionBox() method can be used to force an update of the selection box location
  *  in the corresponding view.

@@ -3,14 +3,18 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
 #ifndef MULTILINETEXTDIALOG_H
 #define MULTILINETEXTDIALOG_H
 
+#if HAVE_QT5
+#include <QtWidgets/QDialog>
+#else
 #include <QtGui/QDialog>
+#endif
 
 #include "ConfigurationSettings.h"
 

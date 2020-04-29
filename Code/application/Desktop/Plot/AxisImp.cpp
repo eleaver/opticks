@@ -3,11 +3,15 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
+#if HAVE_QT5
+#include <QtWidgets/QApplication>
+#else
 #include <QtGui/QApplication>
+#endif
 #include <QtGui/QPainter>
 #include <QtGui/QPixmap>
 #include <qwt_math.h>
@@ -32,7 +36,9 @@ AxisImp::AxisImp(AxisPosition position, QWidget* pParent) :
    mTitleFont(QApplication::font()),
    mTitleColor(Qt::black)
 {
-   setAttribute(Qt::WA_PaintOutsidePaintEvent);
+#if Qt_VERSION_MAJOR < 5
+   setAttribute(Qt::WA_PaintOutsidePaintEvent); // not needed in Qt5
+#endif
    mLinearScale.setAttribute(QwtScaleEngine::Floating);
    mLogScale.setAttribute(QwtScaleEngine::Floating);
 
