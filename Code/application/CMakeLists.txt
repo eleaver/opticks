@@ -1,4 +1,4 @@
-set(Opticks_VERSION "4.12.1unofficial") #fix this
+set(Opticks_VERSION "4.12.1Unofficial") #fix this
 cmake_minimum_required (VERSION 2.8.3)
 
 # Order is important on this. It MUST be before project()
@@ -173,48 +173,108 @@ endif()
 CHECK_CXX_SOURCE_COMPILES("#include \"pthread.h\"
 int main(char* argc, int argv) { pthread_attr_t attr; return pthread_attr_init(&attr); }" PTHREAD_WORKS)
 if(NOT PTHREAD_WORKS)
-   Message(FATAL_ERROR "pthreads code cannot be built on this system.")
+   message(FATAL_ERROR "pthreads code cannot be built on this system.")
 endif()
 
 set(OpenGL_GL_PREFERENCE GLVND)
 
-find_package(Qt5 COMPONENTS Core Gui OpenGL Xml Network REQUIRED)
+#######################################################################################
+# The subsequent find_package(Qt4...) (below) fails with Opticks' default
+# Dependencies/64/bin/qmake, because that qmake incorrectly -- for this purpose --
+# sets QT_BINARY_DIR=/tmp/<something>/install/bin, which does not yet exist. But
+# Dependencies/64/bin/qmake is required for any build that links much from Dependencies/64/lib,
+# because as our CmakeLists.txt tree is currently written, -L<Dependencies path>/64/bin/qmake
+# appears first in ld's argument list, and therefore shadows /usr/lib64.
+#
+# For now, we just work around the Dependencies/64/bin/qmake QT_BINARY_DIR quirk by setting
+# QT_BINARY_DIR explicitly to Dependencies/64/bin, then make call find_program(moc) etc. calls
+# here, that /usr/share/cmake/Modules/FindQt4.cmake would otherwise call later after querying
+# qmake for an invalid QT_BINARY_DIR path:
+set(HAVE_QT5 0)
+set(QT_BINARY_DIR ${Opticks_DEPENDENCIES}/64/bin CACHE STRING "directory containing qmake, moc, uic, rcc. default ${Opticks_DEPENDENCIES}/64/bin")
+set(QT_QMAKE_EXECUTABLE ${QT_BINARY_DIR}/qmake CACHE STRING "path to qmake. default ${QT_BINARY_DIR}/qmake")
+if(EXISTS ${QT_QMAKE_EXECUTABLE})
+   # Get Qt version from Qmake
+   execute_process(COMMAND ${QT_QMAKE_EXECUTABLE} -query QT_VERSION OUTPUT_VARIABLE qt_version  OUTPUT_STRIP_TRAILING_WHITESPACE)
+   execute_process(COMMAND ${QT_QMAKE_EXECUTABLE} -query QT_INSTALL_LIBS OUTPUT_VARIABLE qt_install_libs  OUTPUT_STRIP_TRAILING_WHITESPACE)
+   message(" Qt version: ${qt_version}")
+   if("${qt_version}" VERSION_GREATER_EQUAL "5.0.0")
+      set(HAVE_QT5 1)
+      set(QT_Qt5_DIR "${qt_install_libs}/cmake/Qt5" CACHE PATH "Path to directory containing Qt5Config.cmake")
+      set(Qt5_DIR ${QT_Qt5_DIR})
+      set(ENV{CMAKE_PREFIX_PATH} ${Qt5_DIR}) # might not be necessary
+      set(CMAKE_AUTOMOC ON)
+      set(CMAKE_AUTORCC ON)
+      set(CMAKE_AUTOUIC ON)
+   else()
+      # Qt4
+      if(EXISTS ${QT_BINARY_DIR})
+         find_program(QT_MOC_EXECUTABLE
+            NAMES moc-qt4 moc moc4
+            PATHS ${QT_BINARY_DIR}
+            NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH
+            )
+         find_program(QT_UIC_EXECUTABLE
+            NAMES uic-qt4 uic uic4
+            PATHS ${QT_BINARY_DIR}
+            NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH
+            )
+         find_program(QT_RCC_EXECUTABLE
+            NAMES rcc
+            PATHS ${QT_BINARY_DIR}
+            NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH
+            )
+         #message(INFO " Moc: ${QT_MOC_EXECUTABLE}")
+         #message(INFO " Uic: ${QT_UIC_EXECUTABLE}")
+         #message(INFO " Rcc: ${QT_RCC_EXECUTABLE}")
+      else()
+         message(WARNING " QT_BINARY_DIR ${QT_BINARY_DIR} does not exists")
+      endif()
+   endif()
+else()
+   message(WARNING " QT_QMAKE_EXECUTABLE ${QT_QMAKE_EXECUTABLE} does not exist")
+endif()
+add_definitions(-DHAVE_QT5=${HAVE_QT5})
 
-Message(STATUS "Qt5_VERSION ${Qt5_VERSION}")
-Message(STATUS "Qt5_VERSION_MAJOR ${Qt5_VERSION_MAJOR}")
-Message(STATUS "Qt5Gui_INCLUDE_DIRS: ${Qt5Gui_INCLUDE_DIRS}")
-Message(STATUS "Qt5Core_INCLUDE_DIRS: ${Qt5Core_INCLUDE_DIRS}")
+if(HAVE_QT5)
+   # We include(${QT_USE_FILE}) throughout for Qt4. Qt5 doesn't use it. Check if
+   # QT_USE_FILE is empty, and set it to a dummy file if it is.
+   set(QT_USE_FILE Dummy)
 
-add_definitions(-DQt_VERSION_MAJOR=${Qt5_VERSION_MAJOR})
-add_definitions(-DHAVE_QT5=1)
-# We likely need only Qt5Core_INCLUDE_DIRS, clean this up later:
-#set(QT_INCLUDE_DIRS ${Qt5Core_INCLUDE_DIRS};${Qt5Gui_INCLUDE_DIRS};${Qt5OpenGL_INCLUDE_DIRS};${Qt5Xml_INCLUDE_DIRS};${Qt5Network_INCLUDE_DIRS};)
-set(QT_INCLUDE_DIRS ${Qt5Core_INCLUDE_DIRS};${Qt5Gui_INCLUDE_DIRS}) # qwt needs Qt5Gui_INCLUDE_DIRS
+   # Redefine some qt4 macros for qt5:
+   macro(qt4_wrap_cpp)
+      qt5_wrap_cpp(${ARGV})
+   endmacro()
+   macro(qt4_wrap_ui)
+      qt5_wrap_ui(${ARGV})
+   endmacro()
+   macro(qt4_add_resources)
+      qt5_add_resources(${ARGV})
+   endmacro()
+   find_package(Qt5 COMPONENTS Core Gui Widgets OpenGL Xml Network PrintSupport REQUIRED)
+   add_definitions(-DQt_VERSION_MAJOR=${Qt5_VERSION_MAJOR})
+  # We likely need only Qt5Core_INCLUDE_DIRS, clean this up later:
+  set(QT_INCLUDE_DIRS ${Qt5Core_INCLUDE_DIRS};${Qt5Gui_INCLUDE_DIRS};${Qt5Widgets_INCLUDE_DIRS};${Qt5OpenGL_INCLUDE_DIRS};${Qt5Xml_INCLUDE_DIRS};${Qt5Network_INCLUDE_DIRS};${Qt5PrintSupport_INCLUDE_DIRS})
+else()
+   find_package(Qt4 COMPONENTS QtCore QtGui QtOpenGL QtXml QtNetwork REQUIRED)
+   add_definitions(-DQt_VERSION_MAJOR=${Qt4_VERSION_MAJOR})
+   set(QT_INCLUDE_DIRS ${QtCore_INCLUDE_DIRS};${QtGui_INCLUDE_DIRS};${QtOpenGL_INCLUDE_DIRS};${QtXml_INCLUDE_DIRS};${QtNetwork_INCLUDE_DIRS})
+endif(HAVE_QT5)
+include_directories(${QT_INCLUDE_DIRS})
 Message(STATUS "QT_INCLUDE_DIRS: ${QT_INCLUDE_DIRS}")
+#######################################################################################
 
-# We include(${QT_USE_FILE}) throughout for Qt4. Qt5 doesn't use it. Check if
-# QT_USE_FILE is empty, and set it to a dummy file if it is.
-set(QT_USE_FILE Dummy)
-
-# Redefine some qt4 macros for qt5:
-macro(qt4_wrap_cpp)
-    qt5_wrap_cpp(${ARGV})
-endmacro()
-
-macro(qt4_wrap_ui)
-  qt5_wrap_ui(${ARGV})
-endmacro()
-
-macro(qt4_add_resources)
-  qt5_add_resources(${ARGV})
-endmacro()
-
-#Message(STATUS "QT_USE_FILE: ${QT_USE_FILE}")
 
 find_package(Boost 1.45.0 REQUIRED)
 find_package(Xerces REQUIRED)
 find_package(XQilla REQUIRED)
-find_package(Qwt5ForQt5 REQUIRED)
+if(HAVE_QT5)
+   set(Qwt5ForQt5_INCLUDE_DIR "/usr/include/qt5/qwt5-qt5" CACHE STRING "DIrectory containing Qwt5ForQt5 headers")
+   find_package(Qwt5ForQt5 REQUIRED)
+else()
+   set(Qwt5ForQt4_INCLUDE_DIR "/usr/include/qwt5-qt4" CACHE STRING "DIrectory containing Qwt5ForQt4 headers")
+   find_package(Qwt5ForQt4 REQUIRED)
+endif()
 find_package(Minizip REQUIRED)
 find_package(YamlCpp REQUIRED)
 find_package(Raptor REQUIRED)
@@ -389,11 +449,14 @@ include_directories(
     ${Opticks_SOURCE_DIR}/Wizard
 )
 include(${QT_USE_FILE})
-include_directories(${QT_INCLUDE_DIRS})
 include_directories(${Boost_INCLUDE_DIRS})
 include_directories(${Xerces_INCLUDE_DIRS})
 include_directories(${XQilla_INCLUDE_DIRS})
-include_directories(${Qwt5ForQt5_INCLUDE_DIRS})
+if(HAVE_QT5)
+   include_directories(${Qwt5ForQt5_INCLUDE_DIRS})
+else()
+   include_directories(${Qwt5ForQt4_INCLUDE_DIRS})
+endif()
 include_directories(${Minizip_INCLUDE_DIRS})
 include_directories(${YamlCpp_INCLUDE_DIRS})
 include_directories(${Raptor_INCLUDE_DIRS})
@@ -405,9 +468,6 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
 endif()
 if(CG_FOUND)
 include_directories(${Cg_INCLUDE_DIRS})
-endif()
-if(OpenJpeg_FOUND)
-include_directories(${OpenJpeg_INCLUDE_DIRS})
 endif()
 
 add_definitions(-DAPPLICATION_XERCES)
@@ -665,7 +725,6 @@ target_link_libraries(Opticks
     ${OPTICKS_EXECUTABLE_LIBS}
     ${Opticks_LIBRARIES}
     ${QT_LIBRARIES}    
-    ${Qwt5ForQt5_LIBRARY}
     ${OPENGL_LIBRARIES}    
     ${ZLIB_LIBRARIES}    
     ${YamlCpp_LIBRARIES}    
@@ -675,7 +734,13 @@ target_link_libraries(Opticks
     ${Raptor_LIBRARIES}
     ${Glew_LIBRARIES}
     ${PTHREADS_LIBRARY}
-)
+    )
+ if(HAVE_QT5)
+    target_link_libraries(Opticks  ${Qwt5ForQt5_LIBRARY})
+ else()
+    target_link_libraries(Opticks  ${Qwt5ForQt4_LIBRARY})
+ endif()
+
 set_target_properties(Opticks PROPERTIES DEBUG_POSTFIX "d")
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
     set_target_properties(Opticks PROPERTIES OUTPUT_NAME "linuxOpticks")

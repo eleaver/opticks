@@ -1,6 +1,7 @@
 set (HEADER_FILES
     Interfaces/DataVariant.h
     Interfaces/AlgorithmPattern.h
+    Interfaces/AnimationFrameSubsetWidget.h
     Interfaces/AppAssert.h
     Interfaces/AppVerify.h
     Interfaces/AttachmentPtr.h
@@ -178,7 +179,7 @@ set (SOURCE_FILES
     xmlreader.cpp
     XmlUtilities.cpp
     xmlwriter.cpp
-) 
+)
 #ImageHandler.cpp
 #MuHttpServer.cpp
 #Interfaces/ImageHandler.h
@@ -256,8 +257,8 @@ if(WIN32)
     find_package(MessageCompiler REQUIRED)
     add_custom_command(
         OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/EventMessages.h ${CMAKE_CURRENT_BINARY_DIR}/EventMessages.rc
-	COMMAND ${MessageCompiler_EXECUTABLE} -h ${CMAKE_CURRENT_BINARY_DIR} -r ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/EventMessages.mc
-	DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/EventMessages.mc
+        COMMAND ${MessageCompiler_EXECUTABLE} -h ${CMAKE_CURRENT_BINARY_DIR} -r ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/EventMessages.mc
+        DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/EventMessages.mc
     )
     include_directories(${CMAKE_CURRENT_BINARY_DIR})
     list(APPEND HEADER_FILES ${CMAKE_CURRENT_BINARY_DIR}/EventMessages.h)
@@ -287,21 +288,21 @@ endif()
 
 if(ehs_FOUND AND pcre_FOUND AND pme_FOUND)
     set (SERVER_MOC_HEADERS
-	Interfaces/ImageHandler.h
-	Interfaces/MuHttpServer.h
+       Interfaces/ImageHandler.h
+       Interfaces/MuHttpServer.h
     )
     set (SERVER_SOURCE_FILES
-	ImageHandler.cpp
-	MuHttpServer.cpp
-    ) 
+       ImageHandler.cpp
+       MuHttpServer.cpp
+    )
     qt4_wrap_cpp(SERVER_MOC_OUTFILES ${SERVER_MOC_HEADERS})
     source_group(moc FILES ${SERVER_MOC_OUTFILES})
     include_directories(${ehs_INCLUDE_DIRS} ${pcre_INCLUDE_DIRS} ${pme_INCLUDE_DIRS})
     add_library(ServerUtilities STATIC ${SERVER_SOURCE_FILES} ${SERVER_MOC_HEADERS} ${SERVER_MOC_OUTFILES})
     set_target_properties(ServerUtilities PROPERTIES OUTPUT_NAME opticks-serverutilities)
     if(NOT MSVC)
-	target_link_libraries(ServerUtilities PlugInLib)
-	target_link_libraries(ServerUtilities PlugInUtilities)
+       target_link_libraries(ServerUtilities PlugInLib)
+       target_link_libraries(ServerUtilities PlugInUtilities)
     endif()
     target_link_libraries(ServerUtilities
         ${ehs_LIBRARIES}
