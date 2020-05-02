@@ -3,7 +3,7 @@
  * Copyright(c) 2009 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -12,13 +12,13 @@
 #include <QtGui/QLabel>
 #include <QtGui/QPushButton>
 #include <QtGui/QStyle>
-#include <QtGui/QTextEdit>
+#include <QTextEdit>
 
 #include "AppVerify.h"
 #include "SuppressibleMsgDlg.h"
 
-SuppressibleMsgDlg::SuppressibleMsgDlg(const std::string& dialogTitle, const std::string& dialogMsg, 
-                         MessageType type, bool checkBoxState, QWidget* pParent) : 
+SuppressibleMsgDlg::SuppressibleMsgDlg(const std::string& dialogTitle, const std::string& dialogMsg,
+                         MessageType type, bool checkBoxState, QWidget* pParent) :
    QDialog(pParent)
 {
    setWindowTitle(QString::fromStdString(dialogTitle));
@@ -33,7 +33,7 @@ SuppressibleMsgDlg::SuppressibleMsgDlg(const std::string& dialogTitle, const std
         pDialogIcon->setPixmap(style()->standardIcon(QStyle::SP_MessageBoxInformation).pixmap(QSize(30, 30)));
         break;
       }
-   
+
    case MESSAGE_WARNING:
       {
          pDialogIcon->setPixmap(style()->standardIcon(QStyle::SP_MessageBoxWarning).pixmap(QSize(30, 30)));

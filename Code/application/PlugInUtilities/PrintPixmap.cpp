@@ -9,7 +9,11 @@
 
 #include <QtGui/QPainter>
 #include <QtGui/QPrintDialog>
+#if HAVE_QT5
+#include <QtPrintSupport/QPrinter>
+#else
 #include <QtGui/QPrinter>
+#endif
 #include <QtGui/QWidget>
 
 #include "PrintPixmap.h"

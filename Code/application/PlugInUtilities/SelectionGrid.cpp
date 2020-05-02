@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -320,7 +320,7 @@ void SelectionGrid::hitTest(const QPoint& ptMouse, int& iRow, int& iColumn)
       for (int j = 0; j < miColumns; j++)
       {
          QRect rcCell = getCellRect(i, j);
-         if (rcCell.contains(ptMouse) == TRUE)
+         if (rcCell.contains(ptMouse) == true)
          {
             iRow = i;
             iColumn = j;

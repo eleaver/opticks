@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -41,8 +41,13 @@
 #include <QtGui/QPushButton>
 #include <QtGui/QRadioButton>
 #include <QtGui/QStackedWidget>
-#include <QtGui/QTextEdit>
 #include <QtGui/QValidator>
+#if HAVE_QT5
+#include <QtPrintSupport/QPrinter>
+#else
+#include <QtGui/QPrinter>
+#endif
+#include <QtGui/QTextEdit>
 
 #include <limits>
 #include <string>
@@ -779,7 +784,7 @@ void DataVariantEditor::edit()
    if (file.open(QIODevice::WriteOnly | QIODevice::Text) == true)
    {
       disconnect(&mTempFileWatcher, SIGNAL(fileChanged(const QString&)), this, SLOT(tempFileChanged()));
-      file.write(mpValueTextEdit->toPlainText().toAscii());
+      file.write(mpValueTextEdit->toPlainText().toLatin1());
       VERIFYNR(connect(&mTempFileWatcher, SIGNAL(fileChanged(const QString&)), this, SLOT(tempFileChanged())));
       file.close();
    }

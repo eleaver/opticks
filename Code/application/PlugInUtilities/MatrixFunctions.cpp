@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -379,6 +379,7 @@ bool MatrixFunctions::solveLinearEquation(double* pResult, const double** pLhs, 
 #else
 // ossim 1.9.0 doesn't have an explicit SVDSolve() function, so we'll use Eigen's
 //
+#include <eigen3/Eigen/Eigen>
 #include <eigen3/Eigen/SVD>
 
 // Type is float or double
