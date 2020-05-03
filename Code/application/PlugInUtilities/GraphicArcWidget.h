@@ -10,8 +10,8 @@
 #ifndef GRAPHICARCWIDGET_H
 #define GRAPHICARCWIDGET_H
 
-#include <QtGui/QDoubleSpinBox>
-#include <QtGui/QWidget>
+#include <QDoubleSpinBox>
+#include <QWidget>
 
 #include "TypesFile.h"
 

@@ -10,11 +10,11 @@
 #ifndef WIDGETIMAGEOBJECTIMP_H
 #define WIDGETIMAGEOBJECTIMP_H
 
-#include <QtGui/QImage>
+#include <QImage>
 #if HAVE_QT5
 #include <QtWidgets/QWidget>
 #else
-#include <QtGui/QWidget>
+#include <QWidget>
 #endif
 
 #include "ImageObjectImp.h"

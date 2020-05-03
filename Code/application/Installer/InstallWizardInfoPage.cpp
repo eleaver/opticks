@@ -9,10 +9,10 @@
 
 #include <QtCore/QEvent>
 #include <QtCore/QString>
-#include <QtGui/QLabel>
-#include <QtGui/QListWidget>
-#include <QtGui/QListWidgetItem>
-#include <QtGui/QVBoxLayout>
+#include <QLabel>
+#include <QListWidget>
+#include <QListWidgetItem>
+#include <QVBoxLayout>
 
 #include "Aeb.h"
 #include "ExtensionListDelegate.h"

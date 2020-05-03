@@ -12,10 +12,10 @@
 #include "Layer.h"
 #include "OptionsLayer.h"
 
-#include <QtGui/QCheckBox>
-#include <QtGui/QGridLayout>
-#include <QtGui/QStyleOptionButton>
-#include <QtGui/QVBoxLayout>
+#include <QCheckBox>
+#include <QGridLayout>
+#include <QStyleOptionButton>
+#include <QVBoxLayout>
 
 OptionsLayer::OptionsLayer() :
    QWidget(NULL)

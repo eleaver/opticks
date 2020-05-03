@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -29,7 +29,7 @@ std::string AebIo::sOpticksPrefix = "urn:2008:03:opticks-aebl-extension-ns#";
 
 const unsigned int COPY_BUF_SIZE = 1 * 1024 * 1024; //1 MB
 
-AebEntry::AebEntry(QString path, size_t size) : 
+AebEntry::AebEntry(QString path, size_t size) :
    mFilePath(path), mFileSize(size)
 {
 }
@@ -146,7 +146,7 @@ bool AebIo::fromFile(const std::string& fname, std::string& errMsg)
    // name
    GET_SINGLE_OBJ(mObj.mName, sAeblTopSubject, sAeblPrefix+"name", "Invalid AEB name.");
    V(!mObj.mName.empty(), "Invalid AEB name.");
-   
+
    // targetApplication
    std::vector<RdfObject*> targetApps = pRdf->getSubject(sAeblTopSubject)->getObjectsForPredicate(sAeblPrefix+"targetApplication");
    for (std::vector<RdfObject*>::const_iterator targetApp = targetApps.begin(); targetApp != targetApps.end(); ++targetApp)
@@ -643,7 +643,7 @@ const AebEntry* AebIo::getEntry(const QUrl& aebUrl) const
    }
    // remove the initial / since an aeb: URL is really relative to the zip file
    QString upath = aebUrl.path().remove(0, 1);
-   if (unzLocateFile(*mZipFile, upath.toAscii(), 0) != UNZ_OK)
+   if (unzLocateFile(*mZipFile, upath.toLatin1(), 0) != UNZ_OK)
    {
       return NULL;
    }
@@ -820,7 +820,7 @@ bool AebIo::compareFileInAeb(const AebEntry* pSource, const std::string& destina
 QByteArray AebIo::getBytesFromAeb(const QString& url, bool& wasValidPath) const
 {
    wasValidPath = false;
-   QByteArray bytes;   
+   QByteArray bytes;
    QUrl u(url);
    if (!u.isValid() || u.scheme() != "aeb")
    {
@@ -854,7 +854,7 @@ QByteArray AebIo::getBytesFromAeb(const QString& url, bool& wasValidPath) const
       }
       // remove the initial / since an aeb: URL is really relative to the zip file
       QString upath = u.path().remove(0, 1);
-      if (unzLocateFile(*mZipFile, upath.toAscii(), 0) != UNZ_OK)
+      if (unzLocateFile(*mZipFile, upath.toLatin1(), 0) != UNZ_OK)
       {
          return bytes;
       }

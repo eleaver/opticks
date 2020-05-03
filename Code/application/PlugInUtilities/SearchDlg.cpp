@@ -9,13 +9,13 @@
 
 #include <QtCore/QDir>
 #include <QtCore/QRegExp>
-#include <QtGui/QFileDialog>
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QMessageBox>
-#include <QtGui/QPixmap>
-#include <QtGui/QPushButton>
-#include <QtGui/QTabWidget>
+#include <QFileDialog>
+#include <QLabel>
+#include <QLayout>
+#include <QMessageBox>
+#include <QPixmap>
+#include <QPushButton>
+#include <QTabWidget>
 #include <QPrinter>
 
 #include "SearchDlg.h"

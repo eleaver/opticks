@@ -10,9 +10,9 @@
 #if HAVE_QT5
 #include <QtWidgets/QApplication>
 #else
-#include <QtGui/QApplication>
+#include <QApplication>
 #endif
-#include <QtGui/QFont>
+#include <QFont>
 
 #include "AppConfig.h"
 #include "AppVerify.h"

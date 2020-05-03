@@ -8,9 +8,9 @@
  */
 
 #include <QtCore/QStringList>
-#include <QtGui/QHeaderView>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QWidget>
+#include <QHeaderView>
+#include <QVBoxLayout>
+#include <QWidget>
 
 #include "ConfigurationSettings.h"
 #include "CustomTreeWidget.h"

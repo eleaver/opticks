@@ -88,7 +88,7 @@
 #include <QtCore/QString>
 #include <QtCore/QStringList>
 #include <QtCore/QUuid>
-#include <QtGui/QWidget>
+#include <QWidget>
 
 
 XERCES_CPP_NAMESPACE_USE

@@ -20,10 +20,10 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QTableWidget>
 #else
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QTableWidget>
+#include <QVBoxLayout>
+#include <QHeaderView>
+#include <QLabel>
+#include <QTableWidget>
 #endif
 
 StatisticsWidget::StatisticsWidget(HistogramPlotImp* pPlot, QWidget* pParent) :

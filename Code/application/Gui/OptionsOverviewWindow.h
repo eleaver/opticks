@@ -10,7 +10,7 @@
 #ifndef OPTIONSOVERVIEWWINDOW_H
 #define OPTIONSOVERVIEWWINDOW_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 #include "AppVersion.h"
 
 class CustomColorButton;

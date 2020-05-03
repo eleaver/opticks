@@ -11,7 +11,7 @@
 #define PLOTOBJECTIMP_H
 
 #include <QtCore/QObject>
-#include <QtGui/QPixmap>
+#include <QPixmap>
 
 #include "LocationType.h"
 #include "SerializableImp.h"

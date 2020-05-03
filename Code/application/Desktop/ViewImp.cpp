@@ -44,14 +44,14 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #else
-#include <QtGui/QApplication>
-#include <QtGui/QDialog>
-#include <QtGui/QDialogButtonBox>
+#include <QApplication>
+#include <QDialog>
+#include <QDialogButtonBox>
 #endif
-#include <QtGui/QClipboard>
-#include <QtGui/QContextMenuEvent>
-#include <QtGui/QCursor>
-#include <QtGui/QFontMetrics>
+#include <QClipboard>
+#include <QContextMenuEvent>
+#include <QCursor>
+#include <QFontMetrics>
 #include <QtOpenGL/QGLFramebufferObject>
 
 #include <boost/bind.hpp>

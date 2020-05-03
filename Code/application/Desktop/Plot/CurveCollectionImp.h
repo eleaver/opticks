@@ -10,7 +10,7 @@
 #ifndef CURVECOLLECTIONIMP_H
 #define CURVECOLLECTIONIMP_H
 
-#include <QtGui/QColor>
+#include <QColor>
 
 #include "PlotObjectImp.h"
 #include "TypesFile.h"

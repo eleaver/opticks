@@ -10,7 +10,7 @@
 #ifndef OPTIONSSAMPLE_H
 #define OPTIONSSAMPLE_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 #include "ConfigurationSettings.h"
 

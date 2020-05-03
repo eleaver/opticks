@@ -16,8 +16,8 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QLineEdit>
 #else
-#include <QtGui/QDialog>
-#include <QtGui/QLineEdit>
+#include <QDialog>
+#include <QLineEdit>
 #endif
 #include "LocationType.h"
 

@@ -9,17 +9,17 @@
 
 #include <QtCore/QFileInfo>
 #include <QtCore/QRegExp>
-#include <QtGui/QApplication>
-#include <QtGui/QColorDialog>
-#include <QtGui/QCompleter>
-#include <QtGui/QDirModel>
-#include <QtGui/QFileDialog>
-#include <QtGui/QHeaderView>
-#include <QtGui/QImage>
-#include <QtGui/QLayout>
-#include <QtGui/QMouseEvent>
-#include <QtGui/QPainter>
-#include <QtGui/QPixmap>
+#include <QApplication>
+#include <QColorDialog>
+#include <QCompleter>
+#include <QDirModel>
+#include <QFileDialog>
+#include <QHeaderView>
+#include <QImage>
+#include <QLayout>
+#include <QMouseEvent>
+#include <QPainter>
+#include <QPixmap>
 
 #include "AppVerify.h"
 #include "CustomTreeWidget.h"

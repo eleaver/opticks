@@ -14,9 +14,9 @@
 #if HAVE_QT5
 #include <QtWidgets/QAction>
 #else
-#include <QtGui/QAction>
+#include <QAction>
 #endif
-#include <QtGui/QCursor>
+#include <QCursor>
 #include "MouseMode.h"
 
 #include <string>

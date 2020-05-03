@@ -8,8 +8,8 @@
  */
 
 #include <QtCore/QEvent>
-#include <QtGui/QColorDialog>
-#include <QtGui/QWidgetAction>
+#include <QColorDialog>
+#include <QWidgetAction>
 
 #include "ColorMenu.h"
 #include "ColorGrid.h"

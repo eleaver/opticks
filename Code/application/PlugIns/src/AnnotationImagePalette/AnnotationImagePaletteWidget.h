@@ -14,8 +14,8 @@
 #include "DesktopServices.h"
 #include <boost/any.hpp>
 #include <QtCore/QString>
-#include <QtGui/QDirModel>
-#include <QtGui/QToolBox>
+#include <QDirModel>
+#include <QToolBox>
 #include <set>
 #include <string>
 

@@ -10,7 +10,7 @@
 #ifndef LABELEDSECTION_H
 #define LABELEDSECTION_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 #include <QtCore/QString>
 
 class QLabel;

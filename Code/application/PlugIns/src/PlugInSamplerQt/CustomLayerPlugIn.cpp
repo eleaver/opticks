@@ -23,7 +23,7 @@
 #include "xmlreader.h"
 #include "xmlwriter.h"
 
-#include <QtGui/QCursor>
+#include <QCursor>
 
 #include <vector>
 XERCES_CPP_NAMESPACE_USE

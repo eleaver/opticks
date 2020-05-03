@@ -12,10 +12,10 @@
 #ifndef WINDOWSELECTIONDLG_H
 #define WINDOWSELECTIONDLG_H
 
-#include <QtGui/QCheckBox>
-#include <QtGui/QDialog>
-#include <QtGui/QListWidget>
-#include <QtGui/QRadioButton>
+#include <QCheckBox>
+#include <QDialog>
+#include <QListWidget>
+#include <QRadioButton>
 
 #include "TypesFile.h"
 

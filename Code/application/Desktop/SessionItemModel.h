@@ -11,8 +11,8 @@
 #define SESSIONITEMMODEL_H
 
 #include <QtCore/QAbstractItemModel>
-#include <QtGui/QColor>
-#include <QtGui/QFont>
+#include <QColor>
+#include <QFont>
 
 #include <boost/any.hpp>
 #include <map>

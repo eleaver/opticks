@@ -13,7 +13,7 @@
 #if HAVE_QT5
 #include <QtWidgets/QWidget>
 #else
-#include <QtGui/QWidget>
+#include <QWidget>
 #endif
 #include <qwt_scale_engine.h>
 #include <qwt_scale_draw.h>

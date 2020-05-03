@@ -7,8 +7,8 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QFontMetrics>
-#include <QtGui/QPainter>
+#include <QFontMetrics>
+#include <QPainter>
 
 #include "ElidedLabel.h"
 

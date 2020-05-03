@@ -26,10 +26,10 @@
 #include <QtCore/QPoint>
 #include <QtCore/QString>
 #include <QtCore/QTimer>
-#include <QtGui/QColor>
-#include <QtGui/QFont>
-#include <QtGui/QImage>
-#include <QtGui/QPolygon>
+#include <QColor>
+#include <QFont>
+#include <QImage>
+#include <QPolygon>
 #include <QtOpenGL/QGLContext>
 #include <QtOpenGL/QGLWidget>
 

@@ -9,8 +9,8 @@
 
 #include <math.h>
 
-#include <QtGui/QColor>
-#include <QtGui/QPainter>
+#include <QColor>
+#include <QPainter>
 
 #include "Histogram.h"
 #include "HistogramImp.h"

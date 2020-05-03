@@ -9,15 +9,15 @@
 
 #include <QtCore/QFileInfo>
 #include <QtCore/QRegExp>
-#include <QtGui/QCloseEvent>
-#include <QtGui/QFileDialog>
-#include <QtGui/QInputDialog>
-#include <QtGui/QLayout>
-#include <QtGui/QMenu>
-#include <QtGui/QMenuBar>
-#include <QtGui/QMessageBox>
-#include <QtGui/QPixmap>
-#include <QtGui/QPushButton>
+#include <QCloseEvent>
+#include <QFileDialog>
+#include <QInputDialog>
+#include <QLayout>
+#include <QMenu>
+#include <QMenuBar>
+#include <QMessageBox>
+#include <QPixmap>
+#include <QPushButton>
 
 #include "AppConfig.h"
 #include "AppVerify.h"

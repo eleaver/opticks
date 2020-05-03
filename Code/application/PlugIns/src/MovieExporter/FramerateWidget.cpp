@@ -10,10 +10,10 @@
 #include "AppVerify.h"
 #include "FramerateWidget.h"
 
-#include <QtGui/QComboBox>
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QSpinBox>
+#include <QComboBox>
+#include <QLabel>
+#include <QLayout>
+#include <QSpinBox>
 
 FramerateWidget::FramerateWidget(QWidget* pParent) :
    QWidget(pParent)

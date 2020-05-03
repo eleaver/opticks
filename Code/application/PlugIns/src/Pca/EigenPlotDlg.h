@@ -10,8 +10,8 @@
 #ifndef EIGENPLOTDLG_H
 #define EIGENPLOTDLG_H
 
-#include <QtGui/QDialog>
-#include <QtGui/QSpinBox>
+#include <QDialog>
+#include <QSpinBox>
 
 #include <qwt_plot.h>
 #include <qwt_plot_curve.h>

@@ -10,8 +10,8 @@
 #ifndef PROPERTIESSCRIPTINGWINDOW_H
 #define PROPERTIESSCRIPTINGWINDOW_H
 
-#include <QtGui/QFont>
-#include <QtGui/QSpinBox>
+#include <QFont>
+#include <QSpinBox>
 
 #include "LabeledSectionGroup.h"
 

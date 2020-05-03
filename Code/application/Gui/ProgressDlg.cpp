@@ -7,11 +7,11 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QApplication>
-#include <QtGui/QCloseEvent>
-#include <QtGui/QMovie>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QWidget>
+#include <QApplication>
+#include <QCloseEvent>
+#include <QMovie>
+#include <QVBoxLayout>
+#include <QWidget>
 
 #include "AppAssert.h"
 #include "Executable.h"

@@ -10,10 +10,10 @@
 #ifndef PROPERTIESPLUGINDESCRIPTOR_H
 #define PROPERTIESPLUGINDESCRIPTOR_H
 
-#include <QtGui/QLabel>
-#include <QtGui/QTextEdit>
-#include <QtGui/QTreeWidget>
-#include <QtGui/QWidget>
+#include <QLabel>
+#include <QTextEdit>
+#include <QTreeWidget>
+#include <QWidget>
 
 #include "LabeledSectionGroup.h"
 

@@ -11,10 +11,10 @@
 #define DOCKWINDOWWIDGET_H
 
 #include <boost/any.hpp>
-#include <QtGui/QCheckBox>
-#include <QtGui/QListWidget>
-#include <QtGui/QTreeWidget>
-#include <QtGui/QWidget>
+#include <QCheckBox>
+#include <QListWidget>
+#include <QTreeWidget>
+#include <QWidget>
 
 #include "DesktopServices.h"
 

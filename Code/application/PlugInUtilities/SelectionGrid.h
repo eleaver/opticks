@@ -15,8 +15,8 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QWidget>
 #else
-#include <QtGui/QLabel>
-#include <QtGui/QWidget>
+#include <QLabel>
+#include <QWidget>
 #endif
 
 class SelectionGrid : public QWidget

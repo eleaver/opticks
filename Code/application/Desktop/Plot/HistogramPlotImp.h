@@ -16,10 +16,10 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QWidget>
 #else
-#include <QtGui/QAction>
-#include <QtGui/QListWidget>
-#include <QtGui/QMenu>
-#include <QtGui/QWidget>
+#include <QAction>
+#include <QListWidget>
+#include <QMenu>
+#include <QWidget>
 #endif
 
 #include "AttachmentPtr.h"

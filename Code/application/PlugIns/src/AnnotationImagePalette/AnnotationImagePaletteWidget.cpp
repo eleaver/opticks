@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -19,15 +19,16 @@
 #include "Undo.h"
 
 #include <QtCore/QUrl>
-#include <QtGui/QAction>
-#include <QtGui/QDirModel>
-#include <QtGui/QDragEnterEvent>
-#include <QtGui/QDropEvent>
-#include <QtGui/QFileIconProvider>
-#include <QtGui/QIcon>
-#include <QtGui/QImageReader>
-#include <QtGui/QListView>
-#include <QtGui/QMessageBox>
+#include <QAction>
+#include <QDirModel>
+#include <QDragEnterEvent>
+#include <QDropEvent>
+#include <QFileIconProvider>
+#include <QIcon>
+#include <QImageReader>
+#include <QListView>
+#include <QMessageBox>
+#include <QMimeData>
 
 namespace
 {
@@ -69,7 +70,7 @@ QMimeData* PaletteModel::mimeData(const QModelIndexList& indexes) const
       if (fileText.isEmpty() == false)
       {
          QMimeData* pData = new QMimeData();
-         pData->setData(dndMimeType, fileText.toAscii());
+         pData->setData(dndMimeType, fileText.toLatin1());
 
          return pData;
       }
@@ -273,7 +274,7 @@ void AnnotationImagePaletteWidget::windowDropEvent(SpatialDataView* pView, QDrop
 
    GraphicObject* pObject = pLayer->addObject(FILE_IMAGE_OBJECT);
    VERIFYNRV(pObject);
-   if (!pObject->setImageFile(filename.toAscii()))
+   if (!pObject->setImageFile(filename.toLatin1()))
    {
       pLayer->removeObject(pObject, true);
       if (layerCreated == true)

@@ -25,17 +25,17 @@
 
 #include <QtCore/QString>
 #include <QtCore/QStringList>
-#include <QtGui/QAction>
-#include <QtGui/QCheckBox>
-#include <QtGui/QDoubleSpinBox>
-#include <QtGui/QDoubleValidator>
-#include <QtGui/QGridLayout>
-#include <QtGui/QIntValidator>
-#include <QtGui/QLabel>
-#include <QtGui/QLineEdit>
-#include <QtGui/QMenu>
-#include <QtGui/QPushButton>
-#include <QtGui/QVBoxLayout>
+#include <QAction>
+#include <QCheckBox>
+#include <QDoubleSpinBox>
+#include <QDoubleValidator>
+#include <QGridLayout>
+#include <QIntValidator>
+#include <QLabel>
+#include <QLineEdit>
+#include <QMenu>
+#include <QPushButton>
+#include <QVBoxLayout>
 
 #include <limits>
 #include <memory>

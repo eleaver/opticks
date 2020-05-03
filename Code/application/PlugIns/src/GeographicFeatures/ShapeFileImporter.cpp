@@ -7,8 +7,8 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QFileDialog>
-#include <QtGui/QMessageBox>
+#include <QFileDialog>
+#include <QMessageBox>
 
 #include "Any.h"
 #include "AnnotationElement.h"
@@ -48,7 +48,7 @@
 #include <vector>
 #include <cctype>
 
-#include <QtGui/QLayout>
+#include <QLayout>
 
 using namespace std;
 

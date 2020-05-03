@@ -15,8 +15,8 @@
 
 #include <QtCore/QMap>
 #include <QtCore/QString>
-#include <QtGui/QDialog>
-#include <QtGui/QFrame>
+#include <QDialog>
+#include <QFrame>
 
 class Any;
 class AspamViewer;

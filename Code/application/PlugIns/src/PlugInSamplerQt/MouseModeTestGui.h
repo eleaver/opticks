@@ -10,9 +10,9 @@
 #ifndef MOUSEMODETESTGUI_H
 #define MOUSEMODETESTGUI_H
 
-#include <QtGui/QAction>
-#include <QtGui/QDialog>
-#include <QtGui/QRadioButton>
+#include <QAction>
+#include <QDialog>
+#include <QRadioButton>
 
 #include "AttachmentPtr.h"
 #include "SpatialDataView.h"

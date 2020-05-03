@@ -7,8 +7,8 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QPainter>
-#include <QtGui/QPolygon>
+#include <QPainter>
+#include <QPolygon>
 
 #include "AppConfig.h"
 #include "AppVerify.h"

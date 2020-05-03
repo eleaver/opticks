@@ -15,8 +15,8 @@
 #include "MenuBar.h"
 #include "PlugInRegistration.h"
 
-#include <QtGui/QAction>
-#include <QtGui/QMenu>
+#include <QAction>
+#include <QMenu>
 
 REGISTER_PLUGIN_BASIC(OpticksAnnotationImagePalette, AnnotationImagePalette);
 

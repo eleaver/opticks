@@ -12,7 +12,7 @@
 
 #include "TypesFile.h"
 
-#include <QtGui/QComboBox>
+#include <QComboBox>
 
 /**
  *  A widget to choose a geocoordinate type from a non-editable combo box.

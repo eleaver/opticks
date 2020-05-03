@@ -11,8 +11,8 @@
 #define WIZARDGRAPHICSITEM_H
 
 #include <QtCore/QMap>
-#include <QtGui/QGraphicsItemGroup>
-#include <QtGui/QToolButton>
+#include <QGraphicsItemGroup>
+#include <QToolButton>
 
 #include "AttachmentPtr.h"
 #include "WizardItemImp.h"

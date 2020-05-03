@@ -40,7 +40,7 @@
 #if HAVE_QT5
 #include <QtWidgets/QMessageBox>
 #else
-#include <QtGui/QMessageBox>
+#include <QMessageBox>
 #endif
 
 using namespace std;

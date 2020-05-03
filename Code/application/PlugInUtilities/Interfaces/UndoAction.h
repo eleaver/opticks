@@ -14,7 +14,7 @@
 #if HAVE_QT5
 #include <QtWidgets/QUndoCommand>
 #else
-#include <QtGui/QUndoCommand>
+#include <QUndoCommand>
 #endif
 
 class SessionItem;

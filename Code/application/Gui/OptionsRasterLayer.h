@@ -10,7 +10,7 @@
 #ifndef OPTIONSRASTERLAYER_H
 #define OPTIONSRASTERLAYER_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 #include "AppVersion.h"
 

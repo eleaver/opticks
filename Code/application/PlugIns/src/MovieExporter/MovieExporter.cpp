@@ -30,8 +30,8 @@
 #include "ViewResolutionWidget.h"
 
 #include <QtCore/QString>
-#include <QtGui/QImage>
-#include <QtGui/QPainter>
+#include <QImage>
+#include <QPainter>
 
 #include <sstream>
 #include <string>

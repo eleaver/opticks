@@ -12,11 +12,11 @@
 #include "LabeledSection.h"
 #include "SessionManager.h"
 
-#include <QtGui/QCheckBox>
-#include <QtGui/QComboBox>
-#include <QtGui/QLabel>
-#include <QtGui/QSpinBox>
-#include <QtGui/QVBoxLayout>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QLabel>
+#include <QSpinBox>
+#include <QVBoxLayout>
 
 using namespace std;
 

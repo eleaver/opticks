@@ -18,12 +18,12 @@
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QWidget>
 #else
-#include <QtGui/QCheckBox>
-#include <QtGui/QLabel>
-#include <QtGui/QListWidget>
-#include <QtGui/QListWidgetItem>
-#include <QtGui/QStackedWidget>
-#include <QtGui/QWidget>
+#include <QCheckBox>
+#include <QLabel>
+#include <QListWidget>
+#include <QListWidgetItem>
+#include <QStackedWidget>
+#include <QWidget>
 #endif
 #include "Modifier.h"
 

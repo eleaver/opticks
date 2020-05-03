@@ -10,7 +10,7 @@
 #ifndef PRODUCTVIEWIMP_H
 #define PRODUCTVIEWIMP_H
 
-#include <QtGui/QImage>
+#include <QImage>
 
 #include "AttachmentPtr.h"
 #include "ColorType.h"

@@ -10,10 +10,10 @@
 #ifndef OPTIONSLASIMPORTER_H__
 #define OPTIONSLASIMPORTER_H__
 
-#include <QtGui/QComboBox>
-#include <QtGui/QWidget>
-#include <QtGui/QLineEdit>
-#include <QtGui/QLabel>
+#include <QComboBox>
+#include <QWidget>
+#include <QLineEdit>
+#include <QLabel>
 
 class OptionLasImporter : public QObject
 {

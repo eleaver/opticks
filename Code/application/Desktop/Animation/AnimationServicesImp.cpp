@@ -20,15 +20,15 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMessageBox>
 #else
-#include <QtGui/QAction>
-#include <QtGui/QComboBox>
-#include <QtGui/QDialog>
-#include <QtGui/QDialogButtonBox>
-#include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QLineEdit>
-#include <QtGui/QMenu>
-#include <QtGui/QMessageBox>
+#include <QAction>
+#include <QComboBox>
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <QGridLayout>
+#include <QLabel>
+#include <QLineEdit>
+#include <QMenu>
+#include <QMessageBox>
 #endif
 #include "AnimationControllerAdapter.h"
 #include "AnimationFrame.h"

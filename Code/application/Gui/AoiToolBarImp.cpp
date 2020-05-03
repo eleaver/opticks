@@ -8,9 +8,9 @@
  */
 
 #include <QtCore/QEvent>
-#include <QtGui/QActionGroup>
-#include <QtGui/QToolButton>
-#include <QtGui/QWidgetAction>
+#include <QActionGroup>
+#include <QToolButton>
+#include <QWidgetAction>
 
 #include "AoiElement.h"
 #include "AoiMergeDlg.h"

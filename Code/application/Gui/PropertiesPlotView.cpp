@@ -7,11 +7,11 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QComboBox>
-#include <QtGui/QWidget>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QLayout>
+#include <QComboBox>
+#include <QWidget>
 
 #include "AppVersion.h"
 #include "CartesianGridlines.h"

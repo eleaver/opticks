@@ -8,10 +8,10 @@
  */
 
 #include <QtCore/QCoreApplication>
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QProgressBar>
-#include <QtGui/QPushButton>
+#include <QLabel>
+#include <QLayout>
+#include <QProgressBar>
+#include <QPushButton>
 
 #include "BackgroundPluginWindow.h"
 #include "Executable.h"

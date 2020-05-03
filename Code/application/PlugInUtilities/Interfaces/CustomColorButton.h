@@ -12,8 +12,8 @@
 
 #include "ColorType.h"
 
-#include <QtGui/QColor>
-#include <QtGui/QToolButton>
+#include <QColor>
+#include <QToolButton>
 
 class ColorMenu;
 

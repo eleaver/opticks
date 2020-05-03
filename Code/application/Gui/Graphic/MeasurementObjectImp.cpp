@@ -7,7 +7,7 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QFontMetrics>
+#include <QFontMetrics>
 
 #include "AppConfig.h"
 #include "DrawUtil.h"

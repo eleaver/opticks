@@ -14,8 +14,8 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QRadioButton>
 #else
-#include <QtGui/QDialog>
-#include <QtGui/QRadioButton>
+#include <QDialog>
+#include <QRadioButton>
 #endif
 
 #include "TypesFile.h"

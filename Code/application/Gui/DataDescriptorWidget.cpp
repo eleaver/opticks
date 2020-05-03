@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -30,15 +30,15 @@
 #include "Units.h"
 
 #include <QtCore/QRegExp>
-#include <QtGui/QApplication>
-#include <QtGui/QComboBox>
-#include <QtGui/QFocusEvent>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLayout>
-#include <QtGui/QMenu>
-#include <QtGui/QMessageBox>
-#include <QtGui/QPushButton>
-#include <QtGui/QRegExpValidator>
+#include <QApplication>
+#include <QComboBox>
+#include <QFocusEvent>
+#include <QHeaderView>
+#include <QLayout>
+#include <QMenu>
+#include <QMessageBox>
+#include <QPushButton>
+#include <QRegExpValidator>
 
 #include <algorithm>
 #include <limits>
@@ -77,7 +77,11 @@ DataDescriptorWidget::DataDescriptorWidget(QWidget* pParent) :
    if (pHeader != NULL)
    {
       pHeader->setSortIndicatorShown(false);
+#if HAVE_QT5
+      pHeader->setSectionsMovable(false);
+#else
       pHeader->setMovable(false);
+#endif
       pHeader->setStretchLastSection(true);
       pHeader->setDefaultAlignment(Qt::AlignLeft | Qt::AlignVCenter);
       pHeader->resizeSection(0, 150);

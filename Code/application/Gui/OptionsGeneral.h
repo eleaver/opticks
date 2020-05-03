@@ -10,7 +10,7 @@
 #ifndef OPTIONSGENERAL_H
 #define OPTIONSGENERAL_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 #include "AppVersion.h"
 

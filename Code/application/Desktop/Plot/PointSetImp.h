@@ -10,8 +10,8 @@
 #ifndef POINTSETIMP_H
 #define POINTSETIMP_H
 
-#include <QtGui/QColor>
-#include <QtGui/QPixmap>
+#include <QColor>
+#include <QPixmap>
 
 #include "ColorType.h"
 #include "PlotObjectImp.h"

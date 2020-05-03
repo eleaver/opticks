@@ -8,10 +8,10 @@
  */
 
 #include <QtCore/QString>
-#include <QtGui/QLabel>
-#include <QtGui/QRadioButton>
-#include <QtGui/QTextEdit>
-#include <QtGui/QVBoxLayout>
+#include <QLabel>
+#include <QRadioButton>
+#include <QTextEdit>
+#include <QVBoxLayout>
 
 #include "Aeb.h"
 #include "AppVerify.h"

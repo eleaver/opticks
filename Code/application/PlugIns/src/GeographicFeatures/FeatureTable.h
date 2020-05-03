@@ -10,7 +10,7 @@
 #ifndef FEATURETABLE_H
 #define FEATURETABLE_H
 
-#include <QtGui/QTableView>
+#include <QTableView>
 
 #include <boost/any.hpp>
 

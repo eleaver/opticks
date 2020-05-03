@@ -19,13 +19,13 @@
 #include "TypesFile.h"
 #include "UtilityServices.h"
 
-#include <QtGui/QCheckBox>
-#include <QtGui/QComboBox>
-#include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QRadioButton>
-#include <QtGui/QSpinBox>
-#include <QtGui/QVBoxLayout>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QGridLayout>
+#include <QLabel>
+#include <QRadioButton>
+#include <QSpinBox>
+#include <QVBoxLayout>
 
 #include <string>
 #include <vector>

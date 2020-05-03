@@ -13,7 +13,7 @@
 #if HAVE_QT5
 #include <QtCore/QSortFilterProxyModel>
 #else
-#include <QtGui/QSortFilterProxyModel>
+#include <QSortFilterProxyModel>
 #endif
 
 #include "SessionItemModel.h"

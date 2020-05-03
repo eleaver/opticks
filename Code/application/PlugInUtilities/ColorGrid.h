@@ -10,7 +10,7 @@
 #ifndef COLORGRID_H
 #define COLORGRID_H
 
-#include <QtGui/QColor>
+#include <QColor>
 
 #include "SelectionGrid.h"
 

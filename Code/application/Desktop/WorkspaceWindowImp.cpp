@@ -7,14 +7,14 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QIcon>
-#include <QtGui/QCloseEvent>
+#include <QIcon>
+#include <QCloseEvent>
 #if HAVE_QT5
 #include <QtWidgets/QMdiArea>
 #include <QtWidgets/QMessageBox>
 #else
-#include <QtGui/QMdiArea>
-#include <QtGui/QMessageBox>
+#include <QMdiArea>
+#include <QMessageBox>
 #endif
 
 #include "ApplicationWindow.h"

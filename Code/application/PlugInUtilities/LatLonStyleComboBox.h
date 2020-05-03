@@ -12,7 +12,7 @@
 
 #include "TypesFile.h"
 
-#include <QtGui/QComboBox>
+#include <QComboBox>
 
 class LatLonStyleComboBox : public QComboBox
 {

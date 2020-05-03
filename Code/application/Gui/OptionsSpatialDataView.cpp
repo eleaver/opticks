@@ -17,14 +17,14 @@
 #include "SpatialDataView.h"
 #include "View.h"
 
-#include <QtGui/QCheckBox>
-#include <QtGui/QComboBox>
-#include <QtGui/QDoubleSpinBox>
-#include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QSpinBox>
-#include <QtGui/QStyleOptionButton>
-#include <QtGui/QVBoxLayout>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QDoubleSpinBox>
+#include <QGridLayout>
+#include <QLabel>
+#include <QSpinBox>
+#include <QStyleOptionButton>
+#include <QVBoxLayout>
 
 #include <limits>
 #include <string>

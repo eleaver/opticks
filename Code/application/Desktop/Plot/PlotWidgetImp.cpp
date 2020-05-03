@@ -7,24 +7,24 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QBitmap>
-#include <QtGui/QImage>
+#include <QBitmap>
+#include <QImage>
 #if HAVE_QT5
 #include <QtWidgets/QLayout>
 #include <QtWidgets/QMenu>
-#include <QtGui/QMouseEvent>
-#include <QtGui/QPainter>
-#include <QtGui/QPixmap>
+#include <QMouseEvent>
+#include <QPainter>
+#include <QPixmap>
 #include <QtWidgets/QSplitter>
 #include <QtWidgets/QToolBar>
 #else
-#include <QtGui/QLayout>
-#include <QtGui/QMenu>
-#include <QtGui/QMouseEvent>
-#include <QtGui/QPainter>
-#include <QtGui/QPixmap>
-#include <QtGui/QSplitter>
-#include <QtGui/QToolBar>
+#include <QLayout>
+#include <QMenu>
+#include <QMouseEvent>
+#include <QPainter>
+#include <QPixmap>
+#include <QSplitter>
+#include <QToolBar>
 #endif
 
 #include "AppAssert.h"

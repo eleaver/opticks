@@ -10,7 +10,7 @@
 #ifndef BITRATEWIDGET_H
 #define BITRATEWIDGET_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 class QLabel;
 class QSlider;

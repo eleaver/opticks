@@ -18,7 +18,7 @@
 #include <boost/any.hpp>
 #include <string>
 
-#include <QtGui/QCursor>
+#include <QCursor>
 
 class CustomLayerImp : public LayerImp
 {

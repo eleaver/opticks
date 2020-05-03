@@ -33,7 +33,7 @@
 #include "View.h"
 #include "ViewWindow.h"
 
-#include <QtGui/QWidget>
+#include <QWidget>
 #include <float.h>
 #include <string>
 #include <vector>

@@ -7,10 +7,10 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QCheckBox>
-#include <QtGui/QLabel>
-#include <QtGui/QGridLayout>
-#include <QtGui/QSpinBox>
+#include <QCheckBox>
+#include <QLabel>
+#include <QGridLayout>
+#include <QSpinBox>
 
 #include "ImageResolutionWidget.h"
 #include "LabeledSection.h"

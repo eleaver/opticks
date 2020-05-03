@@ -14,7 +14,7 @@
 #include <memory>
 
 #include <QtCore/QString>
-#include <QtGui/QFont>
+#include <QFont>
 
 #include "ColorType.h"
 #include "AppVerify.h"

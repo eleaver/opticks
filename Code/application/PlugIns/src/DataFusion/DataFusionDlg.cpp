@@ -7,16 +7,16 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QApplication>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QCloseEvent>
-#include <QtGui/QLayout>
-#include <QtGui/QListWidget>
-#include <QtGui/QMessageBox>
-#include <QtGui/QPushButton>
-#include <QtGui/QSpinBox>
-#include <QtGui/QSplitter>
-#include <QtGui/QTreeWidget>
+#include <QApplication>
+#include <QButtonGroup>
+#include <QCloseEvent>
+#include <QLayout>
+#include <QListWidget>
+#include <QMessageBox>
+#include <QPushButton>
+#include <QSpinBox>
+#include <QSplitter>
+#include <QTreeWidget>
 
 #include "AoiElement.h"
 #include "AoiLayer.h"

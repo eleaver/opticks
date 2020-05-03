@@ -9,8 +9,8 @@
 
 #include <math.h>
 
-#include <QtGui/QPainter>
-#include <QtGui/QPolygon>
+#include <QPainter>
+#include <QPolygon>
 
 #include "glCommon.h"
 #include "RegionObject.h"

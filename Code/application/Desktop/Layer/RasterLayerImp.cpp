@@ -14,11 +14,11 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMessageBox>
 #else
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
-#include <QtGui/QInputDialog>
-#include <QtGui/QMenu>
-#include <QtGui/QMessageBox>
+#include <QAction>
+#include <QApplication>
+#include <QInputDialog>
+#include <QMenu>
+#include <QMessageBox>
 #endif
 
 #include "Animation.h"

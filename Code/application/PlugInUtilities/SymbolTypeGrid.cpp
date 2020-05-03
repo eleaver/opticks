@@ -12,8 +12,8 @@
 #include "AppVerify.h"
 #include "StringUtilities.h"
 
-#include <QtGui/QBitmap>
-#include <QtGui/QPainter>
+#include <QBitmap>
+#include <QPainter>
 
 #include <string>
 #include <vector>

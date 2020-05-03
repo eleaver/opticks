@@ -13,10 +13,10 @@
 #include "PixmapGrid.h"
 
 #include <QtCore/QEvent>
-#include <QtGui/QActionEvent>
-#include <QtGui/QApplication>
-#include <QtGui/QMenu>
-#include <QtGui/QWidgetAction>
+#include <QActionEvent>
+#include <QApplication>
+#include <QMenu>
+#include <QWidgetAction>
 
 #include <string>
 #include <vector>

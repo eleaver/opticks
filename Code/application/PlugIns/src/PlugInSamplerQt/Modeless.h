@@ -12,8 +12,8 @@
 
 #include <memory>
 
-#include <QtGui/QDialog>
-#include <QtGui/QIcon>
+#include <QDialog>
+#include <QIcon>
 
 #include "ViewerShell.h"
 

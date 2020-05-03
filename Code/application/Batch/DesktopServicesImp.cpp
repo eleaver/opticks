@@ -12,7 +12,7 @@
 #include "ConfigurationSettings.h"
 #include "DataVariant.h"
 #include "DesktopServicesImp.h"
-#include <QtGui/QImage>
+#include <QImage>
 
 using namespace std;
 

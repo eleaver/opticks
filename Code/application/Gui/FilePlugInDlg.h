@@ -12,10 +12,10 @@
 
 #include <QtCore/QMap>
 #include <QtCore/QStringList>
-#include <QtGui/QComboBox>
-#include <QtGui/QFileDialog>
-#include <QtGui/QPushButton>
-#include <QtGui/QWidget>
+#include <QComboBox>
+#include <QFileDialog>
+#include <QPushButton>
+#include <QWidget>
 
 #include "TypesFile.h"
 

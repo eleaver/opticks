@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -157,7 +157,7 @@ void ConfigurationSettingsImp::validateInitialization()
    if (!QFile::exists(QString::fromStdString(supportFilesPath)))
    {
       mIsInitialized = false;
-      mInitializationErrorMsg = "The Support Files directory of " + supportFilesPath + 
+      mInitializationErrorMsg = "The Support Files directory of " + supportFilesPath +
          " does not exist. The application will be shut down.\n\n" + mDeploymentDebugMsg;
       return;
    }
@@ -166,7 +166,7 @@ void ConfigurationSettingsImp::validateInitialization()
    mReleaseDescription = getSettingReleaseDescription();
 
    // Set Internal Path -  Note that this only affects the environment
-   // variable of the current process. 
+   // variable of the current process.
    const Filename* pInternalPath = getSettingInternalPath();
    if (pInternalPath != NULL)
    {
@@ -246,14 +246,14 @@ void ConfigurationSettingsImp::initDeploymentValues()
    HRESULT retValue = SHGetFolderPath(NULL, CSIDL_APPDATA | CSIDL_FLAG_CREATE, NULL, SHGFP_TYPE_CURRENT, path);
    if (SUCCEEDED(retValue))
    {
-      userSettingsPath = QString::fromAscii(path);
+      userSettingsPath = QString::fromLatin1(path);
    }
    appNamePath = "Opticks";
 #else
    char* pPath = getenv("HOME");
    if (pPath != NULL)
    {
-      userSettingsPath = QString::fromAscii(pPath);
+      userSettingsPath = QString::fromLatin1(pPath);
    }
    appNamePath = ".opticks";
 #endif
@@ -985,13 +985,13 @@ string ConfigurationSettingsImp::locateUserDocs()
    HRESULT retValue = SHGetFolderPath(NULL, CSIDL_PERSONAL | CSIDL_FLAG_CREATE, NULL, SHGFP_TYPE_CURRENT, path);
    if (SUCCEEDED(retValue))
    {
-      userFolderPath = QString::fromAscii(path);
+      userFolderPath = QString::fromLatin1(path);
    }
 #else
    char* pPath = getenv("HOME");
    if (pPath != NULL)
    {
-      userFolderPath = QString::fromAscii(pPath);
+      userFolderPath = QString::fromLatin1(pPath);
    }
 #endif
    appNamePath = APP_NAME;
@@ -1132,7 +1132,7 @@ bool ConfigurationSettingsImp::loadSettings(string& errorMessage)
          missingAppDefaults = true;
       }
    }
-   else 
+   else
    {
       errorMessage = "More than 1 default settings file was found with a load priority of 1. "
          "Only 1 default settings file can have a priority of 1.";
@@ -1221,7 +1221,7 @@ DynamicObject* ConfigurationSettingsImp::deserialize(const Filename* pFilename) 
       }
       if (name == "settings")
       {
-         pObj->fromXml(pSettingsNode, XmlBase::VERSION); 
+         pObj->fromXml(pSettingsNode, XmlBase::VERSION);
       }
    }
 

@@ -10,7 +10,7 @@
 #ifndef IMAGEOBJECTIMP_H
 #define IMAGEOBJECTIMP_H
 
-#include <QtGui/QImage>
+#include <QImage>
 
 #include "glCommon.h"
 #include "RectangleObjectImp.h"

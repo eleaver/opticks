@@ -10,7 +10,7 @@
 #ifndef OPTIONSSTATUSBAR_H
 #define OPTIONSSTATUSBAR_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 #include "AppVersion.h"
 
 class QCheckBox;

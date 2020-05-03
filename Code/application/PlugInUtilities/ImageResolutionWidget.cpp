@@ -7,10 +7,10 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QBitmap>
-#include <QtGui/QIntValidator>
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
+#include <QBitmap>
+#include <QIntValidator>
+#include <QLabel>
+#include <QLayout>
 
 #include "AppVerify.h"
 #include "ImageResolutionWidget.h"

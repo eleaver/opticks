@@ -13,7 +13,7 @@
 #include "AppVerify.h"
 #include "Modifier.h"
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 /**
  *  Tracks modifications to an widget.

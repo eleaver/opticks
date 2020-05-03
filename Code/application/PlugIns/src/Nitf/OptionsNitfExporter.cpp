@@ -9,15 +9,15 @@
 
 #include <QtCore/QString>
 #include <QtCore/QStringList>
-#include <QtGui/QCheckBox>
-#include <QtGui/QComboBox>
-#include <QtGui/QDateEdit>
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QLineEdit>
-#include <QtGui/QMessageBox>
-#include <QtGui/QPushButton>
-#include <QtGui/QTextEdit>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QDateEdit>
+#include <QLabel>
+#include <QLayout>
+#include <QLineEdit>
+#include <QMessageBox>
+#include <QPushButton>
+#include <QTextEdit>
 
 #include "AppVerify.h"
 #include "Classification.h"

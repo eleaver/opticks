@@ -3,22 +3,22 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
 #include <QtCore/QEvent>
 #include <QtCore/QFileInfo>
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
-#include <QtGui/QClipboard>
-#include <QtGui/QColor>
-#include <QtGui/QColorDialog>
-#include <QtGui/QContextMenuEvent>
-#include <QtGui/QIcon>
-#include <QtGui/QInputDialog>
-#include <QtGui/QMenu>
-#include <QtGui/QVBoxLayout>
+#include <QAction>
+#include <QApplication>
+#include <QClipboard>
+#include <QColor>
+#include <QColorDialog>
+#include <QContextMenuEvent>
+#include <QIcon>
+#include <QInputDialog>
+#include <QMenu>
+#include <QVBoxLayout>
 
 #include "AnnotationElementAdapter.h"
 #include "AnnotationLayerAdapter.h"
@@ -300,7 +300,7 @@ void OverviewWindow::updateView(const vector<LocationType>& selectionArea)
    LocationType worldUr;
    pLayer->translateDataToWorld(selectionArea[0].mX, selectionArea[0].mY, worldLl.mX, worldLl.mY);
    pLayer->translateDataToWorld(selectionArea[2].mX, selectionArea[2].mY, worldUr.mX, worldUr.mY);
-   
+
    // Update the view
    mpView->zoomToBox(worldLl, worldUr);
    mpView->repaint();
@@ -369,7 +369,7 @@ TrailObjectImp* OverviewWindow::createSnailTrail(SpatialDataViewImp* pOverview)
 
    // Annotation layer
    DataDescriptorAdapter descriptor("Snail Trail", "AnnotationElement", NULL);
-   mpTrailLayer = new AnnotationLayerAdapter(SessionItemImp::generateUniqueId(), "Snail Trail", 
+   mpTrailLayer = new AnnotationLayerAdapter(SessionItemImp::generateUniqueId(), "Snail Trail",
                       new AnnotationElementAdapter(descriptor, SessionItemImp::generateUniqueId()));
    pOverview->addLayer(mpTrailLayer);
    TrailObjectImp* pTrailImp(NULL);
@@ -423,8 +423,13 @@ void OverviewWindow::changeTrailOpacity()
 {
    int oldAlpha = static_cast<int>(mTrailColor.mAlpha / 2.550f + 0.5);
    bool bOk;
+#if HAVE_QT5
+   int newAlpha = QInputDialog::getInt(this, "Set Overview Trail Opacity",
+      "Set from 0% (transparent) to 100% (opaque)", oldAlpha, 0, 100, 1, &bOk);
+#else
    int newAlpha = QInputDialog::getInteger(this, "Set Overview Trail Opacity",
       "Set from 0% (transparent) to 100% (opaque)", oldAlpha, 0, 100, 1, &bOk);
+#endif
    if (bOk)
    {
       newAlpha = static_cast<int>(newAlpha * 2.550f + 0.5);
@@ -447,9 +452,15 @@ void OverviewWindow::changeTrailOpacity()
 void OverviewWindow::changeTrailThreshold()
 {
    bool bOk;
-   int newZoom = QInputDialog::getInteger(this, "Set Trail Zoom Threshold",
-      "Set lowest zoom percentage for marking Trail.\nThis action will reset the Overview Trail.", 
+#if HAVE_QT5
+   int newZoom = QInputDialog::getInt(this, "Set Trail Zoom Threshold",
+      "Set lowest zoom percentage for marking Trail.\nThis action will reset the Overview Trail.",
       mZoomThreshold, 1, 1000, 10, &bOk);
+#else
+   int newZoom = QInputDialog::getInteger(this, "Set Trail Zoom Threshold",
+      "Set lowest zoom percentage for marking Trail.\nThis action will reset the Overview Trail.",
+      mZoomThreshold, 1, 1000, 10, &bOk);
+#endif
    if (bOk)
    {
       mZoomThreshold = newZoom;

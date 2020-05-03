@@ -10,7 +10,7 @@
 #ifndef PRINTPIXMAP_H
 #define PRINTPIXMAP_H
 
-#include <QtGui/QPixmap>
+#include <QPixmap>
 
 class QWidget;
 class QPrinter;

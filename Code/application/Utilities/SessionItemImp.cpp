@@ -11,7 +11,7 @@
 #include <QtCore/QRegExp>
 #include <QtCore/QString>
 #include <QtCore/QUuid>
-#include <QtGui/QIcon>
+#include <QIcon>
 
 #include "AppVerify.h"
 #include "DesktopServices.h"

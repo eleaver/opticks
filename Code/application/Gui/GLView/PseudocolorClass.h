@@ -11,7 +11,7 @@
 #define PSEUDOCOLORCLASS_H
 
 #include <QtCore/QObject>
-#include <QtGui/QColor>
+#include <QColor>
 
 class PseudocolorLayer;
 

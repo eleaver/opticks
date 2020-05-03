@@ -19,7 +19,7 @@
 #include "Progress.h"
 #include "View.h"
 
-#include <QtGui/QImage>
+#include <QImage>
 #include <cstdio>
 
 using namespace std;

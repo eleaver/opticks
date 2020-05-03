@@ -13,7 +13,7 @@
 #if HAVE_QT5
 #include <QtWidgets/QMdiSubWindow>
 #else
-#include <QtGui/QMdiSubWindow>
+#include <QMdiSubWindow>
 #endif
 #include "ApplicationServices.h"
 #include "AttachmentPtr.h"

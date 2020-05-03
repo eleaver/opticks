@@ -11,8 +11,8 @@
 #include "ExtensionListDialog.h"
 #include "ExtensionListItem.h"
 #include <QtCore/QEvent>
-#include <QtGui/QLinearGradient>
-#include <QtGui/QPainter>
+#include <QLinearGradient>
+#include <QPainter>
 
 #include <memory>
 

@@ -11,13 +11,13 @@
 #include "AppVerify.h"
 
 #include <QtCore/QRegExp>
-#include <QtGui/QComboBox>
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QLineEdit>
-#include <QtGui/QMessageBox>
-#include <QtGui/QPushButton>
-#include <QtGui/QValidator>
+#include <QComboBox>
+#include <QLabel>
+#include <QLayout>
+#include <QLineEdit>
+#include <QMessageBox>
+#include <QPushButton>
+#include <QValidator>
 
 AddFieldDlg::AddFieldDlg(QWidget* parent) :
    QDialog(parent)

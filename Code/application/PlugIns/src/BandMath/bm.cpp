@@ -7,8 +7,8 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QGroupBox>
-#include <QtGui/QLayout>
+#include <QGroupBox>
+#include <QLayout>
 
 #include "bm.h"
 #include "bm.ui.h"

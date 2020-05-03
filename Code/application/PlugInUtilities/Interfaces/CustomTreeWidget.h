@@ -11,14 +11,14 @@
 #define CUSTOMTREEWIDGET_H
 
 #include <QtCore/QMap>
-#include <QtGui/QComboBox>
-#include <QtGui/QDoubleSpinBox>
-#include <QtGui/QLineEdit>
-#include <QtGui/QPushButton>
-#include <QtGui/QSpinBox>
-#include <QtGui/QStyledItemDelegate>
-#include <QtGui/QTreeWidget>
-#include <QtGui/QTreeWidgetItem>
+#include <QComboBox>
+#include <QDoubleSpinBox>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QSpinBox>
+#include <QStyledItemDelegate>
+#include <QTreeWidget>
+#include <QTreeWidgetItem>
 
 #include "ColorType.h"
 #include "EnumWrapper.h"

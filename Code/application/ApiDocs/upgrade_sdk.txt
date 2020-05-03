@@ -404,7 +404,7 @@ public:
 must be changed to:
 \code
 #include <memory>
-#include <QtGui/QIcon>
+#include <QIcon>
 static const char* sMyXpm[] = /* Assume this is XPM content */;
 class MyExecutable : public ExecutableShell
 {

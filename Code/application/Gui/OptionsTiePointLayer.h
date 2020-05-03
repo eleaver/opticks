@@ -10,7 +10,7 @@
 #ifndef OPTIONSTIEPOINTLAYER_H
 #define OPTIONSTIEPOINTLAYER_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 #include "AppVersion.h"
 
 class CustomColorButton;

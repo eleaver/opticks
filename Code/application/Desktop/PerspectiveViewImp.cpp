@@ -7,8 +7,8 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QCursor>
-#include <QtGui/QKeyEvent>
+#include <QCursor>
+#include <QKeyEvent>
 
 #include "AppConfig.h"
 #include "ApplicationWindow.h"

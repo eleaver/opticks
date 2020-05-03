@@ -16,10 +16,10 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 #else
-#include <QtGui/QCheckBox>
-#include <QtGui/QLineEdit>
-#include <QtGui/QPushButton>
-#include <QtGui/QWidget>
+#include <QCheckBox>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QWidget>
 #endif
 
 class LabeledSection;

@@ -9,7 +9,7 @@
 
 #include <float.h>
 
-#include <QtGui/QPainter>
+#include <QPainter>
 
 #include "AppVerify.h"
 #include "DrawUtil.h"

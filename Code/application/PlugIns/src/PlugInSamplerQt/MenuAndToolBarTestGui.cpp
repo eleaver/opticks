@@ -13,14 +13,14 @@
 #include "ToolBar.h"
 
 #include <QtCore/QVariant>
-#include <QtGui/QAction>
-#include <QtGui/QComboBox>
-#include <QtGui/QDoubleSpinBox>
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QMenu>
-#include <QtGui/QPushButton>
-#include <QtGui/QWidgetAction>
+#include <QAction>
+#include <QComboBox>
+#include <QDoubleSpinBox>
+#include <QLabel>
+#include <QLayout>
+#include <QMenu>
+#include <QPushButton>
+#include <QWidgetAction>
 
 MenuAndToolBarTestGui::MenuAndToolBarTestGui(QWidget* pParent, const char* pName, bool modal) :
    QDialog(pParent)

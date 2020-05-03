@@ -10,7 +10,7 @@
 #ifndef PICTURESEXPORTER_H
 #define PICTURESEXPORTER_H
 
-#include <QtGui/QImage>
+#include <QImage>
 
 #include "ExporterShell.h"
 #include "PlugInManagerServices.h"

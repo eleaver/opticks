@@ -11,13 +11,13 @@
 #define WIZARDWIDGET_H
 
 #include <QtCore/QMap>
-#include <QtGui/QCheckBox>
-#include <QtGui/QComboBox>
-#include <QtGui/QLabel>
-#include <QtGui/QTreeWidget>
-#include <QtGui/QTreeWidgetItem>
-#include <QtGui/QWidget>
-#include <QtGui/QStackedWidget>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QLabel>
+#include <QTreeWidget>
+#include <QTreeWidgetItem>
+#include <QWidget>
+#include <QStackedWidget>
 
 #include "Value.h"
 

@@ -7,9 +7,9 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QBitmap>
-#include <QtGui/QMessageBox>
-#include <QtGui/QMouseEvent>
+#include <QBitmap>
+#include <QMessageBox>
+#include <QMouseEvent>
 
 #include "AppVerify.h"
 #include "DesktopServices.h"

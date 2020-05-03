@@ -10,8 +10,8 @@
 #ifndef CLASSIFICATIONLAYERIMP_H
 #define CLASSIFICATIONLAYERIMP_H
 
-#include <QtGui/QColor>
-#include <QtGui/QFont>
+#include <QColor>
+#include <QFont>
 
 #include "AnnotationLayerImp.h"
 #include "FontImp.h"

@@ -30,9 +30,9 @@
 #include "SpatialDataView.h"
 #include "SpatialDataWindow.h"
 
-#include <QtGui/QCheckBox>
-#include <QtGui/QFrame>
-#include <QtGui/QHBoxLayout>
+#include <QCheckBox>
+#include <QFrame>
+#include <QHBoxLayout>
 
 using namespace std;
 XERCES_CPP_NAMESPACE_USE

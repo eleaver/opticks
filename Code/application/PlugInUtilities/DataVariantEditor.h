@@ -16,7 +16,7 @@
 
 #include <QtCore/QFileSystemWatcher>
 #include <QtCore/QString>
-#include <QtGui/QWidget>
+#include <QWidget>
 
 #include <string>
 

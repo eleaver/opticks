@@ -23,7 +23,7 @@
 #include <QtCore/QFileInfo>
 #include <QtCore/QList>
 #include <QtCore/QPair>
-#include <QtGui/QPixmap>
+#include <QPixmap>
 
 class AebEntry;
 

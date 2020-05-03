@@ -8,11 +8,11 @@
  */
 
 #include <QGridLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QMouseEvent>
-#include <QtGui/QPainter>
-#include <QtGui/QStyle>
-#include <QtGui/QStyleOption>
+#include <QLabel>
+#include <QMouseEvent>
+#include <QPainter>
+#include <QStyle>
+#include <QStyleOption>
 
 #include "AppVerify.h"
 #include "LabeledSection.h"

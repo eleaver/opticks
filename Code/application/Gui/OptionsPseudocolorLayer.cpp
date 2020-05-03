@@ -13,12 +13,12 @@
 #include "PseudocolorLayer.h"
 #include "SymbolTypeGrid.h"
 
-#include <QtGui/QApplication>
-#include <QtGui/QFont>
-#include <QtGui/QGridLayout>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QVBoxLayout>
+#include <QApplication>
+#include <QFont>
+#include <QGridLayout>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QVBoxLayout>
 
 #include <string>
 

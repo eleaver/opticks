@@ -20,11 +20,11 @@
 #include <QtCore/QList>
 #include <QtCore/QTextStream>
 #include <QtCore/QUrl>
-#include <QtGui/QAction>
-#include <QtGui/QKeyEvent>
-#include <QtGui/QMessageBox>
-#include <QtGui/QMenu>
-#include <QtGui/QTextCursor>
+#include <QAction>
+#include <QKeyEvent>
+#include <QMessageBox>
+#include <QMenu>
+#include <QTextCursor>
 
 #include <vector>
 

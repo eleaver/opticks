@@ -15,11 +15,11 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #else
-#include <QtGui/QAction>
-#include <QtGui/QLabel>
-#include <QtGui/QMainWindow>
+#include <QAction>
+#include <QLabel>
+#include <QMainWindow>
 #endif
-#include <QtGui/QPixmap>
+#include <QPixmap>
 
 #include "ColorType.h"
 #include "FontImp.h"

@@ -9,7 +9,7 @@
 
 #include <math.h>
 
-#include <QtGui/QPainter>
+#include <QPainter>
 
 #include "glCommon.h"
 #include "AppVerify.h"

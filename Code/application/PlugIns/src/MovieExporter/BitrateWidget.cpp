@@ -10,9 +10,9 @@
 #include "AppVerify.h"
 #include "BitrateWidget.h"
 
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QSlider>
+#include <QLabel>
+#include <QLayout>
+#include <QSlider>
 
 BitrateWidget::BitrateWidget(QWidget* pParent) :
    QWidget(pParent)

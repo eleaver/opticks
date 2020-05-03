@@ -3,25 +3,26 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
 #include <QtCore/QDir>
 #include <QtCore/QFileInfo>
-#include <QtGui/QApplication>
-#include <QtGui/QFileDialog>
-#include <QtGui/QGraphicsScene>
-#include <QtGui/QMenu>
-#include <QtGui/QMessageBox>
-#include <QtGui/QPainter>
-#include <QtGui/QPrintDialog>
+#include <QApplication>
+#include <QFileDialog>
+#include <QGraphicsScene>
+#include <QMenu>
+#include <QMessageBox>
+#include <QPainter>
+#include <QPrintDialog>
 #if HAVE_QT5
 #include <QtPrintSupport/QPrinter>
 #else
-#include <QtGui/QPrinter>
+#include <QPrinter>
 #endif
-#include <QtGui/QWheelEvent>
+#include <QWheelEvent>
+#include <QMimeData>
 
 #include "AppVersion.h"
 #include "BatchWizard.h"
@@ -709,7 +710,7 @@ void WizardView::dropEvent(QDropEvent* pEvent)
       return;
    }
 
-   QString dataText = QString::fromAscii(pData->data("text/x-wizarditem"));
+   QString dataText = QString::fromLatin1(pData->data("text/x-wizarditem"));
    if (dataText.isEmpty() == true)
    {
       return;

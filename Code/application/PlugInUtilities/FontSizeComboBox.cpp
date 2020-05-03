@@ -7,9 +7,9 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QFontDatabase>
-#include <QtGui/QLineEdit>
-#include <QtGui/QIntValidator>
+#include <QFontDatabase>
+#include <QLineEdit>
+#include <QIntValidator>
 
 #include "AppVerify.h"
 #include "FontSizeComboBox.h"

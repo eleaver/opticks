@@ -12,7 +12,7 @@
 
 #include <vector>
 
-#include <QtGui/QAbstractSpinBox>
+#include <QAbstractSpinBox>
 
 #include "TypesFile.h"
 

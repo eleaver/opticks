@@ -3,12 +3,12 @@
  * Copyright(c) 2010 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QApplication>
-#include <QtGui/QFont>
+#include <QApplication>
+#include <QFont>
 
 #include "Wavelengths.h"
 #include "WavelengthModel.h"
@@ -262,6 +262,9 @@ void WavelengthModel::setWavelengths(const std::vector<DimensionDescriptor>& ban
 {
    if (pWavelengths != mpWavelengths)
    {
+#if HAVE_QT5
+       beginResetModel();
+#endif
       // Update the wavelengths
       mpWavelengths = pWavelengths;
 
@@ -281,8 +284,12 @@ void WavelengthModel::setWavelengths(const std::vector<DimensionDescriptor>& ban
       mActiveBands.clear();
 
       // Reset the internal state of the model
+#if HAVE_QT5
+       endResetModel();
+#else
       reset();
-   }
+#endif
+     }
 }
 
 void WavelengthModel::updateActiveWavelengths(const std::vector<DimensionDescriptor>& bands,
@@ -314,5 +321,10 @@ void WavelengthModel::updateActiveWavelengths(const std::vector<DimensionDescrip
 
 void WavelengthModel::updateData()
 {
-   reset();
+#if HAVE_QT5
+  beginResetModel();
+  endResetModel();
+#else
+  reset();
+#endif
 }

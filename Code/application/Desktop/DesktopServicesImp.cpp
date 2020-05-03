@@ -22,15 +22,15 @@
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QStatusBar>
 #else
-#include <QtGui/QApplication>
-#include <QtGui/QMenuBar>
-#include <QtGui/QMessageBox>
-#include <QtGui/QStatusBar>
+#include <QApplication>
+#include <QMenuBar>
+#include <QMessageBox>
+#include <QStatusBar>
 #endif
-#include <QtGui/QBitmap>
-#include <QtGui/QCursor>
-#include <QtGui/QDesktopServices>
-#include <QtGui/QPixmap>
+#include <QBitmap>
+#include <QCursor>
+#include <QDesktopServices>
+#include <QPixmap>
 
 #include "AnnotationLayerImp.h"
 #include "AoiLayerImp.h"

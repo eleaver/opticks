@@ -11,7 +11,7 @@
 #define PSEUDOCOLORLAYERUNDO_H
 
 #include <QtCore/QString>
-#include <QtGui/QColor>
+#include <QColor>
 
 #include "LayerUndo.h"
 #include "TypesFile.h"

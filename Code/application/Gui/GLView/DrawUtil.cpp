@@ -10,9 +10,9 @@
 #include <cmath>
 
 #include <QtCore/QRect>
-#include <QtGui/QBitmap>
-#include <QtGui/QImage>
-#include <QtGui/QPainter>
+#include <QBitmap>
+#include <QImage>
+#include <QPainter>
 
 #include "BitMask.h"
 #include "DrawUtil.h"

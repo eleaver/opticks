@@ -10,7 +10,7 @@
 #ifndef OPTIONSSUPPRESSIBLEMESSAGES_H
 #define OPTIONSSUPPRESSIBLEMESSAGES_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 #include "AppVersion.h"
 
 #include <string>

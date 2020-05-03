@@ -13,7 +13,7 @@
 #include "AttachmentPtr.h"
 #include "GeoreferenceDescriptor.h"
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 class QSpinBox;
 

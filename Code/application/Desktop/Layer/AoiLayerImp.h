@@ -11,8 +11,8 @@
 #define AOILAYERIMP_H
 
 #include <QtCore/QPoint>
-#include <QtGui/QColor>
-#include <QtGui/QFont>
+#include <QColor>
+#include <QFont>
 
 #include "ColorType.h"
 #include "GraphicLayerImp.h"

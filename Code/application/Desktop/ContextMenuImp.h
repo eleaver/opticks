@@ -15,8 +15,8 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QMenu>
 #else
-#include <QtGui/QAction>
-#include <QtGui/QMenu>
+#include <QAction>
+#include <QMenu>
 #endif
 
 #include "ContextMenu.h"

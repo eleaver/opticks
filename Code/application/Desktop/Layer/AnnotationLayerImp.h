@@ -15,7 +15,7 @@
 #include "TypesFile.h"
 
 #include <list>
-#include <QtGui/QFont>
+#include <QFont>
 
 class AnnotationLayer;
 class AnnotationObjectImp;

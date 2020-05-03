@@ -10,10 +10,10 @@
 #include "AppVerify.h"
 #include "SampleGeorefGui.h"
 
-#include <QtGui/QCheckBox>
-#include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QSpinBox>
+#include <QCheckBox>
+#include <QGridLayout>
+#include <QLabel>
+#include <QSpinBox>
 
 SampleGeorefGui::SampleGeorefGui(QWidget* pParent) :
    QWidget(pParent),

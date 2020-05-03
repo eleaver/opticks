@@ -7,13 +7,13 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QApplication>
-#include <QtGui/QGridLayout>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QPushButton>
+#include <QApplication>
+#include <QGridLayout>
+#include <QHeaderView>
+#include <QLabel>
+#include <QPushButton>
 #include <QTextEdit>
-#include <QtGui/QTreeWidget>
+#include <QTreeWidget>
 #include <QPrinter>
 
 #include "SignaturePropertiesDlg.h"

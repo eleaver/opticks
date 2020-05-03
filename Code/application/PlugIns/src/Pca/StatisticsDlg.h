@@ -12,10 +12,10 @@
 #ifndef STATISTICSDLG_H
 #define STATISTICSDLG_H
 
-#include <QtGui/QComboBox>
-#include <QtGui/QDialog>
-#include <QtGui/QRadioButton>
-#include <QtGui/QSpinBox>
+#include <QComboBox>
+#include <QDialog>
+#include <QRadioButton>
+#include <QSpinBox>
 
 #include <vector>
 #include <string>

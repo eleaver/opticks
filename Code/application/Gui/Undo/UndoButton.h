@@ -10,11 +10,11 @@
 #ifndef UNDOBUTTON_H
 #define UNDOBUTTON_H
 
-#include <QtGui/QListView>
-#include <QtGui/QMenu>
-#include <QtGui/QStringListModel>
-#include <QtGui/QToolButton>
-#include <QtGui/QUndoGroup>
+#include <QListView>
+#include <QMenu>
+#include <QStringListModel>
+#include <QToolButton>
+#include <QUndoGroup>
 
 class UndoButton : public QToolButton
 {

@@ -17,11 +17,11 @@
 #include "ThresholdLayer.h"
 #include "SymbolTypeGrid.h"
 
-#include <QtGui/QCheckBox>
-#include <QtGui/QDoubleSpinBox>
-#include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QVBoxLayout>
+#include <QCheckBox>
+#include <QDoubleSpinBox>
+#include <QGridLayout>
+#include <QLabel>
+#include <QVBoxLayout>
 
 #include <limits>
 #include <string>

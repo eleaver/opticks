@@ -8,12 +8,12 @@
  */
 
 #include <QtCore/QRegExp>
-#include <QtGui/QFileDialog>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QMessageBox>
-#include <QtGui/QPixmap>
+#include <QFileDialog>
+#include <QHeaderView>
+#include <QLabel>
+#include <QLayout>
+#include <QMessageBox>
+#include <QPixmap>
 
 #include "AppVerify.h"
 #include "BatchFileset.h"

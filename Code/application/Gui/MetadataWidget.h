@@ -10,7 +10,7 @@
 #ifndef METADATAWIDGET_H
 #define METADATAWIDGET_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 #include <boost/any.hpp>
 #include <string>

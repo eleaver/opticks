@@ -7,8 +7,8 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QIntValidator>
-#include <QtGui/QLayout>
+#include <QIntValidator>
+#include <QLayout>
 
 #include "AppVerify.h"
 #include "ConfigurationSettings.h"

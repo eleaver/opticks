@@ -12,8 +12,8 @@
 #include <QtCore/QFileInfo>
 #include <QtCore/QString>
 #include <QtCore/QTimer>
-#include <QtGui/QApplication>
-#include <QtGui/QMessageBox>
+#include <QApplication>
+#include <QMessageBox>
 
 #include "Aeb.h"
 #include "AebIo.h"

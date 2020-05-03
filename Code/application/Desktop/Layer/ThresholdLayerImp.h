@@ -15,7 +15,7 @@
 #include "ObjectFactory.h"
 #include "ObjectResource.h"
 
-#include <QtGui/QColor>
+#include <QColor>
 
 class BitMask;
 class Statistics;

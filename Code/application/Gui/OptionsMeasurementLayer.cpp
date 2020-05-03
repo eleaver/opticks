@@ -7,13 +7,13 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QApplication>
-#include <QtGui/QCheckBox>
-#include <QtGui/QFontComboBox>
-#include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QSpinBox>
-#include <QtGui/QVBoxLayout>
+#include <QApplication>
+#include <QCheckBox>
+#include <QFontComboBox>
+#include <QGridLayout>
+#include <QLabel>
+#include <QSpinBox>
+#include <QVBoxLayout>
 
 #include "ColorType.h"
 #include "CustomColorButton.h"

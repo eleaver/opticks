@@ -16,10 +16,10 @@
 #include "Resource.h"
 #include "View.h"
 
-#include <QtGui/QFileDialog>
-#include <QtGui/QMessageBox>
+#include <QFileDialog>
+#include <QMessageBox>
 
-#include <QtGui/QImageReader>
+#include <QImageReader>
 #include <QtCore/QLibraryInfo>
 using namespace std;
 

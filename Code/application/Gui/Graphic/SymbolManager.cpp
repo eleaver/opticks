@@ -21,7 +21,7 @@
 #include "SymbolManager.h"
 
 #include <QtCore/QDir>
-#include <QtGui/QImage>
+#include <QImage>
 #include <QtOpenGL/QGLPixelBuffer>
 #include <QtOpenGL/QGLFormat>
 

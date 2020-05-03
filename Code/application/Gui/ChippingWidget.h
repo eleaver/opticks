@@ -10,9 +10,9 @@
 #ifndef CHIPPINGWIDGET_H
 #define CHIPPINGWIDGET_H
 
-#include <QtGui/QComboBox>
-#include <QtGui/QLabel>
-#include <QtGui/QWidget>
+#include <QComboBox>
+#include <QLabel>
+#include <QWidget>
 
 #include "DimensionDescriptor.h"
 #include "LocationType.h"

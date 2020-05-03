@@ -10,9 +10,9 @@
 #if HAVE_QT5
 #include <QtWidgets/QApplication>
 #else
-#include <QtGui/QApplication>
+#include <QApplication>
 #endif
-#include <QtGui/QPainter>
+#include <QPainter>
 
 #include "glCommon.h"
 #include "Text.h"

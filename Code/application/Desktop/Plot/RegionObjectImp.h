@@ -10,7 +10,7 @@
 #ifndef REGIONOBJECTIMP_H
 #define REGIONOBJECTIMP_H
 
-#include <QtGui/QColor>
+#include <QColor>
 
 #include "ColorType.h"
 #include "PlotObjectImp.h"

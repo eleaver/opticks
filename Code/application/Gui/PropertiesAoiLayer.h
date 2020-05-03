@@ -13,7 +13,7 @@
 #if HAVE_QT5
 #include <QtWidgets/QCheckBox>
 #else
-#include <QtGui/QCheckBox>
+#include <QCheckBox>
 #endif
 
 #include "LabeledSectionGroup.h"

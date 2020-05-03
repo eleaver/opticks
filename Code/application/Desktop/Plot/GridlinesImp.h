@@ -10,7 +10,7 @@
 #ifndef GRIDLINESIMP_H
 #define GRIDLINESIMP_H
 
-#include <QtGui/QColor>
+#include <QColor>
 
 #include "PlotObjectImp.h"
 #include "TypesFile.h"

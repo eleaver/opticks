@@ -15,8 +15,8 @@
 #include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QTreeWidgetItem>
 #else
-#include <QtGui/QTreeWidget>
-#include <QtGui/QTreeWidgetItem>
+#include <QTreeWidget>
+#include <QTreeWidgetItem>
 #endif
 
 class PlotObject;

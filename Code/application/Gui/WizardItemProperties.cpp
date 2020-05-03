@@ -7,7 +7,7 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QLayout>
+#include <QLayout>
 
 #include "AppVerify.h"
 #include "WizardGraphicsItem.h"

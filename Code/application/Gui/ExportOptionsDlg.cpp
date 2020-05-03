@@ -8,12 +8,12 @@
  */
 
 #include <QtCore/QFileInfo>
-#include <QtGui/QDialogButtonBox>
-#include <QtGui/QFrame>
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QMessageBox>
-#include <QtGui/QStackedWidget>
+#include <QDialogButtonBox>
+#include <QFrame>
+#include <QLabel>
+#include <QLayout>
+#include <QMessageBox>
+#include <QStackedWidget>
 
 #include "AppVerify.h"
 #include "Exporter.h"

@@ -9,9 +9,9 @@
 
 #include "mbox.h"
 
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QPushButton>
+#include <QLabel>
+#include <QLayout>
+#include <QPushButton>
 
 MBox::MBox(const QString& strTitle, const QString& strMessage, int type, QWidget* parent) :
    QDialog(parent)

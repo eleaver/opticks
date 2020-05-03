@@ -10,8 +10,8 @@
 #include "AppVerify.h"
 #include "LineWidthComboBox.h"
 
-#include <QtGui/QBitmap>
-#include <QtGui/QPainter>
+#include <QBitmap>
+#include <QPainter>
 
 LineWidthComboBox::LineWidthComboBox(QWidget* pParent) :
    QComboBox(pParent)

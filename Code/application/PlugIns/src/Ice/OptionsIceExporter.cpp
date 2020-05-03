@@ -14,12 +14,12 @@
 #include "SessionManager.h"
 #include "StringUtilities.h"
 
-#include <QtGui/QComboBox>
-#include <QtGui/QGridLayout>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QSlider>
-#include <QtGui/QSpinBox>
+#include <QComboBox>
+#include <QGridLayout>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QSlider>
+#include <QSpinBox>
 
 #include <string>
 

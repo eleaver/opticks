@@ -10,7 +10,7 @@
 #ifndef ADVANCEDOPTIONSWIDGET_H
 #define ADVANCEDOPTIONSWIDGET_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 #include <string>
 

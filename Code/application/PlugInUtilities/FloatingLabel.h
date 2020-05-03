@@ -15,7 +15,7 @@
 #if HAVE_QT5
 #include <QtWidgets/QLabel>
 #else
-#include <QtGui/QLabel>
+#include <QLabel>
 #endif
 
 #include "EnumWrapper.h"

@@ -17,8 +17,8 @@
 #include <QtCore/QPoint>
 #include <QtCore/QRect>
 #include <QtCore/QSize>
-#include <QtGui/QImage>
-#include <QtGui/QPainter>
+#include <QImage>
+#include <QPainter>
 
 PicturesViewExporter::PicturesViewExporter(PicturesDetails *pDetails) : PicturesExporter(pDetails)
 {

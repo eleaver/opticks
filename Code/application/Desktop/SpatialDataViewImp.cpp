@@ -68,16 +68,16 @@
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QToolTip>
 #else
-#include <QtGui/QActionGroup>
-#include <QtGui/QApplication>
-#include <QtGui/QColorDialog>
-#include <QtGui/QInputDialog>
-#include <QtGui/QMenu>
-#include <QtGui/QMessageBox>
-#include <QtGui/QToolTip>
+#include <QActionGroup>
+#include <QApplication>
+#include <QColorDialog>
+#include <QInputDialog>
+#include <QMenu>
+#include <QMessageBox>
+#include <QToolTip>
 #endif
-#include <QtGui/QHelpEvent>
-#include <QtGui/QMouseEvent>
+#include <QHelpEvent>
+#include <QMouseEvent>
 
 
 #include <QtOpenGL/QGLFramebufferObject>

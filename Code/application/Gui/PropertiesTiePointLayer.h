@@ -14,8 +14,8 @@
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QSpinBox>
 #else
-#include <QtGui/QCheckBox>
-#include <QtGui/QSpinBox>
+#include <QCheckBox>
+#include <QSpinBox>
 #endif
 
 #include "LabeledSectionGroup.h"

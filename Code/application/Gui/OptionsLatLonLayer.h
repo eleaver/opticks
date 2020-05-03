@@ -12,7 +12,7 @@
 
 #include "AppVersion.h"
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 class CustomColorButton;
 class LatLonStyleComboBox;

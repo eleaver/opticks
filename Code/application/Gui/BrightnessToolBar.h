@@ -11,10 +11,10 @@
 #define BRIGHTNESSTOOLBAR_H
 
 #include <QtCore/QMap>
-#include <QtGui/QAction>
-#include <QtGui/QComboBox>
-#include <QtGui/QLabel>
-#include <QtGui/QSlider>
+#include <QAction>
+#include <QComboBox>
+#include <QLabel>
+#include <QSlider>
 
 #include "ToolBarAdapter.h"
 #include "TypesFile.h"

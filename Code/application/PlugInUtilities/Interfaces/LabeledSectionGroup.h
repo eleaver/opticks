@@ -15,8 +15,8 @@
 #include <QtWidgets/QLayout>
 #include <QtWidgets/QScrollArea>
 #else
-#include <QtGui/QLayout>
-#include <QtGui/QScrollArea>
+#include <QLayout>
+#include <QScrollArea>
 #endif
 
 #include <vector>

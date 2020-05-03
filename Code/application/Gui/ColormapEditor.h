@@ -27,19 +27,19 @@
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QGridLayout>
 #else
-#include <QtGui/QCheckBox>
-#include <QtGui/QDialog>
-#include <QtGui/QDoubleSpinBox>
-#include <QtGui/QFrame>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QPushButton>
-#include <QtGui/QSlider>
-#include <QtGui/QSpacerItem>
-#include <QtGui/QSpinBox>
-#include <QtGui/QTabWidget>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QGridLayout>
+#include <QCheckBox>
+#include <QDialog>
+#include <QDoubleSpinBox>
+#include <QFrame>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QPushButton>
+#include <QSlider>
+#include <QSpacerItem>
+#include <QSpinBox>
+#include <QTabWidget>
+#include <QVBoxLayout>
+#include <QGridLayout>
 #endif
 #include <string>
 #include <vector>

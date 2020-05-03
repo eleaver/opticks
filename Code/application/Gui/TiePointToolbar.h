@@ -10,7 +10,7 @@
 #ifndef TIEPOINTTOOLBAR_H
 #define TIEPOINTTOOLBAR_H
 
-#include <QtGui/QAction>
+#include <QAction>
 
 #include "ToolBarAdapter.h"
 

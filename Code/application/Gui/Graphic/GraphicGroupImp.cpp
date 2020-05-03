@@ -9,7 +9,7 @@
 
 #include <math.h>
 
-#include <QtGui/QMessageBox>
+#include <QMessageBox>
 
 #include "AppAssert.h"
 #include "AppConfig.h"

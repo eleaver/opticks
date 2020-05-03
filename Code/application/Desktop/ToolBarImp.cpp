@@ -11,10 +11,10 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLayout>
 #else
-#include <QtGui/QApplication>
-#include <QtGui/QLayout>
+#include <QApplication>
+#include <QLayout>
 #endif
-#include <QtGui/QKeyEvent>
+#include <QKeyEvent>
 
 #include "ToolBarImp.h"
 #include "AppVerify.h"

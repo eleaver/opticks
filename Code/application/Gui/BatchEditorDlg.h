@@ -11,11 +11,11 @@
 #define BATCHEDITORDLG_H
 
 #include <QtCore/QStringList>
-#include <QtGui/QAction>
-#include <QtGui/QComboBox>
-#include <QtGui/QLabel>
-#include <QtGui/QMainWindow>
-#include <QtGui/QStackedWidget>
+#include <QAction>
+#include <QComboBox>
+#include <QLabel>
+#include <QMainWindow>
+#include <QStackedWidget>
 
 #include <vector>
 

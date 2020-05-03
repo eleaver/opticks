@@ -10,7 +10,7 @@
 #ifndef LISTINSPECTORWIDGET_H
 #define LISTINSPECTORWIDGET_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 class QListWidget;
 class QListWidgetItem;

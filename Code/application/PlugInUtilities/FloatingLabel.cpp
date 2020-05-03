@@ -9,7 +9,7 @@
 
 
 
-#include <QtGui/QPainter>
+#include <QPainter>
 
 #include "FloatingLabel.h"
 

@@ -10,9 +10,9 @@
 #ifndef SPLASHSCREEN_H
 #define SPLASHSCREEN_H
 
-#include <QtGui/QLabel>
-#include <QtGui/QProgressBar>
-#include <QtGui/QWidget>
+#include <QLabel>
+#include <QProgressBar>
+#include <QWidget>
 
 #include <string>
 #include <list>

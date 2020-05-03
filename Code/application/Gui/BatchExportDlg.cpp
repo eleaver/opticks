@@ -8,12 +8,12 @@
  */
 
 #include <QtCore/QDir>
-#include <QtGui/QDialogButtonBox>
-#include <QtGui/QFileDialog>
-#include <QtGui/QFrame>
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QPushButton>
+#include <QDialogButtonBox>
+#include <QFileDialog>
+#include <QFrame>
+#include <QLabel>
+#include <QLayout>
+#include <QPushButton>
 
 #include "AppVerify.h"
 #include "BatchExportDlg.h"

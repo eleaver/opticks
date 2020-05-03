@@ -11,10 +11,10 @@
 #include "AppVerify.h"
 #include "DesktopServices.h"
 
-#include <QtGui/QListWidget>
-#include <QtGui/QLabel>
-#include <QtGui/QGridLayout>
-#include <QtGui/QSpinBox>
+#include <QListWidget>
+#include <QLabel>
+#include <QGridLayout>
+#include <QSpinBox>
 
 #include <vector>
 #include <string>

@@ -7,9 +7,9 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QLayout>
-#include <QtGui/QSplitter>
-#include <QtGui/QVBoxLayout>
+#include <QLayout>
+#include <QSplitter>
+#include <QVBoxLayout>
 
 #include "WizardWidget.h"
 #include "AppVerify.h"

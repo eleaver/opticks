@@ -9,8 +9,8 @@
 #if HAVE_QT5
 #include <QtWidgets/QSizePolicy>
 #endif
-#include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
+#include <QGridLayout>
+#include <QLabel>
 
 #include "AppVerify.h"
 #include "DesktopServices.h"

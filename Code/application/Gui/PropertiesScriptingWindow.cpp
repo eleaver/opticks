@@ -7,10 +7,10 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QFontDialog>
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QPushButton>
+#include <QFontDialog>
+#include <QLabel>
+#include <QLayout>
+#include <QPushButton>
 
 #include "AppVersion.h"
 #include "CustomColorButton.h"

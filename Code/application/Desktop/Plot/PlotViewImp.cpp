@@ -9,13 +9,13 @@
 
 #include <float.h>
 
-#include <QtGui/QCursor>
+#include <QCursor>
 #if HAVE_QT5
 #include <QtWidgets/QInputDialog>
 #else
-#include <QtGui/QInputDialog>
+#include <QInputDialog>
 #endif
-#include <QtGui/QMouseEvent>
+#include <QMouseEvent>
 
 #include "AnnotationElementAdapter.h"
 #include "AnnotationLayerAdapter.h"

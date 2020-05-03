@@ -7,8 +7,8 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QBitmap>
-#include <QtGui/QMenu>
+#include <QBitmap>
+#include <QMenu>
 
 #include "DesktopServices.h"
 #include "DockWindowWidget.h"

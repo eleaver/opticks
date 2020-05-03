@@ -3,17 +3,17 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
 //#include <Qt3Support/Q3MimeSourceFactory>
-#include <QtGui/QBitmap>
-#include <QtGui/QGraphicsScene>
-#include <QtGui/QGraphicsSceneMouseEvent>
-#include <QtGui/QPainter>
-#include <QtGui/QStyleOptionGraphicsItem>
-#include <QtGui/QTextDocument>
+#include <QBitmap>
+#include <QGraphicsScene>
+#include <QGraphicsSceneMouseEvent>
+#include <QPainter>
+#include <QStyleOptionGraphicsItem>
+#include <QTextDocument>
 
 #include "AppVerify.h"
 #include "PlugInManagerServices.h"
@@ -703,10 +703,13 @@ QString WizardGraphicsItem::getNodeToolTip(WizardNode* pNode) const
       //{
       //   imageType = "Unknown";
       //}
-
+#if HAVE_QT5
+      imageType = imageType.toHtmlEscaped();
+      originalType = originalType.toHtmlEscaped();
+#else
       imageType = Qt::escape(imageType);
       originalType = Qt::escape(originalType);
-
+#endif
       originalType = "<img source=\"" + imageType + "\">" + originalType;
    }
 
@@ -718,10 +721,13 @@ QString WizardGraphicsItem::getNodeToolTip(WizardNode* pNode) const
       //{
       //   imageType = "Unknown";
       //}
-
+#if HAVE_QT5
+      imageType = imageType.toHtmlEscaped();
+      type = type.toHtmlEscaped();
+#else
       imageType = Qt::escape(imageType);
       type = Qt::escape(type);
-
+#endif
       type = "<img source=\"" + imageType + "\">" + type;
    }
 
@@ -738,10 +744,13 @@ QString WizardGraphicsItem::getNodeToolTip(WizardNode* pNode) const
          //{
          //   imageType = "Unknown";
          //}
-
+#if HAVE_QT5
+         imageType = imageType.toHtmlEscaped();
+         validType = validType.toHtmlEscaped();
+#else
          imageType = Qt::escape(imageType);
          validType = Qt::escape(validType);
-
+#endif
          validType = "<img source=\"" + imageType + "\">" + validType;
          validTypes.append(validType);
       }
@@ -754,7 +763,11 @@ QString WizardGraphicsItem::getNodeToolTip(WizardNode* pNode) const
    }
    else
    {
-      description = Qt::escape(description);
+#if HAVE_QT5
+      description = description.toHtmlEscaped();
+#else
+       description = Qt::escape(description);
+#endif
    }
 
    // The type and description text obtained above has the <, >, &, and " characters converted to valid

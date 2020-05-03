@@ -10,8 +10,8 @@
 #ifndef LATLONLAYERIMP_H
 #define LATLONLAYERIMP_H
 
-#include <QtGui/QColor>
-#include <QtGui/QFont>
+#include <QColor>
+#include <QFont>
 
 #include "ColorType.h"
 #include "EnumWrapper.h"

@@ -11,8 +11,8 @@
 #define PIXMAPGRID_H
 
 #include <QtCore/QString>
-#include <QtGui/QColor>
-#include <QtGui/QPixmap>
+#include <QColor>
+#include <QPixmap>
 
 #include "SelectionGrid.h"
 

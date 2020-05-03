@@ -11,8 +11,8 @@
 #define OPTIONSSHORTCUTS_H
 
 #include <QtCore/QList>
-#include <QtGui/QIcon>
-#include <QtGui/QWidget>
+#include <QIcon>
+#include <QWidget>
 
 #include "AppVersion.h"
 

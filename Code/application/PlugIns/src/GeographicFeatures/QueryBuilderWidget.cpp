@@ -11,12 +11,12 @@
 #include "QueryBuilderWidget.h"
 
 #include <QtCore/QStringList>
-#include <QtGui/QComboBox>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QLineEdit>
-#include <QtGui/QPushButton>
-#include <QtGui/QStringListModel>
+#include <QComboBox>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QStringListModel>
 
 QueryBuilderWidget::QueryBuilderWidget(QWidget *pParent) : QWidget(pParent)
 {

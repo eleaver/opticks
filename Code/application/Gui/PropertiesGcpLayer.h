@@ -13,7 +13,7 @@
 #if HAVE_QT5
 #include <QtWidgets/QSpinBox>
 #else
-#include <QtGui/QSpinBox>
+#include <QSpinBox>
 #endif
 
 #include "LabeledSectionGroup.h"

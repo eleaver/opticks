@@ -15,7 +15,7 @@
 #if HAVE_QT5
 #include <QtWidgets/QToolButton>
 #else
-#include <QtGui/QToolButton>
+#include <QToolButton>
 #endif
 
 class PixmapGrid;

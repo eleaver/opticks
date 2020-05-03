@@ -7,11 +7,11 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QApplication>
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QMouseEvent>
-#include <QtGui/QPushButton>
+#include <QApplication>
+#include <QLabel>
+#include <QLayout>
+#include <QMouseEvent>
+#include <QPushButton>
 
 #include <qwt_plot_canvas.h>
 #include <qwt_plot_grid.h>

@@ -38,7 +38,7 @@
 #include "xmlreader.h"
 
 #include <QtCore/QDir>
-#include <QtGui/QFileDialog>
+#include <QFileDialog>
 
 using namespace std;
 

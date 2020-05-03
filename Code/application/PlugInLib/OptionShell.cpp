@@ -10,7 +10,7 @@
 #include "OptionShell.h"
 #include "PlugInManagerServices.h"
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 using namespace std;
 

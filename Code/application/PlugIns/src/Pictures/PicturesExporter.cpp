@@ -23,8 +23,8 @@
 
 #include <stdio.h>
 
-#include <QtGui/QPainter>
-#include <QtGui/QWidget>
+#include <QPainter>
+#include <QWidget>
 
 using namespace std;
 

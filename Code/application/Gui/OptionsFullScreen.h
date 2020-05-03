@@ -10,7 +10,7 @@
 #ifndef OPTIONSFULLSCREEN_H
 #define OPTIONSFULLSCREEN_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 #include "AppVersion.h"
 #include "ConfigurationSettings.h"

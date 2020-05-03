@@ -12,8 +12,8 @@
 
 #include <QtCore/QObject>
 #include <QtCore/QPointer>
-#include <QtGui/QAction>
-#include <QtGui/QWidget>
+#include <QAction>
+#include <QWidget>
 
 #include "AttachmentPtr.h"
 #include "DockWindow.h"

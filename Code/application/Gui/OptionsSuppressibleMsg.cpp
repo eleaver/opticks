@@ -15,9 +15,9 @@
 #include "PropertiesRasterLayer.h"
 #include "WizardView.h"
 
-#include <QtGui/QCheckBox>
-#include <QtGui/QLabel>
-#include <QtGui/QVBoxLayout>
+#include <QCheckBox>
+#include <QLabel>
+#include <QVBoxLayout>
 
 OptionsSuppressibleMsg::OptionsSuppressibleMsg() :
    QWidget(NULL)

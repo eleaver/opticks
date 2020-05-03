@@ -3,18 +3,18 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
 #ifndef GRAPHICTEXTWIDGET_H
 #define GRAPHICTEXTWIDGET_H
 
-#include <QtGui/QCheckBox>
-#include <QtGui/QComboBox>
-#include <QtGui/QFontComboBox>
-#include <QtGui/QTextEdit>
-#include <QtGui/QWidget>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QFontComboBox>
+#include <QTextEdit>
+#include <QWidget>
 
 class CustomColorButton;
 class FontSizeComboBox;

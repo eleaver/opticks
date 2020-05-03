@@ -10,14 +10,14 @@
 #include "AppVerify.h"
 #include "ViewResolutionWidget.h"
 
-#include <QtGui/QBitmap>
-#include <QtGui/QIcon>
-#include <QtGui/QIntValidator>
-#include <QtGui/QLayout>
-#include <QtGui/QLineEdit>
-#include <QtGui/QPushButton>
-#include <QtGui/QRadioButton>
-#include <QtGui/QStyleOptionButton>
+#include <QBitmap>
+#include <QIcon>
+#include <QIntValidator>
+#include <QLayout>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QRadioButton>
+#include <QStyleOptionButton>
 
 namespace
 {

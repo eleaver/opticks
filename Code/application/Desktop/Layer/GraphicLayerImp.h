@@ -21,8 +21,8 @@
 #include <memory>
 
 #include <QtCore/QPoint>
-#include <QtGui/QColor>
-#include <QtGui/QFont>
+#include <QColor>
+#include <QFont>
 
 class DataElement;
 class GraphicGroup;

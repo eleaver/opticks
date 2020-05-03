@@ -9,8 +9,8 @@
 
 #define _USRDLL
 
-#include <QtGui/QDialog>
-#include <QtGui/QMessageBox>
+#include <QDialog>
+#include <QMessageBox>
 
 #include "AlgorithmPattern.h"
 #include "AlgorithmDialog.h"

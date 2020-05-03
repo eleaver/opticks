@@ -12,7 +12,7 @@
 
 #include "ModisUtilities.h"
 
-#include <QtGui/QComboBox>
+#include <QComboBox>
 
 class RasterConversionTypeComboBox : public QComboBox
 {

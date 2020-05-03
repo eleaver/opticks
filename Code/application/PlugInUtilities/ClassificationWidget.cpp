@@ -9,22 +9,22 @@
 
 #include <QtCore/QDate>
 #include <QtCore/QDir>
-#include <QtGui/QComboBox>
-#include <QtGui/QDateEdit>
-#include <QtGui/QInputDialog>
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QListWidget>
-#include <QtGui/QPushButton>
-#include <QtGui/QSpinBox>
-#include <QtGui/QStackedWidget>
-#include <QtGui/QTabWidget>
+#include <QComboBox>
+#include <QDateEdit>
+#include <QInputDialog>
+#include <QLabel>
+#include <QLayout>
+#include <QListWidget>
+#include <QPushButton>
+#include <QSpinBox>
+#include <QStackedWidget>
+#include <QTabWidget>
 #if HAVE_QT5
 #include <QtPrintSupport/QPrinter>
 #else
-#include <QtGui/QPrinter>
+#include <QPrinter>
 #endif
-#include <QtGui/QTextEdit>
+#include <QTextEdit>
 
 #include "AppConfig.h"
 #include "ApplicationServices.h"

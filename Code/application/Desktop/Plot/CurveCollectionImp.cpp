@@ -7,7 +7,7 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QPainter>
+#include <QPainter>
 
 #include "CurveCollection.h"
 #include "CurveCollectionImp.h"

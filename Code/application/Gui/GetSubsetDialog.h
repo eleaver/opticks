@@ -13,7 +13,7 @@
 #if HAVE_QT5
 #include <QtWidgets/QDialog>
 #else
-#include <QtGui/QDialog>
+#include <QDialog>
 #endif
 #include <vector>
 

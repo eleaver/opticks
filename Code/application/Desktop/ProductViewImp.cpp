@@ -50,12 +50,12 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMessageBox>
 #else
-#include <QtGui/QApplication>
-#include <QtGui/QMessageBox>
+#include <QApplication>
+#include <QMessageBox>
 #endif
-#include <QtGui/QCursor>
-#include <QtGui/QKeyEvent>
-#include <QtGui/QMouseEvent>
+#include <QCursor>
+#include <QKeyEvent>
+#include <QMouseEvent>
 
 using namespace std;
 XERCES_CPP_NAMESPACE_USE

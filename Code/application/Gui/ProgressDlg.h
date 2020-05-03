@@ -17,11 +17,11 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTextEdit>
 #else
-#include <QtGui/QDialog>
-#include <QtGui/QLabel>
-#include <QtGui/QProgressBar>
-#include <QtGui/QPushButton>
-#include <QtGui/QTextEdit>
+#include <QDialog>
+#include <QLabel>
+#include <QProgressBar>
+#include <QPushButton>
+#include <QTextEdit>
 #endif
 
 #include "ProgressAdapter.h"

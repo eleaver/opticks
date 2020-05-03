@@ -11,11 +11,11 @@
 #include <QtWidgets/QSizePolicy>
 #include <QtPrintSupport/QPrinter>
 #else
-#include <QtGui/QSizePolicy>
-#include <QtGui/QPrinter>
+#include <QSizePolicy>
+#include <QPrinter>
 #endif
-#include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
+#include <QGridLayout>
+#include <QLabel>
 
 #include "AppVerify.h"
 #include "CustomColorButton.h"

@@ -10,7 +10,7 @@
 #ifndef TEXTOBJECTIMP_H
 #define TEXTOBJECTIMP_H
 
-#include <QtGui/QBitmap>
+#include <QBitmap>
 
 #include "AttachmentPtr.h"
 #include "DynamicObject.h"

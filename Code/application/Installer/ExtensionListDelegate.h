@@ -10,7 +10,7 @@
 #ifndef EXTENSIONLISTDELEGATE_H__
 #define EXTENSIONLISTDELEGATE_H__
 
-#include <QtGui/QAbstractItemDelegate>
+#include <QAbstractItemDelegate>
 
 class ExtensionListDelegate : public QAbstractItemDelegate
 {

@@ -7,7 +7,7 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QIcon>
+#include <QIcon>
 
 #include "ModuleDescriptor.h"
 #include "PlugIn.h"

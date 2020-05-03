@@ -10,7 +10,7 @@
 #ifndef OPTIONSTOOLBAR_H
 #define OPTIONSTOOLBAR_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 #include "AppVersion.h"
 

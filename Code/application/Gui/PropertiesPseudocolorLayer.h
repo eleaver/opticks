@@ -13,7 +13,7 @@
 #if HAVE_QT5
 #include <QtWidgets/QTreeWidgetItem>
 #else
-#include <QtGui/QTreeWidgetItem>
+#include <QTreeWidgetItem>
 #endif
 
 #include "LabeledSectionGroup.h"

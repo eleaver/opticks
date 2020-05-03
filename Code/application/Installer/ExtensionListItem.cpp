@@ -10,13 +10,13 @@
 #include "Aeb.h"
 #include "ExtensionListItem.h"
 #include "InstallerServices.h"
-#include <QtGui/QDialogButtonBox>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QMessageBox>
-#include <QtGui/QPixmap>
-#include <QtGui/QPushButton>
-#include <QtGui/QVBoxLayout>
+#include <QDialogButtonBox>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QMessageBox>
+#include <QPixmap>
+#include <QPushButton>
+#include <QVBoxLayout>
 
 ExtensionListItem::ExtensionListItem(bool editor, bool showUpdateInfo, QWidget* pParent) :
       QWidget(pParent),

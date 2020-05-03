@@ -11,7 +11,7 @@
 #define LOCATORIMP_H
 
 #include <QtCore/QString>
-#include <QtGui/QColor>
+#include <QColor>
 
 #include "LocationType.h"
 #include "PlotObjectImp.h"

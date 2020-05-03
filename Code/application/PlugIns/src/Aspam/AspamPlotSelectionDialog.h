@@ -11,7 +11,7 @@
 #define ASPAMPLOTSELECTIONDIALOG_H
 
 #include <QtCore/QString>
-#include <QtGui/QDialog>
+#include <QDialog>
 
 class QComboBox;
 class QStringList;

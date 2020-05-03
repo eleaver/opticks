@@ -11,7 +11,7 @@
 #define ZOOMPANWIDGET_H
 
 #include <QtCore/QPoint>
-#include <QtGui/QWidget>
+#include <QWidget>
 
 #include "LocationType.h"
 

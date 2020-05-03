@@ -18,12 +18,12 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QWidgetAction>
 #else
-#include <QtGui/QAction>
-#include <QtGui/QCheckBox>
-#include <QtGui/QComboBox>
-#include <QtGui/QFontComboBox>
-#include <QtGui/QMenu>
-#include <QtGui/QWidgetAction>
+#include <QAction>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QFontComboBox>
+#include <QMenu>
+#include <QWidgetAction>
 #endif
 
 #include "ToolBarAdapter.h"

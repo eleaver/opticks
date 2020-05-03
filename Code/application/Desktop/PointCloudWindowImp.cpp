@@ -15,7 +15,7 @@
 #include "PointCloudWindowImp.h"
 #include "View.h"
 
-#include <QtGui/QIcon>
+#include <QIcon>
 
 using namespace std;
 

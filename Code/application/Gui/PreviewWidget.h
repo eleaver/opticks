@@ -12,11 +12,11 @@
 
 #include <QtCore/QMap>
 #include <QtCore/QString>
-#include <QtGui/QLabel>
-#include <QtGui/QProgressBar>
-#include <QtGui/QStackedWidget>
-#include <QtGui/QToolButton>
-#include <QtGui/QWidget>
+#include <QLabel>
+#include <QProgressBar>
+#include <QStackedWidget>
+#include <QToolButton>
+#include <QWidget>
 
 #include <boost/any.hpp>
 #include <vector>

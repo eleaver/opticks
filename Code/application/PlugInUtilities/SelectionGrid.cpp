@@ -7,9 +7,9 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QKeyEvent>
-#include <QtGui/QMouseEvent>
-#include <QtGui/QPainter>
+#include <QKeyEvent>
+#include <QMouseEvent>
+#include <QPainter>
 
 #include "SelectionGrid.h"
 

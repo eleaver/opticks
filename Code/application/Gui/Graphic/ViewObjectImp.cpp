@@ -7,12 +7,12 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QApplication>
-#include <QtGui/QDialog>
-#include <QtGui/QDialogButtonBox>
-#include <QtGui/QMoveEvent>
-#include <QtGui/QResizeEvent>
-#include <QtGui/QVBoxLayout>
+#include <QApplication>
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <QMoveEvent>
+#include <QResizeEvent>
+#include <QVBoxLayout>
 
 #include "AppVerify.h"
 #include "Classification.h"

@@ -11,7 +11,7 @@
 #define TIEPOINTLAYERIMP_H
 
 #include <QtCore/QPoint>
-#include <QtGui/QColor>
+#include <QColor>
 
 #include "ColorType.h"
 #include "LayerImp.h"

@@ -10,7 +10,7 @@
 #ifndef GEOGRAPHICFEATURESWIDGET_H
 #define GEOGRAPHICFEATURESWIDGET_H
 
-#include <QtGui/QStackedWidget>
+#include <QStackedWidget>
 
 #include <boost/any.hpp>
 #include <string>

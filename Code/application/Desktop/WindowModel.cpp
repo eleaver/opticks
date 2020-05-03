@@ -9,11 +9,7 @@
 
 #include <QtCore/QDataStream>
 #include <QtCore/QMimeData>
-#if HAVE_QT5
-#include <QtWidgets/QWidget>
-#else
-#include <QtGui/QWidget>
-#endif
+#include <QWidget>
 
 #include "AppVerify.h"
 #include "ClassificationLayer.h"
@@ -1499,3 +1495,17 @@ void WindowModel::WindowSourceModel::removePlotSetItem(SessionItemWrapper* pDock
       pDockWindowWrapper->removeChild(pPlotSet);
    }
 }
+
+#if HAVE_QT5
+   // Qt5 does not have QAbstractItemModel::setSupportedDragActions() so we implement one here.
+   // Alternatively, we could just re-implement QAbstractItemModel::supportedDragActions() to always return Qt::MoveAction
+   Qt::DropActions WindowModel::supportedDragActions() const
+   {
+     return mDropActions;
+   }
+   // must re-implement QAbstractItemModel::supportedDragActions().
+   void WindowModel::setSupportedDragActions(Qt::DropActions actions)
+   {
+     mDropActions = actions;
+   }
+#endif

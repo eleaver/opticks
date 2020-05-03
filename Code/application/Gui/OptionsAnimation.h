@@ -10,8 +10,8 @@
 #ifndef OPTIONSANIMATION_H
 #define OPTIONSANIMATION_H
 
-#include <QtGui/QListWidget>
-#include <QtGui/QWidget>
+#include <QListWidget>
+#include <QWidget>
 
 #include "AppVersion.h"
 

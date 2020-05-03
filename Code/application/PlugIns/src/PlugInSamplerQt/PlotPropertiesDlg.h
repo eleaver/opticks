@@ -10,9 +10,9 @@
 #ifndef PLOTPROPERTIESDLG_H
 #define PLOTPROPERTIESDLG_H
 
-#include <QtGui/QDialog>
-#include <QtGui/QComboBox>
-#include <QtGui/QCheckBox>
+#include <QDialog>
+#include <QComboBox>
+#include <QCheckBox>
 
 class CustomColorButton;
 class GraphicTextWidget;

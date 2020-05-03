@@ -9,9 +9,9 @@
 
 #include "OptionsPropertiesDialog.h"
 
-#include <QtGui/QSpinBox>
-#include <QtGui/QLabel>
-#include <QtGui/QVBoxLayout>
+#include <QSpinBox>
+#include <QLabel>
+#include <QVBoxLayout>
 
 #include "ConfigurationSettings.h"
 #include "LabeledSection.h"

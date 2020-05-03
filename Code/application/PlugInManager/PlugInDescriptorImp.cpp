@@ -9,7 +9,7 @@
 
 #include <QtCore/QDataStream>
 #include <QtCore/QString>
-#include <QtGui/QIcon>
+#include <QIcon>
 
 #include "ApplicationServices.h"
 #include "DynamicObjectAdapter.h"

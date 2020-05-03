@@ -17,19 +17,19 @@
 #include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
-#include <QtGui/QIcon>
+#include <QIcon>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMessageBox>
 #else
-#include <QtGui/QApplication>
-#include <QtGui/QDialog>
-#include <QtGui/QDialogButtonBox>
-#include <QtGui/QDoubleSpinBox>
-#include <QtGui/QFrame>
-#include <QtGui/QGridLayout>
-#include <QtGui/QIcon>
-#include <QtGui/QLabel>
-#include <QtGui/QMessageBox>
+#include <QApplication>
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <QDoubleSpinBox>
+#include <QFrame>
+#include <QGridLayout>
+#include <QIcon>
+#include <QLabel>
+#include <QMessageBox>
 #endif
 
 #include "AnimationAdapter.h"

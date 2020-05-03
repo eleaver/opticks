@@ -16,10 +16,10 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QRadioButton>
 #else
-#include <QtGui/QComboBox>
-#include <QtGui/QFontComboBox>
-#include <QtGui/QLabel>
-#include <QtGui/QRadioButton>
+#include <QComboBox>
+#include <QFontComboBox>
+#include <QLabel>
+#include <QRadioButton>
 #endif
 
 #include "LabeledSectionGroup.h"

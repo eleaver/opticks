@@ -7,8 +7,8 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QCloseEvent>
-#include <QtGui/QMessageBox>
+#include <QCloseEvent>
+#include <QMessageBox>
 
 #include "Aeb.h"
 #include "AppAssert.h"

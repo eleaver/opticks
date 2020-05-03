@@ -3,15 +3,15 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QHeaderView>
-#include <QtGui/QInputDialog>
-#include <QtGui/QLayout>
-#include <QtGui/QMessageBox>
-#include <QtGui/QPushButton>
+#include <QHeaderView>
+#include <QInputDialog>
+#include <QLayout>
+#include <QMessageBox>
+#include <QPushButton>
 
 #include "AppVerify.h"
 #include "AppVersion.h"
@@ -399,8 +399,13 @@ void PropertiesPseudocolorLayer::addClass()
    // Get a unique value from the user for the class
    while (isUnique == false)
    {
-      classValue = QInputDialog::getInteger(this, "New Class", "Enter the data value to associate with the new class:",
+#if HAVE_QT5
+      classValue = QInputDialog::getInt(this, "New Class", "Enter the data value to associate with the new class:",
          classValue, numeric_limits<int>::min(), numeric_limits<int>::max(), 1, &ok);
+#else
+       classValue = QInputDialog::getInteger(this, "New Class", "Enter the data value to associate with the new class:",
+          classValue, numeric_limits<int>::min(), numeric_limits<int>::max(), 1, &ok);
+#endif
       if (ok == false)
       {
          return;

@@ -10,7 +10,7 @@
 #ifndef FONTIMP_H
 #define FONTIMP_H
 
-#include <QtGui/QFont>
+#include <QFont>
 
 #include "Font.h"
 #include "Serializable.h"

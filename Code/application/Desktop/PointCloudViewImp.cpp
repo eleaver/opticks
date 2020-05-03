@@ -33,11 +33,11 @@
 #include <QtWidgets/QActionGroup>
 #include <QtWidgets/QMenu>
 #else
-#include <QtGui/QAction>
-#include <QtGui/QActionGroup>
-#include <QtGui/QMenu>
+#include <QAction>
+#include <QActionGroup>
+#include <QMenu>
 #endif
-#include <QtGui/QMouseEvent>
+#include <QMouseEvent>
 #include <QtOpenGL/QGLBuffer>
 #include <QtOpenGL/QGLShader>
 #include <QtOpenGL/QGLShaderProgram>

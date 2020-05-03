@@ -7,11 +7,11 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QContextMenuEvent>
+#include <QContextMenuEvent>
 #if HAVE_QT5
 #include <QtWidgets/QMenu>
 #else
-#include <QtGui/QMenu>
+#include <QMenu>
 #endif
 
 #include "AppAssert.h"

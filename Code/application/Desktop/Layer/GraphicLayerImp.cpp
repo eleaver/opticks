@@ -56,10 +56,10 @@
 #include <QtWidgets/QInputDialog>
 #include <QtWidgets/QMessageBox>
 #else
-#include <QtGui/QApplication>
-#include <QtGui/QFileDialog>
-#include <QtGui/QInputDialog>
-#include <QtGui/QMessageBox>
+#include <QApplication>
+#include <QFileDialog>
+#include <QInputDialog>
+#include <QMessageBox>
 #endif
 #include <QtOpenGL/QGLWidget>
 

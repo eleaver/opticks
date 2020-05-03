@@ -10,7 +10,7 @@
 #ifndef SYMBOLREGIONDRAWER_H
 #define SYMBOLREGIONDRAWER_H
 
-#include <QtGui/QColor>
+#include <QColor>
 
 #include "glCommon.h"
 #include "TypesFile.h"

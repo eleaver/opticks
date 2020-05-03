@@ -17,8 +17,8 @@
 #include "RasterDataDescriptor.h"
 
 #include <QtCore/QFileInfo>
-#include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
+#include <QGridLayout>
+#include <QLabel>
 
 OptionsTiffImporter::OptionsTiffImporter(QWidget* pParent) :
    LabeledSectionGroup(pParent),

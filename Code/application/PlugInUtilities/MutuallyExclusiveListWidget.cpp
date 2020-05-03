@@ -10,10 +10,10 @@
 #include "AppVerify.h"
 #include "MutuallyExclusiveListWidget.h"
 
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QListWidget>
-#include <QtGui/QPushButton>
+#include <QLabel>
+#include <QLayout>
+#include <QListWidget>
+#include <QPushButton>
 
 MutuallyExclusiveListWidget::MutuallyExclusiveListWidget(QWidget* pParent) :
    QWidget(pParent),

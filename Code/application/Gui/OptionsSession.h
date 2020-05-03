@@ -10,7 +10,7 @@
 #ifndef OPTIONSSESSION_H
 #define OPTIONSSESSION_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 #include "AppVersion.h"
 
 class QCheckBox;

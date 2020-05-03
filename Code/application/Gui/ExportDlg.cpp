@@ -3,13 +3,13 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
 #include <QtCore/QDir>
-#include <QtGui/QListView>
-#include <QtGui/QMessageBox>
+#include <QListView>
+#include <QMessageBox>
 
 #include "AppVerify.h"
 #include "ConfigurationSettings.h"
@@ -236,7 +236,11 @@ QString ExportDlg::updateExtension(const QString& strFilename,
    }
    QString orgFilename = (preserveFullPath ? strFilename : fileInfo.fileName());
 
+#if HAVE_QT5
+   QString strCurrentFilter = selectedNameFilter();
+#else
    QString strCurrentFilter = selectedFilter();
+#endif
    int iOpenParen = strCurrentFilter.indexOf("(");
    int iCloseParen = strCurrentFilter.indexOf(")");
 

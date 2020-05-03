@@ -7,9 +7,9 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QColor>
-#include <QtGui/QLabel>
-#include <QtGui/QGridLayout>
+#include <QColor>
+#include <QLabel>
+#include <QGridLayout>
 
 #include "AppVerify.h"
 #include "CustomColorButton.h"

@@ -3,14 +3,14 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QHeaderView>
-#include <QtGui/QInputDialog>
-#include <QtGui/QMessageBox>
-#include <QtGui/QLayout>
+#include <QHeaderView>
+#include <QInputDialog>
+#include <QMessageBox>
+#include <QLayout>
 
 #include "AppVerify.h"
 #include "TiePointEditor.h"
@@ -219,9 +219,13 @@ void TiePointEditor::goToRow()
    }
 
    bool bOk = true;
-
-   int row = QInputDialog::getInteger(this, "Go To Tie Point",
+#if HAVE_QT5
+   int row = QInputDialog::getInt(this, "Go To Tie Point",
       "Enter the tie point number to display at the top of the table", currentRow + 1, 1, numRows, 1, &bOk);
+#else
+   int row = QInputDialog::getInteger(this, "Go To Tie Point",
+   "Enter the tie point number to display at the top of the table", currentRow + 1, 1, numRows, 1, &bOk);
+#endif
    if (bOk)
    {
       goToRow(--row);

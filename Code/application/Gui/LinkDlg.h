@@ -10,10 +10,10 @@
 #ifndef LINKDLG_H
 #define LINKDLG_H
 
-#include <QtGui/QDialog>
-#include <QtGui/QLabel>
-#include <QtGui/QPushButton>
-#include <QtGui/QStackedWidget>
+#include <QDialog>
+#include <QLabel>
+#include <QPushButton>
+#include <QStackedWidget>
 
 class Layer;
 class LinkDatasetPage;

@@ -10,7 +10,7 @@
 #ifndef GCPLAYERIMP_H
 #define GCPLAYERIMP_H
 
-#include <QtGui/QColor>
+#include <QColor>
 
 #include "LayerImp.h"
 #include "TypesFile.h"

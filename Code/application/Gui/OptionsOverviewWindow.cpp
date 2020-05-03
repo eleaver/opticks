@@ -14,10 +14,10 @@
 #include "LabeledSection.h"
 #include "SpatialDataWindow.h"
 
-#include <QtGui/QColor>
-#include <QtGui/QLabel>
-#include <QtGui/QSpinBox>
-#include <QtGui/QVBoxLayout>
+#include <QColor>
+#include <QLabel>
+#include <QSpinBox>
+#include <QVBoxLayout>
 
 #include <string>
 

@@ -8,9 +8,9 @@
  */
 
 #include <QtCore/QTimer>
-#include <QtGui/QApplication>
-#include <QtGui/QDesktopWidget>
-#include <QtGui/QLayout>
+#include <QApplication>
+#include <QDesktopWidget>
+#include <QLayout>
 
 #include "SplashScreen.h"
 #include "AppVersion.h"

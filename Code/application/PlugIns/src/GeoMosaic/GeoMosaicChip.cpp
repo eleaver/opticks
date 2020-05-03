@@ -31,7 +31,7 @@
 #include <limits>
 #include <vector>
 #include <QtCore/QStringList>
-#include <QtGui/QInputDialog>
+#include <QInputDialog>
 
 
 REGISTER_PLUGIN_BASIC(OpticksGeoMosaic, GeoMosaicChip);

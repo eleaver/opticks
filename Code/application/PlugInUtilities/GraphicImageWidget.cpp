@@ -10,9 +10,9 @@
 #if HAVE_QT5
 #include <QtWidgets/QSizePolicy>
 #else
-#include <QtGui/QSizePolicy>
+#include <QSizePolicy>
 #endif
-#include <QtGui/QGridLayout>
+#include <QGridLayout>
 
 #include "AppConfig.h"
 #include "AppVerify.h"

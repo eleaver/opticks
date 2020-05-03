@@ -16,7 +16,7 @@
 #if HAVE_QT5
 #include <QtWidgets/QWidget>
 #else
-#include <QtGui/QWidget>
+#include <QWidget>
 #endif
 
 #include <boost/any.hpp>

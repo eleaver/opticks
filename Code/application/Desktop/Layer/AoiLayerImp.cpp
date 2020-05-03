@@ -15,10 +15,10 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMessageBox>
 #else
-#include <QtGui/QApplication>
-#include <QtGui/QMessageBox>
+#include <QApplication>
+#include <QMessageBox>
 #endif
-#include <QtGui/QFontMetrics>
+#include <QFontMetrics>
 
 #include "AnnotationToolBar.h"
 #include "AoiElement.h"

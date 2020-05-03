@@ -3,15 +3,15 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
 #include <QtCore/QDir>
 #include <QtCore/QUrl>
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QMessageBox>
+#include <QLabel>
+#include <QLayout>
+#include <QMessageBox>
 
 #include "ConfigurationSettings.h"
 #include "AppVerify.h"
@@ -140,7 +140,7 @@ FilePlugInDlg::FilePlugInDlg(const vector<PlugInDescriptor*>& availablePlugins, 
       setDirectory(QString::fromStdString(directory));
    }
 
-   
+
    // Set the initial plug-in
    mpPlugInCombo->setCurrentIndex(0);
    setSelectedPlugIn(mLastPlugIns[mPlugInKey]);
@@ -148,7 +148,7 @@ FilePlugInDlg::FilePlugInDlg(const vector<PlugInDescriptor*>& availablePlugins, 
 
    // Connections
    connect(mpPlugInCombo, SIGNAL(activated(const QString&)), this, SLOT(updateFileFilters(const QString&)));
-   connect(mpPlugInCombo, SIGNAL(activated(const QString&)), this, SIGNAL(plugInSelected(const QString&))); 
+   connect(mpPlugInCombo, SIGNAL(activated(const QString&)), this, SIGNAL(plugInSelected(const QString&)));
    connect(mpOptionsButton, SIGNAL(clicked()), this, SIGNAL(optionsClicked()));
 }
 
@@ -195,7 +195,11 @@ bool FilePlugInDlg::isDefaultExtension(const QString& strExtension) const
       return false;
    }
 
+#if HAVE_QT5
+   QString strFilters = selectedNameFilter();
+#else
    QString strFilters = selectedFilter();
+#endif
 
    int iPosition = strFilters.indexOf(".");
    while (iPosition != -1)
@@ -248,14 +252,22 @@ void FilePlugInDlg::updateFileFilters(const QString& strPlugIn)
          if (filterList.empty() == false)
          {
             strFilter = filterList.front();
+#if HAVE_QT5
+            setNameFilters(filterList);
+#else
             setFilters(filterList);
+#endif
          }
       }
    }
 
    if (strFilter.isEmpty() == true)
    {
+#if HAVE_QT5
+       setNameFilter("All Files (*)");
+#else
       setFilter("All Files (*)");
+#endif
    }
 }
 

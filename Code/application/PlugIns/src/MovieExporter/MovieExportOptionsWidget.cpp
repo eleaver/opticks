@@ -15,7 +15,7 @@
 #include "MovieExportOptionsWidget.h"
 #include "ViewResolutionWidget.h"
 
-#include <QtGui/QLayout>
+#include <QLayout>
 
 MovieExportOptionsWidget::MovieExportOptionsWidget() :
    LabeledSectionGroup(NULL)

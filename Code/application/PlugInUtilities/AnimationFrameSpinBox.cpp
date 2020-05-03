@@ -13,7 +13,7 @@
 #include "AnimationFrameSpinBox.h"
 #include "AnimationServices.h"
 
-#include <QtGui/QLineEdit>
+#include <QLineEdit>
 
 #include <algorithm>
 #include <string>

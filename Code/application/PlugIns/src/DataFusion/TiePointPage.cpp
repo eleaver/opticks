@@ -8,14 +8,14 @@
  */
 
 #include <QtCore/QSet>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QMouseEvent>
-#include <QtGui/QPushButton>
-#include <QtGui/QSpinBox>
-#include <QtGui/QTreeWidget>
-#include <QtGui/QTreeWidgetItem>
+#include <QHeaderView>
+#include <QLabel>
+#include <QLayout>
+#include <QMouseEvent>
+#include <QPushButton>
+#include <QSpinBox>
+#include <QTreeWidget>
+#include <QTreeWidgetItem>
 
 #include "AppAssert.h"
 #include "AppVerify.h"

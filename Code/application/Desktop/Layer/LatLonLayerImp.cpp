@@ -11,7 +11,7 @@
 #if HAVE_QT5
 #include <QtWidgets/QApplication>
 #else
-#include <QtGui/QApplication>
+#include <QApplication>
 #endif
 
 #include "AppConfig.h"

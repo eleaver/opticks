@@ -10,7 +10,7 @@
 #ifndef EXTENSIONLISTITEM_H__
 #define EXTENSIONLISTITEM_H__
 
-#include <QtGui/QListWidgetItem>
+#include <QListWidgetItem>
 
 class QDialogButtonBox;
 class QLabel;

@@ -10,9 +10,9 @@
 #ifndef PAPERSIZEDLG_H
 #define PAPERSIZEDLG_H
 
-#include <QtGui/QDialog>
-#include <QtGui/QComboBox>
-#include <QtGui/QRadioButton>
+#include <QDialog>
+#include <QComboBox>
+#include <QRadioButton>
 
 class PaperSizeDlg : public QDialog
 {

@@ -12,10 +12,10 @@
 #include "HistogramPlotImp.h"
 #include "RasterLayer.h"
 
-#include <QtGui/QColorDialog>
-#include <QtGui/QFileDialog>
-#include <QtGui/QFormLayout>
-#include <QtGui/QMessageBox>
+#include <QColorDialog>
+#include <QFileDialog>
+#include <QFormLayout>
+#include <QMessageBox>
 
 #include <vector>
 

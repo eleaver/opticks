@@ -10,7 +10,7 @@
 #ifndef OPTIONSMEASUREMENTLAYER_H
 #define OPTIONSMEASUREMENTLAYER_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 #include "AppVersion.h"
 

@@ -11,8 +11,8 @@
 #include <QtWidgets/QInputDialog>
 #include <QtWidgets/QMessageBox>
 #else
-#include <QtGui/QInputDialog>
-#include <QtGui/QMessageBox>
+#include <QInputDialog>
+#include <QMessageBox>
 #endif
 
 #include "LayerListImp.h"

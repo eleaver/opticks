@@ -12,10 +12,10 @@
 #include "GeoreferenceDlg.h"
 #include "GeoreferenceWidget.h"
 
-#include <QtGui/QDialogButtonBox>
-#include <QtGui/QFrame>
-#include <QtGui/QMessageBox>
-#include <QtGui/QVBoxLayout>
+#include <QDialogButtonBox>
+#include <QFrame>
+#include <QMessageBox>
+#include <QVBoxLayout>
 
 #include <string>
 

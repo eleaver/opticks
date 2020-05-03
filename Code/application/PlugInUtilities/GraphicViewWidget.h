@@ -10,8 +10,8 @@
 #ifndef GRAPHICVIEWWIDGET_H
 #define GRAPHICVIEWWIDGET_H
 
-#include <QtGui/QComboBox>
-#include <QtGui/QWidget>
+#include <QComboBox>
+#include <QWidget>
 
 #include <vector>
 

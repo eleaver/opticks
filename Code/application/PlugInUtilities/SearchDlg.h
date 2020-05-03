@@ -13,9 +13,9 @@
 #define SEARCHDLG_H
 
 #include <QtCore/QStringList>
-#include <QtGui/QCheckBox>
-#include <QtGui/QDialog>
-#include <QtGui/QListWidget>
+#include <QCheckBox>
+#include <QDialog>
+#include <QListWidget>
 #include <QTextEdit>
 
 class Progress;

@@ -9,18 +9,18 @@
 
 #if HAVE_QT5
 #include <QtWidgets/QAction>
-#include <QtGui/QIcon>
+#include <QIcon>
 #include <QtWidgets/QLayout>
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QStackedWidget>
 #else
-#include <QtGui/QAction>
-#include <QtGui/QIcon>
-#include <QtGui/QLayout>
-#include <QtGui/QMessageBox>
-#include <QtGui/QMenu>
-#include <QtGui/QStackedWidget>
+#include <QAction>
+#include <QIcon>
+#include <QLayout>
+#include <QMessageBox>
+#include <QMenu>
+#include <QStackedWidget>
 #endif
 
 #include "AppVerify.h"

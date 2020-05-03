@@ -7,14 +7,14 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QAction>
-#include <QtGui/QCloseEvent>
-#include <QtGui/QDockWidget>
-#include <QtGui/QFileDialog>
-#include <QtGui/QGraphicsScene>
-#include <QtGui/QMessageBox>
-#include <QtGui/QMenu>
-#include <QtGui/QToolBar>
+#include <QAction>
+#include <QCloseEvent>
+#include <QDockWidget>
+#include <QFileDialog>
+#include <QGraphicsScene>
+#include <QMessageBox>
+#include <QMenu>
+#include <QToolBar>
 
 #include "AppVerify.h"
 #include "MenuBarImp.h"

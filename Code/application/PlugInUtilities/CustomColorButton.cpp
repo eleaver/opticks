@@ -7,9 +7,9 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QPainter>
-#include <QtGui/QPixmap>
-#include <QtGui/QStyle>
+#include <QPainter>
+#include <QPixmap>
+#include <QStyle>
 
 #include "CustomColorButton.h"
 #include "ColorMenu.h"

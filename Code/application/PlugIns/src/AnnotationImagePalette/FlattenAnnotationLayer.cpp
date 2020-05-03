@@ -32,8 +32,8 @@
 #include "switchOnEncoding.h"
 #include "Undo.h"
 
-#include <QtGui/QImage>
-#include <QtGui/QMessageBox>
+#include <QImage>
+#include <QMessageBox>
 
 REGISTER_PLUGIN_BASIC(OpticksAnnotationImagePalette, FlattenAnnotationLayer);
 

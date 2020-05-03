@@ -10,7 +10,7 @@
 #if HAVE_QT5
 #include <QtWidgets/QMenu>
 #else
-#include <QtGui/QMenu>
+#include <QMenu>
 #endif
 #include "CartesianPlotAdapter.h"
 #include "CartesianPlotImp.h"

@@ -16,9 +16,9 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #else
-#include <QtGui/QAction>
-#include <QtGui/QMenu>
-#include <QtGui/QMenuBar>
+#include <QAction>
+#include <QMenu>
+#include <QMenuBar>
 #endif
 
 #include "MenuBar.h"

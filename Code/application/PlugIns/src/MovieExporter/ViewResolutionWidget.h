@@ -11,7 +11,7 @@
 #define VIEWRESOLUTIONWIDGET_H
 
 #include "OptionsMovieExporter.h"
-#include <QtGui/QWidget>
+#include <QWidget>
 
 class QLineEdit;
 class QPushButton;

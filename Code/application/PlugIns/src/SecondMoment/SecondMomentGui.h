@@ -11,7 +11,7 @@
 #define SECONDMOMENTGUI_H
 
 #include <QtCore/QFileInfo>
-#include <QtGui/QDialog>
+#include <QDialog>
 
 class AoiElement;
 class FileBrowser;

@@ -15,8 +15,8 @@
 #include <QtWidgets/QUndoCommand>
 #include <QtWidgets/QUndoStack>
 #else
-#include <QtGui/QUndoCommand>
-#include <QtGui/QUndoStack>
+#include <QUndoCommand>
+#include <QUndoStack>
 #endif
 
 #include <string>

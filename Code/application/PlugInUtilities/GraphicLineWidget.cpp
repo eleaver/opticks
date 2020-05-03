@@ -9,12 +9,12 @@
 
 #include "GraphicLineWidget.h"
 
-#include <QtGui/QCheckBox>
-#include <QtGui/QColor>
-#include <QtGui/QComboBox>
-#include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QSpinBox>
+#include <QCheckBox>
+#include <QColor>
+#include <QComboBox>
+#include <QGridLayout>
+#include <QLabel>
+#include <QSpinBox>
 
 #include "AppVerify.h"
 #include "CustomColorButton.h"

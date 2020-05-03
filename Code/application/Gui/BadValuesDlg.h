@@ -17,8 +17,8 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QStyledItemDelegate>
 #else
-#include <QtGui/QDialog>
-#include <QtGui/QStyledItemDelegate>
+#include <QDialog>
+#include <QStyledItemDelegate>
 #endif
 
 #include <string>

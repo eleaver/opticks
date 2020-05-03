@@ -10,7 +10,7 @@
 #ifndef HISTOGRAMIMP_H
 #define HISTOGRAMIMP_H
 
-#include <QtGui/QPixmap>
+#include <QPixmap>
 
 #include "LocationType.h"
 #include "PlotObjectImp.h"

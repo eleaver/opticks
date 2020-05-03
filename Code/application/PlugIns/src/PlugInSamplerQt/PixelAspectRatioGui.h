@@ -3,14 +3,14 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
 #ifndef PIXELASPECTRATIOGUI_H
 #define PIXELASPECTRATIOGUI_H
 
-#include <QtGui/QDialog>
+#include <QDialog>
 #include "PlotWidget.h"
 #include "DockWindow.h"
 #include "Layer.h"
@@ -24,7 +24,7 @@ class PixelAspectRatioGui : public QDialog
     Q_OBJECT
 
 public:
-    PixelAspectRatioGui( QWidget* pParent = 0, const char* pName = 0, bool modal = FALSE );
+    PixelAspectRatioGui( QWidget* pParent = 0, const char* pName = 0, bool modal = false );
     ~PixelAspectRatioGui();
 
 public slots:

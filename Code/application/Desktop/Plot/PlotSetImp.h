@@ -14,8 +14,8 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QTabWidget>
 #else
-#include <QtGui/QMenu>
-#include <QtGui/QTabWidget>
+#include <QMenu>
+#include <QTabWidget>
 #endif
 
 #include "AttachmentPtr.h"

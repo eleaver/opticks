@@ -18,7 +18,7 @@
 #include "SessionExplorer.h"
 
 #include <QtCore/QObject>
-#include <QtGui/QAction>
+#include <QAction>
 #include <vector>
 #include <boost/any.hpp>
 

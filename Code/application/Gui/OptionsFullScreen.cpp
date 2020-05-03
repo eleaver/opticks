@@ -13,12 +13,12 @@
 #include <string>
 #include <vector>
 
-#include <QtGui/QComboBox>
-#include <QtGui/QGroupBox>
-#include <QtGui/QLabel>
-#include <QtGui/QListWidget>
-#include <QtGui/QListWidgetItem>
-#include <QtGui/QVBoxLayout>
+#include <QComboBox>
+#include <QGroupBox>
+#include <QLabel>
+#include <QListWidget>
+#include <QListWidgetItem>
+#include <QVBoxLayout>
 
 #include "AppVerify.h"
 #include "ConfigurationSettings.h"

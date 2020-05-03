@@ -10,9 +10,9 @@
 #ifndef QUERYOPTIONSWIDGET_H
 #define QUERYOPTIONSWIDGET_H
 
-#include <QtGui/QLineEdit>
-#include <QtGui/QTreeWidget>
-#include <QtGui/QStackedWidget>
+#include <QLineEdit>
+#include <QTreeWidget>
+#include <QStackedWidget>
 
 #include "Feature.h"
 #include "LabeledSectionGroup.h"

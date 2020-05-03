@@ -15,12 +15,12 @@
 #include "LineWidthComboBox.h"
 #include "OptionsLatLonLayer.h"
 
-#include <QtGui/QApplication>
-#include <QtGui/QFont>
-#include <QtGui/QFontComboBox>
-#include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QVBoxLayout>
+#include <QApplication>
+#include <QFont>
+#include <QFontComboBox>
+#include <QGridLayout>
+#include <QLabel>
+#include <QVBoxLayout>
 
 #include <string>
 

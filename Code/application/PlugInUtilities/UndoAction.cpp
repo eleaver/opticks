@@ -7,7 +7,7 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QApplication>
+#include <QApplication>
 
 #include "SessionItem.h"
 #include "SessionManager.h"

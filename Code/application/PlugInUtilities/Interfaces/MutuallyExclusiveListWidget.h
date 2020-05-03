@@ -10,7 +10,7 @@
 #ifndef MUTUALLYEXCLUSIVELISTWIDGET_H
 #define MUTUALLYEXCLUSIVELISTWIDGET_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 class QLabel;
 class QListWidget;

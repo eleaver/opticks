@@ -14,7 +14,7 @@
 #include "ComplexData.h"
 #include "DataAccessor.h"
 #include "DimensionDescriptor.h"
-#include <QtGui/QColor>
+#include <QColor>
 
 class FlattenAnnotationLayer : public AlgorithmShell
 {

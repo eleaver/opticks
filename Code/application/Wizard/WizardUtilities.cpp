@@ -7,11 +7,11 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QDialog>
-#include <QtGui/QDialogButtonBox>
-#include <QtGui/QFrame>
-#include <QtGui/QMessageBox>
-#include <QtGui/QVBoxLayout>
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <QFrame>
+#include <QMessageBox>
+#include <QVBoxLayout>
 
 #include "ApplicationServices.h"
 #include "BatchWizard.h"

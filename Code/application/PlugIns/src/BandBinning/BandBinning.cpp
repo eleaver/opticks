@@ -36,7 +36,7 @@
 #include <string>
 
 #include <QtCore/QString>
-#include <QtGui/QMessageBox>
+#include <QMessageBox>
 
 REGISTER_PLUGIN_BASIC(OpticksBandBinning, BandBinning);
 

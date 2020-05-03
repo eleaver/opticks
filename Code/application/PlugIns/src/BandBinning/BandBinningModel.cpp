@@ -3,13 +3,13 @@
  * Copyright(c) 2011 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
 #include <QtCore/QString>
 #include <QtCore/QVariant>
-#include <QtGui/QFont>
+#include <QFont>
 
 #include "BandBinningModel.h"
 #include "RasterDataDescriptor.h"
@@ -218,8 +218,14 @@ void BandBinningModel::setGroupedBands(
 {
    if (groupedBands != mGroupedBands)
    {
-      mGroupedBands = groupedBands;
-      reset();
+#if HAVE_QT5
+       beginResetModel();
+       mGroupedBands = groupedBands;
+       endResetModel();
+#else
+       mGroupedBands = groupedBands;
+       reset();
+#endif
    }
 }
 

@@ -16,9 +16,9 @@
 #include "OptionsAoiLayer.h"
 #include "SymbolTypeGrid.h"
 
-#include <QtGui/QCheckBox>
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
+#include <QCheckBox>
+#include <QLabel>
+#include <QLayout>
 
 OptionsAoiLayer::OptionsAoiLayer() :
    QWidget(NULL)

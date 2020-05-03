@@ -9,12 +9,12 @@
 
 #include "AppVerify.h"
 #include "GetSubsetDialog.h"
-#include <QtGui/QComboBox>
-#include <QtGui/QDialogButtonBox>
-#include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QLineEdit>
-#include <QtGui/QListWidget>
+#include <QComboBox>
+#include <QDialogButtonBox>
+#include <QGridLayout>
+#include <QLabel>
+#include <QLineEdit>
+#include <QListWidget>
 
 GetSubsetDialog::GetSubsetDialog(const QString& plotName,
                                  const QStringList& aoiNames,

@@ -16,8 +16,8 @@
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QListWidgetItem>
 #else
-#include <QtGui/QListWidget>
-#include <QtGui/QListWidgetItem>
+#include <QListWidget>
+#include <QListWidgetItem>
 #endif
 
 #include "AttachmentPtr.h"

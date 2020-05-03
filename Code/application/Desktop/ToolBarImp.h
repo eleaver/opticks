@@ -14,8 +14,8 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QToolBar>
 #else
-#include <QtGui/QAction>
-#include <QtGui/QToolBar>
+#include <QAction>
+#include <QToolBar>
 #endif
 
 #include "WindowImp.h"

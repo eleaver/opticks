@@ -25,10 +25,10 @@
 #include "WorkspaceWindow.h"
 
 #include <ossim/matrix/newmat.h>
-#include <QtGui/QBitmap>
-#include <QtGui/QHeaderView>
-#include <QtGui/QInputDialog>
-#include <QtGui/QMessageBox>
+#include <QBitmap>
+#include <QHeaderView>
+#include <QInputDialog>
+#include <QMessageBox>
 
 namespace
 {

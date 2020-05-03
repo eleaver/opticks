@@ -15,12 +15,12 @@
 #include "PlugInRegistration.h"
 #include "UtilityServices.h"
 
-#include <QtGui/QCheckBox>
-#include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QLineEdit>
-#include <QtGui/QSpinBox>
-#include <QtGui/QVBoxLayout>
+#include <QCheckBox>
+#include <QGridLayout>
+#include <QLabel>
+#include <QLineEdit>
+#include <QSpinBox>
+#include <QVBoxLayout>
 
 #include <limits>
 #include <string>

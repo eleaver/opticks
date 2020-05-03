@@ -15,10 +15,10 @@
 #include "GcpSymbolGrid.h"
 #include "LabeledSection.h"
 
-#include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QSpinBox>
-#include <QtGui/QVBoxLayout>
+#include <QGridLayout>
+#include <QLabel>
+#include <QSpinBox>
+#include <QVBoxLayout>
 
 #include <limits>
 #include <string>

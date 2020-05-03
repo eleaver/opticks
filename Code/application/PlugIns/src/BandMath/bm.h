@@ -11,14 +11,14 @@
 #define FRMBM_H
 
 #include <QtCore/QStringList>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QCheckBox>
-#include <QtGui/QDialog>
-#include <QtGui/QLabel>
-#include <QtGui/QListWidget>
-#include <QtGui/QPushButton>
-#include <QtGui/QRadioButton>
-#include <QtGui/QTextEdit>
+#include <QButtonGroup>
+#include <QCheckBox>
+#include <QDialog>
+#include <QLabel>
+#include <QListWidget>
+#include <QPushButton>
+#include <QRadioButton>
+#include <QTextEdit>
 
 #include <vector>
 

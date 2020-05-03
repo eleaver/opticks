@@ -19,15 +19,15 @@
 #include "SpatialDataView.h"
 #include "SpatialDataWindow.h"
 
-#include <QtGui/QCheckBox>
-#include <QtGui/QDialogButtonBox>
-#include <QtGui/QFileDialog>
-#include <QtGui/QGroupBox>
-#include <QtGui/QLabel>
-#include <QtGui/QListWidget>
-#include <QtGui/QMessageBox>
-#include <QtGui/QPushButton>
-#include <QtGui/QVBoxLayout>
+#include <QCheckBox>
+#include <QDialogButtonBox>
+#include <QFileDialog>
+#include <QGroupBox>
+#include <QLabel>
+#include <QListWidget>
+#include <QMessageBox>
+#include <QPushButton>
+#include <QVBoxLayout>
 
 GeoMosaicDlg::GeoMosaicDlg(Progress* pProgress, QWidget* pParent) :
    QDialog(pParent)

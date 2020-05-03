@@ -10,7 +10,7 @@
 #ifndef DATADESCRIPTORWIDGET_H
 #define DATADESCRIPTORWIDGET_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 #include "CustomTreeWidget.h"
 #include "DataDescriptor.h"

@@ -28,8 +28,8 @@
 #include "TypeConverter.h"
 #include "View.h"
 
-#include <QtGui/QImage>
-#include <QtGui/QPainter>
+#include <QImage>
+#include <QPainter>
 #include <QtOpenGL/QGLContext>
 
 #include <math.h>

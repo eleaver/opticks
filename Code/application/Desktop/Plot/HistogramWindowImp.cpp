@@ -42,7 +42,7 @@
 #if HAVE_QT5
 #include <QtWidgets/QSplitter>
 #else
-#include <QtGui/QSplitter>
+#include <QSplitter>
 #endif
 #include <vector>
 using namespace std;

@@ -7,9 +7,9 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QCheckBox>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QWidget>
+#include <QCheckBox>
+#include <QHBoxLayout>
+#include <QWidget>
 
 #include "AppVersion.h"
 #include "AppConfig.h"

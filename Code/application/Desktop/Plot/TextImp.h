@@ -10,9 +10,9 @@
 #ifndef TEXTIMP_H
 #define TEXTIMP_H
 
-#include <QtGui/QColor>
-#include <QtGui/QFont>
-#include <QtGui/QPixmap>
+#include <QColor>
+#include <QFont>
+#include <QPixmap>
 
 #include "PlotObjectImp.h"
 #include "TypesFile.h"

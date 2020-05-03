@@ -11,28 +11,28 @@
 #include <QtCore/QEvent>
 #if HAVE_QT5
 #include <QtWidgets/QApplication>
-#include <QtGui/QHelpEvent>
+#include <QHelpEvent>
 #include <QtWidgets/QLayout>
 #include <QtWidgets/QLineEdit>
-#include <QtGui/QPainter>
-#include <QtGui/QResizeEvent>
+#include <QPainter>
+#include <QResizeEvent>
 #include <QtWidgets/QStyle>
 #include <QtWidgets/QStyleOptionSlider>
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QToolTip>
 #include <QtWidgets/QWidgetAction>
 #else
-#include <QtGui/QApplication>
-#include <QtGui/QHelpEvent>
-#include <QtGui/QLayout>
-#include <QtGui/QLineEdit>
-#include <QtGui/QPainter>
-#include <QtGui/QResizeEvent>
-#include <QtGui/QStyle>
-#include <QtGui/QStyleOptionSlider>
-#include <QtGui/QToolButton>
-#include <QtGui/QToolTip>
-#include <QtGui/QWidgetAction>
+#include <QApplication>
+#include <QHelpEvent>
+#include <QLayout>
+#include <QLineEdit>
+#include <QPainter>
+#include <QResizeEvent>
+#include <QStyle>
+#include <QStyleOptionSlider>
+#include <QToolButton>
+#include <QToolTip>
+#include <QWidgetAction>
 #endif
 
 #include "Animation.h"

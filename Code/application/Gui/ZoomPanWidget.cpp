@@ -7,10 +7,10 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QApplication>
-#include <QtGui/QCursor>
-#include <QtGui/QMouseEvent>
-#include <QtGui/QVBoxLayout>
+#include <QApplication>
+#include <QCursor>
+#include <QMouseEvent>
+#include <QVBoxLayout>
 
 #include "ZoomPanWidget.h"
 

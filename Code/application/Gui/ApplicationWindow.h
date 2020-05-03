@@ -17,10 +17,10 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QUndoGroup>
 #else
-#include <QtGui/QAction>
-#include <QtGui/QMainWindow>
-#include <QtGui/QMenu>
-#include <QtGui/QUndoGroup>
+#include <QAction>
+#include <QMainWindow>
+#include <QMenu>
+#include <QUndoGroup>
 #endif
 
 #include "ConfigurationSettings.h"

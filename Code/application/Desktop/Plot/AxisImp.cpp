@@ -10,10 +10,10 @@
 #if HAVE_QT5
 #include <QtWidgets/QApplication>
 #else
-#include <QtGui/QApplication>
+#include <QApplication>
 #endif
-#include <QtGui/QPainter>
-#include <QtGui/QPixmap>
+#include <QPainter>
+#include <QPixmap>
 #include <qwt_math.h>
 #include <qwt_scale_map.h>
 

@@ -11,11 +11,11 @@
 #include "AppVerify.h"
 #include "PlugInSelectorDlg.h"
 
-#include <QtGui/QCheckBox>
-#include <QtGui/QComboBox>
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QPushButton>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QLabel>
+#include <QLayout>
+#include <QPushButton>
 
 using namespace std;
 

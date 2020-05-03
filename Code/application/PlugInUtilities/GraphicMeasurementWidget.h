@@ -10,7 +10,7 @@
 #ifndef GRAPHICMEASUREMENTWIDGET_H
 #define GRAPHICMEASUREMENTWIDGET_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 class QCheckBox;
 class QSpinBox;

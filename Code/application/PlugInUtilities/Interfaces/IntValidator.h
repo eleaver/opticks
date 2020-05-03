@@ -10,7 +10,7 @@
 #ifndef INTVALIDATOR_H
 #define INTVALIDATOR_H
 
-#include <QtGui/QValidator>
+#include <QValidator>
 
 /**
  *  An integer validator for text strings.

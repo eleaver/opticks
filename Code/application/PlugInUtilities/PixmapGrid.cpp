@@ -8,9 +8,9 @@
  */
 
 #include <QTileRules>
-#include <QtGui/QImage>
+#include <QImage>
 #include <QPainter>
-#include <QtGui/QPixmap>
+#include <QPixmap>
 
 #include "PixmapGrid.h"
 

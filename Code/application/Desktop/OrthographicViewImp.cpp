@@ -9,7 +9,7 @@
 
 #include <math.h>
 
-#include <QtGui/QResizeEvent>
+#include <QResizeEvent>
 
 #include "ConfigurationSettings.h"
 #include "GlContextSave.h"

@@ -14,8 +14,8 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QDockWidget>
 #else
-#include <QtGui/QAction>
-#include <QtGui/QDockWidget>
+#include <QAction>
+#include <QDockWidget>
 #endif
 
 #include "ViewWindowImp.h"

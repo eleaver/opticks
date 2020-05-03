@@ -7,9 +7,9 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QApplication>
-#include <QtGui/QFrame>
-#include <QtGui/QLayout>
+#include <QApplication>
+#include <QFrame>
+#include <QLayout>
 
 #include "PlugIn.h"
 #include "PlugInDescriptor.h"

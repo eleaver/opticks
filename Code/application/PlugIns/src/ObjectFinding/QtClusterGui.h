@@ -12,7 +12,7 @@
 
 #include "EnumWrapper.h"
 #include "StringUtilities.h"
-#include <QtGui/QDialog>
+#include <QDialog>
 
 class QComboBox;
 class QDoubleSpinBox;

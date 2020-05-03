@@ -16,7 +16,7 @@
 #include "PixmapGridButton.h"
 #include "TypesFile.h"
 
-#include <QtGui/QPixmap>
+#include <QPixmap>
 
 #include <map>
 

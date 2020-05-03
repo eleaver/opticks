@@ -11,10 +11,10 @@
 #define WIZARDITEMPROPERTIES_H
 
 #include <QtCore/QMap>
-#include <QtGui/QComboBox>
-#include <QtGui/QLabel>
-#include <QtGui/QToolButton>
-#include <QtGui/QTreeWidget>
+#include <QComboBox>
+#include <QLabel>
+#include <QToolButton>
+#include <QTreeWidget>
 
 #include "AttachmentPtr.h"
 #include "WizardItemImp.h"

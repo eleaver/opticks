@@ -7,9 +7,9 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QFontMetrics>
-#include <QtGui/QStyleOptionButton>
-#include <QtGui/QStylePainter>
+#include <QFontMetrics>
+#include <QStyleOptionButton>
+#include <QStylePainter>
 
 #include "ElidedButton.h"
 

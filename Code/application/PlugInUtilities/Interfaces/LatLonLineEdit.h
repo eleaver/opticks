@@ -12,7 +12,7 @@
 #ifndef LATLONLINEEDIT_H
 #define LATLONLINEEDIT_H
 
-#include <QtGui/QLineEdit>
+#include <QLineEdit>
 
 #include "GeoPoint.h"
 

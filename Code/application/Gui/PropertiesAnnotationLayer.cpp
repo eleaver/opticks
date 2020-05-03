@@ -7,9 +7,9 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QLayout>
-#include <QtGui/QMessageBox>
-#include <QtGui/QSplitter>
+#include <QLayout>
+#include <QMessageBox>
+#include <QSplitter>
 
 #include "AnnotationLayer.h"
 #include "AnnotationLayerImp.h"

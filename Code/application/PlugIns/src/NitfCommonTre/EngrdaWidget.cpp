@@ -24,12 +24,12 @@
 
 #include <boost/any.hpp>
 #include <limits>
-#include <QtGui/QLabel>
-#include <QtGui/QLineEdit>
-#include <QtGui/QGridLayout>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QTableWidget>
-#include <QtGui/QTreeWidget>
+#include <QLabel>
+#include <QLineEdit>
+#include <QGridLayout>
+#include <QHBoxLayout>
+#include <QTableWidget>
+#include <QTreeWidget>
 
 REGISTER_PLUGIN(OpticksNitfCommonTre, EngrdaWidget, Nitf::PropertiesQWidgetWrapper<EngrdaWidget>());
 

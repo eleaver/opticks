@@ -48,25 +48,25 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QFileDialog>
-#include <QtGui/QIcon>
+#include <QIcon>
 #include <QtWidgets/QLayout>
 #include <QtWidgets/QMessageBox>
-#include <QtGui/QMouseEvent>
+#include <QMouseEvent>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QWidgetAction>
 #else
-#include <QtGui/QApplication>
-#include <QtGui/QDialog>
-#include <QtGui/QDialogButtonBox>
-#include <QtGui/QFileDialog>
-#include <QtGui/QIcon>
-#include <QtGui/QLayout>
-#include <QtGui/QMessageBox>
-#include <QtGui/QMouseEvent>
-#include <QtGui/QRadioButton>
-#include <QtGui/QSpinBox>
-#include <QtGui/QWidgetAction>
+#include <QApplication>
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <QFileDialog>
+#include <QIcon>
+#include <QLayout>
+#include <QMessageBox>
+#include <QMouseEvent>
+#include <QRadioButton>
+#include <QSpinBox>
+#include <QWidgetAction>
 #endif
 
 using namespace std;

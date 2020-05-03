@@ -17,11 +17,11 @@
 #include <QtWidgets/QProxyStyle>
 #include <QtWidgets/QSlider>
 #else
-#include <QtGui/QComboBox>
-#include <QtGui/QLabel>
-#include <QtGui/QMenu>
-#include <QtGui/QProxyStyle>
-#include <QtGui/QSlider>
+#include <QComboBox>
+#include <QLabel>
+#include <QMenu>
+#include <QProxyStyle>
+#include <QSlider>
 #endif
 #include <QtCore/QString>
 

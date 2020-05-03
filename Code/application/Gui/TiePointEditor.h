@@ -10,9 +10,9 @@
 #ifndef TIEPOINTEDITOR_H
 #define TIEPOINTEDITOR_H
 
-#include <QtGui/QDialog>
-#include <QtGui/QPushButton>
-#include <QtGui/QTableView>
+#include <QDialog>
+#include <QPushButton>
+#include <QTableView>
 
 #include "SafePtr.h"
 #include "TiePointLayer.h"

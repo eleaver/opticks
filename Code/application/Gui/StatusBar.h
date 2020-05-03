@@ -14,8 +14,8 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QStatusBar>
 #else
-#include <QtGui/QLabel>
-#include <QtGui/QStatusBar>
+#include <QLabel>
+#include <QStatusBar>
 #endif
 
 #include "Observer.h"

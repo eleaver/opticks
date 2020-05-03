@@ -7,9 +7,9 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QMessageBox>
-#include <QtGui/QVBoxLayout>
+#include <QHBoxLayout>
+#include <QMessageBox>
+#include <QVBoxLayout>
 
 #include "AppVersion.h"
 #include "LinkDlg.h"

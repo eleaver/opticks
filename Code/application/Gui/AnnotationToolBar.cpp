@@ -8,11 +8,11 @@
  */
 
 #include <QtCore/QEvent>
-#include <QtGui/QActionEvent>
-#include <QtGui/QApplication>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QMessageBox>
-#include <QtGui/QToolButton>
+#include <QActionEvent>
+#include <QApplication>
+#include <QButtonGroup>
+#include <QMessageBox>
+#include <QToolButton>
 
 #include "AnnotationLayerAdapter.h"
 #include "AnnotationToolBar.h"

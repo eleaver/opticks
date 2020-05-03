@@ -16,7 +16,7 @@
 #include "DynamicObject.h"
 #include "ExecutableShell.h"
 #include "ObjectResource.h"
-#include <QtGui/QWidget>
+#include <QWidget>
 #include <string>
 
 class QGroupBox;

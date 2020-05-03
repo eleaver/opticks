@@ -10,11 +10,11 @@
 #ifndef FILESETWIDGET_H
 #define FILESETWIDGET_H
 
-#include <QtGui/QComboBox>
-#include <QtGui/QLineEdit>
-#include <QtGui/QPushButton>
-#include <QtGui/QTreeWidgetItem>
-#include <QtGui/QWidget>
+#include <QComboBox>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QTreeWidgetItem>
+#include <QWidget>
 
 class BatchFileset;
 class CustomTreeWidget;

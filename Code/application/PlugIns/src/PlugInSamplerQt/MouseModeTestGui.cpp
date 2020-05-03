@@ -7,13 +7,13 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QBitmap>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QCheckBox>
-#include <QtGui/QDialogButtonBox>
-#include <QtGui/QFrame>
-#include <QtGui/QLayout>
-#include <QtGui/QMouseEvent>
+#include <QBitmap>
+#include <QButtonGroup>
+#include <QCheckBox>
+#include <QDialogButtonBox>
+#include <QFrame>
+#include <QLayout>
+#include <QMouseEvent>
 
 #include "AppVerify.h"
 #include "DesktopServices.h"

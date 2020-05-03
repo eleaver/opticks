@@ -8,15 +8,15 @@
  */
 
 #include <QtCore/QTextStream>
-#include <QtGui/QApplication>
-#include <QtGui/QCompleter>
-#include <QtGui/QFileDialog>
-#include <QtGui/QGroupBox>
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QLineEdit>
-#include <QtGui/QPushButton>
-#include <QtGui/QRadioButton>
+#include <QApplication>
+#include <QCompleter>
+#include <QFileDialog>
+#include <QGroupBox>
+#include <QLabel>
+#include <QLayout>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QRadioButton>
 
 #include "AppVerify.h"
 #include "DimensionDescriptor.h"

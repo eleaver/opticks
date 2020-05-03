@@ -10,8 +10,8 @@
 #ifndef LATLONLAYERUNDO_H
 #define LATLONLAYERUNDO_H
 
-#include <QtGui/QColor>
-#include <QtGui/QFont>
+#include <QColor>
+#include <QFont>
 
 #include "ColorType.h"
 #include "LayerUndo.h"

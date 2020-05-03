@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -13,26 +13,27 @@
 #include <QtCore/QTime>
 #include <QtCore/QTimer>
 #include <QtCore/QUrl>
-#include <QtGui/QActionGroup>
-#include <QtGui/QApplication>
-#include <QtGui/QBitmap>
-#include <QtGui/QClipboard>
-#include <QtGui/QDesktopServices>
-#include <QtGui/QDialog>
-#include <QtGui/QDialogButtonBox>
-#include <QtGui/QDragEnterEvent>
-#include <QtGui/QDropEvent>
-#include <QtGui/QFileDialog>
-#include <QtGui/QFrame>
-#include <QtGui/QGridLayout>
-#include <QtGui/QInputDialog>
-#include <QtGui/QKeySequence>
-#include <QtGui/QMessageBox>
-#include <QtGui/QShortcutEvent>
-#include <QtGui/QSplashScreen>
-#include <QtGui/QToolTip>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QWhatsThis>
+#include <QActionGroup>
+#include <QApplication>
+#include <QBitmap>
+#include <QMimeData>
+#include <QClipboard>
+#include <QDesktopServices>
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <QDragEnterEvent>
+#include <QDropEvent>
+#include <QFileDialog>
+#include <QFrame>
+#include <QGridLayout>
+#include <QInputDialog>
+#include <QKeySequence>
+#include <QMessageBox>
+#include <QShortcutEvent>
+#include <QSplashScreen>
+#include <QToolTip>
+#include <QVBoxLayout>
+#include <QWhatsThis>
 
 #include "DependencyConfigs.h"
 #include "AboutDlg.h"
@@ -823,7 +824,7 @@ ApplicationWindow::ApplicationWindow(QWidget* pSplash) :
    addWindow(mpSessionExplorer);
    addDockWidget(Qt::LeftDockWidgetArea, mpSessionExplorer, Qt::Vertical);
    mpSessionExplorer->detach(SIGNAL_NAME(Subject, Deleted), Slot(this, &ApplicationWindow::windowRemoved));
-   mpSessionExplorer->attach(SIGNAL_NAME(SessionExplorer, AboutToShowSessionItemContextMenu), 
+   mpSessionExplorer->attach(SIGNAL_NAME(SessionExplorer, AboutToShowSessionItemContextMenu),
       Slot(this, &ApplicationWindow::updateContextMenu));
    SessionManagerImp::instance()->attach(SIGNAL_NAME(SessionManager, AboutToRestore),
       Slot(this, &ApplicationWindow::sessionAboutToRestore));
@@ -1191,7 +1192,7 @@ ApplicationWindow::ApplicationWindow(QWidget* pSplash) :
       actionData["helpWebpage"] = QString::fromStdString(entry->second);
       pAction->setData(actionData);
       connect(pAction, SIGNAL(triggered()), this, SLOT(displayPlugInHelp()));
-      mpMenuBar->insertCommand(pAction, m_pHelp, helpContext); 
+      mpMenuBar->insertCommand(pAction, m_pHelp, helpContext);
    }
 
    m_pHelp->addSeparator();
@@ -1882,7 +1883,7 @@ void ApplicationWindow::tileWorkspaceWindows(TilingType eType)
    mpWorkspace->tile(eType);
 }
 
-bool ApplicationWindow::tileWorkspaceWindows(const vector<WorkspaceWindow*>& windows, 
+bool ApplicationWindow::tileWorkspaceWindows(const vector<WorkspaceWindow*>& windows,
                                              bool maxFirst, TilingType eType)
 {
    return mpWorkspace->tileWindows(windows, maxFirst, eType);
@@ -2547,7 +2548,7 @@ void ApplicationWindow::openSession()
    {
       pathStr = QString::fromStdString(pSessionDir->getFullPathAndName());
    }
-   QString filename = QFileDialog::getOpenFileName(this, "Open Session File", 
+   QString filename = QFileDialog::getOpenFileName(this, "Open Session File",
       pathStr, "Session Files (*.session)");
    if (filename.isEmpty() == false)
    {
@@ -2569,7 +2570,7 @@ void ApplicationWindow::openSession(const QString& filename)
          QString msg = "You have selected to open the current session file, which "
             "will lose all changes since the session was last saved.  Do you want to "
             "open the session file?";
-         if (QMessageBox::question(this, "Re-opening Current Session", msg, 
+         if (QMessageBox::question(this, "Re-opening Current Session", msg,
             QMessageBox::Yes, QMessageBox::No) == QMessageBox::No)
          {
             return;
@@ -2581,9 +2582,9 @@ void ApplicationWindow::openSession(const QString& filename)
          int buttonVal = (eSave == SESSION_AUTO_SAVE ? QMessageBox::Yes : QMessageBox::No);
          if (eSave == SESSION_QUERY_SAVE)
          {
-            buttonVal = QMessageBox::question(this, "Save Session", 
-               "Do you want to save the current session before closing it?", 
-               QMessageBox::Yes | QMessageBox::Default, QMessageBox::No, 
+            buttonVal = QMessageBox::question(this, "Save Session",
+               "Do you want to save the current session before closing it?",
+               QMessageBox::Yes | QMessageBox::Default, QMessageBox::No,
                QMessageBox::Cancel | QMessageBox::Escape);
          }
          if (buttonVal == QMessageBox::Yes)
@@ -2615,9 +2616,9 @@ bool ApplicationWindow::newSession()
    int buttonVal = (eSave == SESSION_AUTO_SAVE ? QMessageBox::Yes : QMessageBox::No);
    if (eSave == SESSION_QUERY_SAVE)
    {
-         buttonVal = QMessageBox::question(this, "Close Session", 
-            "Do you want to save the session before closing it?", 
-            QMessageBox::Yes | QMessageBox::Default, QMessageBox::No, 
+         buttonVal = QMessageBox::question(this, "Close Session",
+            "Do you want to save the session before closing it?",
+            QMessageBox::Yes | QMessageBox::Default, QMessageBox::No,
             QMessageBox::Cancel | QMessageBox::Escape);
    }
    if (buttonVal == QMessageBox::Yes)
@@ -2710,7 +2711,7 @@ bool ApplicationWindow::saveSession()
    Service<DesktopServices>()->createProgressDialog("Save Session", &progress);
    pair<SessionManager::SerializationStatus,vector<pair<SessionItem*, string> > > status =
       pManager->serialize(mSessionFilename, &progress);
-   if (status.first == SessionManager::FAILURE) 
+   if (status.first == SessionManager::FAILURE)
    {
       progress.updateProgress("Session saving failed.", 0, ERRORS);
       return false;
@@ -5171,8 +5172,8 @@ void ApplicationWindow::enableToolBars(bool bEnable)
 void ApplicationWindow::saveConfiguration() const
 {
    // save dock window states
-   vector<Window*> dockWindows = getWindows(DOCK_WINDOW); 
-   vector<Window*>::iterator it; 
+   vector<Window*> dockWindows = getWindows(DOCK_WINDOW);
+   vector<Window*>::iterator it;
 
    ConfigurationSettings* pConfig = ConfigurationSettingsImp::instance();
    if (pConfig == NULL)
@@ -5181,14 +5182,14 @@ void ApplicationWindow::saveConfiguration() const
    }
 
    // Dock window and toolbar configuration
-   for (it=dockWindows.begin(); it!=dockWindows.end(); ++it) 
-   { 
-      DockWindowImp* pDock = dynamic_cast<DockWindowImp*>(*it); 
-      if (pDock != NULL) 
-      { 
-         pDock->saveState(); 
-      } 
-   } 
+   for (it=dockWindows.begin(); it!=dockWindows.end(); ++it)
+   {
+      DockWindowImp* pDock = dynamic_cast<DockWindowImp*>(*it);
+      if (pDock != NULL)
+      {
+         pDock->saveState();
+      }
+   }
 
    QByteArray windowConfiguration = saveState().toBase64();
 
@@ -5310,9 +5311,9 @@ void ApplicationWindow::closeEvent(QCloseEvent* e)
    int button = (eSave == SESSION_AUTO_SAVE ? QMessageBox::Yes : QMessageBox::No);
    if (eSave == SESSION_QUERY_SAVE)
    {
-         button = QMessageBox::question(this, "Close Session", 
-            "Do you want to save the session before closing it?", 
-            QMessageBox::Yes | QMessageBox::Default, QMessageBox::No, 
+         button = QMessageBox::question(this, "Close Session",
+            "Do you want to save the session before closing it?",
+            QMessageBox::Yes | QMessageBox::Default, QMessageBox::No,
             QMessageBox::Cancel | QMessageBox::Escape);
    }
    if (button == QMessageBox::Cancel)
@@ -5492,7 +5493,7 @@ void ApplicationWindow::clearMarkings()
 
    if (pWindow == NULL)
    {
-      QMessageBox::information(this, "No view selected", "There is no view currently selected", 
+      QMessageBox::information(this, "No view selected", "There is no view currently selected",
          QMessageBox::Ok | QMessageBox::Default);
 
       return;
@@ -5662,7 +5663,7 @@ void ApplicationWindow::dropEvent(QDropEvent* pEvent)
       QString filename = pEvent->mimeData()->text();
       if (filename.isEmpty() == false)
       {
-         QByteArray charArray = filename.toAscii();
+         QByteArray charArray = filename.toLatin1();
          for (int i = 0; i < filename.length(); ++i)
          {
             if (charArray[i] == '\\')
@@ -5950,7 +5951,7 @@ void ApplicationWindow::arrangeWorkspaceWindows(QAction* pAction)
       eType = TILE_VERTICAL;
    }
    else
-   {      
+   {
       return;
    }
 

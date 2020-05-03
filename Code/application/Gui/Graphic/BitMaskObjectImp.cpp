@@ -20,7 +20,7 @@
 #include "xmlreader.h"
 #include "xmlwriter.h"
 
-#include <QtGui/QColor>
+#include <QColor>
 
 using namespace std;
 XERCES_CPP_NAMESPACE_USE

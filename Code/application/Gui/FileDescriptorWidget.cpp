@@ -3,14 +3,14 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QComboBox>
-#include <QtGui/QGroupBox>
-#include <QtGui/QHeaderView>
-#include <QtGui/QVBoxLayout>
+#include <QComboBox>
+#include <QGroupBox>
+#include <QHeaderView>
+#include <QVBoxLayout>
 
 #include "AppVerify.h"
 #include "CustomTreeWidget.h"
@@ -66,7 +66,11 @@ FileDescriptorWidget::FileDescriptorWidget(QWidget* parent) :
    if (pHeader != NULL)
    {
       pHeader->setSortIndicatorShown(false);
+#if HAVE_QT5
+      pHeader->setSectionsMovable(false);
+#else
       pHeader->setMovable(false);
+#endif
       pHeader->setStretchLastSection(true);
       pHeader->setDefaultAlignment(Qt::AlignLeft | Qt::AlignVCenter);
       pHeader->resizeSection(0, 150);
@@ -127,7 +131,11 @@ FileDescriptorWidget::FileDescriptorWidget(QWidget* parent) :
    if (pHeader != NULL)
    {
       pHeader->setSortIndicatorShown(true);
+#if HAVE_QT5
+      pHeader->setSectionsMovable(false);
+#else
       pHeader->setMovable(false);
+#endif
       pHeader->setStretchLastSection(false);
       pHeader->setDefaultAlignment(Qt::AlignLeft | Qt::AlignVCenter);
       pHeader->resizeSection(0, 75);

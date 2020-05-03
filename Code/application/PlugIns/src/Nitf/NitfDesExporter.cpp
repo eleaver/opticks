@@ -23,9 +23,9 @@
 #include "ProgressTracker.h"
 #include "RasterElement.h"
 
-#include <QtGui/QComboBox>
-#include <QtGui/QFormLayout>
-#include <QtGui/QWidget>
+#include <QComboBox>
+#include <QFormLayout>
+#include <QWidget>
 #include <errno.h>
 #include <string.h>
 

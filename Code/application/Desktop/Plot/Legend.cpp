@@ -7,8 +7,8 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QImage>
-#include <QtGui/QMouseEvent>
+#include <QImage>
+#include <QMouseEvent>
 
 #include "Legend.h"
 #include "PlotObject.h"

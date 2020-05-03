@@ -10,10 +10,10 @@
 #if HAVE_QT5
 #include <QtPrintSupport/QPrinter>
 #else
-#include <QtGui/QPrinter>
+#include <QPrinter>
 #endif
-#include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
+#include <QGridLayout>
+#include <QLabel>
 
 #include "AppVerify.h"
 #include "GraphicTriangleWidget.h"

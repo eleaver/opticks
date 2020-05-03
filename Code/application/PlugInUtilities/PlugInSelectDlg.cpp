@@ -7,11 +7,11 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QApplication>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLayout>
-#include <QtGui/QMessageBox>
-#include <QtGui/QPushButton>
+#include <QApplication>
+#include <QHeaderView>
+#include <QLayout>
+#include <QMessageBox>
+#include <QPushButton>
 
 #include "PlugInSelectDlg.h"
 

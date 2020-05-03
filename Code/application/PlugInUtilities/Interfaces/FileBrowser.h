@@ -10,9 +10,9 @@
 #ifndef FILEBROWSER_H
 #define FILEBROWSER_H
 
-#include <QtGui/QLineEdit>
-#include <QtGui/QPushButton>
-#include <QtGui/QWidget>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QWidget>
 
 class Filename;
 

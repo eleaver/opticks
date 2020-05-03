@@ -10,8 +10,8 @@
 #ifndef CURVEIMP_H
 #define CURVEIMP_H
 
-#include <QtGui/QColor>
-#include <QtGui/QPixmap>
+#include <QColor>
+#include <QPixmap>
 
 #include "LocationType.h"
 #include "PlotObjectImp.h"

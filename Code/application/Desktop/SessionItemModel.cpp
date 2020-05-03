@@ -9,11 +9,11 @@
 
 #include <QtCore/QDataStream>
 #include <QtCore/QMimeData>
-#include <QtGui/QIcon>
+#include <QIcon>
 #if HAVE_QT5
 #include <QtWidgets/QMessageBox>
 #else
-#include <QtGui/QMessageBox>
+#include <QMessageBox>
 #endif
 
 #include "AppVerify.h"

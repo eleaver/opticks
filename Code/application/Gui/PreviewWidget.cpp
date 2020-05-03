@@ -8,8 +8,8 @@
  */
 
 #include <QtCore/QFileInfo>
-#include <QtGui/QApplication>
-#include <QtGui/QLayout>
+#include <QApplication>
+#include <QLayout>
 
 #include "AppVerify.h"
 #include "ChippingWidget.h"

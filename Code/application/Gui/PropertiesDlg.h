@@ -10,8 +10,8 @@
 #ifndef PROPERTIESDLG_H
 #define PROPERTIESDLG_H
 
-#include <QtGui/QDialog>
-#include <QtGui/QDialogButtonBox>
+#include <QDialog>
+#include <QDialogButtonBox>
 
 #include "ConfigurationSettings.h"
 

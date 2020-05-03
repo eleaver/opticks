@@ -7,8 +7,8 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QLabel>
-#include <QtGui/QVBoxLayout>
+#include <QLabel>
+#include <QVBoxLayout>
 
 #include "LinkDatasetPage.h"
 #include "DesktopServicesImp.h"

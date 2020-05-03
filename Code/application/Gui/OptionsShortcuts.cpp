@@ -7,14 +7,14 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
-#include <QtGui/QHeaderView>
-#include <QtGui/QImage>
-#include <QtGui/QMenu>
-#include <QtGui/QPixmap>
-#include <QtGui/QTreeWidgetItem>
-#include <QtGui/QVBoxLayout>
+#include <QAction>
+#include <QApplication>
+#include <QHeaderView>
+#include <QImage>
+#include <QMenu>
+#include <QPixmap>
+#include <QTreeWidgetItem>
+#include <QVBoxLayout>
 
 #include "ApplicationWindow.h"
 #include "AppVerify.h"

@@ -11,7 +11,7 @@
 #define LOGCONTEXTMENUACTIONS_H
 
 #include <QtCore/QObject>
-#include <QtGui/QAction>
+#include <QAction>
 
 #include "AlgorithmShell.h"
 #include "DesktopServices.h"

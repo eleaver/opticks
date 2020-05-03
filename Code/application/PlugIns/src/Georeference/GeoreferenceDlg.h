@@ -10,7 +10,7 @@
 #ifndef GEOREFERENCEDLG_H
 #define GEOREFERENCEDLG_H
 
-#include <QtGui/QDialog>
+#include <QDialog>
 
 class GeoreferenceWidget;
 class RasterDataDescriptor;

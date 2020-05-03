@@ -33,15 +33,15 @@
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTreeView>
 #else
-#include <QtGui/QApplication>
-#include <QtGui/QMenu>
-#include <QtGui/QMessageBox>
-#include <QtGui/QSortFilterProxyModel>
-#include <QtGui/QTabWidget>
-#include <QtGui/QTreeView>
+#include <QApplication>
+#include <QMenu>
+#include <QMessageBox>
+#include <QSortFilterProxyModel>
+#include <QTabWidget>
+#include <QTreeView>
 #endif
-#include <QtGui/QClipboard>
-#include <QtGui/QContextMenuEvent>
+#include <QClipboard>
+#include <QContextMenuEvent>
 
 using namespace std;
 

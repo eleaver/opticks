@@ -12,7 +12,7 @@
 #include <QtCore/QDateTime>
 #include <QtCore/QFileInfo>
 #include <QtCore/QString>
-#include <QtGui/QIcon>
+#include <QIcon>
 
 #include "ApplicationServices.h"
 #include "ConfigurationSettings.h"

@@ -19,14 +19,14 @@
 #include "RasterDataDescriptor.h"
 #include "Slot.h"
 
-#include <QtGui/QCheckBox>
-#include <QtGui/QFrame>
-#include <QtGui/QLabel>
-#include <QtGui/QGridLayout>
-#include <QtGui/QLineEdit>
-#include <QtGui/QListWidget>
-#include <QtGui/QStackedWidget>
-#include <QtGui/QStyleOptionButton>
+#include <QCheckBox>
+#include <QFrame>
+#include <QLabel>
+#include <QGridLayout>
+#include <QLineEdit>
+#include <QListWidget>
+#include <QStackedWidget>
+#include <QStyleOptionButton>
 
 #include <boost/any.hpp>
 #include <vector>

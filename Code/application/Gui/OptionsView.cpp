@@ -17,14 +17,14 @@
 #include "View.h"
 #include "WorkspaceWindow.h"
 
-#include <QtGui/QButtonGroup>
-#include <QtGui/QCheckBox>
-#include <QtGui/QComboBox>
-#include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QRadioButton>
-#include <QtGui/QSpinBox>
-#include <QtGui/QVBoxLayout>
+#include <QButtonGroup>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QGridLayout>
+#include <QLabel>
+#include <QRadioButton>
+#include <QSpinBox>
+#include <QVBoxLayout>
 
 #include <limits>
 #include <string>

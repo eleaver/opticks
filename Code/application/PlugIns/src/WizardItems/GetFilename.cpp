@@ -8,7 +8,7 @@
  */
 
 #include <QtCore/QStringList>
-#include <QtGui/QFileDialog>
+#include <QFileDialog>
 
 #include "ApplicationServices.h"
 #include "AppVersion.h"

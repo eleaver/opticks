@@ -7,11 +7,11 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QFrame>
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QStackedWidget>
-#include <QtGui/QTabWidget>
+#include <QFrame>
+#include <QLabel>
+#include <QLayout>
+#include <QStackedWidget>
+#include <QTabWidget>
 
 #include "AppVerify.h"
 #include "GraphicObject.h"

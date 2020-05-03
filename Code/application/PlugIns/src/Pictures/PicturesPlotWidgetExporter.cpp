@@ -13,7 +13,7 @@
 #include "PlugInArgList.h"
 #include "Progress.h"
 
-#include <QtGui/QImage>
+#include <QImage>
 
 PicturesPlotWidgetExporter::PicturesPlotWidgetExporter(PicturesDetails *pDetails) : PicturesExporter(pDetails)
 {

@@ -10,11 +10,11 @@
 #include <QtCore/QDir>
 #include <QtCore/QEvent>
 #include <QtCore/QRegExp>
-#include <QtGui/QGridLayout>
-#include <QtGui/QListView>
-#include <QtGui/QMessageBox>
-#include <QtGui/QSplitter>
-#include <QtGui/QToolButton>
+#include <QGridLayout>
+#include <QListView>
+#include <QMessageBox>
+#include <QSplitter>
+#include <QToolButton>
 
 #include "AppVerify.h"
 #include "AppVersion.h"

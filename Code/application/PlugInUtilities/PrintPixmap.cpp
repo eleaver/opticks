@@ -7,14 +7,14 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QPainter>
-#include <QtGui/QPrintDialog>
+#include <QPainter>
+#include <QPrintDialog>
 #if HAVE_QT5
 #include <QtPrintSupport/QPrinter>
 #else
-#include <QtGui/QPrinter>
+#include <QPrinter>
 #endif
-#include <QtGui/QWidget>
+#include <QWidget>
 
 #include "PrintPixmap.h"
 

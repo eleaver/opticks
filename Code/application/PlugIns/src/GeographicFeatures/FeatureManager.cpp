@@ -46,11 +46,11 @@
 #include <boost/bind.hpp>
 #include <boost/any.hpp>
 
-#include <QtGui/QDialog>
-#include <QtGui/QDialogButtonBox>
-#include <QtGui/QFrame>
-#include <QtGui/QMenu>
-#include <QtGui/QVBoxLayout>
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <QFrame>
+#include <QMenu>
+#include <QVBoxLayout>
 
 using namespace std;
 XERCES_CPP_NAMESPACE_USE

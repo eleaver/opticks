@@ -7,9 +7,9 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QCheckBox>
-#include <QtGui/QLayout>
-#include <QtGui/QLineEdit>
+#include <QCheckBox>
+#include <QLayout>
+#include <QLineEdit>
 
 #include "FilterWidget.h"
 

@@ -30,24 +30,24 @@
 #include <QtCore/QString>
 #include <QtCore/QTemporaryFile>
 #include <QtCore/QUrl>
-#include <QtGui/QDateTimeEdit>
-#include <QtGui/QDesktopServices>
-#include <QtGui/QFileDialog>
-#include <QtGui/QGroupBox>
-#include <QtGui/QLayout>
-#include <QtGui/QLineEdit>
-#include <QtGui/QListWidget>
-#include <QtGui/QMessageBox>
-#include <QtGui/QPushButton>
-#include <QtGui/QRadioButton>
-#include <QtGui/QStackedWidget>
-#include <QtGui/QValidator>
+#include <QDateTimeEdit>
+#include <QDesktopServices>
+#include <QFileDialog>
+#include <QGroupBox>
+#include <QLayout>
+#include <QLineEdit>
+#include <QListWidget>
+#include <QMessageBox>
+#include <QPushButton>
+#include <QRadioButton>
+#include <QStackedWidget>
+#include <QValidator>
 #if HAVE_QT5
 #include <QtPrintSupport/QPrinter>
 #else
-#include <QtGui/QPrinter>
+#include <QPrinter>
 #endif
-#include <QtGui/QTextEdit>
+#include <QTextEdit>
 
 #include <limits>
 #include <string>

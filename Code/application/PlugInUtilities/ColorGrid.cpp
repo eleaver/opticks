@@ -7,12 +7,12 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QPainter>
-#include <QtGui/QPixmap>
+#include <QPainter>
+#include <QPixmap>
 #if HAVE_QT5
 #include <QtWidgets/QtWidgets>
 #else
-#include <QtGui/QtGui>
+#include <QtGui>
 #endif
 #include "ColorGrid.h"
 

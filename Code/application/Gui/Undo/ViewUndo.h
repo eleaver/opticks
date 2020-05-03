@@ -10,8 +10,8 @@
 #ifndef VIEWUNDO_H
 #define VIEWUNDO_H
 
-#include <QtGui/QColor>
-#include <QtGui/QFont>
+#include <QColor>
+#include <QFont>
 
 #include "LocationType.h"
 #include "TypesFile.h"
