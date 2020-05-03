@@ -28,6 +28,9 @@
 #include "UtilityServices.h"
 
 #include <opencv2/imgproc/imgproc.hpp>
+#ifndef CV_FILLED
+#include <opencv2/imgproc/imgproc_c.h>
+#endif
 
 REGISTER_PLUGIN_BASIC(OpticksObjectFinding, ConnectedComponents);
 
