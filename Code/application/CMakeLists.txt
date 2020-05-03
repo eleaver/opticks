@@ -253,8 +253,9 @@ if(HAVE_QT5)
    endmacro()
    find_package(Qt5 COMPONENTS Core Gui Widgets OpenGL Xml Network PrintSupport REQUIRED)
    add_definitions(-DQt_VERSION_MAJOR=${Qt5_VERSION_MAJOR})
-  # We likely need only Qt5Core_INCLUDE_DIRS, clean this up later:
-  set(QT_INCLUDE_DIRS ${Qt5Core_INCLUDE_DIRS};${Qt5Gui_INCLUDE_DIRS};${Qt5Widgets_INCLUDE_DIRS};${Qt5OpenGL_INCLUDE_DIRS};${Qt5Xml_INCLUDE_DIRS};${Qt5Network_INCLUDE_DIRS};${Qt5PrintSupport_INCLUDE_DIRS})
+   # We likely need only Qt5Core_INCLUDE_DIRS, clean this up later:
+   set(QT_INCLUDE_DIRS ${Qt5Core_INCLUDE_DIRS};${Qt5Gui_INCLUDE_DIRS};${Qt5Widgets_INCLUDE_DIRS};${Qt5OpenGL_INCLUDE_DIRS};${Qt5Xml_INCLUDE_DIRS};${Qt5Network_INCLUDE_DIRS};${Qt5PrintSupport_INCLUDE_DIRS})
+   set(QT_LIBRARIES ${Qt5Core_LIBRARIES} ${Qt5Gui_LIBRARIES} ${Qt5Widgets_LIBRARIES} ${Qt5OpenGL_LIBRARIES} ${Qt5Xml_LIBRARIES} ${Qt5Network_LIBRARIES} ${Qt5PrintSupport_LIBRARIES})
 else()
    find_package(Qt4 COMPONENTS QtCore QtGui QtOpenGL QtXml QtNetwork REQUIRED)
    set(Qt_VERSION_MAJOR 4)
@@ -262,6 +263,7 @@ else()
 endif(HAVE_QT5)
 include_directories(${QT_INCLUDE_DIRS})
 Message(STATUS "QT_INCLUDE_DIRS: ${QT_INCLUDE_DIRS}")
+Message(STATUS "QT_LIBRARIES: ${QT_LIBRARIES}")
 #######################################################################################
 
 
@@ -271,6 +273,8 @@ find_package(XQilla REQUIRED)
 if(HAVE_QT5)
    set(Qwt5ForQt5_INCLUDE_DIR "/usr/include/qt5/qwt5-qt5" CACHE STRING "DIrectory containing Qwt5ForQt5 headers")
    find_package(Qwt5ForQt5 REQUIRED)
+   include_directories(${Qwt5ForQt5_INCLUDE_DIR})
+   message(STATUS "Qwt5ForQt5_INCLUDE_DIR: ${Qwt5ForQt5_INCLUDE_DIR}")
 else()
    set(Qwt5ForQt4_INCLUDE_DIR "/usr/include/qwt5-qt4" CACHE STRING "DIrectory containing Qwt5ForQt4 headers")
    find_package(Qwt5ForQt4 REQUIRED)
@@ -453,7 +457,7 @@ include_directories(${Boost_INCLUDE_DIRS})
 include_directories(${Xerces_INCLUDE_DIRS})
 include_directories(${XQilla_INCLUDE_DIRS})
 if(HAVE_QT5)
-   include_directories(${Qwt5ForQt5_INCLUDE_DIRS})
+   include_directories(${Qwt5ForQt5_INCLUDE_DIR})
 else()
    include_directories(${Qwt5ForQt4_INCLUDE_DIRS})
 endif()
@@ -724,7 +728,7 @@ source_group(Interfaces FILES ${INTERFACE_HEADER_FILES})
 target_link_libraries(Opticks
     ${OPTICKS_EXECUTABLE_LIBS}
     ${Opticks_LIBRARIES}
-    ${QT_LIBRARIES}    
+    ${QT_LIBRARIES}
     ${OPENGL_LIBRARIES}    
     ${ZLIB_LIBRARIES}    
     ${YamlCpp_LIBRARIES}    
