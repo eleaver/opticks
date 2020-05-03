@@ -12,13 +12,8 @@
 
 #include <QtCore/QEvent>
 #include <QtCore/QString>
-#if HAVE_QT5
-#include <QtWidgets/QListWidget>
-#include <QtWidgets/QListWidgetItem>
-#else
 #include <QListWidget>
 #include <QListWidgetItem>
-#endif
 
 #include "AttachmentPtr.h"
 #include "DockWindowAdapter.h"

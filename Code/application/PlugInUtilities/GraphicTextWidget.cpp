@@ -7,13 +7,8 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#if HAVE_QT5
-#include <QtWidgets/QSizePolicy>
-#include <QtPrintSupport/QPrinter>
-#else
 #include <QSizePolicy>
 #include <QPrinter>
-#endif
 #include <QGridLayout>
 #include <QLabel>
 

@@ -12,11 +12,7 @@
 
 #include <QtCore/QObject>
 #include <QtCore/QTimer>
-#if HAVE_QT5
-#include <QtWidgets/QAction>
-#else
 #include <QAction>
-#endif
 
 #include "DesktopServices.h"
 #include "SessionItemImp.h"

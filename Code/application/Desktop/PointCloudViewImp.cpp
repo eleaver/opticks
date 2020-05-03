@@ -28,15 +28,9 @@
 #include "Undo.h"
 
 #include <QtCore/QFile>
-#if HAVE_QT5
-#include <QtWidgets/QAction>
-#include <QtWidgets/QActionGroup>
-#include <QtWidgets/QMenu>
-#else
 #include <QAction>
 #include <QActionGroup>
 #include <QMenu>
-#endif
 #include <QMouseEvent>
 #include <QtOpenGL/QGLBuffer>
 #include <QtOpenGL/QGLShader>

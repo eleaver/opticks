@@ -10,11 +10,7 @@
 #ifndef HISTOGRAMWINDOWIMP_H
 #define HISTOGRAMWINDOWIMP_H
 
-#if HAVE_QT5
-#include <QtWidgets/QAction>
-#else
 #include <QAction>
-#endif
 
 #include "AttachmentPtr.h"
 #include "DimensionDescriptor.h"

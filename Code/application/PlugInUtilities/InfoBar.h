@@ -10,11 +10,7 @@
 #ifndef INFOBAR_H
 #define INFOBAR_H
 
-#if HAVE_QT5
-#include <QtWidgets/QWidget>
-#else
 #include <QWidget>
-#endif
 
 class ElidedButton;
 class ElidedLabel;

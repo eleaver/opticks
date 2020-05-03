@@ -46,13 +46,8 @@
 #include <map>
 #include <string>
 
-#if HAVE_QT5
-#include <QtWidgets/QApplication>
-#include <QtWidgets/QMessageBox>
-#else
 #include <QApplication>
 #include <QMessageBox>
-#endif
 #include <QCursor>
 #include <QKeyEvent>
 #include <QMouseEvent>

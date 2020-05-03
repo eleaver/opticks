@@ -7,21 +7,12 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#if HAVE_QT5
-#include <QtWidgets/QAction>
-#include <QIcon>
-#include <QtWidgets/QLayout>
-#include <QtWidgets/QMessageBox>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QStackedWidget>
-#else
 #include <QAction>
 #include <QIcon>
 #include <QLayout>
 #include <QMessageBox>
 #include <QMenu>
 #include <QStackedWidget>
-#endif
 
 #include "AppVerify.h"
 #include "Axis.h"

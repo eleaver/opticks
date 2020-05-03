@@ -7,13 +7,8 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#if HAVE_QT5
-#include <QtWidgets/QApplication>
-#include <QtWidgets/QLayout>
-#else
 #include <QApplication>
 #include <QLayout>
-#endif
 #include <QKeyEvent>
 
 #include "ToolBarImp.h"

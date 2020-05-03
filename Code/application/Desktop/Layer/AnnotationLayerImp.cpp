@@ -8,11 +8,7 @@
  */
 
 #include <QtCore/QString>
-#if HAVE_QT5
-#include <QtWidgets/QApplication>
-#else
 #include <QApplication>
-#endif
 
 #include "AnnotationLayerImp.h"
 #include "GraphicLayer.h"

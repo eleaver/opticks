@@ -11,17 +11,10 @@
 #define APPLICATIONWINDOW_H
 
 #include <QtCore/QList>
-#if HAVE_QT5
-#include <QtWidgets/QAction>
-#include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QUndoGroup>
-#else
 #include <QAction>
 #include <QMainWindow>
 #include <QMenu>
 #include <QUndoGroup>
-#endif
 
 #include "ConfigurationSettings.h"
 #include "DynamicObject.h"

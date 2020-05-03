@@ -7,21 +7,12 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#if HAVE_QT5
-#include <QtWidgets/QAction>
-#include <QIcon>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QInputDialog>
-#include <QtWidgets/QMessageBox>
-#else
 #include <QAction>
 #include <QIcon>
 #include <QMenu>
 #include <QPushButton>
 #include <QInputDialog>
 #include <QMessageBox>
-#endif
 
 #include "AppVerify.h"
 #include "ContextMenu.h"

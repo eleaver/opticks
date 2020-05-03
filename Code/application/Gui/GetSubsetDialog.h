@@ -10,11 +10,8 @@
 #ifndef GETSUBSETDIALOG_H__
 #define GETSUBSETDIALOG_H__
 
-#if HAVE_QT5
-#include <QtWidgets/QDialog>
-#else
 #include <QDialog>
-#endif
+
 #include <vector>
 
 class QComboBox;

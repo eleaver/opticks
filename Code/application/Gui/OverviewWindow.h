@@ -10,11 +10,7 @@
 #ifndef OVERVIEWWINDOW_H
 #define OVERVIEWWINDOW_H
 
-#if HAVE_QT5
-#include <QtWidgets/QDialog>
-#else
 #include <QDialog>
-#endif
 
 #include "ColorType.h"
 #include "LocationType.h"

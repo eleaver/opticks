@@ -10,11 +10,7 @@
 #ifndef VIEWWINDOWIMP_H
 #define VIEWWINDOWIMP_H
 
-#if HAVE_QT5
-#include <QtWidgets/QWidget>
-#else
 #include <QWidget>
-#endif
 
 #include "WindowImp.h"
 #include "TypesFile.h"

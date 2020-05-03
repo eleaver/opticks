@@ -10,11 +10,7 @@
 #ifndef POLARPLOTIMP_H
 #define POLARPLOTIMP_H
 
-#if HAVE_QT5
-#include <QtWidgets/QAction>
-#else
 #include <QAction>
-#endif
 
 #include "PlotViewImp.h"
 #include "PolarGridlinesAdapter.h"

@@ -10,17 +10,10 @@
 #ifndef HISTOGRAMPLOTIMP_H
 #define HISTOGRAMPLOTIMP_H
 
-#if HAVE_QT5
-#include <QtWidgets/QAction>
-#include <QtWidgets/QListWidget>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QWidget>
-#else
 #include <QAction>
 #include <QListWidget>
 #include <QMenu>
 #include <QWidget>
-#endif
 
 #include "AttachmentPtr.h"
 #include "EnumWrapper.h"

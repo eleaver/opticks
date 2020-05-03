@@ -59,15 +59,6 @@
 #include "XercesIncludes.h"
 
 #include <QtCore/QTimer>
-#if HAVE_QT5
-#include <QtWidgets/QActionGroup>
-#include <QtWidgets/QApplication>
-#include <QtWidgets/QColorDialog>
-#include <QtWidgets/QInputDialog>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QMessageBox>
-#include <QtWidgets/QToolTip>
-#else
 #include <QActionGroup>
 #include <QApplication>
 #include <QColorDialog>
@@ -75,7 +66,6 @@
 #include <QMenu>
 #include <QMessageBox>
 #include <QToolTip>
-#endif
 #include <QHelpEvent>
 #include <QMouseEvent>
 

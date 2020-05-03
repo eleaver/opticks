@@ -10,21 +10,12 @@
 #ifndef ANNOTATIONTOOLBAR_H
 #define ANNOTATIONTOOLBAR_H
 
-#if HAVE_QT5
-#include <QtWidgets/QAction>
-#include <QtWidgets/QCheckBox>
-#include <QtWidgets/QComboBox>
-#include <QtWidgets/QFontComboBox>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QWidgetAction>
-#else
 #include <QAction>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QFontComboBox>
 #include <QMenu>
 #include <QWidgetAction>
-#endif
 
 #include "ToolBarAdapter.h"
 #include "TypesFile.h"

@@ -11,11 +11,7 @@
 #define MOUSEMODEIMP_H
 
 #include <QtCore/QString>
-#if HAVE_QT5
-#include <QtWidgets/QAction>
-#else
 #include <QAction>
-#endif
 #include <QCursor>
 #include "MouseMode.h"
 

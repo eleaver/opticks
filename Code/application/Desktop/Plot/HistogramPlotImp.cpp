@@ -43,19 +43,6 @@
 #include <math.h>
 #include <vector>
 
-#if HAVE_QT5
-#include <QtWidgets/QApplication>
-#include <QtWidgets/QDialog>
-#include <QtWidgets/QDialogButtonBox>
-#include <QtWidgets/QFileDialog>
-#include <QIcon>
-#include <QtWidgets/QLayout>
-#include <QtWidgets/QMessageBox>
-#include <QMouseEvent>
-#include <QtWidgets/QRadioButton>
-#include <QtWidgets/QSpinBox>
-#include <QtWidgets/QWidgetAction>
-#else
 #include <QApplication>
 #include <QDialog>
 #include <QDialogButtonBox>
@@ -67,7 +54,6 @@
 #include <QRadioButton>
 #include <QSpinBox>
 #include <QWidgetAction>
-#endif
 
 using namespace std;
 using XERCES_CPP_NAMESPACE_QUALIFIER DOMElement;

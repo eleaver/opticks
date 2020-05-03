@@ -10,13 +10,8 @@
 #ifndef AOITOOLBARIMP_H
 #define AOITOOLBARIMP_H
 
-#if HAVE_QT5
-#include <QtWidgets/QAction>
-#include <QtWidgets/QMenu>
-#else
 #include <QAction>
 #include <QMenu>
-#endif
 
 #include "PixmapGrid.h"
 #include "PixmapGridButton.h"

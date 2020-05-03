@@ -10,13 +10,8 @@
 #ifndef PLOTSETIMP_H
 #define PLOTSETIMP_H
 
-#if HAVE_QT5
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QTabWidget>
-#else
 #include <QMenu>
 #include <QTabWidget>
-#endif
 
 #include "AttachmentPtr.h"
 #include "PlotSet.h"

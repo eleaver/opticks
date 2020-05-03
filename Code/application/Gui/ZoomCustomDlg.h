@@ -12,13 +12,9 @@
 #ifndef ZOOMCUSTOMDLG_H
 #define ZOOMCUSTOMDLG_H
 
-#if HAVE_QT5
-#include <QtWidgets/QDialog>
-#include <QtWidgets/QLineEdit>
-#else
 #include <QDialog>
 #include <QLineEdit>
-#endif
+
 #include "LocationType.h"
 
 class ZoomCustomDlg : public QDialog

@@ -10,11 +10,7 @@
 #ifndef SIGNATUREPLOTIMP_H
 #define SIGNATUREPLOTIMP_H
 
-#if HAVE_QT5
-#include <QtWidgets/QAction>
-#else
 #include <QAction>
-#endif
 
 #include "CartesianPlotImp.h"
 #include "TypesFile.h"

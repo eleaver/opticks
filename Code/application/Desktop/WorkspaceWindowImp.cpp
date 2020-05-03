@@ -9,13 +9,8 @@
 
 #include <QIcon>
 #include <QCloseEvent>
-#if HAVE_QT5
-#include <QtWidgets/QMdiArea>
-#include <QtWidgets/QMessageBox>
-#else
 #include <QMdiArea>
 #include <QMessageBox>
-#endif
 
 #include "ApplicationWindow.h"
 #include "ContextMenuActions.h"

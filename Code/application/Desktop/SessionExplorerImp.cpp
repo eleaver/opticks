@@ -25,21 +25,12 @@
 
 #include <QtCore/QDataStream>
 #include <QtCore/QMimeData>
-#if HAVE_QT5
-#include <QtWidgets/QApplication>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QMessageBox>
-#include <QtCore/QSortFilterProxyModel>
-#include <QtWidgets/QTabWidget>
-#include <QtWidgets/QTreeView>
-#else
 #include <QApplication>
 #include <QMenu>
 #include <QMessageBox>
 #include <QSortFilterProxyModel>
 #include <QTabWidget>
 #include <QTreeView>
-#endif
 #include <QClipboard>
 #include <QContextMenuEvent>
 

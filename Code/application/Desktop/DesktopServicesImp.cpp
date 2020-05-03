@@ -16,17 +16,10 @@
 #endif
 
 #include <QtCore/QUrl>
-#if HAVE_QT5
-#include <QtWidgets/QApplication>
-#include <QtWidgets/QMenuBar>
-#include <QtWidgets/QMessageBox>
-#include <QtWidgets/QStatusBar>
-#else
 #include <QApplication>
 #include <QMenuBar>
 #include <QMessageBox>
 #include <QStatusBar>
-#endif
 #include <QBitmap>
 #include <QCursor>
 #include <QDesktopServices>

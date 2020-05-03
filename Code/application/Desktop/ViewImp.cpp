@@ -39,15 +39,10 @@
 #include "xmlreader.h"
 
 #include <QtCore/QEvent>
-#if HAVE_QT5
-#include <QtWidgets/QApplication>
-#include <QtWidgets/QDialog>
-#include <QtWidgets/QDialogButtonBox>
-#else
 #include <QApplication>
 #include <QDialog>
 #include <QDialogButtonBox>
-#endif
+
 #include <QClipboard>
 #include <QContextMenuEvent>
 #include <QCursor>

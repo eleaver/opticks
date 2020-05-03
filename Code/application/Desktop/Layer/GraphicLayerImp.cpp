@@ -50,17 +50,10 @@
 #include "WidgetImageObjectImp.h"
 
 #include <QtCore/QString>
-#if HAVE_QT5
-#include <QtWidgets/QApplication>
-#include <QtWidgets/QFileDialog>
-#include <QtWidgets/QInputDialog>
-#include <QtWidgets/QMessageBox>
-#else
 #include <QApplication>
 #include <QFileDialog>
 #include <QInputDialog>
 #include <QMessageBox>
-#endif
 #include <QtOpenGL/QGLWidget>
 
 #include <algorithm>

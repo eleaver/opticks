@@ -12,11 +12,7 @@
 #ifndef FLOATINGLABEL_H
 #define FLOATINGLABEL_H
 
-#if HAVE_QT5
-#include <QtWidgets/QLabel>
-#else
 #include <QLabel>
-#endif
 
 #include "EnumWrapper.h"
 

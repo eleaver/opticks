@@ -10,11 +10,7 @@
 #ifndef PROPERTIESAOILAYER_H
 #define PROPERTIESAOILAYER_H
 
-#if HAVE_QT5
-#include <QtWidgets/QCheckBox>
-#else
 #include <QCheckBox>
-#endif
 
 #include "LabeledSectionGroup.h"
 

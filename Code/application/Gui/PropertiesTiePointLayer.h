@@ -10,13 +10,8 @@
 #ifndef PROPERTIESTIEPOINTLAYER_H
 #define PROPERTIESTIEPOINTLAYER_H
 
-#if HAVE_QT5
-#include <QtWidgets/QCheckBox>
-#include <QtWidgets/QSpinBox>
-#else
 #include <QCheckBox>
 #include <QSpinBox>
-#endif
 
 #include "LabeledSectionGroup.h"
 

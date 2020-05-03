@@ -10,21 +10,12 @@
 #ifndef PROPERTIESMEASUREMENTLAYER_H
 #define PROPERTIESMEASUREMENTLAYER_H
 
-#if HAVE_QT5
-#include <QtWidgets/QCheckBox>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QListWidget>
-#include <QtWidgets/QListWidgetItem>
-#include <QtWidgets/QStackedWidget>
-#include <QtWidgets/QWidget>
-#else
 #include <QCheckBox>
 #include <QLabel>
 #include <QListWidget>
 #include <QListWidgetItem>
 #include <QStackedWidget>
 #include <QWidget>
-#endif
 
 #include "Modifier.h"
 

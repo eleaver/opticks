@@ -11,13 +11,8 @@
 #define SELECTIONGRID_H
 
 #include <QtCore/QPoint>
-#if HAVE_QT5
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QWidget>
-#else
 #include <QLabel>
 #include <QWidget>
-#endif
 
 class SelectionGrid : public QWidget
 {

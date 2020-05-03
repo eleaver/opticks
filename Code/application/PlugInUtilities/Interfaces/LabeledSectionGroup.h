@@ -11,13 +11,8 @@
 #define LABELEDSECTIONGROUP_H
 
 #include <QtCore/QMap>
-#if HAVE_QT5
-#include <QtWidgets/QLayout>
-#include <QtWidgets/QScrollArea>
-#else
 #include <QLayout>
 #include <QScrollArea>
-#endif
 
 #include <vector>
 

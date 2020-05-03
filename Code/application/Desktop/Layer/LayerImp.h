@@ -13,11 +13,7 @@
 #include <QtCore/QMap>
 #include <QtCore/QMetaType>
 #include <QtCore/QObject>
-#if HAVE_QT5
-#include <QtWidgets/QAction>
-#else
 #include <QAction>
-#endif
 
 #include "AttachmentPtr.h"
 #include "ColorType.h"

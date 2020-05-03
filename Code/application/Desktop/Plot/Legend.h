@@ -11,13 +11,8 @@
 #define LEGEND_H
 
 #include <QtCore/QMap>
-#if HAVE_QT5
-#include <QtWidgets/QTreeWidget>
-#include <QtWidgets/QTreeWidgetItem>
-#else
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
-#endif
 
 class PlotObject;
 

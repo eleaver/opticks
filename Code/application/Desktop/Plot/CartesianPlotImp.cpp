@@ -7,11 +7,8 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#if HAVE_QT5
-#include <QtWidgets/QMenu>
-#else
 #include <QMenu>
-#endif
+
 #include "CartesianPlotAdapter.h"
 #include "CartesianPlotImp.h"
 #include "ContextMenuAction.h"

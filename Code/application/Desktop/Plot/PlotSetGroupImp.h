@@ -13,11 +13,7 @@
 #include "SerializableImp.h"
 #include "SubjectImp.h"
 #include "TypesFile.h"
-#if HAVE_QT5
-#include <QtWidgets/QWidget>
-#else
 #include <QWidget>
-#endif
 
 #include <boost/any.hpp>
 #include <map>

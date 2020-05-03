@@ -11,15 +11,9 @@
 #define MENUBARIMP_H
 
 #include <QtCore/QList>
-#if HAVE_QT5
-#include <QtWidgets/QAction>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QMenuBar>
-#else
 #include <QAction>
 #include <QMenu>
 #include <QMenuBar>
-#endif
 
 #include "MenuBar.h"
 

@@ -11,13 +11,8 @@
 #define CONTEXTMENUIMP_H
 
 #include <QtCore/QList>
-#if HAVE_QT5
-#include <QtWidgets/QAction>
-#include <QtWidgets/QMenu>
-#else
 #include <QAction>
 #include <QMenu>
-#endif
 
 #include "ContextMenu.h"
 

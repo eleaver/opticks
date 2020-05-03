@@ -7,13 +7,8 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#if HAVE_QT5
-#include <QtWidgets/QInputDialog>
-#include <QtWidgets/QMessageBox>
-#else
 #include <QInputDialog>
 #include <QMessageBox>
-#endif
 
 #include "LayerListImp.h"
 #include "AnnotationElement.h"

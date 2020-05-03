@@ -9,15 +9,6 @@
 
 #include <QBitmap>
 #include <QImage>
-#if HAVE_QT5
-#include <QtWidgets/QLayout>
-#include <QtWidgets/QMenu>
-#include <QMouseEvent>
-#include <QPainter>
-#include <QPixmap>
-#include <QtWidgets/QSplitter>
-#include <QtWidgets/QToolBar>
-#else
 #include <QLayout>
 #include <QMenu>
 #include <QMouseEvent>
@@ -25,7 +16,6 @@
 #include <QPixmap>
 #include <QSplitter>
 #include <QToolBar>
-#endif
 
 #include "AppAssert.h"
 #include "ApplicationServices.h"

@@ -14,17 +14,10 @@
 #include "StatisticsWidget.h"
 #include "StringUtilities.h"
 
-#if HAVE_QT5
-#include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QTableWidget>
-#else
 #include <QVBoxLayout>
 #include <QHeaderView>
 #include <QLabel>
 #include <QTableWidget>
-#endif
 
 StatisticsWidget::StatisticsWidget(HistogramPlotImp* pPlot, QWidget* pParent) :
    QWidget(pParent),

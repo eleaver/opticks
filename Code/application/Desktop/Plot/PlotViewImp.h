@@ -10,13 +10,8 @@
 #ifndef PLOTVIEWIMP_H
 #define PLOTVIEWIMP_H
 
-#if HAVE_QT5
-#include <QtWidgets/QAction>
-#include <QtWidgets/QMenu>
-#else
 #include <QAction>
 #include <QMenu>
-#endif
 
 #include "PolygonPlotObjectAdapter.h"
 #include "OrthographicViewImp.h"

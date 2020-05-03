@@ -11,11 +11,7 @@
 #define UNDOACTION_H
 
 #include <QtCore/QObject>
-#if HAVE_QT5
-#include <QtWidgets/QUndoCommand>
-#else
 #include <QUndoCommand>
-#endif
 
 class SessionItem;
 

@@ -6,9 +6,7 @@
  * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
-#if HAVE_QT5
-#include <QtWidgets/QSizePolicy>
-#endif
+#include <QSizePolicy>
 #include <QGridLayout>
 #include <QLabel>
 

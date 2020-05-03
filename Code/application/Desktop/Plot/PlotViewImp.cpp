@@ -10,11 +10,7 @@
 #include <float.h>
 
 #include <QCursor>
-#if HAVE_QT5
-#include <QtWidgets/QInputDialog>
-#else
 #include <QInputDialog>
-#endif
 #include <QMouseEvent>
 
 #include "AnnotationElementAdapter.h"

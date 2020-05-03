@@ -9,11 +9,7 @@
 
 #include <math.h>
 
-#if HAVE_QT5
-#include <QtWidgets/QMenu>
-#else
 #include <QMenu>
-#endif
 
 #include "ContextMenuAction.h"
 #include "ContextMenuActions.h"

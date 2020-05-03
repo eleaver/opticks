@@ -11,8 +11,6 @@
 #include <QPixmap>
 #if HAVE_QT5
 #include <QtWidgets/QtWidgets>
-#else
-#include <QtGui>
 #endif
 #include "ColorGrid.h"
 

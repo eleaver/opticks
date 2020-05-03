@@ -10,17 +10,10 @@
 #ifndef PROPERTIESLATLONLAYER_H
 #define PROPERTIESLATLONLAYER_H
 
-#if HAVE_QT5
-#include <QtWidgets/QComboBox>
-#include <QtWidgets/QFontComboBox>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QRadioButton>
-#else
 #include <QComboBox>
 #include <QFontComboBox>
 #include <QLabel>
 #include <QRadioButton>
-#endif
 
 #include "LabeledSectionGroup.h"
 #include "TypesFile.h"

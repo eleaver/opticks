@@ -7,11 +7,7 @@
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#if HAVE_QT5
-#include <QtWidgets/QApplication>
-#else
 #include <QApplication>
-#endif
 #include <QPainter>
 
 #include "glCommon.h"

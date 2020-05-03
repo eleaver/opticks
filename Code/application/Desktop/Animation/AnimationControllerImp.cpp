@@ -10,17 +10,6 @@
 #include <sys/timeb.h>
 
 #include <QtCore/QString>
-#if HAVE_QT5
-#include <QtWidgets/QApplication>
-#include <QtWidgets/QDialog>
-#include <QtWidgets/QDialogButtonBox>
-#include <QtWidgets/QDoubleSpinBox>
-#include <QtWidgets/QFrame>
-#include <QtWidgets/QGridLayout>
-#include <QIcon>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QMessageBox>
-#else
 #include <QApplication>
 #include <QDialog>
 #include <QDialogButtonBox>
@@ -30,7 +19,6 @@
 #include <QIcon>
 #include <QLabel>
 #include <QMessageBox>
-#endif
 
 #include "AnimationAdapter.h"
 #include "AnimationControllerImp.h"

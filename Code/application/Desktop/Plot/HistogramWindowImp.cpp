@@ -39,11 +39,8 @@
 #include "WorkspaceWindow.h"
 
 #include <QtCore/QEvent>
-#if HAVE_QT5
-#include <QtWidgets/QSplitter>
-#else
 #include <QSplitter>
-#endif
+
 #include <vector>
 using namespace std;
 XERCES_CPP_NAMESPACE_USE

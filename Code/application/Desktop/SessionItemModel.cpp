@@ -10,11 +10,7 @@
 #include <QtCore/QDataStream>
 #include <QtCore/QMimeData>
 #include <QIcon>
-#if HAVE_QT5
-#include <QtWidgets/QMessageBox>
-#else
 #include <QMessageBox>
-#endif
 
 #include "AppVerify.h"
 #include "AppVersion.h"

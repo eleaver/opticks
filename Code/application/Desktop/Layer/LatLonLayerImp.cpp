@@ -8,11 +8,7 @@
  */
 
 #include <QtCore/QString>
-#if HAVE_QT5
-#include <QtWidgets/QApplication>
-#else
 #include <QApplication>
-#endif
 
 #include "AppConfig.h"
 #include "AppVerify.h"

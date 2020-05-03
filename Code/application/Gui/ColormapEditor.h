@@ -12,21 +12,6 @@
 
 #include "ColorMap.h"
 
-#if HAVE_QT5
-#include <QtWidgets/QCheckBox>
-#include <QtWidgets/QDialog>
-#include <QtWidgets/QDoubleSpinBox>
-#include <QtWidgets/QFrame>
-#include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QSlider>
-#include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QSpinBox>
-#include <QtWidgets/QTabWidget>
-#include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QGridLayout>
-#else
 #include <QCheckBox>
 #include <QDialog>
 #include <QDoubleSpinBox>
@@ -40,7 +25,7 @@
 #include <QTabWidget>
 #include <QVBoxLayout>
 #include <QGridLayout>
-#endif
+
 #include <string>
 #include <vector>
 

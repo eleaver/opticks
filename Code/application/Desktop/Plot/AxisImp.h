@@ -10,11 +10,8 @@
 #ifndef AXISIMP_H
 #define AXISIMP_H
 
-#if HAVE_QT5
-#include <QtWidgets/QWidget>
-#else
 #include <QWidget>
-#endif
+
 #include <qwt_scale_engine.h>
 #include <qwt_scale_draw.h>
 

@@ -11,13 +11,8 @@
 
 #include <QtCore/QRect>
 #include <QtCore/QString>
-#if HAVE_QT5
-#include <QtWidgets/QApplication>
-#include <QtWidgets/QMessageBox>
-#else
 #include <QApplication>
 #include <QMessageBox>
-#endif
 #include <QFontMetrics>
 
 #include "AnnotationToolBar.h"

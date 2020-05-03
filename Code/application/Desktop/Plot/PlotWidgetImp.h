@@ -10,15 +10,9 @@
 #ifndef PLOTWIDGETIMP_H
 #define PLOTWIDGETIMP_H
 
-#if HAVE_QT5
-#include <QtWidgets/QAction>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QMainWindow>
-#else
 #include <QAction>
 #include <QLabel>
 #include <QMainWindow>
-#endif
 #include <QPixmap>
 
 #include "ColorType.h"
