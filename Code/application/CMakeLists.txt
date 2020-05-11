@@ -13,6 +13,9 @@ else()
    set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/../install CACHE PATH "Location to install Opticks" FORCE)
 endif()
 
+# Prevent in-source builds, build directory must be external to the source tree
+set(CMAKE_DISABLE_IN_SOURCE_BUILD ON)
+
 if(CMAKE_MAJOR_VERSION GREATER 2)
   cmake_policy(SET CMP0043 NEW)
   cmake_policy(SET CMP0048 NEW)
@@ -193,6 +196,8 @@ set(OpenGL_GL_PREFERENCE GLVND)
 set(HAVE_QT5 0)
 set(QT_BINARY_DIR ${Opticks_DEPENDENCIES}/64/bin CACHE STRING "directory containing qmake, moc, uic, rcc. default ${Opticks_DEPENDENCIES}/64/bin")
 set(QT_QMAKE_EXECUTABLE ${QT_BINARY_DIR}/qmake CACHE STRING "path to qmake. default ${QT_BINARY_DIR}/qmake")
+message(VERBOSE " QT_BINARY_DIR:       ${QT_BINARY_DIR}")
+message(VERBOSE " QT_QMAKE_EXECUTABLE: ${QT_QMAKE_EXECUTABLE}")
 if(EXISTS ${QT_QMAKE_EXECUTABLE})
    # Get Qt version from Qmake
    execute_process(COMMAND ${QT_QMAKE_EXECUTABLE} -query QT_VERSION OUTPUT_VARIABLE qt_version  OUTPUT_STRIP_TRAILING_WHITESPACE)
@@ -210,12 +215,12 @@ if(EXISTS ${QT_QMAKE_EXECUTABLE})
       # Qt4
       if(EXISTS ${QT_BINARY_DIR})
          find_program(QT_MOC_EXECUTABLE
-            NAMES moc-qt4 moc moc4
+            NAMES moc-qt4 moc4 moc
             PATHS ${QT_BINARY_DIR}
             NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH
             )
          find_program(QT_UIC_EXECUTABLE
-            NAMES uic-qt4 uic uic4
+            NAMES uic-qt4 uic4 uic
             PATHS ${QT_BINARY_DIR}
             NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH
             )
@@ -224,9 +229,9 @@ if(EXISTS ${QT_QMAKE_EXECUTABLE})
             PATHS ${QT_BINARY_DIR}
             NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH
             )
-         #message(INFO " Moc: ${QT_MOC_EXECUTABLE}")
-         #message(INFO " Uic: ${QT_UIC_EXECUTABLE}")
-         #message(INFO " Rcc: ${QT_RCC_EXECUTABLE}")
+         message(VERBOSE " Moc: ${QT_MOC_EXECUTABLE}")
+         message(VERBOSE " Uic: ${QT_UIC_EXECUTABLE}")
+         message(VERBOSE " Rcc: ${QT_RCC_EXECUTABLE}")
       else()
          message(WARNING " QT_BINARY_DIR ${QT_BINARY_DIR} does not exists")
       endif()
@@ -239,7 +244,7 @@ add_definitions(-DHAVE_QT5=${HAVE_QT5})
 if(HAVE_QT5)
    # We include(${QT_USE_FILE}) throughout for Qt4. Qt5 doesn't use it. Check if
    # QT_USE_FILE is empty, and set it to a dummy file if it is.
-   set(QT_USE_FILE Dummy)
+   set(QT_USE_FILE QtDummy)
 
    # Redefine some qt4 macros for qt5:
    macro(qt4_wrap_cpp)
@@ -252,8 +257,8 @@ if(HAVE_QT5)
       qt5_add_resources(${ARGV})
    endmacro()
    find_package(Qt5 COMPONENTS Core Gui Widgets OpenGL Xml Network PrintSupport REQUIRED)
+   set(Qt_VERSION_MAJOR ${Qt5_VERSION_MAJOR})
    add_definitions(-DQt_VERSION_MAJOR=${Qt5_VERSION_MAJOR})
-   # We likely need only Qt5Core_INCLUDE_DIRS, clean this up later:
    set(QT_INCLUDE_DIRS ${Qt5Core_INCLUDE_DIRS};${Qt5Gui_INCLUDE_DIRS};${Qt5Widgets_INCLUDE_DIRS};${Qt5OpenGL_INCLUDE_DIRS};${Qt5Xml_INCLUDE_DIRS};${Qt5Network_INCLUDE_DIRS};${Qt5PrintSupport_INCLUDE_DIRS})
    set(QT_LIBRARIES ${Qt5Core_LIBRARIES} ${Qt5Gui_LIBRARIES} ${Qt5Widgets_LIBRARIES} ${Qt5OpenGL_LIBRARIES} ${Qt5Xml_LIBRARIES} ${Qt5Network_LIBRARIES} ${Qt5PrintSupport_LIBRARIES})
 else()
@@ -266,17 +271,16 @@ Message(STATUS "QT_INCLUDE_DIRS: ${QT_INCLUDE_DIRS}")
 Message(STATUS "QT_LIBRARIES: ${QT_LIBRARIES}")
 #######################################################################################
 
-
 find_package(Boost 1.45.0 REQUIRED)
 find_package(Xerces REQUIRED)
 find_package(XQilla REQUIRED)
 if(HAVE_QT5)
-   set(Qwt5ForQt5_INCLUDE_DIR "/usr/include/qt5/qwt5-qt5" CACHE STRING "DIrectory containing Qwt5ForQt5 headers")
+   set(Qwt5ForQt5_INCLUDE_DIR "/usr/include/qt5/qwt5-qt5" CACHE STRING "Directory containing Qwt5ForQt5 headers")
    find_package(Qwt5ForQt5 REQUIRED)
    include_directories(${Qwt5ForQt5_INCLUDE_DIR})
    message(STATUS "Qwt5ForQt5_INCLUDE_DIR: ${Qwt5ForQt5_INCLUDE_DIR}")
 else()
-   set(Qwt5ForQt4_INCLUDE_DIR "/usr/include/qwt5-qt4" CACHE STRING "DIrectory containing Qwt5ForQt4 headers")
+   set(Qwt5ForQt4_INCLUDE_DIR "/usr/include/qwt5-qt4" CACHE STRING "Directory containing Qwt5ForQt4 headers")
    find_package(Qwt5ForQt4 REQUIRED)
 endif()
 find_package(Minizip REQUIRED)
@@ -308,6 +312,10 @@ find_package(OpenJpeg)
 find_package(ehs)
 find_package(pcre)
 find_package(pme)
+
+if(ehs_FOUND)
+   include_directories(${ehs_INCLUDE_DIRS})
+endif()
 
 set(OLD_CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH}")
 set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH}" "${OPTICKS_DEP_PATH}/tools/graphviz")
@@ -467,6 +475,7 @@ include_directories(${Raptor_INCLUDE_DIRS})
 include_directories(${ZLIB_INCLUDE_DIRS})
 include_directories(${OPENGL_INCLUDE_DIRS})
 include_directories(${Glew_INCLUDE_DIRS})
+
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
     include_directories(${EXPAT_INCLUDE_DIRS})
 endif()
@@ -749,7 +758,7 @@ set_target_properties(Opticks PROPERTIES DEBUG_POSTFIX "d")
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
     set_target_properties(Opticks PROPERTIES OUTPUT_NAME "linuxOpticks")
     target_link_libraries(Opticks
-        ${EXPAT_LIBRARIES} -ldl
+        ${EXPAT_LIBRARIES} -ldl # TODO Check if -ldl should go as -dl in set(CMAKE_REQUIRED_LIBRARIES -pthread) above
     )
 endif()
 if(WIN32)
@@ -800,6 +809,6 @@ install(DIRECTORY ${Opticks_SOURCE_DIR}/PlugIns/src/Aspam
    ${Opticks_SOURCE_DIR}/PlugIns/src/PlugInSamplerHdf
    ${Opticks_SOURCE_DIR}/PlugIns/src/PlugInSamplerQt
    ${Opticks_SOURCE_DIR}/PlugIns/src/Tutorial DESTINATION examples/PlugIns/src
-   FILES_MATCHING PATTERN "*" PATTERN ".svn" EXCLUDE PATTERN "_svn" EXCLUDE)
+   FILES_MATCHING PATTERN "*" PATTERN ".svn" PATTERN ".git" EXCLUDE PATTERN "_svn" EXCLUDE)
 install(DIRECTORY ${Opticks_SOURCE_DIR}/cmake/Modules DESTINATION cmake FILES_MATCHING
-   PATTERN "*" PATTERN ".svn" EXCLUDE PATTERN "_svn" EXCLUDE)
+   PATTERN "*" PATTERN ".svn" PATTERN ".git" EXCLUDE PATTERN "_svn" EXCLUDE)
