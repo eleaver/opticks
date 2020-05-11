@@ -245,7 +245,7 @@ class Builder:
 
     def run_scons(self, path, debug, concurrency, environ,
                   clean, extra_args=None):
-        scons_exec = "scons"
+        scons_exec = "scons-2"
         if is_windows():
             scons_exec = scons_exec + ".bat"
         arguments = [scons_exec]
