@@ -1363,7 +1363,9 @@ ApplicationWindow::ApplicationWindow(QWidget* pSplash) :
          pSplash->hide();
       }
 
-      QString errorMessage("Unable to access log files\n");
+      QString errorMessage("Unable to access log files in ");
+      errorMessage += messageLogPath.c_str();
+      errorMessage += "\n";
       errorMessage += tempFile.errorString();
       QMessageBox::warning(this,
                            "Log File Error",
