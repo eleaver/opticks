@@ -16,8 +16,11 @@ set (SOURCE_FILES
     ModuleManager.cpp
 ) 
 set (MOC_HEADERS
+    GcpGeoreference.h
     GcpGui.h
     GeoreferenceDlg.h
+    GeoreferencePlugIn.h
+    IgmGeoreference.h
     IgmGui.h
 )
 include(${QT_USE_FILE})
