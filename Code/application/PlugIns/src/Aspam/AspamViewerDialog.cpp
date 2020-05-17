@@ -27,27 +27,27 @@
 #include "StringUtilities.h"
 
 #include <QtCore/QDate>
-#include <QtGui/QCloseEvent>
-#include <QtGui/QComboBox>
-#include <QtGui/QDateTimeEdit>
-#include <QtGui/QFontMetrics>
-#include <QtGui/QGridLayout>
-#include <QtGui/QGroupBox>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QLineEdit>
-#include <QtGui/QMessageBox>
-#include <QtGui/QPalette>
-#include <QtGui/QPushButton>
-#include <QtGui/QRadioButton>
-#include <QtGui/QSpinBox>
-#include <QtGui/QStackedWidget>
-#include <QtGui/QTableWidget>
-#include <QtGui/QTabWidget>
-#include <QtGui/QTextCursor>
+#include <QCloseEvent>
+#include <QComboBox>
+#include <QDateTimeEdit>
+#include <QFontMetrics>
+#include <QGridLayout>
+#include <QGroupBox>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QLineEdit>
+#include <QMessageBox>
+#include <QPalette>
+#include <QPushButton>
+#include <QRadioButton>
+#include <QSpinBox>
+#include <QStackedWidget>
+#include <QTableWidget>
+#include <QTabWidget>
+#include <QTextCursor>
 #include <QPrinter>
-#include <QtGui/QTextEdit>
-#include <QtGui/QVBoxLayout>
+#include <QTextEdit>
+#include <QVBoxLayout>
 #include <vector>
 
 using namespace std;

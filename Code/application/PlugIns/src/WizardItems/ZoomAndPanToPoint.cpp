@@ -3,17 +3,17 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
-#include <QtGui/QComboBox>
-#include <QtGui/QDialogButtonBox>
-#include <QtGui/QLabel>
-#include <QtGui/QLayout>
-#include <QtGui/QLineEdit>
-#include <QtGui/QPushButton>
-#include <QtGui/QSpinBox>
+#include <QComboBox>
+#include <QDialogButtonBox>
+#include <QLabel>
+#include <QLayout>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QSpinBox>
 
 #include "AppVerify.h"
 #include "GeoPoint.h"
@@ -263,7 +263,7 @@ void ZoomAndPanToPointDlg::latModified()
          break;
       }
 
-      case GEOCOORD_MGRS: 
+      case GEOCOORD_MGRS:
 
       default:
          break;
@@ -288,7 +288,7 @@ void ZoomAndPanToPointDlg::lonModified()
          break;
       }
 
-      case GEOCOORD_UTM: 
+      case GEOCOORD_UTM:
       {
          QString latStr = mpLatitudeEdit->text();
          QString lonStr = mpLongitudeEdit->text();

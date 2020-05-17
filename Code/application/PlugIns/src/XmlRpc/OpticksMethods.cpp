@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -44,9 +44,9 @@
 #include <QtCore/QBuffer>
 #include <QtCore/QByteArray>
 #include <QtCore/QtDebug>
-#include <QtGui/QColor>
-#include <QtGui/QImage>
-#include <QtGui/QWidget>
+#include <QColor>
+#include <QImage>
+#include <QWidget>
 #include <string>
 #include <vector>
 
@@ -351,7 +351,7 @@ XmlRpcParam* Annotation::Delete::operator()(const XmlRpcParams& params)
          throw XmlRpcMethodFault(308);
       }
    }
-   
+
    return NULL;
 }
 
@@ -632,7 +632,7 @@ XmlRpcParam* CreateView::operator()(const XmlRpcParams& params)
       throw XmlRpcMethodFault(200);
    }
    SpatialDataView* pView = dynamic_cast<SpatialDataView*>(getView(params, 1));
-   
+
    std::string newViewName;
    const XmlRpcParam* pNewViewName = params[0];
    if (pNewViewName != NULL)
@@ -678,7 +678,7 @@ XmlRpcArrayParam* CreateView::getSignature()
    *pParams << new XmlRpcParam(STRING_PARAM, "null");
    *pParams << new XmlRpcParam(STRING_PARAM, "string NewViewName");
    *pSignatures << pParams;
-   
+
    pParams = new XmlRpcArrayParam;
    *pParams << new XmlRpcParam(STRING_PARAM, "null");
    *pParams << new XmlRpcParam(STRING_PARAM, "string NewViewName");
@@ -762,7 +762,7 @@ XmlRpcArrayParam* ExportElement::getSignature()
    *pParams << new XmlRpcParam(STRING_PARAM, "string Exporter");
    *pParams << new XmlRpcParam(STRING_PARAM, "string OutputFilename");
    *pSignatures << pParams;
-   
+
    pParams = new XmlRpcArrayParam;
    *pParams << new XmlRpcParam(STRING_PARAM, "null");
    *pParams << new XmlRpcParam(STRING_PARAM, "string Exporter");
@@ -961,7 +961,7 @@ XmlRpcArrayParam* GetViewInfo::getSignature()
    XmlRpcArrayParam* pParams = new XmlRpcArrayParam;
    *pParams << new XmlRpcParam(STRING_PARAM, "struct");
    *pSignatures << pParams;
-   
+
    pParams = new XmlRpcArrayParam;
    *pParams << new XmlRpcParam(STRING_PARAM, "struct");
    *pParams << new XmlRpcParam(STRING_PARAM, "string ViewID");

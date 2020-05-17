@@ -3,7 +3,7 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 
@@ -20,11 +20,11 @@
 
 #include <QtCore/QBuffer>
 #include <QtCore/QUrl>
-#include <QtGui/QColor>
-#include <QtGui/QImage>
-#include <QtGui/QImageWriter>
-#include <QtGui/QPainter>
-#include <QtGui/QWidget>
+#include <QColor>
+#include <QImage>
+#include <QImageWriter>
+#include <QPainter>
+#include <QWidget>
 
 // The encoded image size can not excede this number of bytes.
 #define MAX_ENCODED_IMAGE_SIZE (5 * 1024 * 1024)
@@ -58,7 +58,7 @@ MuHttpServer::Response ImageHandler::getRequest(const QString& uri, const QStrin
    bool success = !format.isEmpty();
    if (success)
    {
-      QString itemId = QUrl::fromPercentEncoding(splitUri.join(".").toAscii());
+      QString itemId = QUrl::fromPercentEncoding(splitUri.join(".").toLatin1());
       SessionItem* pItem = Service<SessionManager>()->getSessionItem(itemId.toStdString());
       r.mOctets.resize(MAX_ENCODED_IMAGE_SIZE);
       QBuffer buffer(&r.mOctets);
@@ -163,7 +163,7 @@ bool ImageHandler::getSessionItemImage(SessionItem* pItem, QBuffer& buffer, cons
    if (success)
    {
       buffer.open(QIODevice::WriteOnly);
-      QImageWriter writer(&buffer, format.toAscii());
+      QImageWriter writer(&buffer, format.toLatin1());
       success = writer.write(image);
    }
    return success;

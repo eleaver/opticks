@@ -18,8 +18,8 @@
 #include "PerspectiveView.h"
 #include "SignalBlocker.h"
 
-#include <QtGui/QMenu>
-#include <QtGui/QScrollBar>
+#include <QMenu>
+#include <QScrollBar>
 
 #include <list>
 #include <string>

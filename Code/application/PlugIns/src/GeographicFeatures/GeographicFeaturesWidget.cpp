@@ -19,9 +19,9 @@
 #include "SpatialDataView.h"
 #include "SpatialDataWindow.h"
 
-#include <QtGui/QComboBox>
-#include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
+#include <QComboBox>
+#include <QGridLayout>
+#include <QLabel>
 
 GeographicFeaturesWidget::GeographicFeaturesWidget(QWidget* pParent) :
    QStackedWidget(pParent)

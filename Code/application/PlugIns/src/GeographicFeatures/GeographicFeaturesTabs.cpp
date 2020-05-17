@@ -10,7 +10,7 @@
 #include <map>
 #include <string>
 
-#include <QtGui/QTabWidget>
+#include <QTabWidget>
 
 #include "FeatureTable.h"
 #include "GeographicFeaturesTabs.h"
