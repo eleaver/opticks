@@ -67,6 +67,7 @@ if(CMAKE_CXX_SIZEOF_DATA_PTR EQUAL 4)
 elseif(CMAKE_CXX_SIZEOF_DATA_PTR EQUAL 8)
     set(OPTICKS_DEP_PATH ${Opticks_DEPENDENCIES}/64)
 endif()
+
 set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH}" ${OPTICKS_DEP_PATH})
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
@@ -207,7 +208,10 @@ if(EXISTS ${QT_QMAKE_EXECUTABLE})
       set(HAVE_QT5 1)
       set(QT_Qt5_DIR "${qt_install_libs}/cmake/Qt5" CACHE PATH "Path to directory containing Qt5Config.cmake")
       set(Qt5_DIR ${QT_Qt5_DIR})
-      set(ENV{CMAKE_PREFIX_PATH} ${Qt5_DIR}) # might not be necessary
+      # set(ENV{CMAKE_PREFIX_PATH} ${Qt5_DIR}) # TODO: might not be necessary, test without
+      # TODO: why for Qt5 and not Qt4? Seems these should be the same for both, and by adding them for
+      # for Qt5 IN ADDITION to the qt5_wrap_cpp() etc macros, we're causing dublicate compilation effort,
+      # see e.g. https://cmake.org/cmake/help/v3.12/prop_tgt/AUTOMOC.html#prop_tgt:AUTOMOC
       set(CMAKE_AUTOMOC ON)
       set(CMAKE_AUTORCC ON)
       set(CMAKE_AUTOUIC ON)
@@ -244,7 +248,9 @@ add_definitions(-DHAVE_QT5=${HAVE_QT5})
 if(HAVE_QT5)
    # We include(${QT_USE_FILE}) throughout for Qt4. Qt5 doesn't use it. Check if
    # QT_USE_FILE is empty, and set it to a dummy file if it is.
-   set(QT_USE_FILE QtDummy)
+   if(NOT QT_USE_FILE)
+      set(QT_USE_FILE QtDummy)
+   endif()
 
    # Redefine some qt4 macros for qt5:
    macro(qt4_wrap_cpp)
@@ -267,6 +273,7 @@ else()
    add_definitions(-DQt_VERSION_MAJOR=${Qt_VERSION_MAJOR})
 endif(HAVE_QT5)
 include_directories(${QT_INCLUDE_DIRS})
+Message(STATUS "QT_INCLUDES: ${QT_INCLUDES}")
 Message(STATUS "QT_INCLUDE_DIRS: ${QT_INCLUDE_DIRS}")
 Message(STATUS "QT_LIBRARIES: ${QT_LIBRARIES}")
 #######################################################################################
@@ -282,6 +289,8 @@ if(HAVE_QT5)
 else()
    set(Qwt5ForQt4_INCLUDE_DIR "/usr/include/qwt5-qt4" CACHE STRING "Directory containing Qwt5ForQt4 headers")
    find_package(Qwt5ForQt4 REQUIRED)
+   include_directories(${Qwt5ForQt4_INCLUDE_DIRS})
+   message(STATUS "Qwt5ForQt4_INCLUDE_DIRS: ${Qwt5ForQt4_INCLUDE_DIRS}")
 endif()
 find_package(Minizip REQUIRED)
 find_package(YamlCpp REQUIRED)
@@ -303,6 +312,10 @@ find_package(proj REQUIRED)
 find_package(avcodec)
 find_package(avformat)
 find_package(avutil)
+find_package(swscale)
+if(swscale_FOUND)
+   include_directories(${swscale_INCLUDE_DIRS})
+endif()
 find_package(cfitsio)
 find_package(Cg) #optional, still need to work
 find_package(Gdal)
@@ -312,6 +325,7 @@ find_package(OpenJpeg)
 find_package(ehs)
 find_package(pcre)
 find_package(pme)
+
 
 if(ehs_FOUND)
    include_directories(${ehs_INCLUDE_DIRS})
@@ -464,11 +478,6 @@ include(${QT_USE_FILE})
 include_directories(${Boost_INCLUDE_DIRS})
 include_directories(${Xerces_INCLUDE_DIRS})
 include_directories(${XQilla_INCLUDE_DIRS})
-if(HAVE_QT5)
-   include_directories(${Qwt5ForQt5_INCLUDE_DIR})
-else()
-   include_directories(${Qwt5ForQt4_INCLUDE_DIRS})
-endif()
 include_directories(${Minizip_INCLUDE_DIRS})
 include_directories(${YamlCpp_INCLUDE_DIRS})
 include_directories(${Raptor_INCLUDE_DIRS})

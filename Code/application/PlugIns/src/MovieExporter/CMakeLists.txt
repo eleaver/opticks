@@ -44,6 +44,7 @@ target_link_libraries(MovieExporter
     ${avutil_LIBRARIES}
     ${avformat_LIBRARIES}
     ${avcodec_LIBRARIES}
+    ${swscale_LIBRARIES}
 )
 if(WIN32)
     install(TARGETS MovieExporter RUNTIME DESTINATION PlugIns CONFIGURATIONS Release;RelWithDebInfo;MinSizeRel)

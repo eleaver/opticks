@@ -786,7 +786,7 @@ XmlRpcParam* GetMetadata::operator()(const XmlRpcParams& params)
       throw XmlRpcMethodFault(200);
    }
 
-   const std::string inputFilename = XmlBase::URLtoPath(X(pInputFilename->value().toString().toAscii()));
+   const std::string inputFilename = XmlBase::URLtoPath(X(pInputFilename->value().toString().toLatin1()));
    if (inputFilename.empty())
    {
       throw XmlRpcMethodFault(200);
@@ -798,7 +798,7 @@ XmlRpcParam* GetMetadata::operator()(const XmlRpcParams& params)
       throw XmlRpcMethodFault(200);
    }
 
-   const std::string outputFilename = XmlBase::URLtoPath(X(pOutputFilename->value().toString().toAscii()));
+   const std::string outputFilename = XmlBase::URLtoPath(X(pOutputFilename->value().toString().toLatin1()));
    if (outputFilename.empty())
    {
       throw XmlRpcMethodFault(200);
@@ -1064,7 +1064,7 @@ XmlRpcParam* Open::operator()(const XmlRpcParams& params)
    {
       throw XmlRpcMethodFault(200);
    }
-   filename = XmlBase::URLtoPath(X(pFilenameParam->value().toString().toAscii()));
+   filename = XmlBase::URLtoPath(X(pFilenameParam->value().toString().toLatin1()));
    if (filename.empty())
    {
       throw XmlRpcMethodFault(200);

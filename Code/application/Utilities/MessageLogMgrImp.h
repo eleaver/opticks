@@ -39,6 +39,8 @@ public:
 
    SUBJECTADAPTER_METHODS(SubjectImp)
 
+   void finalize();
+
 protected:
    MessageLogMgrImp();
    virtual ~MessageLogMgrImp();

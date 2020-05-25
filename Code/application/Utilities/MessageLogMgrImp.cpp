@@ -38,16 +38,52 @@ MessageLogMgrImp::MessageLogMgrImp() :
       }
    }
 
-   mpJournal = new QTemporaryFile(QString::fromStdString(mLogPath) + "/journ");
-   mpJournal->open(QIODevice::WriteOnly);
-   mpJournal->setPermissions(QFile::WriteOwner);
-
+   std::string journalFilename = (mLogPath + "/journ");
+   QTemporaryFile* pTempFile = new QTemporaryFile(QString::fromStdString(journalFilename));
+   if (pTempFile != NULL)
+   {
+       pTempFile->setAutoRemove(false); // Debug only?
+       mpJournal = pTempFile;
+   }
+   if ((pTempFile == NULL) || !mpJournal->open(QIODevice::WriteOnly))
+   {
+         string msg("Unable to open journal file ");
+         msg += journalFilename;
+         msg += " for writing ";
+         // As logFile hasn't been created yet either, write message to stderr
+         std::cerr << msg << std::endl;
+   }
+   else
+   {
+       mpJournal->setPermissions(QFile::WriteOwner);
+   }
    // Create a default session log
    createLog(Service<SessionManager>()->getName());
 }
 
+void MessageLogMgrImp::finalize()
+{
+    for( std::map<std::string, MessageLog*>::iterator liter=mLogMap.begin(); liter!= mLogMap.end(); ++liter )
+    {
+        const std::string & logName = liter->first;
+        MessageLog* pLog = liter->second;
+        if(pLog)
+        {
+            for( std::vector<Message*>::iterator miter=pLog->begin(); miter!=pLog->end(); ++miter)
+            {
+                Message* pMsg = *miter;
+                if( pMsg && !pMsg->isFinalized() )
+                {
+                    pMsg->finalize();
+                }
+            }
+        }
+    }
+}
+
 MessageLogMgrImp::~MessageLogMgrImp()
 {
+   finalize();
    notify(SIGNAL_NAME(Subject, Deleted));
    clear();
 

@@ -23,6 +23,7 @@
 #include <vector>
 
 #include <QtCore/QString>
+#include <QtCore/QTextStream>
 #include <QtCore/QTemporaryFile>
 
 using namespace std;
@@ -96,17 +97,22 @@ MessageLogImp::MessageLogImp(const char* name, const char* path, QFile* journal)
    mpWriter = new XMLWriter("messagelog");
    Message* pOpen(createMessage("Log Opened", "app", "EC355E3E-03CA-4081-9006-5F45D6A488B3"));
    pOpen->finalize();
+   mpJournalWriter->flush();  // TODO: shouldn't be needed, unless mpJournalWriter is never destroyed
 }
 
 MessageLogImp::~MessageLogImp()
 {
    MessageAdapter* pClosed(new MessageAdapter("Log Closed", "app", "3620CAD7-3535-4716-9686-E024E201481F"));
    pClosed->finalize();
-   pClosed->getId()(size()+1);
+   pClosed->getId()(size()+1); // What does this do? Is pClosed used again?
+   delete pClosed;
+   pClosed = NULL;
+
    if ((mpWriter != NULL) && (mpLogFile != NULL))
    {
       QTextStream stream(mpLogFile);
       stream << serialize().c_str();
+      stream.flush(); // TODO: shouldn't be needed
    }
    if (mpWriter != NULL)
    {
@@ -116,13 +122,15 @@ MessageLogImp::~MessageLogImp()
 
    if (mpLogFile != NULL)
    {
+      mpLogFile->flush();
       mpLogFile->close();
       delete mpLogFile;
       mpLogFile = NULL;
    }
    if (mpJournalWriter != NULL)
    {
-      delete mpJournalWriter;
+      mpJournalWriter->flush();   // TODO: shouldn't be needed, QTextStream dtor should flush
+      delete mpJournalWriter;     // <- here
       mpJournalWriter = NULL;
    }
 
@@ -142,6 +150,7 @@ MessageLogImp::~MessageLogImp()
          MessageImp* pCurMsgImp = dynamic_cast<MessageImp*>(pCurMsg);
          if (pCurMsgImp != NULL)
          {
+            pCurMsgImp->finalize();
             delete pCurMsgImp;
          }
       }
@@ -149,6 +158,12 @@ MessageLogImp::~MessageLogImp()
    mMessageList.clear();
 
    notify(SIGNAL_NAME(Subject, Deleted));
+
+   if (mpJournal != NULL)
+   {
+       mpJournal->close(); // TODO: change close to commit() if mpJournal is a QSaveFile
+   }
+
 }
 
 Message* MessageLogImp::createMessage(const string& action, const string& component, const string& key,
@@ -290,6 +305,7 @@ void MessageLogImp::messageAdded(Subject& subject, const string& signal, const b
       << ((pStpImp != NULL) ? "Step" : "Message")
       << "[" << ((pStpImp != NULL) ? pStpImp : pMsgImp)->getStringId().c_str() << "] "
       << pMsg->getAction().c_str() << endl << flush;
+   mpJournalWriter->flush(); // TODO: Shouldn't be needed
    notify(SIGNAL_NAME(MessageLog, MessageAdded), v);
 }
 
@@ -309,6 +325,7 @@ void MessageLogImp::messageModified(Subject& subject, const string& signal, cons
       << "[" << ((pStpImp != NULL) ? pStpImp : pMsgImp)->getStringId().c_str() << "."
       << pMsg->getProperties()->getNumAttributes() << "] "
       << endl << flush;
+   mpJournalWriter->flush();  // TODO: Shouldn't be needed
    notify(SIGNAL_NAME(MessageLog, MessageModified), v);
 }
 
@@ -344,6 +361,7 @@ void MessageLogImp::messageHidden(Subject& subject, const string& signal, const 
       }
    }
    *mpJournalWriter << endl << flush;
+   mpJournalWriter->flush();
    notify(SIGNAL_NAME(MessageLog, MessageHidden), v);
 }
 

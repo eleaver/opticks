@@ -442,13 +442,13 @@ void ArcProxy::queryFeatureClass(IFeatureClassPtr pFeatures, QStringList &args)
          }
 
          // create a where-clause
-         QString whereClause = convertWhereClause(pFeatures, QUrl::fromPercentEncoding(args.takeFirst().toAscii()));
+         QString whereClause = convertWhereClause(pFeatures, QUrl::fromPercentEncoding(args.takeFirst().toLatin1()));
          pQueryFilter->put_WhereClause(to_BSTR(whereClause));
          
       }
       else if (queryType == "LABELFORMAT")
       {
-         std::string labelFormatRaw = QUrl::fromPercentEncoding(args.takeFirst().toAscii()).toStdString();
+         std::string labelFormatRaw = QUrl::fromPercentEncoding(args.takeFirst().toLatin1()).toStdString();
          ArcFormatStringPreprocessor preprocessor(pFeatures, labelFormat);
          std::for_each(labelFormatRaw.begin(), labelFormatRaw.end(), preprocessor);
       }

@@ -97,6 +97,7 @@ target_link_libraries(GeographicFeatures
     ${QT_LIBRARIES}    
     ${shapelib_LIBRARIES}    
     ${Xerces_LIBRARIES}
+    ${Gdal_LIBRARIES}
 )
 if(WIN32)
     install(TARGETS GeographicFeatures RUNTIME DESTINATION PlugIns CONFIGURATIONS Release;RelWithDebInfo;MinSizeRel)
