@@ -25,11 +25,12 @@
 #include <QtCore/QString>
 #include <QtCore/QTextStream>
 #include <QtCore/QTemporaryFile>
+#include <QMessageBox>
 
 using namespace std;
 XERCES_CPP_NAMESPACE_USE
 
-MessageLogImp::MessageLogImp(const char* name, const char* path, QFile* journal) :
+MessageLogImp::MessageLogImp(const char* name, const char* path, QFILE* journal) :
          mpLogName(name),
          mpCurrentStep(NULL),
          mpJournal(journal),
@@ -71,33 +72,54 @@ MessageLogImp::MessageLogImp(const char* name, const char* path, QFile* journal)
    }
    mpJournalWriter = new QTextStream(mpJournal);
 
+#if HAVE_QSAVEFILE
+   mpLogFile = new QSaveFile(QString::fromStdString(fname));
+   if ((mpLogFile == NULL) || !mpLogFile->open(QIODevice::WriteOnly)) //  QSaveFile
+#else
    QTemporaryFile* pTempFile = new QTemporaryFile(QString::fromStdString(fname));
    if (pTempFile != NULL)
    {
       pTempFile->setAutoRemove(false);
       mpLogFile = pTempFile;
    }
-   if ((mpLogFile == NULL) || !mpLogFile->open(QIODevice::WriteOnly | QIODevice::Append))
+   if ((mpLogFile == NULL) || !mpLogFile->open(QIODevice::WriteOnly | QIODevice::Append)) // QFile
+#endif
    {
-      Service<ApplicationServices> pApplication;
-      if (pApplication->isBatch() == true)
-      {
-         string msg("Unable to open log file ");
-         msg += mpLogFile->fileName().toStdString();
-         msg += ": ";
-         msg += mpLogFile->errorString().toStdString();
-         // if we are in batch mode, output a message to stderr
-         cerr << msg << endl;
-      }
+       string msg("Unable to open log file ");
+       msg += mpLogFile->fileName().toStdString();
+       msg += ": ";
+       msg += mpLogFile->errorString().toStdString();
+       // if we are in batch mode, output a message to stderr
+       Service<ApplicationServices> pApplication;
+       if (pApplication->isBatch() == true)
+       {
+           cerr << msg << endl;
+       }
+       else
+       {
+          // put up a warning window:
+           QMessageBox::warning(NULL, // MessageLogImp has no QObject* parent. Put it here if it does.
+                                "Log File Error",
+                                msg.c_str(),
+                                QMessageBox::Ignore,
+                                QMessageBox::NoButton);
 
-      delete mpLogFile;
-      mpLogFile = NULL;
+       }
+
+       if(mpLogFile != NULL)
+       {
+           delete mpLogFile;
+           mpLogFile = NULL;
+       }
+   }
+   else
+   {
+       mpLogFile->setPermissions(QFileDevice::ReadUser | QFileDevice::WriteUser);
    }
 
    mpWriter = new XMLWriter("messagelog");
    Message* pOpen(createMessage("Log Opened", "app", "EC355E3E-03CA-4081-9006-5F45D6A488B3"));
    pOpen->finalize();
-   mpJournalWriter->flush();  // TODO: shouldn't be needed, unless mpJournalWriter is never destroyed
 }
 
 MessageLogImp::~MessageLogImp()
@@ -108,29 +130,29 @@ MessageLogImp::~MessageLogImp()
    delete pClosed;
    pClosed = NULL;
 
-   if ((mpWriter != NULL) && (mpLogFile != NULL))
+   if (mpLogFile != NULL)
    {
       QTextStream stream(mpLogFile);
-      stream << serialize().c_str();
-      stream.flush(); // TODO: shouldn't be needed
+      stream << serialize().c_str() << flush;
+      mpLogFile->flush();
+#if HAVE_QSAVEFILE
+      mpLogFile->commit(); // QSaveFile is commit(), QFile is close()
+#else
+      mpLogFile->close();
+#endif
+      delete mpLogFile;
+      mpLogFile = NULL;
    }
+   
    if (mpWriter != NULL)
    {
       delete mpWriter;
       mpWriter = NULL;
    }
 
-   if (mpLogFile != NULL)
-   {
-      mpLogFile->flush();
-      mpLogFile->close();
-      delete mpLogFile;
-      mpLogFile = NULL;
-   }
    if (mpJournalWriter != NULL)
    {
-      mpJournalWriter->flush();   // TODO: shouldn't be needed, QTextStream dtor should flush
-      delete mpJournalWriter;     // <- here
+      delete mpJournalWriter;
       mpJournalWriter = NULL;
    }
 
@@ -161,7 +183,11 @@ MessageLogImp::~MessageLogImp()
 
    if (mpJournal != NULL)
    {
-       mpJournal->close(); // TODO: change close to commit() if mpJournal is a QSaveFile
+#if HAVE_QSAVEFILE
+      mpJournal->commit(); // QSaveFile is commit(), QFile is close()
+#else
+      mpJournal->close();
+#endif
    }
 
 }
@@ -305,7 +331,6 @@ void MessageLogImp::messageAdded(Subject& subject, const string& signal, const b
       << ((pStpImp != NULL) ? "Step" : "Message")
       << "[" << ((pStpImp != NULL) ? pStpImp : pMsgImp)->getStringId().c_str() << "] "
       << pMsg->getAction().c_str() << endl << flush;
-   mpJournalWriter->flush(); // TODO: Shouldn't be needed
    notify(SIGNAL_NAME(MessageLog, MessageAdded), v);
 }
 
@@ -325,7 +350,6 @@ void MessageLogImp::messageModified(Subject& subject, const string& signal, cons
       << "[" << ((pStpImp != NULL) ? pStpImp : pMsgImp)->getStringId().c_str() << "."
       << pMsg->getProperties()->getNumAttributes() << "] "
       << endl << flush;
-   mpJournalWriter->flush();  // TODO: Shouldn't be needed
    notify(SIGNAL_NAME(MessageLog, MessageModified), v);
 }
 
@@ -361,7 +385,6 @@ void MessageLogImp::messageHidden(Subject& subject, const string& signal, const 
       }
    }
    *mpJournalWriter << endl << flush;
-   mpJournalWriter->flush();
    notify(SIGNAL_NAME(MessageLog, MessageHidden), v);
 }
 

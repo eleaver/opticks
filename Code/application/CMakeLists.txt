@@ -195,6 +195,7 @@ set(OpenGL_GL_PREFERENCE GLVND)
 # here, that /usr/share/cmake/Modules/FindQt4.cmake would otherwise call later after querying
 # qmake for an invalid QT_BINARY_DIR path:
 set(HAVE_QT5 0)
+set(HAVE_QSAVEFILE 0)
 set(QT_BINARY_DIR ${Opticks_DEPENDENCIES}/64/bin CACHE STRING "directory containing qmake, moc, uic, rcc. default ${Opticks_DEPENDENCIES}/64/bin")
 set(QT_QMAKE_EXECUTABLE ${QT_BINARY_DIR}/qmake CACHE STRING "path to qmake. default ${QT_BINARY_DIR}/qmake")
 message(VERBOSE " QT_BINARY_DIR:       ${QT_BINARY_DIR}")
@@ -206,6 +207,7 @@ if(EXISTS ${QT_QMAKE_EXECUTABLE})
    message(" Qt version: ${qt_version}")
    if("${qt_version}" VERSION_GREATER_EQUAL "5.0.0")
       set(HAVE_QT5 1)
+      set(HAVE_QSAVEFILE 1) # Experimental: Qt5 seems to write disk files better with QSaveFile than with QFile
       set(QT_Qt5_DIR "${qt_install_libs}/cmake/Qt5" CACHE PATH "Path to directory containing Qt5Config.cmake")
       set(Qt5_DIR ${QT_Qt5_DIR})
       # set(ENV{CMAKE_PREFIX_PATH} ${Qt5_DIR}) # TODO: might not be necessary, test without
@@ -244,6 +246,7 @@ else()
    message(WARNING " QT_QMAKE_EXECUTABLE ${QT_QMAKE_EXECUTABLE} does not exist")
 endif()
 add_definitions(-DHAVE_QT5=${HAVE_QT5})
+add_definitions(-DHAVE_QSAVEFILE=${HAVE_QSAVEFILE})
 
 if(HAVE_QT5)
    # We include(${QT_USE_FILE}) throughout for Qt4. Qt5 doesn't use it. Check if

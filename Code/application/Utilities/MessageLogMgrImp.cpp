@@ -38,14 +38,17 @@ MessageLogMgrImp::MessageLogMgrImp() :
       }
    }
 
-   std::string journalFilename = (mLogPath + "/journ");
+   std::string journalFilename = (mLogPath + "/journal");
+   /*
    QTemporaryFile* pTempFile = new QTemporaryFile(QString::fromStdString(journalFilename));
+   mpJournal = pTempFile;
    if (pTempFile != NULL)
    {
        pTempFile->setAutoRemove(false); // Debug only?
-       mpJournal = pTempFile;
    }
-   if ((pTempFile == NULL) || !mpJournal->open(QIODevice::WriteOnly))
+   */
+   mpJournal = new QFILE(QString::fromStdString(journalFilename));
+   if ((mpJournal == NULL) || !mpJournal->open(QIODevice::WriteOnly))
    {
          string msg("Unable to open journal file ");
          msg += journalFilename;
@@ -55,7 +58,7 @@ MessageLogMgrImp::MessageLogMgrImp() :
    }
    else
    {
-       mpJournal->setPermissions(QFile::WriteOwner);
+       mpJournal->setPermissions(QFileDevice::ReadUser | QFileDevice::WriteUser);
    }
    // Create a default session log
    createLog(Service<SessionManager>()->getName());
@@ -87,8 +90,9 @@ MessageLogMgrImp::~MessageLogMgrImp()
    notify(SIGNAL_NAME(Subject, Deleted));
    clear();
 
-   mpJournal->close();
-   mpJournal->remove();
+//   mpJournal->close();
+//   mpJournal->remove();
+   mpJournal->commit();
    delete mpJournal;
    mpJournal = NULL;
 }

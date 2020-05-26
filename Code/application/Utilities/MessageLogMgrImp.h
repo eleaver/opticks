@@ -18,7 +18,12 @@
 #include <vector>
 
 class MessageLog;
+
+#if HAVE_QSAVEFILE
+class QSaveFile;
+#else
 class QFile;
+#endif
 
 class MessageLogMgrImp : public MessageLogMgr, public SubjectImp
 {
@@ -51,7 +56,11 @@ private:
 
    std::map<std::string, MessageLog*> mLogMap;
    std::string mLogPath;
+#if HAVE_QSAVEFILE
+   QSaveFile* mpJournal;
+#else
    QFile* mpJournal;
+#endif
 };
 
 #endif
