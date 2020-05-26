@@ -25,6 +25,7 @@
 #include <QtCore/QString>
 #include <QtCore/QTextStream>
 #include <QtCore/QTemporaryFile>
+#include <QtCore/QFile>
 #include <QMessageBox>
 
 using namespace std;
@@ -114,7 +115,11 @@ MessageLogImp::MessageLogImp(const char* name, const char* path, QFILE* journal)
    }
    else
    {
+#if HAVE_QSAVEFILE
        mpLogFile->setPermissions(QFileDevice::ReadUser | QFileDevice::WriteUser);
+#else
+       mpLogFile->setPermissions(QFile::ReadUser | QFile::WriteUser);
+#endif
    }
 
    mpWriter = new XMLWriter("messagelog");
