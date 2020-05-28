@@ -46,7 +46,6 @@ if("${isSystemDir}" STREQUAL "-1")
 endif("${isSystemDir}" STREQUAL "-1")
 #################################################################
 
-
 # Location of the Dependencies directory. On some platforms and configurations, it may not be necessary, but it's still searched.
 if(NOT Opticks_DEPENDENCIES)
     set(Opticks_DEPENDENCIES $ENV{OPTICKSDEPENDENCIES} CACHE PATH "Location of Opticks pre-built dependencies")
@@ -191,13 +190,25 @@ set(OpenGL_GL_PREFERENCE GLVND)
 # appears first in ld's argument list, and therefore shadows /usr/lib64.
 #
 # For now, we just work around the Dependencies/64/bin/qmake QT_BINARY_DIR quirk by setting
-# QT_BINARY_DIR explicitly to Dependencies/64/bin, then make call find_program(moc) etc. calls
+# QT_BINARY_DIR explicitly to Dependencies/64/bin, then make find_program(moc) etc. calls
 # here, that /usr/share/cmake/Modules/FindQt4.cmake would otherwise call later after querying
 # qmake for an invalid QT_BINARY_DIR path:
 set(HAVE_QT5 0)
 set(HAVE_QSAVEFILE 0)
-set(QT_BINARY_DIR ${Opticks_DEPENDENCIES}/64/bin CACHE STRING "directory containing qmake, moc, uic, rcc. default ${Opticks_DEPENDENCIES}/64/bin")
-set(QT_QMAKE_EXECUTABLE ${QT_BINARY_DIR}/qmake CACHE STRING "path to qmake. default ${QT_BINARY_DIR}/qmake")
+if(EXISTS ${OPTICKS_DEP_PATH}/bin/qmake)
+   set(QT_BINARY_DIR "${OPTICKS_DEP_PATH}/bin" CACHE PATH "directory containing qmake, moc, uic, rcc. default ${OPTICKS_DEP_PATH}/bin")
+else()
+   # /usr/lib64 okay for RedHat; we'll make a better OS-dependent guess with CMAKE_SYSTEM_LIBRARY_PATH. But we need
+   # to set a default in case the foreach() loop fails to fins anything, and RedHat's /usr/lib64/qt4/bin is as good as any.
+   set(QT_BINARY_DIR "/usr/lib64/qt4/bin" CACHE PATH "directory containing qmake, moc, uic, rcc. default /usr/lib64/qt4/bin")
+   foreach(lib ${CMAKE_SYSTEM_LIBRARY_PATH})
+      if(EXISTS "${lib}/qt4/bin")
+         set(QT_BINARY_DIR "${lib}/qt4/bin" CACHE PATH "directory containing qmake, moc, uic, rcc. default ${lib}/qt4/bin")
+         break()
+      endif()
+   endforeach()
+endif()
+set(QT_QMAKE_EXECUTABLE ${QT_BINARY_DIR}/qmake CACHE FILEPATH "path to qmake. default ${QT_BINARY_DIR}/qmake")
 message(VERBOSE " QT_BINARY_DIR:       ${QT_BINARY_DIR}")
 message(VERBOSE " QT_QMAKE_EXECUTABLE: ${QT_QMAKE_EXECUTABLE}")
 if(EXISTS ${QT_QMAKE_EXECUTABLE})
@@ -207,16 +218,15 @@ if(EXISTS ${QT_QMAKE_EXECUTABLE})
    message(" Qt version: ${qt_version}")
    if("${qt_version}" VERSION_GREATER_EQUAL "5.0.0")
       set(HAVE_QT5 1)
-      set(HAVE_QSAVEFILE 1) # Experimental: Qt5 seems to write disk files better with QSaveFile than with QFile
+      set(HAVE_QSAVEFILE 1) # Experimental: Qt5 writes disk files better with QSaveFile than with QFile
       set(QT_Qt5_DIR "${qt_install_libs}/cmake/Qt5" CACHE PATH "Path to directory containing Qt5Config.cmake")
       set(Qt5_DIR ${QT_Qt5_DIR})
-      # set(ENV{CMAKE_PREFIX_PATH} ${Qt5_DIR}) # TODO: might not be necessary, test without
-      # TODO: why for Qt5 and not Qt4? Seems these should be the same for both, and by adding them for
+      # TODO: why AUTO* for Qt5 and not Qt4? Seems these should be the same for both, and by adding them for
       # for Qt5 IN ADDITION to the qt5_wrap_cpp() etc macros, we're causing dublicate compilation effort,
       # see e.g. https://cmake.org/cmake/help/v3.12/prop_tgt/AUTOMOC.html#prop_tgt:AUTOMOC
-      set(CMAKE_AUTOMOC ON)
-      set(CMAKE_AUTORCC ON)
-      set(CMAKE_AUTOUIC ON)
+      # set(CMAKE_AUTOMOC ON)
+      # set(CMAKE_AUTORCC ON)
+      # set(CMAKE_AUTOUIC ON)
    else()
       # Qt4
       if(EXISTS ${QT_BINARY_DIR})
@@ -285,18 +295,22 @@ find_package(Boost 1.45.0 REQUIRED)
 find_package(Xerces REQUIRED)
 find_package(XQilla REQUIRED)
 if(HAVE_QT5)
-   set(Qwt5ForQt5_INCLUDE_DIR "/usr/include/qt5/qwt5-qt5" CACHE STRING "Directory containing Qwt5ForQt5 headers")
+   set(Qwt5ForQt5_INCLUDE_DIR "/usr/include/qt5/qwt5-qt5" CACHE PATH "Directory containing Qwt5ForQt5 headers")
+   set(Qwt5ForQt5_LIBRARY_RELEASE "/usr/lib64/qwt5/libqwt5-qt5.so" CACHE FILEPATH "Path to Qwt5ForQt5 library")
+#   set(Qwt5ForQt5_LIBRARY_RELEASE ${Qwt5ForQt5_LIBRARY})
    find_package(Qwt5ForQt5 REQUIRED)
    include_directories(${Qwt5ForQt5_INCLUDE_DIR})
    message(STATUS "Qwt5ForQt5_INCLUDE_DIR: ${Qwt5ForQt5_INCLUDE_DIR}")
 else()
-   set(Qwt5ForQt4_INCLUDE_DIR "/usr/include/qwt5-qt4" CACHE STRING "Directory containing Qwt5ForQt4 headers")
+   set(Qwt5ForQt4_INCLUDE_DIR "/usr/include/qwt5-qt4" CACHE PATH "Directory containing Qwt5ForQt4 headers")
+   set(Qwt5ForQt4_LIBRARY_RELEASE "/usr/lib64/libqwt5-qt4.so" CACHE FILEPATH "Path to Qwt5ForQt4 library")
+#   set(Qwt5ForQt4_LIBRARY_RELEASE ${Qwt5ForQt4_LIBRARY})
    find_package(Qwt5ForQt4 REQUIRED)
    include_directories(${Qwt5ForQt4_INCLUDE_DIRS})
    message(STATUS "Qwt5ForQt4_INCLUDE_DIRS: ${Qwt5ForQt4_INCLUDE_DIRS}")
 endif()
-find_package(Minizip REQUIRED)
 find_package(YamlCpp REQUIRED)
+find_package(Minizip REQUIRED)
 find_package(Raptor REQUIRED)
 find_package(ZLIB REQUIRED)
 find_package(OpenGL REQUIRED)
@@ -422,6 +436,13 @@ if(WIN32)
     add_subdirectory(PlugIns/src/LegacyModule)
 endif()
 if(avcodec_FOUND AND avformat_FOUND AND avutil_FOUND)
+   # Findswscale.cmake might check for img_convert() in avcodec.h; if there we can set USE_SWSCALE OFF by default
+   set(avcodec_USE_SWSCALE ON CACHE BOOL "Set ON to use sws_scale() for video image format conversion. Set OFF to use old img_convert(), if you have one.")
+   if(avcodec_USE_SWSCALE)
+      add_definitions(-DUSE_SWSCALE=1)
+   else()
+      add_definitions(-DUSE_SWSCALE=0)
+   endif()
    add_subdirectory(PlugIns/src/MovieExporter)
 endif()
 add_subdirectory(PlugIns/src/Nitf)

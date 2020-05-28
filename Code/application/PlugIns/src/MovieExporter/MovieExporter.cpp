@@ -29,10 +29,7 @@
 #include "View.h"
 #include "ViewResolutionWidget.h"
 
-#define USE_SWSCALE
-// USE_SWSCALE should be a Cmake OPTION for A-B testing. Be sure doc string suggests
-// SWSCALE should be "ON" if img_convert() not found. Cmake can test for this. 
-#ifdef USE_SWSCALE
+#if USE_SWSCALE
 extern "C" {
 #include "swscale.h" // from ffmpeg to replace img_convert()
 }
@@ -633,7 +630,27 @@ bool MovieExporter::execute(PlugInArgList* pInArgList, PlugInArgList* pOutArgLis
       classPositionBottom = QPoint(bottomX, pCodecContext->height - 1);
    }
 
-   // make sure controller is not running prior to export. Save current state and restore after export finished
+#if USE_SWSCALE
+   SwsContext* pSwsContext = NULL;
+   {
+      AVPicture* src = reinterpret_cast<AVPicture*>(mpPicture);
+      AVPicture* dst = reinterpret_cast<AVPicture*>(pTmpPicture);
+      int srcWidth  = pCodecContext->width;
+      int srcHeight = pCodecContext->height;
+      int dstWidth  = pCodecContext->width;
+      int dstHeight = pCodecContext->height;
+      PixelFormat srcFormat = pCodecContext->pix_fmt;
+      PixelFormat dstFormat = PIX_FMT_RGB32;
+      int flags = SWS_FAST_BILINEAR; // Or SWS_BICUBIC, etc. Are flags used at all when src and dst images are same size?
+
+      pSwsContext = sws_getContext (srcWidth, srcHeight, srcFormat,
+                                               dstWidth, dstHeight, dstFormat,
+                                               flags, NULL, NULL, NULL);
+      assert(pSwsContext != NULL);
+   }
+#endif
+
+// make sure controller is not running prior to export. Save current state and restore after export finished
    AnimationState savedAnimationState = pController->getAnimationState();
    pController->setAnimationState(STOP);
 
@@ -757,25 +774,15 @@ bool MovieExporter::execute(PlugInArgList* pInArgList, PlugInArgList* pOutArgLis
       {
          pView->getCurrentImage(image);
       }
-#ifdef USE_SWSCALE
+#if USE_SWSCALE
       AVPicture* src = reinterpret_cast<AVPicture*>(mpPicture);
       AVPicture* dst = reinterpret_cast<AVPicture*>(pTmpPicture);
-      int srcWidth  = pCodecContext->width;
       int srcHeight = pCodecContext->height;
-      int dstWidth  = pCodecContext->width;
-      int dstHeight = pCodecContext->height;
-      PixelFormat srcFormat = pCodecContext->pix_fmt;
-      PixelFormat dstFormat = PIX_FMT_RGB32;
-      int flags = SWS_BICUBIC;
 
-      struct SwsContext* ctx = sws_getContext (srcWidth, srcHeight, srcFormat,
-                                               dstWidth, dstHeight, dstFormat,
-                                               flags, NULL, NULL, NULL);
-      int resultHeight = sws_scale (ctx, src->data, src->linesize,
+      int resultHeight = sws_scale (pSwsContext, src->data, src->linesize,
                                     0, srcHeight, dst->data, dst->linesize);
-      sws_freeContext (ctx);
 
-      assert(resultHeight == dstHeight);
+      assert(resultHeight == srcHeight);
 #else
       // img_convert() has been deprecated for a *very* long time. Use sws_scale() instead.
       img_convert(reinterpret_cast<AVPicture*>(mpPicture),
@@ -800,6 +807,13 @@ bool MovieExporter::execute(PlugInArgList* pInArgList, PlugInArgList* pOutArgLis
          return false;
       }
    }
+#if USE_SWSCALE
+   if(pSwsContext)
+   {
+       sws_freeContext (pSwsContext);
+   }
+#endif
+
    for (int frame = 0; frame < pCodecContext->delay; ++frame)
    {
       write_video_frame(pFormat, pVideoStream);
