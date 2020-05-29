@@ -1,4 +1,4 @@
-find_path(avformat_INCLUDE_DIR avformat.h PATH_SUFFIXES ffmpeg libavformat)
+find_path(avformat_INCLUDE_DIR avformat.h PATH_SUFFIXES ffmpeg libavformat ffmpeg/libavformat)
 if(avformat_INCLUDE_DIR AND EXISTS "${avformat_INCLUDE_DIR}/avformat.h")
    file(STRINGS "${avformat_INCLUDE_DIR}/avformat.h" avformat_Parsed_Version REGEX "^#define LIBAVFORMAT_VERSION +.+$")
    if(avformat_Parsed_Version)

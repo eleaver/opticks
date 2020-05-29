@@ -56,10 +56,11 @@ if(NOT Opticks_DEPENDENCIES)
 endif()
 Message(STATUS "Setting Opticks_DEPENDENCIES to ${Opticks_DEPENDENCIES}")
 if(NOT (EXISTS "${Opticks_DEPENDENCIES}" AND IS_DIRECTORY "${Opticks_DEPENDENCIES}"))
-    message(STATUS "Opticks_DEPENDENCIES was not provided or does not exist, so required 3rd-party libraries will only be searched for on the system. "
-        "Opticks_DEPENDENCIES can be retrieved by running the retrieve-dependencies script from the Dependencies directory.")
-    set(Opticks_DEPENDENCIES "" CACHE PATH "Location of Opticks pre-built dependencies")
+   message(STATUS "Opticks_DEPENDENCIES was not provided or does not exist, so required 3rd-party libraries will only be searched for on the system. "
+      "Opticks_DEPENDENCIES can be retrieved by running the retrieve-dependencies script from the Dependencies directory.")
+   set(Opticks_DEPENDENCIES "" CACHE PATH "Location of Opticks pre-built dependencies")
 endif()
+
 # 64-bit or 32-bit dependencies?
 if(CMAKE_CXX_SIZEOF_DATA_PTR EQUAL 4)
     set(OPTICKS_DEP_PATH ${Opticks_DEPENDENCIES}/32)
@@ -209,21 +210,21 @@ else()
    endforeach()
 endif()
 set(QT_QMAKE_EXECUTABLE ${QT_BINARY_DIR}/qmake CACHE FILEPATH "path to qmake. default ${QT_BINARY_DIR}/qmake")
-message(VERBOSE " QT_BINARY_DIR:       ${QT_BINARY_DIR}")
-message(VERBOSE " QT_QMAKE_EXECUTABLE: ${QT_QMAKE_EXECUTABLE}")
+message(STATUS "QT Binary Dir:       ${QT_BINARY_DIR}")
+message(STATUS "QT QMake Executable: ${QT_QMAKE_EXECUTABLE}")
 if(EXISTS ${QT_QMAKE_EXECUTABLE})
    # Get Qt version from Qmake
    execute_process(COMMAND ${QT_QMAKE_EXECUTABLE} -query QT_VERSION OUTPUT_VARIABLE qt_version  OUTPUT_STRIP_TRAILING_WHITESPACE)
    execute_process(COMMAND ${QT_QMAKE_EXECUTABLE} -query QT_INSTALL_LIBS OUTPUT_VARIABLE qt_install_libs  OUTPUT_STRIP_TRAILING_WHITESPACE)
-   message(" Qt version: ${qt_version}")
-   if("${qt_version}" VERSION_GREATER_EQUAL "5.0.0")
+   message(STATUS "Found Qt version \"${qt_version}\"")
+   if("${qt_version}" VERSION_GREATER "5.0.0")
       set(HAVE_QT5 1)
-      set(HAVE_QSAVEFILE 1) # Experimental: Qt5 writes disk files better with QSaveFile than with QFile
+      set(HAVE_QSAVEFILE 1) # Experimental: Qt5 writes disk files more reliably with QSaveFile than with QFile
       set(QT_Qt5_DIR "${qt_install_libs}/cmake/Qt5" CACHE PATH "Path to directory containing Qt5Config.cmake")
       set(Qt5_DIR ${QT_Qt5_DIR})
-      # TODO: why AUTO* for Qt5 and not Qt4? Seems these should be the same for both, and by adding them for
-      # for Qt5 IN ADDITION to the qt5_wrap_cpp() etc macros, we're causing dublicate compilation effort,
-      # see e.g. https://cmake.org/cmake/help/v3.12/prop_tgt/AUTOMOC.html#prop_tgt:AUTOMOC
+      # TODO: Determine if CMAKE_AUTOMOC etc may be used instead of qt*_wrap_cpp() etc. macros.
+      #       Might simplify things a bit if they can.
+      #       See https://cmake.org/cmake/help/v3.12/prop_tgt/AUTOMOC.html#prop_tgt:AUTOMOC
       # set(CMAKE_AUTOMOC ON)
       # set(CMAKE_AUTORCC ON)
       # set(CMAKE_AUTOUIC ON)
@@ -286,28 +287,22 @@ else()
    add_definitions(-DQt_VERSION_MAJOR=${Qt_VERSION_MAJOR})
 endif(HAVE_QT5)
 include_directories(${QT_INCLUDE_DIRS})
-Message(STATUS "QT_INCLUDES: ${QT_INCLUDES}")
-Message(STATUS "QT_INCLUDE_DIRS: ${QT_INCLUDE_DIRS}")
-Message(STATUS "QT_LIBRARIES: ${QT_LIBRARIES}")
+Message(VERBOSE "QT_INCLUDES: ${QT_INCLUDES}")
+Message(VERBOSE "QT_INCLUDE_DIRS: ${QT_INCLUDE_DIRS}")
+Message(VERBOSE "QT_LIBRARIES: ${QT_LIBRARIES}")
 #######################################################################################
 
 find_package(Boost 1.45.0 REQUIRED)
 find_package(Xerces REQUIRED)
 find_package(XQilla REQUIRED)
 if(HAVE_QT5)
-   set(Qwt5ForQt5_INCLUDE_DIR "/usr/include/qt5/qwt5-qt5" CACHE PATH "Directory containing Qwt5ForQt5 headers")
-   set(Qwt5ForQt5_LIBRARY_RELEASE "/usr/lib64/qwt5/libqwt5-qt5.so" CACHE FILEPATH "Path to Qwt5ForQt5 library")
-#   set(Qwt5ForQt5_LIBRARY_RELEASE ${Qwt5ForQt5_LIBRARY})
    find_package(Qwt5ForQt5 REQUIRED)
    include_directories(${Qwt5ForQt5_INCLUDE_DIR})
-   message(STATUS "Qwt5ForQt5_INCLUDE_DIR: ${Qwt5ForQt5_INCLUDE_DIR}")
+   message(VERBOSE "Qwt5ForQt5_INCLUDE_DIR: ${Qwt5ForQt5_INCLUDE_DIR}")
 else()
-   set(Qwt5ForQt4_INCLUDE_DIR "/usr/include/qwt5-qt4" CACHE PATH "Directory containing Qwt5ForQt4 headers")
-   set(Qwt5ForQt4_LIBRARY_RELEASE "/usr/lib64/libqwt5-qt4.so" CACHE FILEPATH "Path to Qwt5ForQt4 library")
-#   set(Qwt5ForQt4_LIBRARY_RELEASE ${Qwt5ForQt4_LIBRARY})
    find_package(Qwt5ForQt4 REQUIRED)
    include_directories(${Qwt5ForQt4_INCLUDE_DIRS})
-   message(STATUS "Qwt5ForQt4_INCLUDE_DIRS: ${Qwt5ForQt4_INCLUDE_DIRS}")
+   message(VERBOSE "Qwt5ForQt4_INCLUDE_DIRS: ${Qwt5ForQt4_INCLUDE_DIRS}")
 endif()
 find_package(YamlCpp REQUIRED)
 find_package(Minizip REQUIRED)
@@ -330,9 +325,6 @@ find_package(avcodec)
 find_package(avformat)
 find_package(avutil)
 find_package(swscale)
-if(swscale_FOUND)
-   include_directories(${swscale_INCLUDE_DIRS})
-endif()
 find_package(cfitsio)
 find_package(Cg) #optional, still need to work
 find_package(Gdal)
@@ -342,11 +334,6 @@ find_package(OpenJpeg)
 find_package(ehs)
 find_package(pcre)
 find_package(pme)
-
-
-if(ehs_FOUND)
-   include_directories(${ehs_INCLUDE_DIRS})
-endif()
 
 set(OLD_CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH}")
 set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH}" "${OPTICKS_DEP_PATH}/tools/graphviz")
@@ -436,8 +423,12 @@ if(WIN32)
     add_subdirectory(PlugIns/src/LegacyModule)
 endif()
 if(avcodec_FOUND AND avformat_FOUND AND avutil_FOUND)
-   # Findswscale.cmake might check for img_convert() in avcodec.h; if there we can set USE_SWSCALE OFF by default
-   set(avcodec_USE_SWSCALE ON CACHE BOOL "Set ON to use sws_scale() for video image format conversion. Set OFF to use old img_convert(), if you have one.")
+   if(${avcodec_MAJOR_VERSION} EQUAL 51)
+      # Opticks default 51.13.0 is likely the last ffmpeg avcodec to include img_convert(). Newer than that, must use sws_scale
+      set(avcodec_USE_SWSCALE OFF CACHE BOOL "Set ON to use new sws_scale() for video image format conversion. Set OFF to use img_convert()")
+   else()
+      set(avcodec_USE_SWSCALE ON CACHE BOOL "Set ON to use sws_scale() for video image format conversion. Set OFF to use old img_convert(), if you have one.")
+   endif()
    if(avcodec_USE_SWSCALE)
       add_definitions(-DUSE_SWSCALE=1)
    else()
@@ -530,6 +521,10 @@ foreach(LIB_NAME IN LISTS OPTICKS_EXECUTABLE_LIBS)
     add_subdirectory(${LIB_NAME})
 endforeach()
 
+# CMake documentation cautions against file globing to set HEADER_FILES, SOURCE_FILES, etc.,
+# as you could add source files to a large project, but CMake wouldn't regenerate as none of
+# it's CMakeLists.txt had themselves changed. OTOH, maintaining these file lists is itself a
+# bit of a task. I've chosen to go with CMake's recommendation for now.
 set(INTERFACE_HEADER_FILES
     Interfaces/Animation.h
     Interfaces/AnimationController.h

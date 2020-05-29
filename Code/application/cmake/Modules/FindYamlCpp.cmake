@@ -2,45 +2,10 @@ find_path(YamlCpp_INCLUDE_DIR yaml.h PATH_SUFFIXES yaml-cpp)
 
 if(YamlCpp_INCLUDE_DIR-NOTFOUND)
    message(ERROR " could not find YamlCpp_INCLUDE_DIR: ${YamlCpp_INCLUDE_DIR}")
-else()
-   if(NOT EXISTS "${YamlCpp_INCLUDE_DIR}")
-      message(STATUS "YamlCpp_INCLUDE_DIR: ${YamlCpp_INCLUDE_DIR} NOT FOUND. Trying...")
-      foreach(dir ${CMAKE_PREFIX_PATH};${CMAKE_INCLUDE_PATH})
-         if(EXISTS "${dir}/yaml.h")
-            set(YamlCpp_INCLUDE_DIR ${dir})
-         elseif(EXISTS "${dir}/include/yaml.h" OR EXISTS "${dir}/include/yaml-cpp/yaml.h")
-            set(YamlCpp_INCLUDE_DIR "${dir}/include")
-         endif()
-         if(EXISTS "${YamlCpp_INCLUDE_DIR}")
-            message(STATUS "YamlCpp_INCLUDE_DIR: ${YamlCpp_INCLUDE_DIR} FOUND")
-         endif()
-      endforeach()
-   endif()
 endif()
 
 find_library(YamlCpp_LIBRARY_RELEASE NAMES yaml-cpp yaml)
 find_library(YamlCpp_LIBRARY_DEBUG NAMES yaml-cppd)
-if(YamlCpp_LIBRARY_RELEASE-NOTFOUND)
-   message(ERROR " could not find YamlCpp_LIBRARY_RELEASE: ${YamlCpp_LIBRARY_RELEASE}")
-else()
-   if(NOT EXISTS "${YamlCpp_LIBRARY_RELEASE}")
-      message(STATUS "YamlCpp_LIBRARY_RELEASE: ${YamlCpp_LIBRARY_RELEASE} NOT FOUND. Trying...")
-      foreach(dir ${CMAKE_PREFIX_PATH};${CMAKE_LIBRARY_PATH})
-         #message(STATUS "YamlCpp_LIBRARY_RELEASE: ${dir}/${YamlCpp_LIBRARY_RELEASE}")
-         if(EXISTS "${dir}/${YamlCpp_LIBRARY_RELEASE}")
-            set(YamlCpp_LIBRARY_RELEASE "${dir}/${YamlCpp_LIBRARY_RELEASE}")
-         endif()
-         if(EXISTS "${YamlCpp_LIBRARY_RELEASE}")
-            message(STATUS "YamlCpp_LIBRARY_RELEASE: ${YamlCpp_LIBRARY_RELEASE} FOUND")
-         endif()
-      endforeach()
-   endif()
-endif()
-
-
-
-
-
 
 include(SelectLibraryConfigurations)
 select_library_configurations(YamlCpp) #sets YamlCpp_LIBRARY using YamlCpp_LIBRARY_DEBUG and YamlCpp_LIBRARY_RELEASE

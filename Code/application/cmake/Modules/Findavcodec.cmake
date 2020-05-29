@@ -1,4 +1,4 @@
-find_path(avcodec_INCLUDE_DIR avcodec.h PATH_SUFFIXES ffmpeg libavcodec)
+find_path(avcodec_INCLUDE_DIR avcodec.h PATH_SUFFIXES ffmpeg libavcodec ffmpeg/libavcodec)
 if(avcodec_INCLUDE_DIR AND EXISTS "${avcodec_INCLUDE_DIR}/avcodec.h")
    file(STRINGS "${avcodec_INCLUDE_DIR}/avcodec.h" avcodec_Parsed_Version REGEX "^#define LIBAVCODEC_VERSION +.+$")
    if(avcodec_Parsed_Version)

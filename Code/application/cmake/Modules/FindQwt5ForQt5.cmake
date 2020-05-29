@@ -1,4 +1,4 @@
-find_path(Qwt5ForQt5_INCLUDE_DIR qwt.h PATH_SUFFIXES qwt5-qt5)
+find_path(Qwt5ForQt5_INCLUDE_DIR qwt.h PATH_SUFFIXES qwt5-qt5 qt5/qwt5-qt5)
 if(Qwt5ForQt5_INCLUDE_DIR AND EXISTS "${Qwt5ForQt5_INCLUDE_DIR}/qwt_global.h")
     file(STRINGS "${Qwt5ForQt5_INCLUDE_DIR}/qwt_global.h" Qwt5ForQt5_Parsed_Version REGEX "^#define QWT_VERSION_STR +\"[^\"]+\"$")
     string(REGEX REPLACE "^.*QWT_VERSION_STR +\"([0-9]+).*$" "\\1" Qwt5ForQt5_VERSION_MAJOR "${Qwt5ForQt5_Parsed_Version}")
@@ -11,8 +11,8 @@ if(Qwt5ForQt5_INCLUDE_DIR AND EXISTS "${Qwt5ForQt5_INCLUDE_DIR}/qwt_global.h")
     set(Qwt5ForQt5_PATCH_VERSION "${Qwt5ForQt5_VERSION_PATCH}")
 endif()
 
-find_library(Qwt5ForQt5_LIBRARY_RELEASE NAMES qwt5 qwt5-qt5)
-find_library(Qwt5ForQt5_LIBRARY_DEBUG NAMES qwt5d qwt5-qt5d)
+find_library(Qwt5ForQt5_LIBRARY_RELEASE NAMES qwt5 qwt5-qt5 PATH_SUFFIXES qwt5)
+find_library(Qwt5ForQt5_LIBRARY_DEBUG NAMES qwt5d qwt5-qt5d PATH_SUFFIXES qwt5)
 
 include(SelectLibraryConfigurations)
 select_library_configurations(Qwt5ForQt5) #sets Qwt5ForQt5_LIBRARY using Qwt5ForQt5_LIBRARY_DEBUG and Qwt5ForQt5_LIBRARY_RELEASE
