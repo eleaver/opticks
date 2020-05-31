@@ -14,6 +14,7 @@
 #include "Jpeg2000Pager.h"
 #include "Jpeg2000Utilities.h"
 #include "ObjectResource.h"
+#include "OpenJpegVersion.h"
 #include "PlugInArgList.h"
 #include "PlugInRegistration.h"
 #include "RasterDataDescriptor.h"

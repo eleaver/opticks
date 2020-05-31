@@ -98,7 +98,12 @@ MessageLogMgrImp::~MessageLogMgrImp()
 
 #if HAVE_QSAVEFILE
    mpJournal->commit();
-   unlink(mpJournal->fileName().toStdString().c_str());
+   // If you really want to treat the journal file as a temporary,
+   // you may unlink it here. But the only time you might ever see the
+   // journal is when the Opticks application is actually running --
+   // and then only if it has been committed. For now I'm going to
+   // leave it on disk, and see what useful gets written.:
+   // unlink(mpJournal->fileName().toStdString().c_str());
 #else
    mpJournal->close();
    mpJournal->remove();

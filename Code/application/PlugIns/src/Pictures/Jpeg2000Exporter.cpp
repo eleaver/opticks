@@ -16,6 +16,7 @@
 #include "Jpeg2000Utilities.h"
 #include "LayerList.h"
 #include "MessageLogResource.h"
+#include "OpenJpegVersion.h"
 #include "PlugInArgList.h"
 #include "PlugInManagerServices.h"
 #include "PlugInRegistration.h"

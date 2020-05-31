@@ -14,6 +14,7 @@
 #include "DynamicObject.h"
 #include "NitfPager.h"
 #include "NitfUtilities.h"
+#include "OssimVersion.h"
 #include "PlugInArgList.h"
 #include "PlugInManagerServices.h"
 #include "PlugInRegistration.h"
@@ -32,14 +33,6 @@
 #include <ossim/imaging/ossimBandSelector.h>
 #include <ossim/init/ossimInit.h>
 #include <ossim/ossimConfig.h>
-
-#if defined __has_include
-   #if __has_include ("ossim/ossimVersion.h")   /* not portable */
-   #include <ossim/ossimVersion.h>
-   #endif
-#endif
-
-#define OSSIM_VERSION_NUMBER (10000*(OSSIM_MAJOR_VERSION_NUMBER) + 100*(OSSIM_MINOR_VERSION_NUMBER) + (OSSIM_PATCH_VERSION_NUMBER))
 
 REGISTER_PLUGIN(OpticksNitf, Pager, Nitf::Pager);
 

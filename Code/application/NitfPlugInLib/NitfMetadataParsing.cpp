@@ -19,6 +19,7 @@
 #include "NitfTreParser.h"
 #include "NitfUtilities.h"
 #include "ObjectFactory.h"
+#include "OssimVersion.h"
 #include "PlugInDescriptor.h"
 #include "Progress.h"
 #include "RasterDataDescriptor.h"

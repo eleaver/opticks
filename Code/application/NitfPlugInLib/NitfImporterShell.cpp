@@ -29,6 +29,8 @@
 #include "NitfMetadataParsing.h"
 #include "NitfUtilities.h"
 #include "ObjectResource.h"
+#include "OpenJpegVersion.h"
+#include "OssimVersion.h"
 #include "PlugInArgList.h"
 #include "PlugInResource.h"
 #include "RasterDataDescriptor.h"

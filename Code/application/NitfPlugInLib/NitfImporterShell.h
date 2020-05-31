@@ -15,34 +15,9 @@
 
 #include <openjpeg.h>
 #include <ossim/base/ossimConstants.h>
-// Ossim 1.6.6 defines VERSIONs in ossimConfig.h, and doesn't have ossimVersion.h
-// Ossim 1.9.0 defines VERSIONs in ossimVersion.h
-#ifndef OSSIM_MAJOR_VERSION_NUMBER
-#include <ossim/ossimVersion.h>
-#endif
 
 #include <map>
 #include <string>
-
-// Opticks Dependencies/64/include/openjpeg/opj_config.h doesn't provide
-// version numbers. But its pkg-config.pc claims its 2.0.0
-// Otherwise, newer openjpeg versions do provide version numbers.
-#ifndef OPJ_VERSION_MAJOR
-#define OPJ_VERSION_MAJOR 2
-#endif
-#ifndef OPJ_VERSION_MINOR
-#define OPJ_VERSION_MINOR 0
-#endif
-#ifndef OPJ_VERSION_BUILD
-#define OPJ_VERSION_BUILD 0
-#endif
-#ifndef OPJ_VERSION_NUMBER
-#define OPJ_VERSION_NUMBER (100*100*(OPJ_VERSION_MAJOR) + 100*(OPJ_VERSION_MINOR) + (OPJ_VERSION_BUILD))
-#endif
-
-#ifndef OSSIM_VERSION_NUMBER
-#define OSSIM_VERSION_NUMBER (100*100*(OSSIM_MAJOR_VERSION_NUMBER) + 100*(OSSIM_MINOR_VERSION_NUMBER) + (OSSIM_PATCH_VERSION_NUMBER))
-#endif
 
 class DataVariant;
 class ossimNitfFileHeaderV2_X;

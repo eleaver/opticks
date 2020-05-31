@@ -11,6 +11,7 @@
 #include "DataAccessor.h"
 #include "DataAccessorImpl.h"
 #include "MatrixFunctions.h"
+#include "OssimVersion.h"
 #include "RasterDataDescriptor.h"
 #include "RasterElement.h"
 #include "Resource.h"
@@ -22,12 +23,6 @@
 #include <iostream>
 #include <ossim/matrix/newmat.h>
 #include <ossim/matrix/newmatap.h>
-#include <ossim/ossimConfig.h>
-#ifndef OSSIM_MAJOR_VERSION_NUMBER // Ossim 1.6.6 defines VERSION numbers in ossimConfig.h
-#include <ossim/ossimVersion.h>    // Ossim 1.9.0 defines VERSION numbers in ossimVersion.h
-#endif
-
-#define OSSIM_VERSION_NUMBER (100*100*(OSSIM_MAJOR_VERSION_NUMBER) + 100*(OSSIM_MINOR_VERSION_NUMBER) + (OSSIM_PATCH_VERSION_NUMBER))
 
 using namespace NEWMAT;
 using namespace std;
