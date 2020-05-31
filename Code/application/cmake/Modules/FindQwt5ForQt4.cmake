@@ -1,4 +1,4 @@
-find_path(Qwt5ForQt4_INCLUDE_DIR qwt.h PATH_SUFFIXES qwt5-qt4 qt4/qwt5-qt4 qt/qwt5-qt4)
+find_path(Qwt5ForQt4_INCLUDE_DIR qwt.h PATH_SUFFIXES qwt-qt4 qwt5-qt4 qt4/qwt5-qt4 qt/qwt5-qt4)
 if(Qwt5ForQt4_INCLUDE_DIR AND EXISTS "${Qwt5ForQt4_INCLUDE_DIR}/qwt_global.h")
     file(STRINGS "${Qwt5ForQt4_INCLUDE_DIR}/qwt_global.h" Qwt5ForQt4_Parsed_Version REGEX "^#define QWT_VERSION_STR +\"[^\"]+\"$")
     string(REGEX REPLACE "^.*QWT_VERSION_STR +\"([0-9]+).*$" "\\1" Qwt5ForQt4_VERSION_MAJOR "${Qwt5ForQt4_Parsed_Version}")
@@ -12,7 +12,7 @@ if(Qwt5ForQt4_INCLUDE_DIR AND EXISTS "${Qwt5ForQt4_INCLUDE_DIR}/qwt_global.h")
 endif()
 
 find_library(Qwt5ForQt4_LIBRARY_RELEASE NAMES qwt5 qwt5-qt4 qwt-qt4 qwt)
-find_library(Qwt5ForQt4_LIBRARY_DEBUG NAMES qwt5d qwt5-qt4d qwt-qt4d qwt)
+find_library(Qwt5ForQt4_LIBRARY_DEBUG NAMES qwt5d qwt5-qt4d qwt-qt4d qwtd)
 
 include(SelectLibraryConfigurations)
 select_library_configurations(Qwt5ForQt4) #sets Qwt5ForQt4_LIBRARY using Qwt5ForQt4_LIBRARY_DEBUG and Qwt5ForQt4_LIBRARY_RELEASE

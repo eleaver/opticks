@@ -79,7 +79,7 @@ vector<ImportDescriptor*> Nitf::NitfImporterShell::getImportDescriptors(const st
    {
       return vector<ImportDescriptor*>();
    }
-#if OPJ_VERSION_NUMBER < 20300
+#if OSSIM_VERSION_NUMBER < 10900
    const ossimNitfFileHeaderV2_X* pFileHeader =
       dynamic_cast<const ossimNitfFileHeaderV2_X*>(pNitfFile->getHeader().get());
 #else

@@ -335,6 +335,10 @@ find_package(ehs)
 find_package(pcre)
 find_package(pme)
 
+if(ehs_FOUND)
+   include_directories(${ehs_INCLUDE_DIRS})
+endif()
+
 set(OLD_CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH}")
 set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH}" "${OPTICKS_DEP_PATH}/tools/graphviz")
 find_package(Doxygen)
