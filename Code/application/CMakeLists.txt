@@ -47,15 +47,15 @@ endif("${isSystemDir}" STREQUAL "-1")
 #################################################################
 
 # Location of the Dependencies directory. On some platforms and configurations, it may not be necessary, but it's still searched.
-if(NOT Opticks_DEPENDENCIES)
+if(NOT IS_DIRECTORY ${Opticks_DEPENDENCIES})
     set(Opticks_DEPENDENCIES $ENV{OPTICKSDEPENDENCIES} CACHE PATH "Location of Opticks pre-built dependencies")
-    if(NOT Opticks_DEPENDENCIES)
+    if(NOT IS_DIRECTORY ${Opticks_DEPENDENCIES})
         get_filename_component(Opticks_DEFAULT_DEPENDENCIES "${Opticks_SOURCE_DIR}/../../Dependencies" ABSOLUTE)
         set(Opticks_DEPENDENCIES ${Opticks_DEFAULT_DEPENDENCIES} CACHE PATH "Location of Opticks pre-built dependencies" FORCE)
     endif()
 endif()
 Message(STATUS "Setting Opticks_DEPENDENCIES to ${Opticks_DEPENDENCIES}")
-if(NOT (EXISTS "${Opticks_DEPENDENCIES}" AND IS_DIRECTORY "${Opticks_DEPENDENCIES}"))
+if(NOT IS_DIRECTORY "${Opticks_DEPENDENCIES}")
    message(STATUS "Opticks_DEPENDENCIES was not provided or does not exist, so required 3rd-party libraries will only be searched for on the system. "
       "Opticks_DEPENDENCIES can be retrieved by running the retrieve-dependencies script from the Dependencies directory.")
    set(Opticks_DEPENDENCIES "" CACHE PATH "Location of Opticks pre-built dependencies")
@@ -287,9 +287,9 @@ else()
    add_definitions(-DQt_VERSION_MAJOR=${Qt_VERSION_MAJOR})
 endif(HAVE_QT5)
 include_directories(${QT_INCLUDE_DIRS})
-Message(DEBUG "QT_INCLUDES: ${QT_INCLUDES}")
-Message(DEBUG "QT_INCLUDE_DIRS: ${QT_INCLUDE_DIRS}")
-Message(DEBUG "QT_LIBRARIES: ${QT_LIBRARIES}")
+Message(DEBUG " QT_INCLUDES: ${QT_INCLUDES}")
+Message(DEBUG " QT_INCLUDE_DIRS: ${QT_INCLUDE_DIRS}")
+Message(DEBUG " QT_LIBRARIES: ${QT_LIBRARIES}")
 #######################################################################################
 
 find_package(Boost 1.45.0 REQUIRED)
