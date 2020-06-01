@@ -29,7 +29,7 @@ if(YAMLCPP_FOUND)
       message(ERROR " could not find YamlCpp header ${Parser_h}")
    endif()
 
-  message(DEBUG " YamlCPP headers ${Yaml_h} ${Parser_h} ${Node_h}")
+  # message(STATUS "YamlCPP headers ${Yaml_h} ${Parser_h} ${Node_h}")
   file(STRINGS ${Parser_h} Parser_GetNextDocument_Str REGEX "GetNextDocument")
   file(STRINGS ${Node_h}   Node_GetType_Str REGEX "GetType")
 
@@ -57,7 +57,6 @@ if(YAMLCPP_FOUND)
     set(YamlCpp_VERSION_NUMBER 600)
     set(YamlCpp_VERSION_STRING "0.6.0")
   endif()
-  message(DEBUG " YAMLCPP_VERSION_NUMBER: ${YamlCpp_VERSION_NUMBER}")
   add_compile_options(-DYAMLCPP_VERSION_NUMBER=${YamlCpp_VERSION_NUMBER})
 endif()
 

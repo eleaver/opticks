@@ -1,5 +1,5 @@
 find_path(OpenCollada_INCLUDE_DIR opencollada/COLLADAFramework/COLLADAFW.h)
-message(DEBUG " OpenCollada_INCLUDE_DIR: ${OpenCollada_INCLUDE_DIR}")
+#message(STATUS "OpenCollada_INCLUDE_DIR: ${OpenCollada_INCLUDE_DIR}")
 
 set(opencollada_lib_names
    OpenCOLLADABaseUtils
@@ -20,7 +20,7 @@ foreach(lib_name ${opencollada_lib_names})
    set(OpenCollada_${LIB_NAME}_LIBRARY optimized ${OpenCollada_${LIB_NAME}_LIBRARY_RELEASE})
    list(APPEND OpenCollada_LIBRARIES ${OpenCollada_${LIB_NAME}_LIBRARY})
 endforeach()
-message(DEBUG " OpenCollada_LIBRARIES: ${OpenCollada_LIBRARIES}")
+#message(STATUS "OpenCollada_LIBRARIES: ${OpenCollada_LIBRARIES}")
 
 set(OpenCollada_INCLUDE_DIRS ${OpenCollada_INCLUDE_DIR})
 mark_as_advanced(OpenCollada_INCLUDE_DIR)
