@@ -224,6 +224,11 @@ if(EXISTS ${QT_QMAKE_EXECUTABLE})
       set(HAVE_QSAVEFILE 1) # Experimental: Qt5 writes disk files more reliably with QSaveFile than with QFile
       set(QT_Qt5_DIR "${qt_install_libs}/cmake/Qt5" CACHE PATH "Path to directory containing Qt5Config.cmake")
       set(Qt5_DIR ${QT_Qt5_DIR})
+      if(IS_DIRECTORY ${Qt5_DIR})
+         message(STATUS "Found Qt5_DIR: ${Qt5_DIR}")
+      else()
+         message(WARNING  " ${Qt5_DIR} NOT FOUND")
+      endif()
       # TODO: Determine if CMAKE_AUTOMOC etc may be used instead of qt*_wrap_cpp() etc. macros.
       #       Might simplify things a bit if they can.
       #       See https://cmake.org/cmake/help/v3.12/prop_tgt/AUTOMOC.html#prop_tgt:AUTOMOC
@@ -283,6 +288,8 @@ if(HAVE_QT5)
    add_definitions(-DQt_VERSION_MAJOR=${Qt5_VERSION_MAJOR})
    set(QT_INCLUDE_DIRS ${Qt5Core_INCLUDE_DIRS};${Qt5Gui_INCLUDE_DIRS};${Qt5Widgets_INCLUDE_DIRS};${Qt5OpenGL_INCLUDE_DIRS};${Qt5Xml_INCLUDE_DIRS};${Qt5Network_INCLUDE_DIRS};${Qt5PrintSupport_INCLUDE_DIRS})
    set(QT_LIBRARIES ${Qt5Core_LIBRARIES} ${Qt5Gui_LIBRARIES} ${Qt5Widgets_LIBRARIES} ${Qt5OpenGL_LIBRARIES} ${Qt5Xml_LIBRARIES} ${Qt5Network_LIBRARIES} ${Qt5PrintSupport_LIBRARIES})
+   # message(STATUS "QT_INCLUDE_DIRS: ${QT_INCLUDE_DIRS}")
+   # message(STATUS "QT_LIBRARIES: ${QT_LIBRARIES}")
 else()
    find_package(Qt4 COMPONENTS QtCore QtGui QtOpenGL QtXml QtNetwork REQUIRED)
    set(Qt_VERSION_MAJOR 4)
