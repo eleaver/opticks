@@ -21,9 +21,12 @@ if(CMAKE_MAJOR_VERSION GREATER 2)
   cmake_policy(SET CMP0048 NEW)
 endif()
 
-#project (Opticks VERSION ${Opticks_VERSION} DESCRIPTION "Ball Aerospace Opticks GIS") # VERSION must be dotted-decimal
-project (Opticks DESCRIPTION "Ball Aerospace Opticks GIS ${Opticks_VERSION}")
-
+if(CMAKE_MAJOR_VERSION GREATER 2)
+   #project (Opticks VERSION ${Opticks_VERSION} DESCRIPTION "Ball Aerospace Opticks GIS") # VERSION must be dotted-decimal
+   project (Opticks DESCRIPTION "Ball Aerospace Opticks GIS ${Opticks_VERSION}")
+else()
+   project (Opticks)
+endif()
 ############################################################
 # From https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/RPATH-handling
 #
