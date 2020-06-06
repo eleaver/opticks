@@ -45,7 +45,7 @@
 
 #include <algorithm>
 #include <zip.h>
-#ifndef Z_DEFLATED
+#if (! defined Z_DEFLATED || ! defined Z_DEFAULT_COMPRESSION )
 #include <zlib.h>
 #endif
 
