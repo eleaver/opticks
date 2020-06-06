@@ -31,12 +31,13 @@ target_link_libraries(Pca
     ${QT_LIBRARIES}    
     ${Ossim_LIBRARIES}
     ${Xerces_LIBRARIES}
-    if(HAVE_QT5)
-       ${Qwt5ForQt5_LIBRARY}
-    else()
-       ${Qwt5ForQt4_LIBRARY}
-    endif()
-)
+    )
+if(HAVE_QT5)
+   target_link_libraries(Pca ${Qwt5ForQt5_LIBRARY})
+else()
+   target_link_libraries(Pca ${Qwt5ForQt4_LIBRARY})
+endif()
+ 
 if(WIN32)
     install(TARGETS Pca RUNTIME DESTINATION PlugIns CONFIGURATIONS Release;RelWithDebInfo;MinSizeRel)
     install(TARGETS Pca RUNTIME DESTINATION PlugIns/debug CONFIGURATIONS Debug)
