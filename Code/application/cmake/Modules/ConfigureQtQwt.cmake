@@ -109,6 +109,9 @@ else()
    find_package(Qt4 COMPONENTS QtCore QtGui QtOpenGL QtXml QtNetwork REQUIRED)
    set(Qt_VERSION_MAJOR 4)
    add_definitions(-DQt_VERSION_MAJOR=${Qt_VERSION_MAJOR})
+   # Shouldn't need to set these, but try if there are problems:
+   # set(QT_INCLUDE_DIRS ${QtCore_INCLUDE_DIRS};${QtGui_INCLUDE_DIRS};${QtOpenGL_INCLUDE_DIRS};${QtXml_INCLUDE_DIRS};${QtNetwork_INCLUDE_DIRS})
+   # set(QT_LIBRARIES ${QtCore_LIBRARIES} ${QtGui_LIBRARIES} ${QtOpenGL_LIBRARIES} ${QtXml_LIBRARIES} ${QtNetwork_LIBRARIES})
 endif(HAVE_QT5)
 include_directories(${QT_INCLUDE_DIRS})
 # Debug messages:

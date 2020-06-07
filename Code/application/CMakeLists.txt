@@ -27,6 +27,8 @@ if(CMAKE_MAJOR_VERSION GREATER 2)
 else()
    project (Opticks)
 endif()
+
+message(STATUS "Opticks Build Type: ${CMAKE_BUILD_TYPE}")
 ############################################################
 # From https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/RPATH-handling
 #
@@ -72,7 +74,8 @@ elseif(CMAKE_CXX_SIZEOF_DATA_PTR EQUAL 8)
     set(OPTICKS_DEP_PATH ${Opticks_DEPENDENCIES}/64)
 endif()
 
-set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH}" ${OPTICKS_DEP_PATH})
+#set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH};${OPTICKS_DEP_PATH}")
+set(CMAKE_PREFIX_PATH "${OPTICKS_DEP_PATH}") # Spectral experience with TBB suggests this might make finding Dependencies packages more reliably against competing system packages.
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
 set_property(DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS_DEBUG DEBUG) #-DDEBUG only for debug configurations
