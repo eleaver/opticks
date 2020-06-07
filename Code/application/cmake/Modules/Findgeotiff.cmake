@@ -1,4 +1,4 @@
-find_path(geotiff_INCLUDE_DIR geotiff.h PATH_SUFFIXES geotiff)
+find_path(geotiff_INCLUDE_DIR geotiff.h PATH_SUFFIXES geotiff libgeotiff)
 
 if(geotiff_INCLUDE_DIR AND EXISTS "${geotiff_INCLUDE_DIR}/geotiff.h")
     file(STRINGS "${geotiff_INCLUDE_DIR}/geotiff.h" geotiff_Parsed_Version REGEX "^#define LIBGEOTIFF_VERSION +[0-9]+.*$")

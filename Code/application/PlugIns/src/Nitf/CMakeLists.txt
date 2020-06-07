@@ -42,6 +42,7 @@ target_link_libraries(Nitf
     ${QT_LIBRARIES}    
     ${Ossim_LIBRARIES}
     ${Xerces_LIBRARIES}
+    ${OpenJpeg_LIBRARIES}
     ${PTHREADS_LIBRARY}
 )
 if(MSVC)

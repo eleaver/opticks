@@ -17,7 +17,6 @@ target_link_libraries(OpticksBatch
     ${OPTICKS_EXECUTABLE_LIBS}
     ${Opticks_LIBRARIES}
     ${QT_LIBRARIES}
-    ${Qwt5ForQt4_LIBRARY}
     ${OPENGL_LIBRARIES}
     ${ZLIB_LIBRARIES}
     ${YamlCpp_LIBRARIES}
@@ -28,6 +27,12 @@ target_link_libraries(OpticksBatch
     ${Glew_LIBRARIES}
     ${PTHREADS_LIBRARY}
 )
+if(HAVE_QT5)
+   target_link_libraries(OpticksBatch  ${Qwt5ForQt5_LIBRARY})
+else()
+   target_link_libraries(OpticksBatch  ${Qwt5ForQt4_LIBRARY})
+endif()
+
 if(CG_FOUND)
     target_link_libraries(OpticksBatch
         ${Cg_LIBRARIES})
