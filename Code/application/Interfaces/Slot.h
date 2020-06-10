@@ -256,7 +256,7 @@ public:
    /**
     *  Destroys the %Slot.
     */
-   virtual ~Slot()
+   ~Slot()
    {
       if (mpSlot)
       {
@@ -273,12 +273,6 @@ protected:
    class SlotWrapper
    {
    public:
-
-      /**
-       *  Destroys the %SlotWrapper.
-       */
-       virtual ~SlotWrapper(){};
-
       /**
        *  Calls the method on the Slot.
        *
