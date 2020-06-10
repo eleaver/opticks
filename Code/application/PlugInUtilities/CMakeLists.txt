@@ -28,7 +28,9 @@ set (HEADER_FILES
    Interfaces/ModifierWidget.h
    Interfaces/MultiThreadedAlgorithm.h
    Interfaces/ObjectResource.h
+   Interfaces/OpenJpegVersion.h
    Interfaces/OptionQWidgetWrapper.h
+   Interfaces/OssimVersion.h
    Interfaces/PageCache.h
    Interfaces/PlugInResource.h
    Interfaces/ProgressResource.h
