@@ -19,7 +19,6 @@
 #include "NitfTreParser.h"
 #include "NitfUtilities.h"
 #include "ObjectFactory.h"
-#include "OssimVersion.h"
 #include "PlugInDescriptor.h"
 #include "Progress.h"
 #include "RasterDataDescriptor.h"
@@ -48,14 +47,7 @@
 #include <ossim/support_data/ossimNitfUnknownTag.h>
 #include <ossim/support_data/ossimNitfTagFactoryRegistry.h>
 #include <ossim/ossimConfig.h>
-
-#if defined __has_include
-   #if __has_include ("ossim/ossimVersion.h")   /* not portable */
-   #include <ossim/ossimVersion.h>
-   #endif
-#endif
-
-#define OSSIM_VERSION_NUMBER (100*100*(OSSIM_MAJOR_VERSION_NUMBER) + 100*(OSSIM_MINOR_VERSION_NUMBER) + (OSSIM_PATCH_VERSION_NUMBER))
+#include "OssimVersion.h"
 
 using namespace Nitf;
 using namespace Nitf::TRE;
