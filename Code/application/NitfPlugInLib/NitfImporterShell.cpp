@@ -29,6 +29,8 @@
 #include "NitfMetadataParsing.h"
 #include "NitfUtilities.h"
 #include "ObjectResource.h"
+#include "OpenJpegVersion.h"
+#include "OssimVersion.h"
 #include "PlugInArgList.h"
 #include "PlugInResource.h"
 #include "RasterDataDescriptor.h"
@@ -79,7 +81,7 @@ vector<ImportDescriptor*> Nitf::NitfImporterShell::getImportDescriptors(const st
    {
       return vector<ImportDescriptor*>();
    }
-#if OPJ_VERSION_NUMBER < 20300
+#if OSSIM_VERSION_NUMBER < 10900
    const ossimNitfFileHeaderV2_X* pFileHeader =
       dynamic_cast<const ossimNitfFileHeaderV2_X*>(pNitfFile->getHeader().get());
 #else

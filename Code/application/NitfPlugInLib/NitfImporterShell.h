@@ -19,23 +19,6 @@
 #include <map>
 #include <string>
 
-// Opticks Dependencies/64/include/openjpeg/opj_config.h doesnt provide
-// version numbers. But its pkg-config.pc claims its 2.0.0
-// Otherwise, newer openjpeg versions do provide version numbers.
-// (This stuff may be removed if we add version info to our opj_config.h)
-#ifndef OPJ_VERSION_MAJOR
-#define OPJ_VERSION_MAJOR 2
-#endif
-#ifndef OPJ_VERSION_MINOR
-#define OPJ_VERSION_MINOR 0
-#endif
-#ifndef OPJ_VERSION_BUILD
-#define OPJ_VERSION_BUILD 0
-#endif
-#ifndef OPJ_VERSION_NUMBER
-#define OPJ_VERSION_NUMBER (100*100*(OPJ_VERSION_MAJOR) + 100*(OPJ_VERSION_MINOR) + (OPJ_VERSION_BUILD))
-#endif
-
 class DataVariant;
 class ossimNitfFileHeaderV2_X;
 class ossimNitfImageHeaderV2_X;
