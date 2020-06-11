@@ -10,9 +10,11 @@
 #ifndef ADVANCEDOPTIONSWIDGET_H
 #define ADVANCEDOPTIONSWIDGET_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 #include <string>
+
+#include "MovieExporter.h"
 
 class QCheckBox;
 class QComboBox;
@@ -49,8 +51,8 @@ public:
    void setDiaSize(int val);
    int getOutputBufferSize() const;
    void setOutputBufferSize(int val);
-   int getFlags() const;
-   void setFlags(int val);
+   codec_flag_t getFlags() const;
+   void setFlags(codec_flag_t val);
 
 private:
    AdvancedOptionsWidget(const AdvancedOptionsWidget& rhs);
