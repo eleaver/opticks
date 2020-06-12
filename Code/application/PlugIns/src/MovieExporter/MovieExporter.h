@@ -86,12 +86,12 @@ public:
          if (pFormat->pb.opaque != NULL)
          {
             url_fclose(&pFormat->pb);
-	 }
+         }
 #else
          if (pFormat->pb->opaque != NULL)
 	 {
             url_fclose(pFormat->pb);
- 	 }
+         }
 #endif
          av_free(pFormat);
       }
