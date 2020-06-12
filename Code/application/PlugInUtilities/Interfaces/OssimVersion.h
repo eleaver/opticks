@@ -3,13 +3,13 @@
  * Copyright(c) 2007 Ball Aerospace & Technologies Corporation
  * and is subject to the terms and conditions of the
  * GNU Lesser General Public License Version 2.1
- * The license text is available from   
+ * The license text is available from
  * http://www.gnu.org/licenses/lgpl.html
  */
 #ifndef OSSIMVERSION_H
 #define OSSIMVERSION_H
 
-/// Define an integer preprocessor OSSIM_VERSION_NUMBER 
+/// Define an integer preprocessor OSSIM_VERSION_NUMBER
 
 #include <ossim/ossimConfig.h>
 // Ossim 1.6.6 defines VERSIONs in ossimConfig.h, and doesn't have ossimVersion.h

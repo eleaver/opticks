@@ -1207,7 +1207,7 @@ bool MovieExporter::setAvCodecOptions(AVCodecContext* pContext)
       newFlags = pAdvancedWidget->getFlags();
    }
    pContext->me_method = StringUtilities::fromXmlString<Motion_Est_ID>(meMethod);
-   pContext->flags |= (newFlags & UINT_MAX); // codec_flag_type might be u_int64_t, but pContext->flags is int or uint
+   pContext->flags |= (newFlags & UINT_MAX); // codec_flag_type might be u_int64_t, but pContext->flags is int or uint, so clear high-order bits
    if (pContext->flags & OPTICKS_CODEC_FLAG_TRELLIS_QUANT || newFlags & OPTICKS_CODEC_FLAG_TRELLIS_QUANT)
    {
       pContext->trellis = 1;
