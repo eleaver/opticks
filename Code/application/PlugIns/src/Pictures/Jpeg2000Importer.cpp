@@ -17,6 +17,7 @@
 #include "Jpeg2000Utilities.h"
 #include "MessageLogResource.h"
 #include "ObjectResource.h"
+#include "OpenJpegVersion.h"
 #include "PlugInArgList.h"
 #include "PlugInRegistration.h"
 #include "PlugInResource.h"
